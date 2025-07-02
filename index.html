@@ -481,15 +481,24 @@
 .ts-hero {
   width: 100%;
   height: 100vh;
-  background-image: url('images/Madhya Pradesh.png');
-  background-size: cover; /* Makes it scale and fill the container */
-  background-repeat: no-repeat; /* Prevents repeating */
-  background-position: center center; /* Center it */
+  background-image: url('images/Madhya Pradesh.png'); /* Desktop image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: 0 5vw 5vh 5vw; /* Keeps content away from edges */
+  padding: 0 5vw 5vh 5vw;
+}
+
+/* Mobile & Tablet: Different image */
+@media (max-width: 1024px) {
+  .ts-hero {
+    background-image: url('images/Madhya\ Pradesh\ \(mobile\).png'); /* Mobile image */
+    background-position: left center;
+    background-size: contain;
+  }
 }
 
 
