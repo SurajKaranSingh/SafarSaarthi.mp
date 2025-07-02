@@ -1,0 +1,127 @@
+<style>
+    .ts-footer {
+      background-color: #222;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    .ts-footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  
+    .ts-footer-left {
+      flex: 1;
+      min-width: 150px;
+    }
+  
+    .ts-footer-logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+  
+    .ts-footer-center {
+      flex: 2;
+      min-width: 200px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+  
+    .ts-footer-center a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+  
+    .ts-footer-center a:hover {
+      color: #f0c14b;
+    }
+  
+    .ts-footer-right {
+      flex: 1;
+      min-width: 200px;
+      text-align: right;
+    }
+  
+    .ts-footer-right p {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+  
+    .ts-footer-right a {
+      color: #f0c14b;
+      text-decoration: none;
+    }
+  
+    .ts-footer-icons a {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  
+    .ts-footer-icons img {
+      vertical-align: middle;
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s;
+    }
+  
+    .ts-footer-icons img:hover {
+      transform: scale(1.1);
+    }
+  
+    .ts-footer-bottom {
+      text-align: center;
+      padding: 15px 10px;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  
+    @media (max-width: 768px) {
+      .ts-footer-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+  
+      .ts-footer-right {
+        text-align: center;
+      }
+  
+      .ts-footer-icons a {
+        margin: 0 8px;
+      }
+    }
+  </style>
+ <footer class="ts-footer">
+    <div class="ts-footer-top">
+      <div class="ts-footer-left">
+        <span class="ts-footer-logo">TravelSaarthi</span>
+      </div>
+      <div class="ts-footer-center">
+        <a href="index.html">Home</a>
+       
+      </div>
+      <div class="ts-footer-right">
+        <p>Email: <a href="mailto:team@travelsaarthi.com">team@travelsaarthi.com</a></p>
+        <div class="ts-footer-icons">
+          <a href="#" aria-label="Facebook"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"></a>
+          <a href="#" aria-label="Instagram"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"></a>
+          <a href="#" aria-label="Twitter"><img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+    <div class="ts-footer-bottom">
+      <p>&copy; 2025 TravelSaarthi. All rights reserved.</p>
+    </div>
+  </footer>
+    

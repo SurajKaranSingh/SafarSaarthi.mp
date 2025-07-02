@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #206680; /* Slight teal tint from the water */
+
+        }
+        header {
+            background-color: #093245;
+            color: rgb(136, 76, 220);
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .section {
+            
+            margin: 20px;
+            
+            /* border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+        }
+        .section h2 {
+            color: whitesmoke;
+        }
+    
+        .section1 {
+    padding: 30px;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #1e3341, #3a5568);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.section1:hover {
+    transform: scale(1.02);
+}
+
+.section1 h2 {
+    color: #ffffff;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section1 p {
+    color: #ddd;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.responsive-video {
+    width: 20%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.responsive-video:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section1 {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .section1 h2 {
+        font-size: 1.5em;
+    }
+
+    .section1 p {
+        font-size: 1em;
+    }
+
+    .responsive-video {
+        width: 100%;
+    }
+}
+
+        .section5 {
+    padding: 30px;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #1e3341, #3a5568);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.section5:hover {
+    transform: scale(1.02);
+}
+
+.section5 h2 {
+    color: #ffffff;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section5 p {
+    color: #ddd;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.responsive-video {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.responsive-video:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section5 {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .section5 h2 {
+        font-size: 1.5em;
+    }
+
+    .section5 p {
+        font-size: 1em;
+    }
+
+    .responsive-video {
+        width: 100%;
+    }
+}
+
+        .container {
+            display: flex; /* Flex layout for horizontal scrolling */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 40px; /* Spacing between cards */
+            padding-bottom: 10px;
+        }
+        .platform-card {
+            min-width: 300px; /* Minimum width to fit within the scrolling area */
+            flex: 0 0 auto; /* Prevents the card from shrinking or growing */
+            height: 400px;
+            background-size: contain;
+            background-position: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(241, 237, 237, 0.1);
+            transition: transform 0.3s;
+            color: rgb(249, 231, 231);
+            position: relative;
+            background-image: no-repeat;
+            background-color: #f0f0f0;
+
+        }
+        .platform-card:hover {
+            transform: scale(1.05);
+        }
+        .platform-card1 {
+            min-width: 270px; /* Minimum width to fit within the scrolling area */
+            flex: 0 0 auto; /* Prevents the card from shrinking or growing */
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            color: white;
+            position: relative;
+        }
+        .platform-card1:hover {
+            transform: scale(1.05);
+        }
+        .platform-card2 {
+            min-width: 300px; /* Minimum width to fit within the scrolling area */
+            flex: 0 0 auto; /* Prevents the card from shrinking or growing */
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            color: rgb(244, 248, 249);
+            position: relative;
+        }
+        .platform-card2:hover {
+            transform: scale(1.05);
+        }
+        .platform-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+        }
+        .platform-content h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .platform-content p {
+            margin: 5% 0;
+        }
+        .platform-content a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .platform-content a:hover {
+            background-color: #388E3C;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+       
+        .section8 {
+            padding: 20px 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Swiper Container */
+        .swiper {
+            width: 90%;
+            max-width: 1200px;
+            padding-bottom: 50px;
+        }
+
+        /* Card Styles */
+        .swiper-slide {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .swiper-slide img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .swiper-slide h3 {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .swiper-slide p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Pagination Dots */
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.7;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #ffffff;
+            opacity: 1;
+        }
+
+        /* Navigation Buttons */
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 80%;
+                max-width: 250px;
+            }
+            .swiper-slide img {
+                width: 70px;
+                height: 70px;
+            }
+            .swiper-slide h3 {
+                font-size: 14px;
+            }
+            .swiper-slide p {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .swiper-slide {
+                width: 100%;
+                max-width: 220px;
+            }
+            .swiper-slide img {
+                width: 60px;
+                height: 60px;
+            }
+            .swiper-slide h3 {
+                font-size: 12px;
+            }
+            .swiper-slide p {
+                font-size: 10px;
+            }
+        }
+
+        
+        
+        .container1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.category {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.overlay h2 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.overlay button {
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .category {
+        width: 45%;
+        height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .category {
+        width: 30%;
+        height: 350px;
+    }
+}
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+        }
+        .popup .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .popup .option {
+            width: 150px;
+            text-align: center;
+        }
+        .popup img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .popup a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: blue;
+        }
+        .close-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<!-- <script src="./global.js"></script> -->
+<body >
+
+      <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    background-color: #6b879f;
+  }
+
+.ts-hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url('images/Madhya Pradesh.png');
+  background-size: cover; /* Makes it scale and fill the container */
+  background-repeat: no-repeat; /* Prevents repeating */
+  background-position: center center; /* Center it */
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 5vw 5vh 5vw; /* Keeps content away from edges */
+}
+
+
+  .ts-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  .ts-hero-content {
+    color: #fff;
+    max-width: 90%;
+    z-index: 1;
+  }
+
+  .ts-hero-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 15px;
+  }
+
+  .ts-hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 400;
+  }
+
+  section {
+    padding: 60px 5vw;
+    text-align: center;
+  }
+
+  section h2 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    .ts-hero {
+      align-items: flex-end;
+      padding: 0 4vw 4vh 4vw;
+    }
+
+    .ts-hero-content {
+      max-width: 100%;
+    }
+
+    .ts-hero-content h1 {
+      text-align: left;
+    }
+
+    .ts-hero-content p {
+      text-align: left;
+    }
+  }
+</style>
+
+     
+     
+      
+
+     
+    
+  <section class="ts-hero relative">
+  
+</section>
+
+
+     
+<section style="max-width: 1200px; margin: 40px auto; padding: 20px;">
+  <style>
+    .mp-two-col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-radius: 15px;
+      align-items: stretch;
+    }
+
+    .mp-video {
+      flex: 4;
+      min-width: 300px;
+      background: linear-gradient(135deg, #1e3341, #3a5568);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mp-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      flex-grow: 1;
+    }
+
+    .platform-cardmp {
+      flex: 2;
+      min-width: 260px;
+      min-height: 300px; /* ✅ Ensure card is visible */
+      background-color: white;
+      background-image: url('images/tourismlogo.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      color: rgb(25, 24, 24);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 6px 20px rgba(59, 56, 56, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .platform-contentmp {
+      z-index: 1;
+      position: relative;
+    }
+
+    .platform-cardmp::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to top, rgba(74, 72, 72, 0.6), rgba(255, 255, 255, 0.05));
+      z-index: 0;
+    }
+
+    .platform-contentmp a {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #1e3341;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .platform-contentmp a:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .mp-two-col {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .mp-video, .platform-cardmp {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .mp-video video {
+        height: auto;
+      }
+
+      .platform-cardmp {
+        background-size: cover; /* ✅ Use cover for better behavior */
+        padding: 16px;
+        min-height: 250px; /* ✅ Maintain presence */
+      }
+
+      .platform-contentmp a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+
+  <div class="mp-two-col">
+    <!-- Video Section -->
+    <div class="mp-video">
+      <video controls autoplay muted playsinline>
+        <source src="videos/mptourism1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Info Card Section -->
+    <div class="platform-cardmp" id="mptourism">
+      <div class="platform-contentmp">
+        <a href="https://tourism.mp.gov.in/">Know your Madhya Pradesh</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="trips">
+ 
+    <div class="section">
+            <style>
+  .city-search-container {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 400px;
+    padding: 20px;
+    background: linear-gradient(145deg, #f0f0f0, #d9e4f0);
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .city-search-container label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 12px;
+  }
+
+  .city-search-container select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .city-search-container select:hover {
+    border-color: #3498db;
+  }
+
+  .city-search-container select:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+  }
+</style>
+
+<div class="city-search-container">
+  <label for="city-search">🌆 Search City</label>
+  <select id="city-search" onchange="scrollToCard(this.value)">
+    <option value="">-- Select a City --</option>
+    <option value="Bhopal">Bhopal</option>
+    <option value="Sanchi">Sanchi</option>
+    <option value="Bhimbetka">Bhimbetka</option>
+    <option value="Pachmarhi">Pachmarhi</option>
+    <option value="Tawa">Tawa</option>
+    <option value="Indore">Indore</option>
+    <option value="Ujjain">Ujjain</option>
+    <option value="Dewas">Dewas</option>
+    <option value="Maheshwar">Maheshwar</option>
+    <option value="Omkareshwar">Omkareshwar</option>
+    <option value="Mandu">Mandu</option>
+    <option value="Burhanpur">Burhanpur</option>
+    <option value="Mandsaur">Mandsaur</option>
+    <option value="Gwalior">Gwalior</option>
+    <option value="Shivpuri">Shivpuri</option>
+    <option value="Kuno">Kuno</option>
+    <option value="Orchha">Orchha</option>
+    <option value="Tikamgarh">Tikamgarh</option>
+    <option value="Chanderi">Chanderi</option>
+    <option value="Jabalpur">Jabalpur</option>
+    <option value="Bandhavgarh">Bandhavgarh</option>
+    <option value="Amarkantak">Amarkantak</option>
+    <option value="Kanha">Kanha</option>
+    <option value="Chitrakoot">Chitrakoot</option>
+    <option value="Khajuraho">Khajuraho</option>
+    <option value="Satna">Satna</option>
+    <option value="Rewa">Rewa</option>
+    <option value="Panna">Panna</option>
+  </select>
+</div>
+
+
+<script>
+  function scrollToCard(id) {
+    if (!id) return;
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
+            <h2>Explore by Cities
+            </h2>
+
+               <!-- Complete Madhya Pradesh Tourism Cards Section -->
+<div class="container">
+    <div class="platform-card" id="Amarkantak" style="background-image: url('images/amarkantak.webp');">
+    <div class="platform-content">
+      <h3>Amarkantak</h3>
+      <p>Narmada Origin, Kapil Dhara</p>
+      <a href="amarkantak.html">Explore</a>
+    </div>
+  </div>
+    <div class="platform-card" id="Bandhavgarh" style="background-image: url('images/Bandhavgarh.webp');">
+    <div class="platform-content">
+      <h3>Bandhavgarh</h3>
+      <p>Bandhavgarh National Park</p>
+      <a href="bandhavgarh.html">Explore</a>
+    </div>
+  </div>
+    <div class="platform-card" id="Bhimbetka" style="background-image: url('images/bhimbedka.jpeg');">
+    <div class="platform-content">
+      <h3>Bhimbetka</h3>
+      <p>Rock Shelters, Cave Paintings</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Bhopal" style="background-image: url('images/Bhopal.webp');">
+    <div class="platform-content">
+      <h3>Bhopal</h3>
+      <p>Upper Lake, Sanchi Stupa, Van Vihar</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Burhanpur" style="background-image: url('images/burhanpur.webp');">
+    <div class="platform-content">
+      <h3>Burhanpur</h3>
+      <p>Shahi Qila, Dargah-E-Hakimi</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Chanderi" style="background-image: url('images/chanderi.webp');">
+    <div class="platform-content">
+      <h3>Chanderi</h3>
+      <p>Chanderi Fort, Jain Temples</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Chitrakoot" style="background-image: url('images/chitrakoot.jpg');">
+    <div class="platform-content">
+      <h3>Chitrakoot</h3>
+      <p>Ram Ghat, Hanuman Dhara</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Dewas" style="background-image: url('images/dewas.jpg');">
+    <div class="platform-content">
+      <h3>Dewas</h3>
+      <p>Tekri Mata Temple</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Gwalior" style="background-image: url('images/gwalior.jpg');">
+    <div class="platform-content">
+      <h3>Gwalior</h3>
+      <p>Gwalior Fort, Jai Vilas Palace</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Indore" style="background-image: url('images/indore.webp');">
+    <div class="platform-content">
+      <h3>Indore</h3>
+      <p>Rajwada Palace, Sarafa Bazaar, Lal Bagh Palace</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Jabalpur" style="background-image: url('images/bhedaghat-jabalpur.webp');">
+    <div class="platform-content">
+      <h3>Jabalpur</h3>
+      <p>Bhedaghat, Dhuandhar Falls</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Kanha" style="background-image: url('images/kanha.jpg');">
+    <div class="platform-content">
+      <h3>Kanha</h3>
+      <p>Kanha National Park, Tiger Safari</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Khajuraho" style="background-image: url('images/khajuraho.jpg');">
+    <div class="platform-content">
+      <h3>Khajuraho</h3>
+      <p>UNESCO Temples, Light & Sound Show</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Maheshwar" style="background-image: url('images/maheshwar.jpg');">
+    <div class="platform-content">
+      <h3>Maheshwar</h3>
+      <p>Ahilya Fort, Narmada Ghats</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Mandsaur" style="background-image: url('images/mandsour.webp');">
+    <div class="platform-content">
+      <h3>Mandsaur</h3>
+      <p>Pashupatinath Temple, Gandhi Sagar</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Mandu" style="background-image: url('images/mandu.png');">
+    <div class="platform-content">
+      <h3>Mandu</h3>
+      <p>Jahaz Mahal, Roopmati Pavilion</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Omkareshwar" style="background-image: url('images/omkareshwar.jpg');">
+    <div class="platform-content">
+      <h3>Omkareshwar</h3>
+      <p>Jyotirlinga Temple, Parikrama Path</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Orchha" style="background-image: url('images/orchha.jpg');">
+    <div class="platform-content">
+      <h3>Orchha</h3>
+      <p>Orchha Fort, Betwa River, Raja Mahal</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Pachmarhi" style="background-image: url('images/pachmarhi.webp');">
+    <div class="platform-content">
+      <h3>Pachmarhi</h3>
+      <p>Bee Falls, Jatashankar Caves, Dhupgarh</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Panna" style="background-image: url('images/panna.webp');">
+    <div class="platform-content">
+      <h3>Panna</h3>
+      <p>Panna Tiger Reserve, Pandav Falls</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Rewa" style="background-image: url('images/rewa.webp');">
+    <div class="platform-content">
+      <h3>Rewa</h3>
+      <p>White Tiger Safari, Govindgarh Palace</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Sanchi" style="background-image: url('images/sanchi.webp');">
+    <div class="platform-content">
+      <h3>Sanchi</h3>
+      <p>Great Stupa, Ashoka Pillar</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Satna" style="background-image: url('images/satna.jpg');">
+    <div class="platform-content">
+      <h3>Satna</h3>
+      <p>Maihar Devi Temple</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Shivpuri" style="background-image: url('images/shivpuri.webp');">
+    <div class="platform-content">
+      <h3>Shivpuri</h3>
+      <p>Madhav National Park, Chhatris</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Tawa" style="background-image: url('images/tawa.png');">
+    <div class="platform-content">
+      <h3>Tawa</h3>
+      <p>Tawa Dam, Satpura National Park</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+  <div class="platform-card" id="Tikamgarh" style="background-image: url('images/tikamgarh.webp');">
+    <div class="platform-content">
+      <h3>Tikamgarh</h3>
+      <p>Tikamgarh Fort</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+
+    <div class="platform-card" id="Ujjain" style="background-image: url('images/ujjain.png');">
+    <div class="platform-content">
+      <h3>Ujjain</h3>
+      <p>Mahakaleshwar Jyotirlinga, Ram Ghat</p>
+      <a href="soon.html">Explore</a>
+    </div>
+  </div>
+</div>
+</div>
+
+</section>
+<section id="Packages" style="max-width: 1200px; margin: 40px auto; padding: 20px;">
+  <style>
+  .tour-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch; /* Ensures equal height columns */
+    padding: 20px;
+  }
+
+  .left-video {
+    flex: 1;
+    min-width: 280px;
+    max-width: 800px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #1e3341, #3a5568);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    flex-grow: 1; /* Fill the container */
+  }
+
+  .right-tour {
+    flex: 1;
+    min-width: 280px;
+    max-width: 600px;
+    padding: 10px;
+    background-color: #1e3341;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .right-tour h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: #f4f8fb;
+  }
+
+  .scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 15px;
+    padding: 10px 0;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+
+  .platform-card1 {
+    flex: 0 0 auto;
+    width: clamp(240px, 45%, 400px);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    min-height: 360px;
+    border-radius: 12px;
+    color: white;
+    position: relative;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+  }
+
+  .platform-card1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
+    border-radius: 12px;
+    z-index: 0;
+  }
+
+  .platform-content1 {
+    position: relative;
+    z-index: 1;
+  }
+
+  .platform-card1 h3 {
+    margin: 0;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+
+  .platform-card1 p {
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    margin: 6px 0;
+  }
+
+  .platform-card1 a {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #ffffff;
+    color: #1e3341;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 8px;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+  }
+
+  .platform-card1 a:hover {
+    background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .tour-layout {
+      flex-direction: column;
+      padding: 10px;
+      align-items: stretch;
+    }
+
+    .left-video, .right-tour {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .scroll-container {
+      gap: 10px;
+      padding-bottom: 15px;
+    }
+
+    .platform-card1 {
+      width: 90%;
+      min-height: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .platform-card1 {
+      width: 95%;
+    }
+
+    .platform-card1 p {
+      font-size: 0.85rem;
+    }
+
+    .platform-card1 a {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+
+  <div class="tour-layout">
+    <!-- Left: Video -->
+    <div class="left-video">
+      <video controls autoplay muted>
+        <source src="videos/mptourism2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Right: Tour Cards -->
+    <div class="right-tour">
+      <h2>Tour Packages</h2>
+      <div class="scroll-container">
+        <div class="platform-card1" style="background-image: url('images/pachmarhi.webp');">
+          <div class="platform-content1">
+            <h3>Pachmarhi</h3>
+            <p>"Tour Package"</p>
+            <a href="soon.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('images/ujjain.png');">
+          <div class="platform-content1">
+            <h3>Mahakaleshwar</h3>
+            <p>"Tour Package"</p>
+            <a href="soon.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('images/kuno.webp');">
+          <div class="platform-content1">
+            <h3>Kuno</h3>
+            <p>"Tour Package"</p>
+            <a href="soon.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('images/orchha.jpg');">
+          <div class="platform-content1">
+            <h3>Orchha</h3>
+            <p>"Tour Package"</p>
+            <a href="soon.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('images/khajuraho.jpg');">
+          <div class="platform-content1">
+            <h3>Khajraho</h3>
+            <p>"Tour Package"</p>
+            <a href="soon.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('images/amarkantak.webp');">
+          <div class="platform-content1">
+            <h3>Amarkantak</h3>
+            <p>"Tour Package"</p>
+            <a href="soon.html">Plan Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      
+      </section>
+      
+      
+     
+       <section id="tickets">
+        <div class="section8">
+            <h2>Ticket Booking Platforms</h2>
+            
+            <!-- Swiper Container -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+        
+                    <!-- Card 1 -->
+                    <div class="swiper-slide">
+                        <img src="images/irctc.jpg" alt="IRCTC">
+                        <h3>IRCTC</h3>
+                        <p>Book train tickets across India with ease through IRCTC.</p>
+                        <a href="https://www.irctc.co.in/" target="_blank">Book Now</a>
+                    </div>
+        
+                    <!-- Card 2 -->
+                    <div class="swiper-slide">
+                        <img src="images/redbus.png" alt="REDBUS">
+                        <h3>redbus</h3>
+                        <p>Book train & Bus with guaranteed tickets across India with ease through Redbus.</p>
+                        <a href="https://www.redbus.in/" target="_blank">Book Now</a>
+                       
+                    </div>
+        
+                    <!-- Card 3 -->
+                    <div class="swiper-slide">
+                        <img src="images/makemytrip.webp" alt="MAKEMYTRIP">
+                        <h3>makemytrip</h3>
+                        <p>Book train, Bus & Flight  tickets with guarantee across India with ease through MakeMyTrip.</p>
+                        <a href="https://www.makemytrip.com/" target="_blank">Book Now</a>
+                    </div>
+        
+                    <!-- Card 4 -->
+                    <div class="swiper-slide">
+                        <img src="images/ixigo.png" alt="ixigo">
+                        <h3>ixigo</h3>
+                        <p>>Book train & Flight  tickets across India with ease through ixigo.</p>
+                        <a href="https://www.ixigo.com/" target="_blank">Book Now</a>
+                    </div>
+        
+                     <!-- Card 5 -->
+                     <div class="swiper-slide">
+                        <img src="images/abhibus.png" alt="abhibus">
+                        <h3>abhibus</h3>
+                        <p>Book Bus, train & flight tickets across India with ease through abhibus.</p>
+                        <a href="https://www.abhibus.com/" target="_blank">Book Now</a>
+                    </div>
+        
+                </div>
+        
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+        
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+       </section>
+     
+       <section id="section9">
+        <div class="section9">
+            <div class="container1">
+                <div class="category hotels">
+                    <img src="images/hotel.jpg" alt="hotels">
+                    <div class="overlay">
+                    <h2>Hotels Booking</h2>
+                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
+                </div>
+                <div class="category cabs">
+                    <img src="images/cabs.png" alt="cabs">
+                    <div class="overlay">
+                    <h2>Cabs & Taxi</h2>
+                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
+                </div>
+                <div class="category food">
+                    <img src="images/food.jpg" alt="food">
+                    <div class="overlay">
+                    <h2>Food Delivery</h2>
+                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
+                </div>
+            </div>
+            
+            <!-- Popups with Imagess -->
+            <div id="hotelPopup" class="popup">
+                <h2>Hotels Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.goibibo.com/hotels/" target="_blank">
+                            <img src="images/goibibo.jpeg" alt="Goibibo">
+                           
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.oyorooms.com/" target="_blank">
+                            <img src="images/oyo.png" alt="OYO">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.makemytrip.com/" target="_blank">
+                            <img src="images/makemytrip.webp" alt="MakeMyTrip">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.agoda.com/en-in/" target="_blank">
+                            <img src="images/agoda.png" alt="Agoda">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
+            </div>
+            
+            <div id="taxiPopup" class="popup">
+                <h2>Cabs & Taxi Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://book.olacabs.com/" target="_blank">
+                            <img src="images/ola.png" alt="Ola">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.uber.com/in/en/" target="_blank">
+                            <img src="images/uber.png" alt="Uber">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.rapido.bike/" target="_blank">
+                            <img src="images/Rapido.png" alt="Rapido">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
+            </div>
+            
+            <div id="foodPopup" class="popup">
+                <h2>Food Delivery Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.zomato.com/" target="_blank">
+                            <img src="images/zomato.png" alt="Zomato">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.swiggy.com/" target="_blank">
+                            <img src="images/swiggy.png" alt="Swiggy">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://blinkit.com/" target="_blank">
+                            <img src="images/blinkit.png" alt="Blinkit">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.bigbasket.com/" target="_blank">
+                            <img src="images/bigbasket.png" alt="BigBasket">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.zeptonow.com/" target="_blank">
+                            <img src="images/zepto.png" alt="Zepto">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
+            </div>
+            </div>
+            
+            
+           
+            
+            
+            <script>
+                function showPopup(id) {
+                    document.getElementById(id).style.display = 'block';
+                }
+                
+                function closePopup(id) {
+                    document.getElementById(id).style.display = 'none';
+                }
+            </script>
+            
+            
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+            
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                    effect: "coverflow",
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: "auto",
+                    coverflowEffect: {
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 3,
+                        slideShadows: false,
+                    },
+                    loop: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                });
+            </script>
+       </section>
+     
+       
+
+
+<script>
+    function scrollLeft(containerId) {
+        document.getElementById(containerId).scrollBy({ left: -300, behavior: 'smooth' });
+    }
+    function scrollRight(containerId) {
+        document.getElementById(containerId).scrollBy({ left: 300, behavior: 'smooth' });
+    }
+</script>
+<!-- Place this where you want the footer -->
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

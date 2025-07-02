@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #206680;
+  }
+
+  header {
+    background-color: #093245;
+    color: rgb(136, 76, 220);
+    padding: 15px;
+    text-align: center;
+  }
+
+  .ts-hero {
+    width: 100%;
+    height: 100vh;
+    background: url('images/madhya-pradesh.png') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ts-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .ts-hero-content {
+    color: white;
+    max-width: 800px;
+  }
+
+  .ts-hero-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+  }
+
+  .ts-hero-content p {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .ts-hero-content span {
+    color: #FFD700;
+    font-weight: bold;
+  }
+
+  .ts-hero-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .ts-hero-content h1 {
+      font-size: 2.2rem;
+    }
+
+    .ts-hero-content p {
+      font-size: 1rem;
+    }
+
+    .ts-hero-content h2 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .responsive-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .responsive-section h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .responsive-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .responsive-card {
+    background: #1e3341;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1 1 calc(33% - 40px);
+    max-width: calc(33% - 40px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .responsive-card:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 992px) {
+    .responsive-card {
+      flex: 1 1 calc(45% - 40px);
+      max-width: calc(45% - 40px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .responsive-card {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+
+  .swiper {
+    width: 90%;
+    max-width: 1200px;
+    padding-bottom: 50px;
+    margin: auto;
+  }
+
+  .swiper-slide {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .swiper-slide img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .swiper-slide h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+  }
+
+  .swiper-slide p {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.7;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #ffffff;
+    opacity: 1;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+  }
+</style>
+
+</head>
+<!-- <script src="./global.js"></script> -->
+<body >
+   
+  <section class="ts-hero relative">
+  <div class="ts-hero-overlay absolute inset-0 bg-black bg-opacity-40 flex items-end p-8">
+    <div class="ts-hero-content text-white">
+      <h1 class="text-4xl font-bold mb-2">Madhya Pradesh</h1>
+      <p class="text-xl mb-1">
+        Travels in the <span style="color: #FFD700; font-weight: bold;">Heart of India</span><br>With
+      </p>
+      <h2 class="text-4xl font-extrabold mb-4">Travel Saarthi</h2>
+    </div>
+  </div>
+</section>
+
+
+     
+<section style="max-width: 1200px; margin: 40px auto; padding: 20px;">
+  <div class="mp-two-col">
+    <!-- Video Section -->
+    <div class="mp-video">
+      <video controls autoplay muted>
+        <source src="images/mptourism1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Info Card -->
+    <div class="mp-card" id="Bhopal" style="background-image: url('images/tourismlogo.png')";>
+         
+      <div class="mp-card-content">
+        <h3>Know Your Madhya Pradesh</h3>
+        <p>Upper Lake, Sanchi Stupa, Van Vihar, and more await.</p>
+        <a href="">Explore</a>
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trips">
+ 
+<div class="section">
+
+
+<div class="city-search-container">
+  <label for="city-search">🌆 Search City</label>
+  <select id="city-search" onchange="scrollToCard(this.value)">
+    <option value="">-- Select a City --</option>
+    <option value="Bhopal">Bhopal</option>
+    <option value="Sanchi">Sanchi</option>
+    <option value="Bhimbetka">Bhimbetka</option>
+    <option value="Pachmarhi">Pachmarhi</option>
+    <option value="Tawa">Tawa</option>
+    <option value="Indore">Indore</option>
+    <option value="Ujjain">Ujjain</option>
+    <option value="Dewas">Dewas</option>
+    <option value="Maheshwar">Maheshwar</option>
+    <option value="Omkareshwar">Omkareshwar</option>
+    <option value="Mandu">Mandu</option>
+    <option value="Burhanpur">Burhanpur</option>
+    <option value="Mandsaur">Mandsaur</option>
+    <option value="Gwalior">Gwalior</option>
+    <option value="Shivpuri">Shivpuri</option>
+    <option value="Kuno">Kuno</option>
+    <option value="Orchha">Orchha</option>
+    <option value="Tikamgarh">Tikamgarh</option>
+    <option value="Chanderi">Chanderi</option>
+    <option value="Jabalpur">Jabalpur</option>
+    <option value="Bandhavgarh">Bandhavgarh</option>
+    <option value="Amarkantak">Amarkantak</option>
+    <option value="Kanha">Kanha</option>
+    <option value="Chitrakoot">Chitrakoot</option>
+    <option value="Khajuraho">Khajuraho</option>
+    <option value="Satna">Satna</option>
+    <option value="Rewa">Rewa</option>
+    <option value="Panna">Panna</option>
+  </select>
+</div>
+
+
+<script>
+  function scrollToCard(id) {
+    if (!id) return;
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
+            <h2>Explore by Cities
+            </h2>
+
+               <!-- Complete Madhya Pradesh Tourism Cards Section -->
+<div class="container">
+  <div class="platform-card" id="Bhopal" style="background-image: url('image/bhopal.jpg');">
+    <div class="platform-content">
+      <h3>Bhopal</h3>
+      <p>Upper Lake, Sanchi Stupa, Van Vihar</p>
+      <a href="bhopal.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Indore" style="background-image: url('image/indore.jpg');">
+    <div class="platform-content">
+      <h3>Indore</h3>
+      <p>Rajwada Palace, Sarafa Bazaar, Lal Bagh Palace</p>
+      <a href="indore.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Ujjain" style="background-image: url('image/ujjain.jpg');">
+    <div class="platform-content">
+      <h3>Ujjain</h3>
+      <p>Mahakaleshwar Jyotirlinga, Ram Ghat</p>
+      <a href="ujjain.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Gwalior" style="background-image: url('image/gwalior.jpg');">
+    <div class="platform-content">
+      <h3>Gwalior</h3>
+      <p>Gwalior Fort, Jai Vilas Palace</p>
+      <a href="gwalior.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Khajuraho" style="background-image: url('image/khajuraho.jpg');">
+    <div class="platform-content">
+      <h3>Khajuraho</h3>
+      <p>UNESCO Temples, Light & Sound Show</p>
+      <a href="khajuraho.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Orchha" style="background-image: url('image/orchha.jpg');">
+    <div class="platform-content">
+      <h3>Orchha</h3>
+      <p>Orchha Fort, Betwa River, Raja Mahal</p>
+      <a href="orchha.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Jabalpur" style="background-image: url('image/jabalpur.jpg');">
+    <div class="platform-content">
+      <h3>Jabalpur</h3>
+      <p>Bhedaghat, Dhuandhar Falls</p>
+      <a href="jabalpur.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Pachmarhi" style="background-image: url('image/pachmarhi.jpg');">
+    <div class="platform-content">
+      <h3>Pachmarhi</h3>
+      <p>Bee Falls, Jatashankar Caves, Dhupgarh</p>
+      <a href="pachmarhi.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Sanchi" style="background-image: url('image/sanchi.jpg');">
+    <div class="platform-content">
+      <h3>Sanchi</h3>
+      <p>Great Stupa, Ashoka Pillar</p>
+      <a href="sanchi.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Mandu" style="background-image: url('image/mandu.jpg');">
+    <div class="platform-content">
+      <h3>Mandu</h3>
+      <p>Jahaz Mahal, Roopmati Pavilion</p>
+      <a href="mandu.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Chanderi" style="background-image: url('image/chanderi.jpg');">
+    <div class="platform-content">
+      <h3>Chanderi</h3>
+      <p>Chanderi Fort, Jain Temples</p>
+      <a href="chanderi.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Bhimbetka" style="background-image: url('image/bhimbetka.jpg');">
+    <div class="platform-content">
+      <h3>Bhimbetka</h3>
+      <p>Rock Shelters, Cave Paintings</p>
+      <a href="bhimbetka.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Maheshwar" style="background-image: url('image/maheshwar.jpg');">
+    <div class="platform-content">
+      <h3>Maheshwar</h3>
+      <p>Ahilya Fort, Narmada Ghats</p>
+      <a href="maheshwar.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Omkareshwar" style="background-image: url('image/omkareshwar.jpg');">
+    <div class="platform-content">
+      <h3>Omkareshwar</h3>
+      <p>Jyotirlinga Temple, Parikrama Path</p>
+      <a href="omkareshwar.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Amarkantak" style="background-image: url('image/amarkantak.jpg');">
+    <div class="platform-content">
+      <h3>Amarkantak</h3>
+      <p>Narmada Origin, Kapil Dhara</p>
+      <a href="amarkantak.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Chitrakoot" style="background-image: url('image/chitrakoot.jpg');">
+    <div class="platform-content">
+      <h3>Chitrakoot</h3>
+      <p>Ram Ghat, Hanuman Dhara</p>
+      <a href="chitrakoot.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Satna" style="background-image: url('image/satna.jpg');">
+    <div class="platform-content">
+      <h3>Satna</h3>
+      <p>Maihar Devi Temple</p>
+      <a href="satna.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Rewa" style="background-image: url('image/rewa.jpg');">
+    <div class="platform-content">
+      <h3>Rewa</h3>
+      <p>White Tiger Safari, Govindgarh Palace</p>
+      <a href="rewa.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Tawa" style="background-image: url('image/tawa.jpg');">
+    <div class="platform-content">
+      <h3>Tawa</h3>
+      <p>Tawa Dam, Satpura National Park</p>
+      <a href="tawa.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Kanha" style="background-image: url('image/kanha.jpg');">
+    <div class="platform-content">
+      <h3>Kanha</h3>
+      <p>Kanha National Park, Tiger Safari</p>
+      <a href="kanha.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Bandhavgarh" style="background-image: url('image/bandhavgarh.jpg');">
+    <div class="platform-content">
+      <h3>Bandhavgarh</h3>
+      <p>Bandhavgarh National Park</p>
+      <a href="bandhavgarh.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Panna" style="background-image: url('image/panna.jpg');">
+    <div class="platform-content">
+      <h3>Panna</h3>
+      <p>Panna Tiger Reserve, Pandav Falls</p>
+      <a href="panna.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Burhanpur" style="background-image: url('image/burhanpur.jpg');">
+    <div class="platform-content">
+      <h3>Burhanpur</h3>
+      <p>Shahi Qila, Dargah-E-Hakimi</p>
+      <a href="burhanpur.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Mandsaur" style="background-image: url('image/mandsaur.jpg');">
+    <div class="platform-content">
+      <h3>Mandsaur</h3>
+      <p>Pashupatinath Temple, Gandhi Sagar</p>
+      <a href="mandsaur.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Shivpuri" style="background-image: url('image/shivpuri.jpg');">
+    <div class="platform-content">
+      <h3>Shivpuri</h3>
+      <p>Madhav National Park, Chhatris</p>
+      <a href="shivpuri.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Dewas" style="background-image: url('image/dewas.jpg');">
+    <div class="platform-content">
+      <h3>Dewas</h3>
+      <p>Tekri Mata Temple</p>
+      <a href="dewas.html">Explore</a>
+    </div>
+  </div>
+  <div class="platform-card" id="Tikamgarh" style="background-image: url('image/tikamgarh.jpg');">
+    <div class="platform-content">
+      <h3>Tikamgarh</h3>
+      <p>Tikamgarh Fort</p>
+      <a href="tikamgarh.html">Explore</a>
+    </div>
+  </div>
+</div>
+</div>
+
+</section>
+
+<section id="Packages" style="max-width: 1200px; margin: 40px auto; padding: 20px;">
+ 
+  <div class="tour-layout">
+    <!-- Left: Video -->
+    <div class="left-video">
+      <video controls autoplay muted>
+        <source src="images/mptourism2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Right: Tour Cards -->
+    <div class="right-tour">
+      <h2>Tour Packages</h2>
+      <div class="scroll-container">
+        <div class="platform-card1" style="background-image: url('image/telangana.jpg');">
+          <div class="platform-content1">
+            <h3>Pachmarhi</h3>
+            <p>"Tour Package"</p>
+            <a href="telangana.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('image/tripura.jpg');">
+          <div class="platform-content1">
+            <h3>Mahakaleshwar</h3>
+            <p>"Tour Package"</p>
+            <a href="tripura.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('image/upstate.webp');">
+          <div class="platform-content1">
+            <h3>Orchha</h3>
+            <p>"Tour Package"</p>
+            <a href="uttar.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('image/uttarakhand.jpg');">
+          <div class="platform-content1">
+            <h3>Khajraho</h3>
+            <p>"Tour Package"</p>
+            <a href="uttrakhand.html">Plan Now</a>
+          </div>
+        </div>
+        <div class="platform-card1" style="background-image: url('image/westbengal.jpg');">
+          <div class="platform-content1">
+            <h3>Amarkantak</h3>
+            <p>"Tour Package"</p>
+            <a href="westbengal.html">Plan Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tickets">
+        <div class="section8">
+            <h2>Ticket Booking Platforms</h2>
+            
+            <!-- Swiper Container -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+        
+                    <!-- Card 1 -->
+                    <div class="swiper-slide">
+                        <img src="image/irctc.jpg" alt="IRCTC">
+                        <h3>IRCTC</h3>
+                        <p>Book train tickets across India with ease through IRCTC.</p>
+                        <a href="https://www.irctc.co.in/" target="_blank">Book Now</a>
+                    </div>
+        
+                    <!-- Card 2 -->
+                    <div class="swiper-slide">
+                        <img src="image/redbus.png" alt="REDBUS">
+                        <h3>redbus</h3>
+                        <p>Book train & Bus with guaranteed tickets across India with ease through Redbus.</p>
+                        <a href="https://www.redbus.in/" target="_blank">Book Now</a>
+                       
+                    </div>
+        
+                    <!-- Card 3 -->
+                    <div class="swiper-slide">
+                        <img src="image/makemytrip.webp" alt="MAKEMYTRIP">
+                        <h3>makemytrip</h3>
+                        <p>Book train, Bus & Flight  tickets with guarantee across India with ease through MakeMyTrip.</p>
+                        <a href="https://www.makemytrip.com/" target="_blank">Book Now</a>
+                    </div>
+        
+                    <!-- Card 4 -->
+                    <div class="swiper-slide">
+                        <img src="image/ixigo.png" alt="ixigo">
+                        <h3>ixigo</h3>
+                        <p>>Book train & Flight  tickets across India with ease through ixigo.</p>
+                        <a href="https://www.ixigo.com/" target="_blank">Book Now</a>
+                    </div>
+        
+                     <!-- Card 5 -->
+                     <div class="swiper-slide">
+                        <img src="image/abhibus.png" alt="abhibus">
+                        <h3>abhibus</h3>
+                        <p>Book Bus, train & flight tickets across India with ease through abhibus.</p>
+                        <a href="https://www.abhibus.com/" target="_blank">Book Now</a>
+                    </div>
+        
+                </div>
+        
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+        
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+       </section>
+     
+       <section id="section9">
+        <div class="section9">
+            <div class="container1">
+                <div class="category hotels">
+                    <img src="image/hotel.jpg" alt="hotels">
+                    <div class="overlay">
+                    <h2>Hotels Booking</h2>
+                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
+                </div>
+                <div class="category cabs">
+                    <img src="image/cabs.png" alt="cabs">
+                    <div class="overlay">
+                    <h2>Cabs & Taxi</h2>
+                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
+                </div>
+                <div class="category food">
+                    <img src="image/food.jpg" alt="food">
+                    <div class="overlay">
+                    <h2>Food Delivery</h2>
+                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
+                </div>
+            </div>
+            
+            <!-- Popups with Images -->
+            <div id="hotelPopup" class="popup">
+                <h2>Hotels Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.goibibo.com/hotels/" target="_blank">
+                            <img src="image/goibibo.jpeg" alt="Goibibo">
+                           
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.oyorooms.com/" target="_blank">
+                            <img src="image/oyo.png" alt="OYO">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.makemytrip.com/" target="_blank">
+                            <img src="image/makemytrip.webp" alt="MakeMyTrip">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.agoda.com/en-in/" target="_blank">
+                            <img src="image/agoda.png" alt="Agoda">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
+            </div>
+            
+            <div id="taxiPopup" class="popup">
+                <h2>Cabs & Taxi Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://book.olacabs.com/" target="_blank">
+                            <img src="image/ola.png" alt="Ola">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.uber.com/in/en/" target="_blank">
+                            <img src="image/uber.png" alt="Uber">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.rapido.bike/" target="_blank">
+                            <img src="image/Rapido.png" alt="Rapido">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
+            </div>
+            
+            <div id="foodPopup" class="popup">
+                <h2>Food Delivery Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.zomato.com/" target="_blank">
+                            <img src="image/zomato.png" alt="Zomato">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.swiggy.com/" target="_blank">
+                            <img src="image/swiggy.png" alt="Swiggy">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://blinkit.com/" target="_blank">
+                            <img src="image/blinkit.png" alt="Blinkit">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.bigbasket.com/" target="_blank">
+                            <img src="image/bigbasket.png" alt="BigBasket">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.zeptonow.com/" target="_blank">
+                            <img src="image/zepto.png" alt="Zepto">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
+            </div>
+            </div>
+            
+            
+           
+            
+            
+            <script>
+                function showPopup(id) {
+                    document.getElementById(id).style.display = 'block';
+                }
+                
+                function closePopup(id) {
+                    document.getElementById(id).style.display = 'none';
+                }
+            </script>
+            
+            
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+            
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                    effect: "coverflow",
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: "auto",
+                    coverflowEffect: {
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 3,
+                        slideShadows: false,
+                    },
+                    loop: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                });
+            </script>
+       </section>
+     
+       
+
+
+<script>
+    function scrollLeft(containerId) {
+        document.getElementById(containerId).scrollBy({ left: -300, behavior: 'smooth' });
+    }
+    function scrollRight(containerId) {
+        document.getElementById(containerId).scrollBy({ left: 300, behavior: 'smooth' });
+    }
+</script>
+<!-- Place this where you want the footer -->
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

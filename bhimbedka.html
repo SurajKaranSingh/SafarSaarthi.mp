@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Bhimbedka - Tourism Guide</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #206680; /* Slight teal tint from the water */
+
+        }
+       
+    
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+       
+       
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+ .container1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.category {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.overlay h2 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.overlay button {
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .category {
+        width: 45%;
+        height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .category {
+        width: 30%;
+        height: 350px;
+    }
+}
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+        }
+        .popup .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .popup .option {
+            width: 150px;
+            text-align: center;
+        }
+        .popup img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .popup a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: blue;
+        }
+        .close-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class=" text-gray-900">
+
+  <!-- Hero Section -->
+ <header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/Bhimbedka.webp');">
+  <div class="absolute top-4 right-4 z-50">
+    <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
+  </div>
+  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
+    <div class="text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Bhimbedka</h1>
+      <p class="text-lg md:text-2xl">A Timeless Canvas of Prehistoric Life</p>
+    </div>
+  </div>
+</header>
+
+
+   <!-- Map and Info Section -->
+ <section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 relative inline-block">
+      Discover Bhimbedka
+      <span class="block w-20 h-1 bg-green-500 mt-2 mx-auto rounded-full"></span>
+    </h2>
+
+    <div class="flex flex-col lg:flex-row items-center gap-10">
+      
+      <!-- Map -->
+      <div class="w-full lg:w-1/2 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition duration-300">
+        <iframe 
+          class="w-full h-80 border-4 border-green-100 rounded-lg"
+          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d59784.52306435688!2d77.57075236394707!3d22.928344869001993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1splaces%20%20to%20visit%20near%20bhimbedka!5e1!3m2!1sen!2sin!4v1751479602960!5m2!1sen!2sin"
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <!-- Description -->
+      <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
+        <h3 class="text-2xl font-semibold text-green-700 mb-4">A Glimpse into Bhimbedka</h3>
+        <p class="text-gray-700 text-justify text-lg leading-relaxed">
+          Bhimbedka, revered as <strong>\"Teerthraj\"</strong> – the King of Pilgrimages – is not only a spiritual sanctuary but also a geographic marvel. It sits at the confluence of the Vindhya and Satpura ranges, embraced by the Maikal Hills.
+        </p>
+        <p class="text-gray-700 text-justify text-lg leading-relaxed mt-4">
+          The region is ecologically significant, home to forests rich in <strong>medicinal flora</strong>. Pilgrims, nature lovers, and seekers of peace find solace in Bhimbedka’s sacred waters, serene landscapes, and healing herbs.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Attractions Section -->
+  <section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8">Top Attractions in Bhimbedka</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- Template Card Start -->
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/jabalpur/kapil dhara" alt="kapil dhara" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Kapil Dhara</h3>
+        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
+        <p class="text-gray-700 text-justify text-justify line-clamp-4" id="desc1">
+          It is associated with the legends of Saint Kapil or Kapila. It is said that he spent 12 years in meditation at this place.
+          The holy Narmada pours downhill as a gigantic waterfall forms the Kapil Dhara waterfall. On the rocky banks of the brisk, the blue water is the
+          holy Narmada and is a popular picnic spot for visitors. This waterfall is the most famous among all the Bhimbedka Waterfalls due to its association with the Hindu saint.
+        </p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc1', this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/jabalpur/dugdh dhara.jpg" alt="dugdh dhara" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Dugdh Dhara</h3>
+        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
+        <p class="text-gray-700 text-justify text-justify line-clamp-4" id="desc2">
+          People take a one-kilometre trek from the Kapil Dhara to the next Narmada fall which is Dugdh Dhara. This trek is quite a popular thing to do in Bhimbedka among the tourists. It is surrounded by rocky steps with wild bushes. The froth of water looks like a stream of Dugdh (Milk), naming it the Dugdh Dhara waterfall.
+        </p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc2', this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/jabalpur/narmada-udgam.jpg" alt="narmada udgam" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Narmada Udgam</h3>
+        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
+        <p class="text-gray-700 text-justify line-clamp-4" id="desc3">
+          Three rivers - the holy Narmada, the Sone and the Johila emerge from the womb of Bhimbedka. A rising stream of Narmada can be seen at The Narmada Udgam Temple which is the most visited place in Bhimbedka. Every year on the occasion of Narmada Jayanti, devotees in abundance gather here to attend the special event. Narmada Udgam Temple is surrounded by wonderful natural wonders like Narmada kund, Sonemuda (the source of river Sone), plunging Dugdhara falls and the Kapildhara falls.
+        </p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc3', this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/jabalpur/yantra-mandir.jpeg" alt="yantra-mandir" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Shri Yantra Mandir</h3>
+        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
+        <p class="text-gray-700 text-justify line-clamp-4" id="desc4">
+          The most noticeable feature of the Shri Yantra Mandir is the massive sculpture with four heads at the entrance path. The head represents the face of goddess Laxmi, Saraswati, Kali, and Bhuvaneshwari. They are accompanied by statues of Lord Ganesha and Kartik, as well as 64 exquisitely carved deities also known as Chaunsath Yoginis. The temple is constructed as a 3D projection of the Sri Yantra  or Sri Chakra, which forms the core of the Sri Vidya worship in Hinduism.
+        </p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc4', this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/jabalpur/mai-ki-bagiya.jpeg" alt="mai-ki-bagiya" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Mai Ki Bagiya</h3>
+        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
+        <p class="text-gray-700 text-justify line-clamp-4" id="desc5">
+          The natural tree grove known as Mai ki Bagiya, surrounds the woodland and is devoted to the Goddess Narmada. The garden has Gulbakavli, Roses, and other blooming plants in addition to mango, banana, and other fruit trees. The garden also houses a Charanodak Kund pond and a small temple dedicated to the Goddess Narmada. This location is thought to be where the Narmada river actually originated. It is believed that the water stream that first emerged in Mai's garden has since continued on and now emerges at the current Narmada origin temple.
+        </p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc5', this)">Read more</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function toggleReadMore(id, btn) {
+    const para = document.getElementById(id);
+    if (para.classList.contains("line-clamp-4")) {
+      para.classList.remove("line-clamp-4");
+      btn.textContent = "Read less";
+    } else {
+      para.classList.add("line-clamp-4");
+      btn.textContent = "Read more";
+    }
+  }
+</script>
+
+<style>
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+
+  <!-- Famous in Bhimbedka Section -->
+  <section class="bg-white py-12 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-8">Things Bhimbedka is Famous For</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="text-center">
+        <img src="images/jabalpur/dal bafla.jpg" alt="malwa Cuisine" class="w-full h-48 object-contain rounded-lg mb-2">
+        <h3 class="text-xl font-semibold">Malwa Cuisine</h3>
+        <p class="text-gray-700 text-justify">Bhimbedka is known for its vegetarian cuisine, with Dal Bafla being a particularly famous dish.</p>
+      </div>
+
+      <div class="text-center">
+        <img src="images/jabalpur/baiga.jpeg" alt="Baiga Fabric" class="w-full h-48 object-contain rounded-lg mb-2">
+        <h3 class="text-xl font-semibold">Baiga Adivasi Fabric</h3>
+        <p class="text-gray-700 text-justify">The Baiga Adivasi tribe, residing in Central India, have a unique relationship with fabric, particularly in their traditional attire.</p>
+      </div>
+
+      <div class="text-center">
+        <img src="images/jabalpur/herbs.jpeg" alt="herbs" class="w-full h-48 object-contain rounded-lg mb-2">
+        <h3 class="text-xl font-semibold">Herbs</h3>
+        <p class="text-gray-700 text-justify">These medicinal plants, include single herbal supplements, Ayurvedic oils and massage balms, and traditional formulations like Triphala churna, Sitopaladi churna, and Arogya Vardhini Vati.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="section9">
+        <div class="section9">
+            <div class="container1">
+                <div class="category hotels">
+                    <img src="images/hotel.jpg" alt="hotels">
+                    <div class="overlay">
+                    <h2>Hotels Booking</h2>
+                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
+                </div>
+                <div class="category cabs">
+                    <img src="images/cabs.png" alt="cabs">
+                    <div class="overlay">
+                    <h2>Cabs & Taxi</h2>
+                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
+                </div>
+                <div class="category food">
+                    <img src="images/food.jpg" alt="food">
+                    <div class="overlay">
+                    <h2>Food Delivery</h2>
+                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
+                </div>
+            </div>
+            
+            <!-- Popups with Imagess -->
+            <div id="hotelPopup" class="popup">
+                <h2>Hotels Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.goibibo.com/hotels/" target="_blank">
+                            <img src="images/goibibo.jpeg" alt="Goibibo">
+                           
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.oyorooms.com/" target="_blank">
+                            <img src="images/oyo.png" alt="OYO">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=07032025&checkout=07042025&city=CTBHO&country=IN&filterData=HOTEL_PRICE_BUCKET%7C0-1500%2C1500-3000&locusId=CTBHO&locusType=city&regionNearByExp=3&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Bhopal" target="_blank">
+                            <img src="images/makemytrip.webp" alt="MakeMyTrip">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.agoda.com/en-in/" target="_blank">
+                            <img src="images/agoda.png" alt="Agoda">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
+            </div>
+            
+            <div id="taxiPopup" class="popup">
+                <h2>Cabs & Taxi Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://book.olacabs.com/" target="_blank">
+                            <img src="images/ola.png" alt="Ola">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.uber.com/in/en/" target="_blank">
+                            <img src="images/uber.png" alt="Uber">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.rapido.bike/" target="_blank">
+                            <img src="images/Rapido.png" alt="Rapido">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
+            </div>
+            
+            <div id="foodPopup" class="popup">
+                <h2>Food Delivery Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.zomato.com/" target="_blank">
+                            <img src="images/zomato.png" alt="Zomato">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.swiggy.com/" target="_blank">
+                            <img src="images/swiggy.png" alt="Swiggy">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://blinkit.com/" target="_blank">
+                            <img src="images/blinkit.png" alt="Blinkit">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.bigbasket.com/" target="_blank">
+                            <img src="images/bigbasket.png" alt="BigBasket">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.zeptonow.com/" target="_blank">
+                            <img src="images/zepto.png" alt="Zepto">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
+            </div>
+            </div>
+            
+            
+           
+            
+            
+            <script>
+                function showPopup(id) {
+                    document.getElementById(id).style.display = 'block';
+                }
+                
+                function closePopup(id) {
+                    document.getElementById(id).style.display = 'none';
+                }
+            </script>
+            
+            
+            
+       </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+<script>
+  fetch("footer1.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

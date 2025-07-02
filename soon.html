@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #206680;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-800 to-purple-700 flex flex-col min-h-screen text-white">
+
+  <!-- Main Content -->
+  <div class="flex-grow flex items-center justify-center text-center p-6">
+    <div>
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-4 animate-pulse">🚧 Coming Soon 🚧</h1>
+      <p class="text-lg md:text-2xl mb-6">We're working hard to launch something amazing. Stay tuned!</p>
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" class="w-full"></div>
+
+  <script>
+    fetch("footer1.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(error => {
+        console.error("Could not load footer:", error);
+      });
+  </script>
+
+</body>
+</html>
