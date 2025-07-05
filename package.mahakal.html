@@ -140,18 +140,19 @@
       backface-visibility: hidden;
       background-color: white;
       border-radius: 10px;
-      padding: 20px;
+      padding: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
       box-sizing: border-box;
+      font-size: .75rem;
     }
 
     .timeline-content.back {
       transform: rotateY(180deg);
-      text-align: center;
+      text-align: justify;
       align-items: center;
     }
 
@@ -251,71 +252,100 @@
 
   <div class="timeline-container">
     <div class="timeline-line"></div>
-    <div class="timeline-tag">START: Bhopal</div>
+    <!-- <div class="timeline-tag">START: Bhopal</div> -->
 
-<script>
+<!-- <script>
   const timelineData = [
     {
-      day: "Day 1",
-      title: "Bhopal",
-      desc: "Begin your journey in the City of Lakes.",
-      back: "Visit Upper Lake, Van Vihar, and vibrant local bazaars. Perfect start!",
+      day: " Day 1",
+      title: "Mandsor/Mandsaur",
+      desc: "Begin your journey in the City  which is believed to be in existence since the time of Mahabharata, Mandsaur has connection with Ramayana as well. It is believed to be the home town of Mandodari, wife of Ravana.",
+      back: `To Explore Mandsaur follow the below route which will help you to explore all places from Railway Station as the starting point:<br><br>
+1. Shree Dharnrajeshwar Temple  (81 km)<br>
+2. Pashupatinath Temple (3 km from Station)
+<br>
+After visiting you can move ahead to next destination which is ujjain for that you go via Bus  & train 
+To know more about these locations, famous food & products, click the <strong>Learn More</strong> button.`,
+
       img: "Bhopal.webp",
       link: "bhopal.html"
     },
     {
-      day: "Day 2",
-      title: "Sanchi",
+      day: "Day 2 ",
+      title: "ujjain",
       desc: "Explore the iconic Buddhist monuments.",
-      back: "UNESCO World Heritage Site filled with serene stupas and historical insight.",
+      back: ` IT is the UNESCO World Heritage Site filled with serene stupas and historical insight. For exploring it you can come here by Train or Bus:<br>
+      <strong>Trains</strong><br>
+      1. Bhopal Bina Memu(61631) 7:30 Am<br>
+      2. Bilaspur Express(18235) 10:35 Am<br>
+      there are 3 more train you can check from irctc  but this are the perfect train options.<br>
+      <strong>Bus</strong>: you can get bus any time from ISBT/Nadra bus stand <br>
+      Sachi Stupa  is barely 1-1.5 km from Railway station & Bus stop.It will take  2- 3 hrs maximum so that you can retun back to bhopal  <br>
+      there are 5 trains but for best option i suggest <br> 
+      1. Bhopal Memu (11606) 12:39 Pm <br>
+      whereas you can come back by <strong>bus</strong> as well it will maximum take 1 hour.<br> From Bhopal you can take bus to <strong>Mandideep</strong> for next destination.  `,
       img: "sanchi.webp",
       link: "sanchi.html"
     },
     {
-      day: "Day 2",
-      title: "Bhojpur",
+      day: "Day 3",
+      title: "Dewas",
       desc: "Visit the grand unfinished Shiva temple.",
-      back: "Marvel at the gigantic Shiva Linga and learn about its unique architecture.",
+      back:  `Marvel at the gigantic Shiva Linga and learn about its unique architecture.For Exploring it you can come here by <strong>train & bus</strong> both from Bhopal to Mandideep from where you can come through rood its is just 11-20 km (repective to vehicle and road taken) `,
       img: "bhimbedka.webp",
-      link: "#"
+      link: "bhopal.html"
     },
     {
-      day: "Day 2",
-      title: "Mandideep",
+      day: "Day<br> 3-4",
+      title: "Indore",
       desc: "Take a restful overnight halt at Mandideep.",
-      back: "Recharge at this quiet town before heading to the highlands of Satpura.",
+      back: "Recharge at this quiet town before heading to the land of ancient cave paintings and rock shelter.",
       img: "pachmarhi.package/mandideep.jpeg",
       link: "#"
     },
     {
-      day: "Day 3",
-      title: "Bhimbetka",
+      day: "Day <br>5-6",
+      title: "Mandav",
       desc: "See ancient cave paintings and rock shelters.",
-      back: "A walk through prehistoric art and culture, surrounded by forest beauty.",
+      back: "A walk through prehistoric art and culture, surrounded by forest beauty.You can come here by <strong>Rental cars & Bus</strong> it wil take max 2 hours to explore and from there you can move to next destination called <strong> Vindhyavasini Vijayasana Mata Temple </strong> 50 km from bhimbedka via Obaidullaganj  ",
       img: "bhimbedka.jpeg",
       link: "bhimbedka.html"
     },
     {
-      day: "Day 3",
-      title: "Narmadapuram",
+      day: "Day 7",
+      title: "Maheshwar",
       desc: "Take a restful overnight halt before the hills.",
-      back: "Located on the banks of the sacred Narmada River. Great evening stroll!",
+      back: "after cominf from <strong>vindhyavasini temple</strong> in Salkanpur you can move to <Strong>Narmadapuram</strong> located on the banks of the sacred Narmada River. Great evening stroll! and rest before heading toward the <strong>highlands of Satpura</strong> ",
       img: "pachmarhi.package/narmadapuram.jpg",
       link: "#"
     },
     {
-      day: "Day 4",
-      title: "Pachmarhi",
+      day: "Day 7",
+      title: "Omkareshwar",
       desc: "Enjoy waterfalls, caves, and scenic views.",
-      back: "Explore Bee Falls, Jatashankar Caves, and Dhoopgarh at sunset!",
+      back: `To Explore Pachmarhi follow the below route-
+      <strong> Day 1</strong>:<br>
+1. <strong>Morning</strong>:
+Start with Bee Falls, a scenic waterfall known for its refreshing waters and surrounding trails.<br> 
+2. <strong>Afternoon</strong>:
+Head to Apsara Vihar, another beautiful waterfall with a calm pool, perfect for a relaxing dip. <br>
+3. <strong>Evening</strong>:
+Conclude the day with a visit to Priyadarshini Point, also known as Forsyth Point, offering panoramic views of the hills and valleys. <br>
+<strong>Day 2:</strong><br>
+1. <strong>Morning</strong>:
+Explore the Pandava Caves, a historical site with religious significance, believed to be a refuge of the Pandava brothers. 
+<br>2. <strong>Afternoon</strong>:
+Trek to Dhoopgarh, the highest peak in the Satpura range, to witness a breathtaking sunset. 
+<br> 3. <strong>Optional</strong>:
+Consider a visit to Jatashankar Temple, a cave temple dedicated to Lord Shiva, known for its unique rock formations and natural springs. !`,
       img: "pachmarhi.webp",
       link: "pachmarhi.html"
     },
     {
-      day: "Day 6",
-      title: "Return to Bhopal",
+      day: "Day 8",
+      title: "Burhanpur",
       desc: "Relax and reflect back in Bhopal.",
-      back: "Wrap up your tour with shopping and peaceful boating at Lower Lake.",
+      back: "Wrap up your tour with shopping and peaceful boating at Lower Lake or can cover the left over places of Bhopal.",
       img: "Bhopal.webp",
       link: "bhopal.html"
     }
@@ -328,11 +358,10 @@
           <div class="timeline-content front">
             <h2>${title}</h2>
             <p>${desc}</p>
-            <img src="images/${img}" alt="${title}">
+            <img src="${img}" alt="${title}">
             <button class="check-button flip-btn">Check Now</button>
           </div>
           <div class="timeline-content back">
-            <h2>More about ${title}</h2>
             <p>${back}</p>
             <a href="${link}" class="check-button">Explore Page</a>
           </div>
@@ -340,10 +369,183 @@
       </div>
       <div class="timeline-dot">${day}</div>
     </div>`).join(""));
+</script> -->
+
+<script>
+  const timelineData = [
+    {
+      day: " Day 1",
+      title: "Mandsor/Mandsaur",
+      desc: "Begin your journey in the City which is believed to be in existence since the time of Mahabharata Mandsaur has connection with Ramayana as well. It is believed to be the home town of Mandodari, wife of Ravana.",
+      back: `To Explore Mandsaur follow the below route by keeping Railway station as starting point. To know more about the place in depth click on <strong>Explore more</strong> button.<br>
+      1. Shree Dharmarajeshwar temple (82 km)<br>
+      2. Pashupatinath Temple (2 km from station)<br>
+      after covering this you can move ahead to your next location <strong>Ujjain</strong> which can be reached through Bus & Train (you can see the list of trains to ujjain by clicking on train list button).`,
+      img: "mandsour.webp",
+      backImg: "mandsour.webp",
+      link: "mandsaur.html"
+    },
+    {
+      day: "Day 2 ",
+      title: "ujjain",
+      desc: "Explore the divine land that offers a unique blend of solitude and spiritual experiences..",
+      back: `Temple town of Madhya Pradesh, the city is home to more than 100 temples and numerous pilgrimage sites of different eras. Now you will explore some of main temples by following the below route starting from Ujjain railway station.<br>
+      1.Chintaman Ganesh Mandir (7 km)<br>
+      2.Jantar mantar (4 km from Chintaman Ganesh mandir)<br>
+      3.Shri Mahakaleshwar Jyotirlinga Temple & Mahakal Lok(3 km from jantar)<br>
+      4.Shri Dwarikadish Gopal Mandir (1km from mahakaleshwar temple km)<br>
+      5.Bhartrihari Caves (3 km from dwarikadish temple)<br>
+      6.Gadhkalika Mata mandir (2 km from Bhartrihari cave)<br>
+      7.Kaal Bhairav Temple  (1.5 km from Gadhkalika temple)<br>
+      8.Kaliyadeh palace (4.5 km from kaal bhairav temple)<br>
+      9.Mangalnath Mandir (4.5 km from kaliyadeh palace)<br>
+      10.Ujjain railway Station (5 km from Mangalnath Temple)<br>
+      rest at night and can leave to next destination early morning to dewas, you can also directly move to Indorevia<strong> BUS & Train</strong> as train to dewas will go to indore.    
+      `,
+      img: "ujjain.png",
+      backImg: "ujjain_back.webp",
+      link: "ujjain.html"
+    },
+    {
+      day: "Day 3",
+      title: "Dewas",
+      desc: "Visit the land of Mata ji Tekri.",
+      back: `Amidst historical events, various revolutions, political upheavals and development, one place has been uninterruptedly giving joy, peace and hope to the common and special people on this land of Dewas and that is Mata Tekri of Dewas. The height of Dewas city has been inhabited for centuries along with this place. In the past and present, people from any region have not remained unaffected by this place and there is a feeling that Tekri will remain the center of future too. So definitely the biggest attraction in Dewas is <strong>Mata Tekri</strong> from here you will have to move to your next destination which is <strong>Indore</strong> you can reach indore by Bus & Train both (note : all the trains coming to dewas is either coming from indore or going to indore.)`,
+      img: "dewas.jpg",
+      backImg: "dewas_back.webp",
+      link: "bhopal.html"
+    },
+    {
+      day: "Day<br> 3-5",
+      title: "Indore",
+      desc: " Indore was discovered by Rao Nandlal Chaudhary. Later, Rani Ahilya Bai Holkar, with her keen interest in education and planning, built this city in the state of Madhya Pradesh.<br>The city is ranked as the <strong>cleanest city in India</strong> The big city image yet mixed culture vibe of Indore makes it a fabulous place to visit that offers fantastic food to taste.",
+      back: `Follow the route to explore indore after coming from dewas .<br>
+      1. Rajwada Palace<br>
+      2. 56 Dukan <br>
+      3. Khajrana Ganesh Mandir( end of day 3 )<br>
+      4. Ralamandal wildlife Sanctuary/Indore zoo <br>
+      5. Annaurna Mandir<br>
+      6. Ranjeet Hanuman Mandir<br>
+      7. Lal Bagh Palace <br>
+      8. Bada Ganpati Mandir <br>
+      9. Sarafa Bazar (end of day 4)<br>
+      now you can move to next destination which is <strong>Mandav</strong> Via <strong>Patal Pani & Jam Gate </strong> and reach mandu late evening.(end of day 5) best way to explore to nest 3 destination is to book a car and travel because for final destination to burhanpur you will get bus from indore which can also be boarded from omkareshwar if you want. `,
+      img: "indore.webp",
+      backImg: "indore_back.webp",
+      link: "indore.html"
+    },
+    {
+      day: "Day <br>6-7",
+      title: "Mandav",
+      desc: "Mandu is a celebration in stone, of life and joy, and the love of poet-prince Baz Bahadur for his beautiful consort, Rani Roopmati. Perched along the Vindhya ranges at an altitude of 2,000 feet, Mandu has eclectic creations combining the charming assertion of the Afghan mode with the great cultural heritage of the Turkish people.",
+      back: `while moving towards <strong>Mandu</strong> from indore don't forget to visit two location on the way towards mandu for that follow the below route:<br>
+      1. Patal Pani (30 km from indore)<br>
+      2. Jam Gate (30 km from Patal Pani) <br>
+      3. Nilkanth Mahadev Mandir(mandu) (60 km from jam gate)<br> 
+      4. Roopmati Pavilion<br>
+      5. Baaz Bahadur Palace (end of day6)<br>
+      6. Delhi gate <br>
+      7. Jahaj Mahal & Hindola Mahal <br>
+      8. Ashrafi Mahal <br>
+      9. Hoshang Shah Tomb<br>
+      10. Jami Masjid <br>
+      after exploring this move to your next destination to maheshwar on same day or next day early morning yoc can go there only by bus`,
+      img: "mandu.png",
+      backImg: "mandav_back.webp",
+      link: "mandu.html"
+    },
+    {
+      day: "Day 8",
+      title: "Maheshwar",
+      desc: "The glorious city of Maheshwar sits on the banks of the holy river Narmada and finds mentioned in the epics of Ramayana and Mahabharata. At the dawn of Indian civilization, it was known as Mahishmati, the capital of King Kartivarjun. This holy town was revived to its ancient position of importance by the Holkar queen Rani Ahilyabai of Indore",
+      back: "Maheshwar is famous for his bank and fort which can be easily seen in many bollywood movies.There are only two locations in Maheshwar <br>1. Maheshwar Fort (40 km from mandu) <br>2. Sahastra Dhara (7 km from Maheshwar fort)you can do river rafting here. After this you can move ahead to next destination which is Omkareshwar  you can go there by Bus only.   ",
+      img: "maheshwar.jpg",
+      backImg: "maheshwar_back.webp",
+      link: "maheshwar.html"
+    },
+    {
+      day: "Day 8",
+      title: "Omkareshwar",
+      desc: `the sacred town of Omkareshwar draws its name from an island shaped like the sacred syllable <strong>OM</strong> and is also known as the 'Mandhata Parvat' or the 'Omkar Parvat'. This serene town is home to one of the 12 revered Jyotirlingas, the Omkareshwar Jyotirlinga, and holds significance as a prominent pilgrimage site among Hindus.`,
+      back: `The town holds great religious significance among Lord Shiva devotees and has many temples dedicated to him.
+
+Among the notable temples of Omkareshwar are:<br>
+1. Mamleshwar Temple <br>
+2. Omkareshwar Jyotirlinga temple<br>
+3. Siddhanth Temple
+4. Gauri Sonmath Temple<br>
+5. Kedareshwar temple<br>
+6. Statue of Oneness<br>
+you will cover all this temple while doing <strong> Parikrama</strong> of Mandhata Parwat.<strong>Night arti</strong> of Omkareshwar temple is very famous after exploring  you can stay night over there or can come back to indore for moving to next destination which is Burhanpur as you can get bus from indore and few buses from omkareshwar as well. from indore it will take 5 hours and from omkareshwar it will take 3 hours.  `,
+      img: "omkareshwar.jpg",
+      backImg: "omkareshwar_back.webp",
+      link: "omkareshwar.html"
+    },
+    {
+      day: "Day <br> 9-10",
+      title: "Burhanpur",
+      desc: "the historical city of Burhanpur was once the capital of the Mughal Kingdom. An important outpost of the Mughals, Burhanpur was known as the gateway to southern India for its strategic location.",
+      back: `The magnificent mosques, tombs and palaces give you a sense of what Mughal life at its peak was like. Burhanpur's glorious and rich past will leave you fascinated and engrossed, just like a child.to explore follow the bellow route<br>
+      1. Asirgarh Fort(25 km from Railway station)<br>
+      2. Jhanjhar Dam(17 km from Asir garh)<br>
+      3. Black Tajmahal(10 km from dam)<br>
+      4. Tomb of Nadir shah(3 km from black tajmahal)<br>
+      5. Shahi Qila(10 km from tomb)<br>
+      6. Akbari Sarai(3 km fron  shahi qila)<br>
+      7. Jay Stambh(1 km from akbari sarai)<br>
+      8. Kundi Bhandara(6 km from jay stambh and 3 km from station ) with this here your tour destination ends you can travel back to home from burhanpur  railway station or can come back to indore via bus `,
+      img: "burhanpur.webp",
+      backImg: "burhanpur_back.webp",
+      link: "burhanpur.html"
+    }
+  ];
+
+  // Image popup modal
+  document.write(`
+    <div id="imagePopup" class="image-popup" style="display:none; position:fixed; top:15%; left:50%; transform:translateX(-50%); z-index:9999; background:white; padding:10px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); max-width:90%; max-height:80vh; overflow:auto; text-align:center;">
+      <span class="close-popup" style="position:absolute; top:5px; right:10px; font-size:24px; font-weight:bold; cursor:pointer;">&times;</span>
+      <img id="popupImage" src="" alt="Popup Image" style="max-width:100%; max-height:70vh; border-radius:8px;">
+    </div>
+  `);
+
+  // Render timeline cards
+  document.write(timelineData.map(({ day, title, desc, img, backImg, link, back }) => `
+    <div class="timeline-item">
+      <div class="timeline-card-wrapper">
+        <div class="timeline-card">
+          <div class="timeline-content front">
+            <h2>${title}</h2>
+            <p>${desc}</p>
+            <img src="images/${img}" alt="${title}">
+            <button class="check-button flip-btn">Check Now</button>
+          </div>
+          <div class="timeline-content back">
+            <p>${back}</p>
+            <a href="${link}" class="check-button">Explore in Detail</a>
+            <button class="check-button show-image-btn" data-img="images/${backImg}">Train List</button>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-dot">${day}</div>
+    </div>
+  `).join(""));
+
+  // Image popup logic
+  document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("show-image-btn")) {
+      const imgSrc = e.target.getAttribute("data-img");
+      document.getElementById("popupImage").src = imgSrc;
+      document.getElementById("imagePopup").style.display = "block";
+    }
+
+    if (e.target.classList.contains("close-popup")) {
+      document.getElementById("imagePopup").style.display = "none";
+    }
+  });
 </script>
 
 
-    <div class="timeline-tag end">END: Bhopal</div>
+    <!-- <div class="timeline-tag end">END: Bhopal</div> -->
   </div>
 
   <div id="footer-placeholder"></div>
