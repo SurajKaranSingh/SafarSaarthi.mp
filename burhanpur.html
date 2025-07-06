@@ -1,42 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Bhopal - Tourism Guide</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Burhanpur - Tourism Guide</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #206680; /* Slight teal tint from the water */
-
-        }
-        header {
-            background-color: #093245;
-            color: rgb(136, 76, 220);
-            padding: 15px;
-            text-align: center;
-        }
-    
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-       
-       
-
-        h2 {
-            color: white;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
- .container1 {
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #206680; margin: 0; padding: 0; }
+    footer { background-color: #333; color: white; text-align: center; padding: 10px; }
+    h2 { color: white; margin-bottom: 20px; text-align: center; width: 100%; }
+    .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+    .lang-toggle { cursor: pointer; margin: 0 5px; font-weight: bold; color: #fff; text-decoration: underline; }
+    .hidden { display: none; }
+     .container1 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -44,23 +20,6 @@
     margin: 20px auto;
     gap: 20px;
 }
-
-.category {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    height: 250px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-}
-
-.category img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .overlay {
     position: absolute;
     top: 0;
@@ -146,121 +105,185 @@
             border: none;
             cursor: pointer;
         }
-    </style>
+  </style>
 </head>
-<body class=" text-gray-900">
+<body class="text-gray-900 pt-20">
 
-  <!-- Hero Section -->
- <header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Upper_Lake_Bhopal.jpg');">
-  <div class="absolute top-4 right-4 z-50">
+<!-- Header Bar -->
+<div class="flex justify-between items-center py-4 px-6 bg-gray-700 text-white fixed top-0 left-0 w-full z-50 shadow">
+  <div class="font-bold text-xl">Travel Saarthi</div>
+  <div class="text-center">
+    <span class="lang-toggle" onclick="setLang('en')">English</span> |
+    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
+  </div>
+  <div>
     <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
   </div>
+</div>
+
+<!-- Hero Section -->
+<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/burhanpur.webp');">
   <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
     <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Bhopal</h1>
-      <p class="text-lg md:text-2xl">The City of Lakes, Culture, and Charm</p>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Burhanpur</h1>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">बुरहानपुर में आपका स्वागत है</h1>
+      <p class="text-lg md:text-2xl en">A Mughal Marvel on the Banks of Tapti</p>
+      <p class="text-lg md:text-2xl hi hidden">ताप्ती किनारे बसा मुग़ल शिल्प का अनमोल रत्न</p>
     </div>
   </div>
 </header>
 
-
-   <!-- Map and Info Section -->
-  <section class="py-12 px-6 bg-white max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-8">Discover Bhopal</h2>
-    <div class="flex flex-col md:flex-row items-center gap-6">
-      <div class="w-full md:w-1/2">
-        <iframe class="w-full h-80 rounded-lg shadow-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.7314195328693!2d77.41261567502477!3d23.18059581018359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43c5a9400e75%3A0x149cd3a9dc739dde!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1624100000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+<!-- Map + Info -->
+<section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 en">Discover Burhanpur</h2>
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 hi hidden">बुरहानपुर के बारे में जानिए</h2>
+    <div class="flex flex-col lg:flex-row items-center gap-10">
+      <div class="w-full lg:w-1/2">
+        <iframe class="w-full h-80 border-4 border-green-100 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.9263884842815!2d76.20726037471285!3d21.309223279055633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd81fc726f1ed2f%3A0xe5fd9f79677d02f0!2sBurhanpur%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1751900000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <div class="w-full md:w-1/2 text-gray-800">
-        <h3 class="text-2xl font-semibold mb-4">A Glimpse into Bhopal</h3>
-        <p class="mb-4">Bhopal, the capital of Madhya Pradesh, is a city of contrasts. Known as the "City of Lakes" due to its numerous natural and artificial lakes, Bhopal has a fascinating history and rich cultural heritage. It was ruled by powerful women rulers, the Begums of Bhopal, during the 19th and early 20th centuries, who made remarkable contributions to the city's architecture, education, and culture.</p>
-        <p class="mb-4">The city seamlessly blends Islamic architecture with modern urban planning. From the grand Taj-ul-Masajid and ancient Bhimbetka rock shelters to contemporary cultural centers like Bharat Bhavan, Bhopal has something for everyone. It is also a hub for traditional crafts like Zardozi and Bidriware, and its cuisine carries the legacy of Mughlai flavors.</p>
-        <p>Bhopal continues to grow as an educational, administrative, and tourism hub while retaining its old-world charm and natural beauty.</p>
+      <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
+        <div class="en">
+          <h3 class="text-2xl font-semibold text-green-700 mb-4">A Glimpse into Burhanpur</h3>
+          <p class="text-gray-700 text-justify text-lg leading-relaxed">
+            Burhanpur is a historical city in Madhya Pradesh, rich in Mughal architecture, spiritual legacy, and cultural diversity. Known for its majestic forts, tombs, and mosques, it once served as a major outpost of the Mughal empire.
+          </p>
+        </div>
+        <div class="hi hidden">
+          <h3 class="text-2xl font-semibold text-green-700 mb-4">बुरहानपुर की एक झलक</h3>
+          <p class="text-gray-700 text-justify text-lg leading-relaxed">
+            बुरहानपुर मध्यप्रदेश का एक ऐतिहासिक शहर है, जो मुग़ल वास्तुकला, आध्यात्मिक धरोहर और सांस्कृतिक विविधता से भरपूर है। यह मुग़ल साम्राज्य का प्रमुख केंद्र रहा है और इसके किले, मकबरे व मस्जिदें इसकी भव्यता को दर्शाते हैं।
+          </p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Attractions Section -->
-  <section class="py-12 px-4 max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-8">Top Attractions in Bhopal</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Burhanpur</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">बुरहानपुर के प्रमुख आकर्षण</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- Attraction Card -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Sanchi_Stupa.jpg" alt="Sanchi Stupa" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Sanchi Stupa</h3>
-          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
-          <p class="text-gray-700">A UNESCO World Heritage Site, Sanchi is known for its well-preserved Buddhist stupas, monuments, and intricate carvings.</p>
-        </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Burhanpur/asirgarh-fort.jpg" alt="Asirgarh Fort" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Asirgarh Fort</h3>
+        <h3 class="text-xl font-semibold hi hidden">असीरगढ़ किला</h3>
+        <p class="text-sm text-gray-600 mb-2 en">Best Time: October to March</p>
+        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: अक्टूबर से मार्च</p>
+        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc4">Perched atop the Satpura range, this majestic fort is often called the 'Gateway to South India' and offers panoramic views and historical significance.</p>
+        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc4-hi">सतपुड़ा पर्वतमाला की चोटी पर स्थित यह भव्य किला 'दक्षिण भारत का द्वार' कहलाता है और अपने ऐतिहासिक महत्व व सुंदर दृश्यावली के लिए प्रसिद्ध है।</p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc4', this)">Read more</button>
       </div>
-
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Van_Vihar_Bhopal.jpg" alt="Van Vihar National Park" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Van Vihar National Park</h3>
-          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: November to February</p>
-          <p class="text-gray-700">A unique park where animals roam in near-natural habitat along the banks of Upper Lake. Ideal for nature and wildlife lovers.</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Bharat_Bhavan.jpg" alt="Bharat Bhavan" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Bharat Bhavan</h3>
-          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: Year-round</p>
-          <p class="text-gray-700">A multi-arts complex and museum that showcases the cultural diversity of India through art, music, and drama.</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Taj-ul-Masajid_Bhopal.jpg" alt="Taj-ul-Masajid" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Taj-ul-Masajid</h3>
-          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
-          <p class="text-gray-700">One of the largest mosques in India, Taj-ul-Masajid is an architectural marvel with pink façade and white domes.</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Upper_Lake_Bhopal_View.jpg" alt="Upper Lake" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold">Upper Lake (Bhojtal)</h3>
-          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
-          <p class="text-gray-700">The oldest man-made lake in India, perfect for boating, sunset views, and peaceful strolls.</p>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- Famous in Bhopal Section -->
-  <section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-8">Things Bhopal is Famous For</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div class="text-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bhopali_Gosht_Korma.jpg" alt="Bhopali Cuisine" class="w-full h-48 object-cover rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Bhopali Cuisine</h3>
-        <p class="text-gray-700">Bhopal is famous for its kebabs, biryani, and Bhopali gosht korma, reflecting its Nawabi legacy.</p>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Burhanpur/akbari-sarai.jpg" alt="Akbari Sarai" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Akbari Sarai</h3>
+        <h3 class="text-xl font-semibold hi hidden">अकबरी सराय</h3>
+        <p class="text-sm text-gray-600 mb-2 en">Best Time: November to February</p>
+        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: नवम्बर से फरवरी</p>
+        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc5">Built during the Mughal era, Akbari Sarai served as a grand rest stop for royal caravans, showcasing elegant arches and Mughal architecture.</p>
+        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc5-hi">मुगल काल में निर्मित, अकबरी सराय राजसी यात्रियों के लिए एक विश्राम स्थल थी, जिसमें सुंदर मेहराबें और मुग़ल शैली की वास्तुकला देखी जा सकती है।</p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc5', this)">Read more</button>
       </div>
-
-      <div class="text-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Zardozi_work.jpg" alt="Zardozi Work" class="w-full h-48 object-cover rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Zardozi Embroidery</h3>
-        <p class="text-gray-700">Exquisite hand embroidery using gold and silver threads, traditionally worn on festive and bridal attire.</p>
-      </div>
-
-      <div class="text-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Bhopal_Bidri_Work.jpg" alt="Bidriware" class="w-full h-48 object-cover rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Bidriware Handicrafts</h3>
-        <p class="text-gray-700">Bhopal is also known for its fine metal handicrafts inlaid with silver, called Bidriware, a heritage art form.</p>
-      </div>
-
     </div>
-  </section>
 
-  <section id="section9">
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Burhanpur/jay-stambh.jpg" alt="Jay Stambh" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Jay Stambh</h3>
+        <h3 class="text-xl font-semibold hi hidden">जय स्तंभ</h3>
+        <p class="text-sm text-gray-600 mb-2 en">Best Time: Year-round</p>
+        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: पूरे वर्ष</p>
+        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc6">A tall pillar commemorating freedom and historical pride, Jay Stambh stands at the heart of the city and is lit up during celebrations.</p>
+        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc6-hi">स्वतंत्रता और ऐतिहासिक गर्व का प्रतीक जय स्तंभ शहर के केंद्र में स्थित है और त्योहारों के समय रोशनी से सजाया जाता है।</p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc6', this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Burhanpur/rahapadi-kund.jpg" alt="Rahapadi Kund" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Rahapadi Kund</h3>
+        <h3 class="text-xl font-semibold hi hidden">रहापाड़ी कुंड</h3>
+        <p class="text-sm text-gray-600 mb-2 en">Best Time: Monsoon to Winter</p>
+        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: वर्षा से सर्दियों तक</p>
+        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc7">A serene waterfall and natural kund located in the outskirts of Burhanpur, perfect for nature lovers and trekking enthusiasts.</p>
+        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc7-hi">बुरहानपुर के बाहरी क्षेत्र में स्थित एक शांत जलप्रपात और प्राकृतिक कुंड, जो प्रकृति प्रेमियों और ट्रेकिंग के शौकीनों के लिए आदर्श स्थान है।</p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc7', this)">Read more</button>
+      </div>
+    </div>
+
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Burhanpur/nadir-shah-tomb.jpg" alt="Tomb of Nadir Shah" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Tomb of Nadir Shah</h3>
+        <h3 class="text-xl font-semibold hi hidden">नादिर शाह का मकबरा</h3>
+        <p class="text-sm text-gray-600 mb-2 en">Best Time: October to February</p>
+        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: अक्टूबर से फरवरी</p>
+        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc8">This lesser-known tomb in Burhanpur is believed to be associated with the Persian ruler Nadir Shah, reflecting Indo-Persian architectural blend and local reverence.</p>
+        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc8-hi">बुरहानपुर में स्थित यह कम प्रसिद्ध मकबरा फ़ारसी शासक नादिर शाह से जुड़ा माना जाता है, जो इंडो-फ़ारसी वास्तुकला और स्थानीय श्रद्धा का उदाहरण है।</p>
+        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc8', this)">Read more</button>
+      </div>
+    </div>
+</div></section>
+
+<!-- Famous Things in Burhanpur -->
+<section class="bg-white py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-black text-center mb-8 en">Things Burhanpur is Famous For</h2>
+  <h2 class="text-3xl font-bold text-black text-center mb-8 hi hidden">बुरहानपुर की प्रसिद्ध चीजें</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <div class="text-center">
+      <img src="images/Burhanpur/banana-fabric.jpg" alt="Banana Fiber Fabric" class="w-full h-48 object-contain rounded-lg mb-2">
+      <h3 class="text-xl font-semibold en">Banana Fiber Fabric</h3>
+      <h3 class="text-xl font-semibold hi hidden">केले के रेशे से बने वस्त्र</h3>
+      <p class="text-gray-700 text-justify en">Burhanpur is known for weaving fine fabric from banana fiber, an eco-friendly and traditional textile used in sarees and ethnic wear.</p>
+      <p class="text-gray-700 text-justify hi hidden">बुरहानपुर केले के रेशों से बने वस्त्रों के लिए प्रसिद्ध है, जो साड़ियों और पारंपरिक परिधानों में उपयोग होते हैं। यह पर्यावरण अनुकूल कपड़ा है।</p>
+    </div>
+
+    <div class="text-center">
+      <img src="images/Burhanpur/handloom-sarees.jpg" alt="Handloom Sarees" class="w-full h-48 object-contain rounded-lg mb-2">
+      <h3 class="text-xl font-semibold en">Handloom Sarees</h3>
+      <h3 class="text-xl font-semibold hi hidden">हथकरघा साड़ियाँ</h3>
+      <p class="text-gray-700 text-justify en">Traditional handloom sarees made in Burhanpur are appreciated for their unique patterns and rich textures by shoppers across India.</p>
+      <p class="text-gray-700 text-justify hi hidden">बुरहानपुर की हथकरघा साड़ियाँ अपने विशिष्ट डिज़ाइन और समृद्ध बुनावट के लिए पूरे भारत में पसंद की जाती हैं।</p>
+    </div>
+
+    <div class="text-center">
+      <img src="images/Burhanpur/sweets.jpg" alt="Burhanpur Sweets" class="w-full h-48 object-contain rounded-lg mb-2">
+      <h3 class="text-xl font-semibold en">Burhanpur Sweets</h3>
+      <h3 class="text-xl font-semibold hi hidden">बुरहानपुरी मिठाइयाँ</h3>
+      <p class="text-gray-700 text-justify en">Mawa Jalebi, Imarti, and other traditional sweets from Burhanpur are a must-try for visitors seeking authentic regional flavors.</p>
+      <p class="text-gray-700 text-justify hi hidden">मावा जलेबी, इमरती और अन्य पारंपरिक बुरहानपुरी मिठाइयाँ स्थानीय स्वाद का अद्भुत अनुभव कराती हैं।</p>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  function toggleReadMore(id, btn) {
+    const para = document.getElementById(id);
+    if (para.classList.contains("line-clamp-4")) {
+      para.classList.remove("line-clamp-4");
+      btn.textContent = "Read less";
+    } else {
+      para.classList.add("line-clamp-4");
+      btn.textContent = "Read more";
+    }
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+  }
+</script>
+<section id="section9">
         <div class="section9">
             <div class="container1">
                 <div class="category hotels">
@@ -395,13 +418,15 @@
             
             
        </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 mt-12">
-    <div class="max-w-6xl mx-auto text-center">
-      <p>&copy; 2025 Explore Bhopal. Designed with love for tourists worldwide.</p>
-    </div>
-  </footer>
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+<script>
+  fetch("footer1.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
 
 </body>
 </html>
