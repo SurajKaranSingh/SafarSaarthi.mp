@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khajuraho Tour Package</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="package.css">
+</head>
+<body>
+  <nav>
+    <div><strong>Travel Saarthi</strong></div>
+    <div><a href="index.html">Home</a></div>
+  </nav>
+
+  <header>
+    <h1>Khajuraho Tour Circuit</h1>
+  </header>
+
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    <script>
+      const timelineData = [
+        {
+          day: "Day 1",
+          title: "Khajuraho",
+          desc: "Begin your journey in Khajuraho – the UNESCO World Heritage site known for its erotic sculptures and intricate carvings.",
+          back: `Explore the magnificent temple complex of Khajuraho, a testament to Chandela architecture.<br>
+          1. Western Group of Temples – Kandariya Mahadev, Vishwanath<br>
+          2. Eastern & Southern Temple Groups<br>
+          3. Light & Sound Show<br>
+          4. Tribal and Folk Art Museum<br>
+          After sightseeing, depart for Panna the next morning.`,
+          img: "khajuraho.jpg",
+          backImg: "khajuraho.train.png",
+          link: "khajuraho.html"
+        },
+        {
+          day: "Day 2",
+          title: "Panna",
+          desc: "Feel the wilderness in Panna – famous for its national park and diamond mines.",
+          back: `Drive 25 km from Khajuraho to Panna.<br>
+          1. Panna National Park – Tiger Safari<br>
+          2. Pandav Falls<br>
+          3. Diamond Mines Viewpoint (optional)<br>
+          Rest at a jungle resort. Travel next morning to Satna.`,
+          img: "panna.jpg",
+          backImg: "panna.train.png",
+          link: "panna.html"
+        },
+        {
+          day: "Day 3",
+          title: "Satna",
+          desc: "Spiritual and industrial city with ancient roots and pilgrimage relevance.",
+          back: `In Satna, explore both modern industry and ancient spirituality:<br>
+          1. Bharhut Stupa (Archaeological site)<br>
+          2. Venkatesh Mandir<br>
+          3. Sharadha Devi Temple<br>
+          Overnight halt in Satna and proceed to Rewa next day.`,
+          img: "satna.jpg",
+          backImg: "satna.train.png",
+          link: "satna.html"
+        },
+        {
+          day: "Day 4",
+          title: "Rewa",
+          desc: "Land of waterfalls and white tigers, Rewa boasts both natural and royal attractions.",
+          back: `From Satna, travel to Rewa (~50 km).<br>
+          1. Rewa Fort & Museum<br>
+          2. Rani Talab<br>
+          3. Govindgarh Palace<br>
+          4. Keoti and Chachai Waterfalls<br>
+          5. White Tiger Safari (Govindgarh)<br>
+          Proceed to Chitrakoot next day.`,
+          img: "rewa.jpg",
+          backImg: "rewa.train.png",
+          link: "rewa.html"
+        },
+        {
+          day: "Day 5",
+          title: "Chitrakoot",
+          desc: "Land of Lord Ram's exile – full of mythological and natural beauty.",
+          back: `Explore this sacred destination associated with Ramayan:<br>
+          1. Kamadgiri Hill Parikrama<br>
+          2. Gupt Godavari Caves<br>
+          3. Ramghat (boat ride)<br>
+          4. Hanuman Dhara<br>
+          5. Sati Anusuya Ashram<br>
+          After a spiritual day, drive to Amarkantak in the evening or stay overnight and move next day.`,
+          img: "chitrakoot.jpg",
+          backImg: "chitrakoot.train.png",
+          link: "chitrakoot.html"
+        },
+        
+      ];
+
+      document.write(`
+        <div id="imagePopup" class="image-popup" style="display:none; position:fixed; top:15%; left:50%; transform:translateX(-50%); z-index:9999; background:white; padding:10px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); max-width:90%; max-height:80vh; overflow:auto; text-align:center;">
+          <span class="close-popup" style="position:absolute; top:5px; right:10px; font-size:24px; font-weight:bold; cursor:pointer;">&times;</span>
+          <img id="popupImage" src="" alt="Popup Image" style="max-width:100%; max-height:70vh; border-radius:8px;">
+        </div>
+      `);
+
+      document.write(timelineData.map(({ day, title, desc, img, backImg, link, back }) => `
+        <div class="timeline-item">
+          <div class="timeline-card-wrapper">
+            <div class="timeline-card">
+              <div class="timeline-content front">
+                <h2>${title}</h2>
+                <p>${desc}</p>
+                <img src="images/${img}" alt="${title}">
+                <button class="check-button flip-btn">Check Now</button>
+              </div>
+              <div class="timeline-content back" style="display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; padding-bottom: 60px;">
+                <div class="back-text" style="padding-right: 10px;">
+                  <p>${back}</p>
+                </div>
+                <div class="back-buttons" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                  <a href="${link}" class="check-button" style="min-width: 130px; text-align: center;">Explore in Detail</a>
+                  <button class="check-button show-image-btn" data-img="images/${backImg}" style="min-width: 130px;">Train List</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-dot">${day}</div>
+        </div>
+      `).join(""));
+
+      document.addEventListener("click", function(e) {
+        if (e.target.classList.contains("show-image-btn")) {
+          const imgSrc = e.target.getAttribute("data-img");
+          document.getElementById("popupImage").src = imgSrc;
+          document.getElementById("imagePopup").style.display = "block";
+        }
+        if (e.target.classList.contains("close-popup")) {
+          document.getElementById("imagePopup").style.display = "none";
+        }
+      });
+    </script>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("footer1.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+
+    const items = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const card = entry.target.querySelector('.timeline-card');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          if (card && card.classList.contains('flipped')) {
+            card.classList.remove('flipped');
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    items.forEach(item => observer.observe(item));
+
+    document.addEventListener("click", function(e) {
+      if (e.target && e.target.classList.contains("flip-btn")) {
+        const card = e.target.closest(".timeline-card");
+        card.classList.toggle("flipped");
+      }
+    });
+  </script>
+</body>
+</html>

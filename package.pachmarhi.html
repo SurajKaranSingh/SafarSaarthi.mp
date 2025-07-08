@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pachmarhi Tour Package</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+    }
+    header {
+      background: url('images/pachmarhi.webp') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    header h1 {
+      z-index: 1;
+      font-size: 3rem;
+    }
+    nav {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .timeline-container {
+      position: relative;
+      margin: 100px auto;
+      padding: 0 20px;
+      max-width: 1200px;
+    }
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(to bottom, #3498db 0%, #9b59b6 100%);
+      transform: translateX(-50%);
+      z-index: 0;
+      border-radius: 10px;
+    }
+    .timeline-tag {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2ecc71;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      z-index: 2;
+    }
+    .timeline-tag.end {
+      bottom: -30px;
+      top: auto;
+      background-color: #e74c3c;
+    }
+    .timeline-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 100px 0;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    .timeline-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-card-wrapper {
+      perspective: 1000px;
+      width: 45%;
+      height: 420px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .timeline-card {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      position: relative;
+    }
+
+    .timeline-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .timeline-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background-color: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      box-sizing: border-box;
+      font-size: .75rem;
+    }
+
+    .timeline-content.back {
+      transform: rotateY(180deg);
+      text-align: justify;
+      align-items: center;
+    }
+
+    .timeline-content img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 15px;
+      max-height: 180px;
+      object-fit: contain;
+    }
+
+    .timeline-content h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .check-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+    .check-button:hover {
+      background-color: #2980b9;
+    }
+
+    .timeline-dot {
+      width: 60px;
+      height: 60px;
+      background-color: #2980b9;
+      border: 3px solid white;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline-item {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px;
+      }
+      .timeline-card-wrapper {
+        width: 95%;
+        height: 400px;
+        min-height: 560px;
+        margin-top: 20px;
+      }
+      .timeline-card {
+        height: 100%;
+      }
+      .timeline-content {
+        height: 100%;
+        overflow-y: auto;
+      }
+      .timeline-dot {
+        display: none;
+      }
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div><strong>Pachmarhi Tour</strong></div>
+    <div><a href="index.html">Home</a></div>
+  </nav>
+
+  <header>
+    <h1>Pachmarhi Tour Package</h1>
+  </header>
+
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    <div class="timeline-tag">START: Bhopal</div>
+
+<script>
+  const timelineData = [
+    {
+      day: " Day<br> 1-2",
+      title: "Bhopal",
+      desc: "Begin your journey in the City of Lakes.",
+      back: `To Explore Bhopal follow the below route which will help you to explore all places from Railway Station as the starting point:<br><br>
+1. Taj-ul-Masjid (2.6 km)<br>
+2. Gohar Mahal (1.2 km from Taj-ul-Masjid)<br>
+3. Lake View (2.7 km from Gohar Mahal)<br>
+4. Van Vihar National Park (3.3 km from Lake View)<br>
+5. Indira Gandhi Manav Sangrahalaya (4.7 km from Van Vihar)<br>
+6. Tribal Museum (1.6 km from Sangrahalaya)<br>
+7. Regional Science Center (1.7 km from Tribal Museum)<br>
+8. Birla Mandir (3.2 km from Science Center)<br>
+9. Railway Station (4.5 km from Birla Mandir)<br>
+You will require <strong>2 days</strong> to cover all the locations.<br>
+To know more about these locations, famous food & products, click the <strong>Learn More</strong> button.`,
+
+      img: "Bhopal.webp",
+      link: "bhopal.html"
+    },
+    {
+      day: "Day 3",
+      title: "Sanchi",
+      desc: "Explore the iconic Buddhist monuments.",
+      back: ` IT is the UNESCO World Heritage Site filled with serene stupas and historical insight. For exploring it you can come here by Train or Bus:<br>
+      <strong>Trains</strong><br>
+      1. Bhopal Bina Memu(61631) 7:30 Am<br>
+      2. Bilaspur Express(18235) 10:35 Am<br>
+      there are 3 more train you can check from irctc  but this are the perfect train options.<br>
+      <strong>Bus</strong>: you can get bus any time from ISBT/Nadra bus stand <br>
+      Sachi Stupa  is barely 1-1.5 km from Railway station & Bus stop.It will take  2- 3 hrs maximum so that you can retun back to bhopal  <br>
+      there are 5 trains but for best option i suggest <br> 
+      1. Bhopal Memu (11606) 12:39 Pm <br>
+      whereas you can come back by <strong>bus</strong> as well it will maximum take 1 hour.<br> From Bhopal you can take bus to <strong>Mandideep</strong> for next destination.  `,
+      img: "sanchi.webp",
+      link: "sanchi.html"
+    },
+    {
+      day: "Day 3",
+      title: "Bhojpur",
+      desc: "Visit the grand unfinished Shiva temple.",
+      back:  `Marvel at the gigantic Shiva Linga and learn about its unique architecture.For Exploring it you can come here by <strong>train & bus</strong> both from Bhopal to Mandideep from where you can come through rood its is just 11-20 km (repective to vehicle and road taken) `,
+      img: "bhimbedka.webp",
+      link: "bhopal.html"
+    },
+    {
+      day: "Day 3",
+      title: "Mandideep",
+      desc: "Take a restful overnight halt at Mandideep.",
+      back: "Recharge at this quiet town before heading to the land of ancient cave paintings and rock shelter.",
+      img: "pachmarhi.package/mandideep.jpeg",
+      link: "#"
+    },
+    {
+      day: "Day 4",
+      title: "Bhimbetka",
+      desc: "See ancient cave paintings and rock shelters.",
+      back: "A walk through prehistoric art and culture, surrounded by forest beauty.You can come here by <strong>Rental cars & Bus</strong> it wil take max 2 hours to explore and from there you can move to next destination called <strong> Vindhyavasini Vijayasana Mata Temple </strong> 50 km from bhimbedka via Obaidullaganj  ",
+      img: "bhimbedka.jpeg",
+      link: "bhimbedka.html"
+    },
+    {
+      day: "Day 4",
+      title: "Narmadapuram",
+      desc: "Take a restful overnight halt before the hills.",
+      back: "after cominf from <strong>vindhyavasini temple</strong> in Salkanpur you can move to <Strong>Narmadapuram</strong> located on the banks of the sacred Narmada River. Great evening stroll! and rest before heading toward the <strong>highlands of Satpura</strong> ",
+      img: "pachmarhi.package/narmadapuram.jpg",
+      link: "#"
+    },
+    {
+      day: "Day<br>5-6",
+      title: "Pachmarhi",
+      desc: "Enjoy waterfalls, caves, and scenic views.",
+      back: `To Explore Pachmarhi follow the below route-
+      <strong> Day 1</strong>:<br>
+1. <strong>Morning</strong>:
+Start with Bee Falls, a scenic waterfall known for its refreshing waters and surrounding trails.<br> 
+2. <strong>Afternoon</strong>:
+Head to Apsara Vihar, another beautiful waterfall with a calm pool, perfect for a relaxing dip. <br>
+3. <strong>Evening</strong>:
+Conclude the day with a visit to Priyadarshini Point, also known as Forsyth Point, offering panoramic views of the hills and valleys. <br>
+<strong>Day 2:</strong><br>
+1. <strong>Morning</strong>:
+Explore the Pandava Caves, a historical site with religious significance, believed to be a refuge of the Pandava brothers. 
+<br>2. <strong>Afternoon</strong>:
+Trek to Dhoopgarh, the highest peak in the Satpura range, to witness a breathtaking sunset. 
+<br> 3. <strong>Optional</strong>:
+Consider a visit to Jatashankar Temple, a cave temple dedicated to Lord Shiva, known for its unique rock formations and natural springs. !`,
+      img: "pachmarhi.webp",
+      link: "pachmarhi.html"
+    },
+    {
+      day: "Day 7",
+      title: "Return to Bhopal",
+      desc: "Relax and reflect back in Bhopal.",
+      back: "Wrap up your tour with shopping and peaceful boating at Lower Lake or can cover the left over places of Bhopal.",
+      img: "Bhopal.webp",
+      link: "bhopal.html"
+    }
+  ];
+
+  document.write(timelineData.map(({day, title, desc, img, link, back}) => `
+    <div class="timeline-item">
+      <div class="timeline-card-wrapper">
+        <div class="timeline-card">
+          <div class="timeline-content front">
+            <h2>${title}</h2>
+            <p>${desc}</p>
+            <img src="images/${img}" alt="${title}">
+            <button class="check-button flip-btn">Check Now</button>
+          </div>
+          <div class="timeline-content back">
+            <p>${back}</p>
+            <a href="${link}" class="check-button">Explore Page</a>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-dot">${day}</div>
+    </div>`).join(""));
+</script>
+
+
+    <div class="timeline-tag end">END: Bhopal</div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    fetch("footer1.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+
+    const items = document.querySelectorAll('.timeline-item');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const card = entry.target.querySelector('.timeline-card');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          if (card && card.classList.contains('flipped')) {
+            card.classList.remove('flipped');
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    items.forEach(item => observer.observe(item));
+
+    document.addEventListener("click", function(e) {
+      if (e.target && e.target.classList.contains("flip-btn")) {
+        const card = e.target.closest(".timeline-card");
+        card.classList.toggle("flipped");
+      }
+    });
+  </script>
+
+</body>
+</html>

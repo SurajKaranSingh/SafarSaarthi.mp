@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amarkantak Tour Package</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="package.css">
+</head>
+<body>
+  <nav>
+    <div><strong>Travel Saarthi</strong></div>
+    <div><a href="index.html">Home</a></div>
+  </nav>
+
+  <header>
+    <h1>Amarkantak Wildlife & Heritage Tour</h1>
+  </header>
+
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    <script>
+      const timelineData = [
+        {
+          day: "Day 1",
+          title: "Jabalpur",
+          desc: "Start your journey in Jabalpur – the cultural and geographical heart of Madhya Pradesh.",
+          back: `Explore the historical and natural beauty of Jabalpur:<br>
+          1. Marble Rocks & Dhuandhar Falls (Bhedaghat)<br>
+          2. Chausath Yogini Temple<br>
+          3. Madan Mahal Fort<br>
+          4. Bargi Dam (optional boat ride)<br>
+          Stay overnight and prepare for the wildlife leg at Bandhavgarh.`,
+          img: "jabalpur.jpg",
+          backImg: "jabalpur.train.png",
+          link: "jabalpur.html"
+        },
+        {
+          day: "Day 2",
+          title: "Bandhavgarh National Park",
+          desc: "Experience the thrill of spotting tigers in one of India's most famous reserves.",
+          back: `Drive to Bandhavgarh (~165 km from Jabalpur).<br>
+          1. Jeep Safari in Tala, Magadhi, or Khitauli Zone<br>
+          2. Bandhavgarh Fort (subject to forest permission)<br>
+          3. Shesh Shaiya (reclining Vishnu statue)<br>
+          Overnight stay in forest lodge or resort.`,
+          img: "bandhavgarh.jpg",
+          backImg: "bandhavgarh.train.png",
+          link: "bandhavgarh.html"
+        },
+        {
+          day: "Day 3",
+          title: "Kanha National Park",
+          desc: "Immerse in the lush Sal forests of Kanha – the inspiration for The Jungle Book.",
+          back: `Travel from Bandhavgarh to Kanha (~250 km).<br>
+          1. Morning or afternoon safari in Kanha/Kisli/Mukki zones<br>
+          2. Kanha Museum and Interpretation Centre<br>
+          3. Nature walk and tribal village experience<br>
+          Relax in eco-friendly jungle resorts.`,
+          img: "kanha.jpg",
+          backImg: "kanha.train.png",
+          link: "kanha.html"
+        },
+        {
+          day: "Day 4",
+          title: "Amarkantak",
+          desc: "Conclude your journey at the origin of the Narmada River – Amarkantak.",
+          back: `Drive from Kanha to Amarkantak (~200 km).<br>
+          1. Narmada Kund<br>
+          2. Kapil Dhara and Dudh Dhara Falls<br>
+          3. Shri Yantra Mandir<br>
+          4. Kalachuri Period Temples<br>
+          5. Kabir Chabutra and Narmada Arti<br>
+          Return via Anuppur or Pendra Road for train connections.`,
+          img: "amarkantak.jpg",
+          backImg: "amarkantak.train.png",
+          link: "amarkantak.html"
+        }
+      ];
+
+      document.write(`
+        <div id="imagePopup" class="image-popup" style="display:none; position:fixed; top:15%; left:50%; transform:translateX(-50%); z-index:9999; background:white; padding:10px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); max-width:90%; max-height:80vh; overflow:auto; text-align:center;">
+          <span class="close-popup" style="position:absolute; top:5px; right:10px; font-size:24px; font-weight:bold; cursor:pointer;">&times;</span>
+          <img id="popupImage" src="" alt="Popup Image" style="max-width:100%; max-height:70vh; border-radius:8px;">
+        </div>
+      `);
+
+      document.write(timelineData.map(({ day, title, desc, img, backImg, link, back }) => `
+        <div class="timeline-item">
+          <div class="timeline-card-wrapper">
+            <div class="timeline-card">
+              <div class="timeline-content front">
+                <h2>${title}</h2>
+                <p>${desc}</p>
+                <img src="images/${img}" alt="${title}">
+                <button class="check-button flip-btn">Check Now</button>
+              </div>
+              <div class="timeline-content back" style="display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; padding-bottom: 60px;">
+                <div class="back-text" style="padding-right: 10px;">
+                  <p>${back}</p>
+                </div>
+                <div class="back-buttons" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                  <a href="${link}" class="check-button" style="min-width: 130px; text-align: center;">Explore in Detail</a>
+                  <button class="check-button show-image-btn" data-img="images/${backImg}" style="min-width: 130px;">Train List</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-dot">${day}</div>
+        </div>
+      `).join(""));
+
+      document.addEventListener("click", function(e) {
+        if (e.target.classList.contains("show-image-btn")) {
+          const imgSrc = e.target.getAttribute("data-img");
+          document.getElementById("popupImage").src = imgSrc;
+          document.getElementById("imagePopup").style.display = "block";
+        }
+        if (e.target.classList.contains("close-popup")) {
+          document.getElementById("imagePopup").style.display = "none";
+        }
+      });
+    </script>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("footer1.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+
+    const items = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const card = entry.target.querySelector('.timeline-card');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          if (card && card.classList.contains('flipped')) {
+            card.classList.remove('flipped');
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    items.forEach(item => observer.observe(item));
+
+    document.addEventListener("click", function(e) {
+      if (e.target && e.target.classList.contains("flip-btn")) {
+        const card = e.target.closest(".timeline-card");
+        card.classList.toggle("flipped");
+      }
+    });
+  </script>
+</body>
+</html>
