@@ -280,7 +280,13 @@
     document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
     document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
   }
+  function showPopup(id) {
+    document.getElementById(id).style.display = 'block';
+  }
 
+  function closePopup(id) {
+    document.getElementById(id).style.display = 'none';
+  }
   function showImage(src) {
     document.getElementById("popupImage").src = src;
     document.getElementById("imagePopup").classList.remove("hidden");
