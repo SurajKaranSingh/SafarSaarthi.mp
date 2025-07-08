@@ -3,31 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Dewas - Tourism Guide</title>
+  <title>Explore Chanderi - Tourism Guide</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #206680; margin: 0; padding: 0; }
-    footer { background-color: #333; color: white; text-align: center; padding: 10px; }
-    h2 { color: white; margin-bottom: 20px; text-align: center; width: 100%; }
-    .lang-toggle { cursor: pointer; margin: 0 5px; font-weight: bold; color: #fff; text-decoration: underline; }
-    .hidden { display: none; }
-    .popup, .options, .option, .close-btn { all: unset; }
-    .popup {
-      display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      border-radius: 10px; width: 60%; text-align: center; z-index: 9999;
-    }
-    .options { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .option { width: 150px; text-align: center; }
-    .option img { width: 100px; height: 100px; border-radius: 10px; }
-    .close-btn { display: block; margin-top: 20px; padding: 10px; background-color: red; color: white; border: none; cursor: pointer; }
-    .container1 { display: flex; justify-content: center; flex-wrap: wrap; width: 90%; margin: 20px auto; gap: 20px; }
-    .category { position: relative; width: 100%; max-width: 350px; height: 250px; border-radius: 10px; overflow: hidden; text-align: center; }
-    .category img { width: 100%; height: 100%; object-fit: cover; }
-    .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; }
-    .overlay h2 { margin: 10px 0; font-size: 1.5rem; text-align: center; }
-    .overlay button { padding: 10px; background-color: #ffcc00; border: none; cursor: pointer; font-size: 1rem; border-radius: 5px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="text-gray-900 pt-20">
 
@@ -42,80 +20,177 @@
 </div>
 
 <!-- Hero Section -->
-<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/dewas.');">
+<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/chanderi.webp');">
   <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
     <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Dewas</h1>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">देवास में आपका स्वागत है</h1>
-      <p class="text-lg md:text-2xl en">City of Maa Chamunda and Industries</p>
-      <p class="text-lg md:text-2xl hi hidden">माँ चामुंडा और उद्योगों का शहर</p>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Chanderi</h1>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">चंदेरी में आपका स्वागत है</h1>
+      <p class="text-lg md:text-2xl en">Where Silk Weaves Meet Stone Forts</p>
+      <p class="text-lg md:text-2xl hi hidden">जहाँ रेशम की बुनाई और पत्थर के किले मिलते हैं</p>
     </div>
   </div>
 </header>
 
-<!-- Attractions -->
+<!-- Attractions Section -->
 <section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Dewas</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">देवास के प्रमुख आकर्षण</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Chanderi</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">चंदेरी के प्रमुख आकर्षण</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Repeatable card block goes here (example added below) -->
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Dewas/tekri.jpg" alt="Tekri Mata Temple" class="w-full h-64 object-cover">
+      <img src="images/Chanderi/chanderi-fort.jpg" alt="Chanderi Fort" class="w-full h-64 object-cover">
       <div class="p-4">
-        <h3 class="text-xl font-semibold en">Tekri Mata Temple</h3>
-        <h3 class="text-xl font-semibold hi hidden">टेकरी माता मंदिर</h3>
-        <p class="text-gray-700 text-justify en">Located on a hilltop, this temple offers a panoramic view and spiritual peace.</p>
-        <p class="text-gray-700 text-justify hi hidden">पहाड़ी पर स्थित यह मंदिर सुंदर दृश्य और आध्यात्मिक शांति प्रदान करता है।</p>
+        <h3 class="text-xl font-semibold en">Chanderi Fort</h3>
+        <h3 class="text-xl font-semibold hi hidden">चंदेरी किला</h3>
+        <p class="text-gray-700 text-justify en">Overlooking the town, this fort offers panoramic views and rich history.</p>
+        <p class="text-gray-700 text-justify hi hidden">शहर के ऊपर स्थित यह किला मनोरम दृश्य और समृद्ध इतिहास प्रस्तुत करता है।</p>
       </div>
     </div>
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Dewas/meetha-talab.jpg" alt="Meetha Talab" class="w-full h-64 object-cover">
+      <img src="images/Chanderi/kati-ghati.jpg" alt="Kati Ghati" class="w-full h-64 object-cover">
       <div class="p-4">
-        <h3 class="text-xl font-semibold en">Meetha Talab</h3>
-        <h3 class="text-xl font-semibold hi hidden">मीठा तालाब</h3>
-        <p class="text-gray-700 text-justify en">A popular lakefront spot for locals and tourists to relax and enjoy the view.</p>
-        <p class="text-gray-700 text-justify hi hidden">स्थानीय लोगों और पर्यटकों के लिए यह तालाब विश्राम का एक सुंदर स्थान है।</p>
+        <h3 class="text-xl font-semibold en">Kati Ghati</h3>
+        <h3 class="text-xl font-semibold hi hidden">कटी घाटी</h3>
+        <p class="text-gray-700 text-justify en">A rock-cut gate carved through a hill said to be made overnight, symbolizing the entry to Chanderi.</p>
+        <p class="text-gray-700 text-justify hi hidden">एक चट्टान को काटकर बनाई गई घाटी जो एक ही रात में बनी बताई जाती है, यह चंदेरी का प्रवेश द्वार मानी जाती है।</p>
       </div>
     </div>
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Dewas/choti-mata.jpg" alt="Choti Mata Temple" class="w-full h-64 object-cover">
+      <img src="images/Chanderi/badal-mahal.jpg" alt="Badal Mahal Gate" class="w-full h-64 object-cover">
       <div class="p-4">
-        <h3 class="text-xl font-semibold en">Choti Mata Temple</h3>
-        <h3 class="text-xl font-semibold hi hidden">छोटी माता मंदिर</h3>
-        <p class="text-gray-700 text-justify en">An important pilgrimage site with rich religious traditions.</p>
-        <p class="text-gray-700 text-justify hi hidden">एक प्रमुख धार्मिक स्थल जो श्रद्धालुओं के लिए बहुत महत्वपूर्ण है।</p>
+        <h3 class="text-xl font-semibold en">Badal Mahal Gate</h3>
+        <h3 class="text-xl font-semibold hi hidden">बादल महल गेट</h3>
+        <p class="text-gray-700 text-justify en">An ornate gateway known for its Indo-Islamic architecture, often visited by history lovers.</p>
+        <p class="text-gray-700 text-justify hi hidden">हिंदू-मुस्लिम वास्तुकला का अद्भुत संगम दिखाता यह भव्य द्वार इतिहास प्रेमियों के लिए आकर्षण का केंद्र है।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Chanderi/jain-temples.jpg" alt="Jain Temples" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Jain Temples</h3>
+        <h3 class="text-xl font-semibold hi hidden">जैन मंदिर</h3>
+        <p class="text-gray-700 text-justify en">Numerous ancient temples, especially the Khandargiri and Thubonji Jain temples, showcasing beautiful carvings.</p>
+        <p class="text-gray-700 text-justify hi hidden">कंदरगिरी और थूबोनजी जैसे कई प्राचीन जैन मंदिर यहाँ मौजूद हैं जिनकी नक्काशी बेहद आकर्षक है।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Chanderi/jauhar-smarak.jpg" alt="Jauhar Smarak" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Jauhar Smarak</h3>
+        <h3 class="text-xl font-semibold hi hidden">जौहर स्मारक</h3>
+        <p class="text-gray-700 text-justify en">A memorial that commemorates the act of Jauhar, a powerful symbol of valor and sacrifice.</p>
+        <p class="text-gray-700 text-justify hi hidden">जौहर बलिदान की गाथा को समर्पित यह स्मारक वीरता और त्याग का प्रतीक है।</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Famous For -->
+<!-- Famous For Section -->
 <section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Things Dewas is Famous For</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">देवास की प्रसिद्ध चीजें</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 en">Things Chanderi is Famous For</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">चंदेरी की प्रसिद्ध चीजें</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     <div class="text-center">
-      <img src="images/Dewas/industry.jpg" alt="Industrial Hub" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Industrial Hub</h3>
-      <h3 class="text-xl font-semibold hi hidden">औद्योगिक केंद्र</h3>
-      <p class="text-gray-700 text-justify en">Home to several manufacturing plants and industrial units.</p>
-      <p class="text-gray-700 text-justify hi hidden">कई औद्योगिक इकाइयों और निर्माण संयंत्रों का केंद्र।</p>
+      <img src="images/Chanderi/chanderi-saree.jpg" alt="Chanderi Sarees" class="w-full h-48 object-contain rounded-lg mb-2">
+      <h3 class="text-xl font-semibold en">Chanderi Sarees</h3>
+      <h3 class="text-xl font-semibold hi hidden">चंदेरी साड़ियाँ</h3>
+      <p class="text-gray-700 text-justify en">Handwoven silk sarees with intricate patterns.</p>
+      <p class="text-gray-700 text-justify hi hidden">बारीक डिज़ाइनों वाली हस्तनिर्मित रेशमी साड़ियाँ।</p>
     </div>
     <div class="text-center">
-      <img src="images/Dewas/sweets.jpg" alt="Local Sweets" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Local Sweets</h3>
-      <h3 class="text-xl font-semibold hi hidden">स्थानीय मिठाइयाँ</h3>
-      <p class="text-gray-700 text-justify en">Famous for its peda, khopra pak, and other traditional sweets.</p>
-      <p class="text-gray-700 text-justify hi hidden">यहाँ के पेड़ा, खोप्रा पाक और पारंपरिक मिठाइयाँ प्रसिद्ध हैं।</p>
+      <img src="images/Chanderi/handloom-weaving.jpg" alt="Handloom Weaving" class="w-full h-48 object-contain rounded-lg mb-2">
+      <h3 class="text-xl font-semibold en">Handloom Weaving</h3>
+      <h3 class="text-xl font-semibold hi hidden">हथकरघा बुनाई</h3>
+      <p class="text-gray-700 text-justify en">The city is known for its exquisite handloom weaving techniques passed down generations.</p>
+      <p class="text-gray-700 text-justify hi hidden">चंदेरी की हथकरघा बुनाई परंपरा पीढ़ी दर पीढ़ी चली आ रही है और बेहद प्रसिद्ध है।</p>
     </div>
     <div class="text-center">
-      <img src="images/Dewas/devotional.jpg" alt="Religious Harmony" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Religious Harmony</h3>
-      <h3 class="text-xl font-semibold hi hidden">धार्मिक सौहार्द</h3>
-      <p class="text-gray-700 text-justify en">Known for unity in festivals and spiritual coexistence.</p>
-      <p class="text-gray-700 text-justify hi hidden">यह शहर विभिन्न धर्मों के त्योहारों में एकता और सौहार्द के लिए जाना जाता है।</p>
+      <img src="images/Chanderi/local-crafts.jpg" alt="Local Crafts" class="w-full h-48 object-contain rounded-lg mb-2">
+      <h3 class="text-xl font-semibold en">Local Crafts</h3>
+      <h3 class="text-xl font-semibold hi hidden">स्थानीय हस्तशिल्प</h3>
+      <p class="text-gray-700 text-justify en">Chanderi is home to skilled artisans making brass items, woodwork, and embroidered goods.</p>
+      <p class="text-gray-700 text-justify hi hidden">चंदेरी में पीतल की वस्तुएँ, लकड़ी की नक्काशी और कढ़ाई वाले उत्पाद बनाए जाते हैं।</p>
+    </div>
+    <div class="text-center">
+      <img src="images/Chanderi/malwa-food.jpg" alt="Malwa Cuisine" class="w-full h-48 object-contain rounded-lg mb-2">
+      <h3 class="text-xl font-semibold en">Malwa Cuisine</h3>
+      <h3 class="text-xl font-semibold hi hidden">मालवा व्यंजन</h3>
+      <p class="text-gray-700 text-justify en">Famous dishes like poha, dal bafla, and kachori are popular among tourists.</p>
+      <p class="text-gray-700 text-justify hi hidden">पोहे, दाल बाफले और कचौरी जैसे मालवा क्षेत्र के व्यंजन यहाँ खूब लोकप्रिय हैं।</p>
     </div>
   </div>
 </section>
+
+
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8 en">Maheshwar Photo Gallery</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">महेश्वर फोटो गैलरी</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+  </div>
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+  </div>
+</div>
+<script>
+ 
+  function showImage(src) {
+    document.getElementById("popupImage").src = src;
+    document.getElementById("imagePopup").classList.remove("hidden");
+  }
+
+  function hideImage() {
+    document.getElementById("imagePopup").classList.add("hidden");
+    document.getElementById("popupImage").src = "";
+  }
+</script>
+</section>
+
+<!-- Image Modal -->
+
+
+<!-- Travel Options -->
+<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
+  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Maheshwar</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">महेश्वर आने-जाने के साधन</h2>
+  <div class="flex flex-col md:flex-row justify-around gap-8">
+    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest railway stations: Barwaha (39 km), Indore (91 km)</li>
+        <li class="hi hidden">नजदीकी रेलवे स्टेशन: बड़वाहा (39 किमी), इंदौर (91 किमी)</li>
+        <li class="en">Connected via local taxis and buses</li>
+        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
+      </ul>
+    </div>
+    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
+        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
+        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
+        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+</section>
+
 
 <!-- Booking Section -->
 <section id="section9">
@@ -225,6 +300,7 @@
   </div>
   <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
 </div>
+
 <script>
   function showPopup(id) {
     document.getElementById(id).style.display = 'block';
@@ -238,7 +314,9 @@
   }
 </script>
 
-<div id="footer-placeholder"></div>
+ <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
 <script>
   fetch("footer1.html")
     .then(res => res.text())
@@ -246,6 +324,5 @@
       document.getElementById("footer-placeholder").innerHTML = data;
     });
 </script>
-
 </body>
 </html>
