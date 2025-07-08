@@ -279,6 +279,13 @@
       document.getElementById("footer-placeholder").innerHTML = data;
     });
 
+    function showPopup(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function closePopup(id) {
+    document.getElementById(id).style.display = 'none';
+  }
   function setLang(lang) {
     document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
     document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
