@@ -5,148 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Explore Bhopal - Tourism Guide</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #206680; /* Slight teal tint from the water */
-
-        }
-        header {
-            background-color: #093245;
-            color: rgb(136, 76, 220);
-            padding: 15px;
-            text-align: center;
-        }
-    
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-       
-       
-
-        h2 {
-            color: white;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
- .container1 {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 20px auto;
-    gap: 20px;
-}
-
-.category {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    height: 250px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-}
-
-.category img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-.overlay h2 {
-    margin: 10px 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.overlay button {
-    padding: 10px;
-    background-color: #ffcc00;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-@media (min-width: 768px) {
-    .category {
-        width: 45%;
-        height: 300px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .category {
-        width: 30%;
-        height: 350px;
-    }
-}
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            width: 60%;
-            text-align: center;
-        }
-        .popup .options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .popup .option {
-            width: 150px;
-            text-align: center;
-        }
-        .popup img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-        }
-        .popup a {
-            display: block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        .close-btn {
-            display: block;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body class=" text-gray-900">
 
@@ -259,6 +118,77 @@
 
     </div>
   </section>
+
+  <section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8 en">Maheshwar Photo Gallery</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">महेश्वर फोटो गैलरी</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+  </div>
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+  </div>
+</div>
+<script>
+ 
+  function showImage(src) {
+    document.getElementById("popupImage").src = src;
+    document.getElementById("imagePopup").classList.remove("hidden");
+  }
+
+  function hideImage() {
+    document.getElementById("imagePopup").classList.add("hidden");
+    document.getElementById("popupImage").src = "";
+  }
+</script>
+</section>
+
+<!-- Image Modal -->
+
+
+<!-- Travel Options -->
+<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
+  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Maheshwar</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">महेश्वर आने-जाने के साधन</h2>
+  <div class="flex flex-col md:flex-row justify-around gap-8">
+    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest railway stations: Barwaha (39 km), Indore (91 km)</li>
+        <li class="hi hidden">नजदीकी रेलवे स्टेशन: बड़वाहा (39 किमी), इंदौर (91 किमी)</li>
+        <li class="en">Connected via local taxis and buses</li>
+        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
+      </ul>
+    </div>
+    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
+        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
+        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
+        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+</section>
+
+
 
   <section id="section9">
         <div class="section9">
