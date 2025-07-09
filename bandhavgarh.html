@@ -1,175 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Explore Bandhavgarh - Tourism Guide</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #206680; /* Slight teal tint from the water */
-
-        }
-       
-    
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-       
-       
-
-        h2 {
-            color: white;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
- .container1 {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 20px auto;
-    gap: 20px;
-}
-
-.category {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    height: 250px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-}
-
-.category img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-.overlay h2 {
-    margin: 10px 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.overlay button {
-    padding: 10px;
-    background-color: #ffcc00;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-@media (min-width: 768px) {
-    .category {
-        width: 45%;
-        height: 300px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .category {
-        width: 30%;
-        height: 350px;
-    }
-}
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            width: 60%;
-            text-align: center;
-        }
-        .popup .options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .popup .option {
-            width: 150px;
-            text-align: center;
-        }
-        .popup img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-        }
-        .popup a {
-            display: block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        .close-btn {
-            display: block;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class=" text-gray-900">
+  <div class="fixed top-0 left-0 w-full bg-gray-800 text-white flex justify-between items-center px-4 py-2 z-50">
+  <div class="text-xl font-bold">Travel Saarthi</div>
+  <div>
+    <span class="lang-toggle" onclick="setLang('en')">English</span> |
+    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
+  </div>
+  <a href="index.html" class="bg-white text-black px-4 py-1 rounded">Back</a>
+</div>
 
   <!-- Hero Section -->
  <header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/Bandhavgarh.webp');">
-  <div class="absolute top-4 right-4 z-50">
-    <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
-  </div>
+
   <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
     <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Bandhavgarh</h1>
-      <p class="text-lg md:text-2xl">The Land of the Royal Bengal Tiger</p>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Bandhavgarh</h1>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">बांधवगढ़ में आपका स्वागत है</h1>
+      <p class="text-lg md:text-2xl en">The Land of the Royal Bengal Tiger</p>
+      <p class="text-lg md:text-2xl hi hidden">रॉयल बंगाल टाइगरों की भूमि</p>
     </div>
   </div>
 </header>
 
-
-   <!-- Map and Info Section -->
- <section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
+<!-- Map and Info Section -->
+<section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
   <div class="max-w-7xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 relative inline-block">
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 relative inline-block en">
       Discover Bandhavgarh
+      <span class="block w-20 h-1 bg-green-500 mt-2 mx-auto rounded-full"></span>
+    </h2>
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 relative inline-block hi hidden">
+      बांधवगढ़ की खोज करें
       <span class="block w-20 h-1 bg-green-500 mt-2 mx-auto rounded-full"></span>
     </h2>
 
     <div class="flex flex-col lg:flex-row items-center gap-10">
-      
-      <!-- Map -->
       <div class="w-full lg:w-1/2 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition duration-300">
         <iframe 
           class="w-full h-80 border-4 border-green-100 rounded-lg"
@@ -179,256 +52,396 @@
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
-
-      <!-- Description -->
       <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
-        <h3 class="text-2xl font-semibold text-green-700 mb-4">A Glimpse into Bandhavgarh</h3>
-        <p class="text-gray-700 text-justify text-lg leading-relaxed">
-         Brimming with diverse wildlife and verdant meadows, the Bandhavgarh National Park is known for one of the best sightings of the Royal Bengal Tigers in the country. Nestled in the Vindhya hills in Umaria district, the park not only showcases a diversity of flora and fauna but also has a rich historical past.   </p>
-        <p class="text-gray-700 text-justify text-lg leading-relaxed mt-4">
-          Once served as the game preserve of Maharajas of Rewa, it is here where the first white tiger, 'Mohan' was found by the Maharaja Martand Singh of Rewa during a hunting expedition in 1951. Thus, all the white tigers in the world today are considered the descendants of Mohan and are believed to owe their roots to Bandhavgarh. 
-<br>The park also boasts around 37 species of mammals, and over 250 species of birds and is a favorite spot among wildlife and nature lovers for an immersive jungle safari experience in the Heart of India.  </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-  <!-- Attractions Section -->
-  <section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8">Top Attractions in Bandhavgarh</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-    <!-- Template Card Start -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/bandhavgarh/fauna.jpg" alt="fauna" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Bandhavgarh Safari Zones</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
-        <p class="text-gray-700 text-justify text-justify line-clamp-4" id="desc1">
-       Explore the serene wilderness during the morning and afternoon safari in the three prominent core zones of the park - Magadhi, Tala and Khitauli. For an extraordinary encounter with nature, embark on a night safari in the park's buffer zone during the twilight hour. This immersive experience invites wildlife enthusiasts to delve into the depths of darkness, where the mystical sounds of the forest are sure to create an unforgettable and awe-inspiring atmosphere.  </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc1', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/bandhavgarh/flaura.jpeg" alt="flora" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Flora and Fauna of Bandhavgarh</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
-        <p class="text-gray-700 text-justify text-justify line-clamp-4" id="desc2">
-          The forests of Bandhavgarh can be classified as moist deciduous while the central areas of the park are comparatively drier. Most of the forest area is dominated by Sal trees, primarily found across the valleys forming the way to mixed forest in the area. Grassy meadows occur in the valleys and along the nalahs. Along with this, the park supports 515 different species of vegetation. The vegetation along streams and marshes is rich in birdlife supporting 250 different species of birds. <br>
-
-Commonly spotted bird species of the park include Little Grebe, Egret, Lesser Adjutant, Sarus Crane, Black Kite, Crested Serpent Eagle, Black Vulture, Egyptian Vulture, Common Peafowl, Red Jungle Fowl, Dove, Parakeet, Kingfisher and Indian Roller. <br>
-
-The park's diverse ecosystems create a thriving habitat for an extensive array of species. Major Wildlife of Bandhavgarh National Park include Leopard, Panther, Chital, Sambar, Chausinga, Wild Pig, Wild Dog, Fox, Hyena, Ratel, Python, Wild Cat, Porcupine, Peacock, Mongoose, and Wolf.</p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc2', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/bandhavgarh/sanjay.jpg" alt="sanjay" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Sanjay Dubri National Park</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
-        <p class="text-gray-700 text-justify line-clamp-4" id="desc3">
-          Another ecological gem in the Heart of India, Sanjay Dubri National Park is a heaven for nature and wildlife lovers. Located just at a distance of approximately 84 km from Bandhavgarh, Sanjay Dubri allows you to encounter the prominent wildlife species of the region like Tiger, Leopard, Hyena, Fox, Wolf, Jackal, Wild Cat, Wild Boar, Chital, Chinkara, Sambar, and Mongoose. If lucky you can also get a glimpse of Wild Elephants who are often found roaming in the park when they cross the borders of the Chhattisgarh state </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc3', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/bandhavgarh/parsili.webp" alt="Parsili" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Parsili</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
-        <p class="text-gray-700 text-justify line-clamp-4" id="desc4">
-         Embraced by the breathtaking Banas River, Parsili emerges as an idyllic retreat in Madhya Pradesh's Sidhi district. The place is a perfect haven for nature lovers and offers an ideal leisurely break in the lap of nature. A perfect paradise for bird lovers, Parsili boasts a rich diversity of avian life, including a myriad of migratory species.  </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc4', this)">Read more</button>
+        <h3 class="text-2xl font-semibold text-green-700 mb-4 en">A Glimpse into Bandhavgarh</h3>
+        <h3 class="text-2xl font-semibold text-green-700 mb-4 hi hidden">बांधवगढ़ की एक झलक</h3>
+        <p class="text-gray-700 text-lg text-justify leading-relaxed en">
+          Brimming with diverse wildlife and verdant meadows, Bandhavgarh National Park is known for the best sightings of Royal Bengal Tigers. Nestled in the Vindhya hills of Umaria district, the park is rich in flora, fauna, and history.
+        </p>
+        <p class="text-gray-700 text-lg text-justify leading-relaxed hi hidden">
+          विविध वन्यजीवों और हरे-भरे मैदानों से भरपूर, बांधवगढ़ राष्ट्रीय उद्यान रॉयल बंगाल टाइगर की बेहतरीन झलकियों के लिए जाना जाता है। उमरिया जिले की विंध्य पहाड़ियों में बसा यह पार्क वनस्पतियों, जीव-जंतुओं और ऐतिहासिक धरोहरों से समृद्ध है।
+        </p>
+        <p class="text-gray-700 text-lg text-justify leading-relaxed mt-4 en">
+          Once a royal hunting ground, it’s where the first white tiger 'Mohan' was discovered in 1951. Today, it houses over 37 mammal species and 250+ bird species, offering unforgettable jungle safari experiences.
+        </p>
+        <p class="text-gray-700 text-lg text-justify leading-relaxed mt-4 hi hidden">
+          कभी रियासतों का शिकार स्थल रहा यह क्षेत्र, 1951 में पहले सफेद बाघ 'मोहन' की खोज के लिए प्रसिद्ध है। आज यह पार्क 37 से अधिक स्तनधारी प्रजातियों और 250+ पक्षियों का घर है, और एक अविस्मरणीय जंगल सफारी अनुभव प्रदान करता है।
+        </p>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  function toggleReadMore(id, btn) {
-    const para = document.getElementById(id);
-    if (para.classList.contains("line-clamp-4")) {
-      para.classList.remove("line-clamp-4");
-      btn.textContent = "Read less";
-    } else {
-      para.classList.add("line-clamp-4");
-      btn.textContent = "Read more";
+<!-- Attractions Section -->
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <style>
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: 400px;
+      perspective: 1000px;
     }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .flip-card-back {
+      background-color: #fff;
+      transform: rotateY(180deg);
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .read-more-btn {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
-</script>
-
-<style>
-  .line-clamp-4 {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .read-more-btn:hover {
+    background-color: #1d4ed8;
   }
 </style>
+  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Bandhavgarh</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">बांधवगढ़ के प्रमुख आकर्षण</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-
-  <!-- Famous in Bandhavgarh Section -->
-  <section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-8">Things Bandhavgarh is Famous For</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-
-      <div class="text-center">
-        <img src="images/bandhavgarh/baiga thali.jpeg" alt="Baiga Thali" class="w-full h-48 object-contain rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Baiga Thali</h3>
-        <p class="text-gray-700 text-justify">This thali showcases the unique flavors and culinary practices of the Baiga tribe, often featuring dishes made with locally sourced ingredients like kodo millet, kutki millet, and bamboo shoots. </p>
+    <!-- Card: Safari Zones -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/bandhavgarh/fauna.jpg" alt="fauna" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Bandhavgarh Safari Zones</h3>
+            <h3 class="text-xl font-semibold hi hidden">बांधवगढ़ सफारी ज़ोन</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">Explore the serene wilderness during the morning and afternoon safari in the three prominent core zones of the park - Magadhi, Tala and Khitauli. For an extraordinary encounter with nature, embark on a night safari in the park's buffer zone during the twilight hour.</p>
+          <p class="text-gray-700 text-justify hi hidden">मघधी, ताला और खितौली जैसे प्रमुख कोर ज़ोन में सुबह और दोपहर की सफारी के दौरान शांति से भरपूर जंगल का अनुभव लें। संध्या समय में बफर ज़ोन में नाइट सफारी भी एक रोमांचक अनुभव प्रदान करती है।</p>
+        </div>
       </div>
-
-      <div class="text-center">
-        <img src="images/bandhavgarh/baiga-jwellery.jpg" alt="Baiga Jwellery" class="w-full h-48 object-contain rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Baiga Jwellery</h3>
-        <p class="text-gray-700 text-justify">Nature Work Baiga Tribal Jewelry presents handcrafted tribal jewelry made with natural materials by Baiga artisans.</p>
-      </div>
-
-      <div class="text-center">
-        <img src="images/bandhavgarh/gond-painting.jpeg" alt="paintings" class="w-full h-48 object-contain rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Paintings</h3>
-        <p class="text-gray-700 text-justify">Gond paintings are typically created on various surfaces like paper, cloth, and walls, using natural pigments and brushes made from bamboo sticks</p>
-      </div>
-
-      <div class="text-center">
-        <img src="images/bandhavgarh/bamboo-craft.jpg" alt="bamboo craft" class="w-full h-48 object-contain rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Bamboo Craft</h3>
-        <p class="text-gray-700 text-justify">Bamboo crafts, with local artisans creating a variety of functional and decorative items</p>
-      </div>
-
     </div>
-  </section>
 
-  <section id="section9">
-        <div class="section9">
-            <div class="container1">
-                <div class="category hotels">
-                    <img src="images/hotel.jpg" alt="hotels">
-                    <div class="overlay">
-                    <h2>Hotels Booking</h2>
-                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
-                </div>
-                <div class="category cabs">
-                    <img src="images/cabs.png" alt="cabs">
-                    <div class="overlay">
-                    <h2>Cabs & Taxi</h2>
-                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
-                </div>
-                <div class="category food">
-                    <img src="images/food.jpg" alt="food">
-                    <div class="overlay">
-                    <h2>Food Delivery</h2>
-                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
-                </div>
-            </div>
-            
-            <!-- Popups with Imagess -->
-            <div id="hotelPopup" class="popup">
-                <h2>Hotels Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.goibibo.com/hotels/hotels-in-bandhavgarh-ct/" target="_blank">
-                            <img src="images/goibibo.jpeg" alt="Goibibo">
-                           
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.mptourism.com/accomodation.php?destination=Bandhavgarh" target="_blank">
-                            <img src="images/tourismlogo.png" alt="mp tourism">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.makemytrip.com/hotels/bandhavgarh-hotels.html" target="_blank">
-                            <img src="images/makemytrip.webp" alt="MakeMyTrip">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.agoda.com/search?city=21634&locale=en-in&ckuid=c8fd2554-715b-4d29-a225-6cdc720505d7&prid=0&gclid=CjwKCAjwsZPDBhBWEiwADuO6y9dexGmwzLIp1X0cj599tIMa-K2ZuUrzg_0FpYkXJONq2IL0opzqjBoCllIQAvD_BwE&currency=INR&correlationId=7c35ac9a-4e46-4f09-8974-350562d27d32&analyticsSessionId=-4826506279378249353&pageTypeId=103&realLanguageId=15&languageId=1&origin=IN&stateCode=MH&cid=1932642&tag=14175022-7838-4df3-8707-4fa63ae85279&userId=c8fd2554-715b-4d29-a225-6cdc720505d7&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=27&currencyCode=INR&htmlLanguage=en-in&cultureInfoName=en-in&machineName=sg-pc-6f-acm-web-user-568bb9598c-wptcd&trafficGroupId=5&trafficSubGroupId=67&aid=82361&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Chrome&cdnDomain=agoda.net&checkIn=2025-07-11&checkOut=2025-07-12&rooms=1&adults=2&children=0&priceCur=INR&los=1&textToSearch=Bandhavgarh&travellerType=1&familyMode=off&ds=tWI3YyK6uQu1umat&productType=-1" target="_blank">
-                            <img src="images/agoda.png" alt="Agoda">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
-            </div>
-            
-            <div id="taxiPopup" class="popup">
-                <h2>Cabs & Taxi Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://book.olacabs.com/" target="_blank">
-                            <img src="images/ola.png" alt="Ola">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.uber.com/in/en/" target="_blank">
-                            <img src="images/uber.png" alt="Uber">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.rapido.bike/" target="_blank">
-                            <img src="images/Rapido.png" alt="Rapido">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
-            </div>
-            
-            <div id="foodPopup" class="popup">
-                <h2>Food Delivery Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.zomato.com/" target="_blank">
-                            <img src="images/zomato.png" alt="Zomato">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.swiggy.com/" target="_blank">
-                            <img src="images/swiggy.png" alt="Swiggy">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://blinkit.com/" target="_blank">
-                            <img src="images/blinkit.png" alt="Blinkit">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.bigbasket.com/" target="_blank">
-                            <img src="images/bigbasket.png" alt="BigBasket">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.zeptonow.com/" target="_blank">
-                            <img src="images/zepto.png" alt="Zepto">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
-            </div>
-            </div>
-            
-            
-           
-            
-            
-            <script>
+    <!-- Card: Flora and Fauna -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/bandhavgarh/flaura.jpeg" alt="flora" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Flora and Fauna</h3>
+            <h3 class="text-xl font-semibold hi hidden">वनस्पति और जीव-जंतु</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">Bandhavgarh's deciduous forests are dominated by sal trees and meadows that host over 500 plant species and more than 250 bird species including peacocks, vultures, and kingfishers.</p>
+          <p class="text-gray-700 text-justify hi hidden">बांधवगढ़ के पर्णपाती जंगलों में साल के पेड़ और घास के मैदान हैं जो 500 से अधिक वनस्पति प्रजातियों और 250 से अधिक पक्षियों जैसे मोर, गिद्ध और किंगफिशर को आश्रय देते हैं।</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Sanjay Dubri -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/bandhavgarh/sanjay.jpg" alt="sanjay" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Sanjay Dubri National Park</h3>
+            <h3 class="text-xl font-semibold hi hidden">संजय डुबरी राष्ट्रीय उद्यान</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">Located 84 km from Bandhavgarh, Sanjay Dubri is rich in wildlife like leopards, hyenas, jackals, and even wild elephants from neighboring Chhattisgarh.</p>
+          <p class="text-gray-700 text-justify hi hidden">बांधवगढ़ से 84 किमी दूर स्थित संजय डुबरी राष्ट्रीय उद्यान तेंदुआ, लकड़बग्घा, सियार और छत्तीसगढ़ की सीमा से आने वाले जंगली हाथियों जैसे वन्यजीवों से भरपूर है।</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Parsili -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/bandhavgarh/parsili.webp" alt="Parsili" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Parsili</h3>
+            <h3 class="text-xl font-semibold hi hidden">पर्सिली</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">Nestled on the banks of Banas river, Parsili is a peaceful eco-retreat in Sidhi district, ideal for birdwatching and forest treks.</p>
+          <p class="text-gray-700 text-justify hi hidden">बाणस नदी के किनारे बसा पर्सिली, सीधी जिले का एक शांतिपूर्ण प्रकृति स्थल है जो पक्षी अवलोकन और जंगल भ्रमण के लिए उपयुक्त है।</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+  function setLang(lang) {
+    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+  }
+  // Auto-close flipped cards when scrolling
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('.flip-card.flipped').forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const outOfView = rect.bottom < 0 || rect.top > window.innerHeight;
+      if (outOfView) {
+        card.classList.remove('flipped');
+      }
+      });
+  });
+</script>
+</section>
+
+<!-- Famous Products and Local Food Section -->
+<section class="bg-indigo-50 py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center text-black mb-8 en">Famous Products and Local Food</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-8 hi hidden">प्रसिद्ध उत्पाद और स्थानीय भोजन</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- Baiga Thali -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/bandhavgarh/baiga thali.jpeg" alt="Baiga Thali" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Baiga Thali</h3>
+      <h3 class="text-xl font-semibold hi hidden">बैगा थाली</h3>
+      <p class="text-gray-700 text-justify en">This thali showcases the unique flavors and culinary practices of the Baiga tribe, featuring local ingredients like kodo millet, kutki millet, and bamboo shoots.</p>
+      <p class="text-gray-700 text-justify hi hidden">यह थाली बैगा जनजाति के अनोखे स्वाद और पाक परंपराओं को दर्शाती है, जिसमें कोदो, कुटकी और बांस के कोपलों जैसे स्थानीय तत्व शामिल होते हैं।</p>
+    </div>
+
+    <!-- Baiga Jewellery -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/bandhavgarh/baiga-jwellery.jpg" alt="Baiga Jewellery" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Baiga Jewellery</h3>
+      <h3 class="text-xl font-semibold hi hidden">बैगा आभूषण</h3>
+      <p class="text-gray-700 text-justify en">Handcrafted tribal jewelry made by Baiga artisans using natural materials like seeds, stones, and metals.</p>
+      <p class="text-gray-700 text-justify hi hidden">बीजों, पत्थरों और धातुओं जैसे प्राकृतिक तत्वों से बैगा कारीगरों द्वारा बनाए गए हस्तनिर्मित पारंपरिक आभूषण।</p>
+    </div>
+
+    <!-- Gond Painting -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/bandhavgarh/gond-painting.jpeg" alt="Paintings" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Gond Paintings</h3>
+      <h3 class="text-xl font-semibold hi hidden">गोंड पेंटिंग</h3>
+      <p class="text-gray-700 text-justify en">Created using natural colors and bamboo brushes, Gond paintings depict nature, mythology, and tribal culture.</p>
+      <p class="text-gray-700 text-justify hi hidden">प्राकृतिक रंगों और बाँस की कूंचियों से बनाई गई ये पेंटिंग्स प्रकृति, पौराणिक कथाओं और आदिवासी जीवनशैली को दर्शाती हैं।</p>
+    </div>
+
+    <!-- Bamboo Craft -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/bandhavgarh/bamboo-craft.jpg" alt="Bamboo Craft" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Bamboo Craft</h3>
+      <h3 class="text-xl font-semibold hi hidden">बांस शिल्प</h3>
+      <p class="text-gray-700 text-justify en">Locally crafted bamboo items including baskets, mats, furniture, and decorative pieces.</p>
+      <p class="text-gray-700 text-justify hi hidden">स्थानीय रूप से बनाए गए बांस के उत्पाद जैसे टोकरी, चटाई, फर्नीचर और सजावटी वस्तुएं।</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8 en">Bandhavgarh Photo Gallery</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">बांधवगढ़ फोटो गैलरी</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <img src="images/bandhavgarh/gallery1.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/bandhavgarh/gallery2.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/bandhavgarh/gallery3.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/bandhavgarh/gallery4.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/bandhavgarh/gallery5.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/bandhavgarh/gallery6.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+  </div>
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+  <script>
+    function showImage(src) {
+      document.getElementById("popupImage").src = src;
+      document.getElementById("imagePopup").classList.remove("hidden");
+    }
+    function hideImage() {
+      document.getElementById("imagePopup").classList.add("hidden");
+      document.getElementById("popupImage").src = "";
+    }
+  </script>
+</section>
+
+
+
+
+<section class="py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
+  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Bandhavgarh</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">बांधवगढ़ की यात्रा कैसे करें</h2>
+  <div class="flex flex-col md:flex-row justify-around gap-8">
+    <div onclick="showImage('images/bandhavgarh/train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest railway stations: Umaria (35 km), Katni (100 km)</li>
+        <li class="hi hidden">निकटतम रेलवे स्टेशन: उमरिया (35 किमी), कटनी (100 किमी)</li>
+        <li class="en">Well connected via taxis and buses</li>
+        <li class="hi hidden">टैक्सी और बसों द्वारा अच्छी तरह से जुड़ा हुआ</li>
+      </ul>
+    </div>
+    <div onclick="showImage('images/bandhavgarh/air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">उड़ान विकल्प</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest Airport: Jabalpur Airport (170 km)</li>
+        <li class="hi hidden">निकटतम हवाई अड्डा: जबलपुर हवाई अड्डा (170 किमी)</li>
+        <li class="en">Connected to major cities like Delhi, Mumbai</li>
+        <li class="hi hidden">दिल्ली, मुंबई जैसे प्रमुख शहरों से जुड़ा हुआ</li>
+      </ul>
+    </div>
+  </div>
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+</section>
+
+<!-- Booking Options Popup Section (Bilingual) -->
+<section id="section9">
+  <div class="section9">
+    <div class="container1">
+      <div class="category hotels">
+        <img src="images/hotel.jpg" alt="hotels">
+        <div class="overlay">
+          <h2 class="en">Hotels Booking</h2>
+          <h2 class="hi hidden">होटल बुकिंग</h2>
+          <button onclick="showPopup('hotelPopup')">Book Now</button>
+        </div>
+      </div>
+      <div class="category cabs">
+        <img src="images/cabs.png" alt="cabs">
+        <div class="overlay">
+          <h2 class="en">Cabs & Taxi</h2>
+          <h2 class="hi hidden">कैब और टैक्सी</h2>
+          <button onclick="showPopup('taxiPopup')">Book Now</button>
+        </div>
+      </div>
+      <div class="category food">
+        <img src="images/food.jpg" alt="food">
+        <div class="overlay">
+          <h2 class="en">Food Delivery</h2>
+          <h2 class="hi hidden">खाद्य वितरण</h2>
+          <button onclick="showPopup('foodPopup')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popups with Images -->
+    <div id="hotelPopup" class="popup">
+      <h2 class="en">Hotels Booking Platforms</h2>
+      <h2 class="hi hidden">होटल बुकिंग प्लेटफ़ॉर्म</h2>
+      <div class="options">
+        <div class="option">
+          <a href="https://www.goibibo.com/hotels/" target="_blank">
+            <img src="images/goibibo.jpeg" alt="Goibibo">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.oyorooms.com/" target="_blank">
+            <img src="images/oyo.png" alt="OYO">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.makemytrip.com/hotels/" target="_blank">
+            <img src="images/makemytrip.webp" alt="MakeMyTrip">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.agoda.com/en-in/" target="_blank">
+            <img src="images/agoda.png" alt="Agoda">
+          </a>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
+    </div>
+
+    <div id="taxiPopup" class="popup">
+      <h2 class="en">Cabs & Taxi Booking Platforms</h2>
+      <h2 class="hi hidden">कैब और टैक्सी बुकिंग प्लेटफ़ॉर्म</h2>
+      <div class="options">
+        <div class="option">
+          <a href="https://book.olacabs.com/" target="_blank">
+            <img src="images/ola.png" alt="Ola">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.uber.com/in/en/" target="_blank">
+            <img src="images/uber.png" alt="Uber">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.rapido.bike/" target="_blank">
+            <img src="images/Rapido.png" alt="Rapido">
+          </a>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
+    </div>
+
+    <div id="foodPopup" class="popup">
+      <h2 class="en">Food Delivery Platforms</h2>
+      <h2 class="hi hidden">खाद्य वितरण प्लेटफ़ॉर्म</h2>
+      <div class="options">
+        <div class="option">
+          <a href="https://www.zomato.com/" target="_blank">
+            <img src="images/zomato.png" alt="Zomato">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.swiggy.com/" target="_blank">
+            <img src="images/swiggy.png" alt="Swiggy">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://blinkit.com/" target="_blank">
+            <img src="images/blinkit.png" alt="Blinkit">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.bigbasket.com/" target="_blank">
+            <img src="images/bigbasket.png" alt="BigBasket">
+          </a>
+        </div>
+        <div class="option">
+          <a href="https://www.zeptonow.com/" target="_blank">
+            <img src="images/zepto.png" alt="Zepto">
+          </a>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
+    </div>
+  </div>
+  <script>
                 function showPopup(id) {
                     document.getElementById(id).style.display = 'block';
                 }
@@ -437,14 +450,9 @@ The park's diverse ecosystems create a thriving habitat for an extensive array o
                     document.getElementById(id).style.display = 'none';
                 }
             </script>
-            
-            
-            
-       </section>
+</section>
 
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
-
+<div id="footer-placeholder"></div>
 <script>
   fetch("footer1.html")
     .then(res => res.text())
