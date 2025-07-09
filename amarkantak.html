@@ -1,320 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Explore Amarkantak - Tourism Guide</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #206680; /* Slight teal tint from the water */
-
-        }
-       
-    
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-       
-       
-
-        h2 {
-            color: white;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
- .container1 {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 20px auto;
-    gap: 20px;
-}
-
-.category {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    height: 250px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-}
-
-.category img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-.overlay h2 {
-    margin: 10px 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.overlay button {
-    padding: 10px;
-    background-color: #ffcc00;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-@media (min-width: 768px) {
-    .category {
-        width: 45%;
-        height: 300px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .category {
-        width: 30%;
-        height: 350px;
-    }
-}
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            width: 60%;
-            text-align: center;
-        }
-        .popup .options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .popup .option {
-            width: 150px;
-            text-align: center;
-        }
-        .popup img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-        }
-        .popup a {
-            display: block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        .close-btn {
-            display: block;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
-<body class=" text-gray-900">
+<body class="text-gray-900 pt-20">
 
-  <!-- Hero Section -->
- <header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/amarkantak.webp');">
-  <div class="absolute top-4 right-4 z-50">
-    <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
+<!-- Header Bar -->
+<div class="fixed top-0 left-0 w-full bg-gray-800 text-white flex justify-between items-center px-4 py-2 z-50">
+  <div class="text-xl font-bold">Travel Saarthi</div>
+  <div>
+    <span class="lang-toggle" onclick="setLang('en')">English</span> |
+    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
   </div>
+  <a href="index.html" class="bg-white text-black px-4 py-1 rounded">Back</a>
+</div>
+
+<!-- Hero Section -->
+<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/amarkantak.webp');">
   <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
     <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Amarkantak</h1>
-      <p class="text-lg md:text-2xl">The City of Lakes, Culture, and Charm</p>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Amarkantak</h1>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">अमरकंटक में आपका स्वागत है</h1>
+      <p class="text-lg md:text-2xl en">Origin of Narmada, Land of Pilgrimage</p>
+      <p class="text-lg md:text-2xl hi hidden">नर्मदा की जन्मभूमि, तीर्थ यात्राय का ग्राम</p>
     </div>
   </div>
 </header>
 
-
-   <!-- Map and Info Section -->
- <section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 relative inline-block">
-      Discover Amarkantak
-      <span class="block w-20 h-1 bg-green-500 mt-2 mx-auto rounded-full"></span>
-    </h2>
-
-    <div class="flex flex-col lg:flex-row items-center gap-10">
-      
-      <!-- Map -->
-      <div class="w-full lg:w-1/2 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition duration-300">
-        <iframe 
-          class="w-full h-80 border-4 border-green-100 rounded-lg"
-          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d17835.72887372609!2d81.75803041972657!3d22.668668488155223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1splace%20to%20visit%20in%20amar%20kantak!5e1!3m2!1sen!2sin!4v1751473784431!5m2!1sen!2sin" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <!-- Description -->
-      <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
-        <h3 class="text-2xl font-semibold text-green-700 mb-4">A Glimpse into Amarkantak</h3>
-        <p class="text-gray-700 text-justify text-lg leading-relaxed">
-          Amarkantak, revered as <strong>\"Teerthraj\"</strong> – the King of Pilgrimages – is not only a spiritual sanctuary but also a geographic marvel. It sits at the confluence of the Vindhya and Satpura ranges, embraced by the Maikal Hills.
-        </p>
-        <p class="text-gray-700 text-justify text-lg leading-relaxed mt-4">
-          The region is ecologically significant, home to forests rich in <strong>medicinal flora</strong>. Pilgrims, nature lovers, and seekers of peace find solace in Amarkantak’s sacred waters, serene landscapes, and healing herbs.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-  <!-- Attractions Section -->
-  <section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8">Top Attractions in Amarkantak</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-    <!-- Template Card Start -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Amarkantak/kapil dhara" alt="kapil dhara" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Kapil Dhara</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
-        <p class="text-gray-700 text-justify text-justify line-clamp-4" id="desc1">
-          It is associated with the legends of Saint Kapil or Kapila. It is said that he spent 12 years in meditation at this place.
-          The holy Narmada pours downhill as a gigantic waterfall forms the Kapil Dhara waterfall. On the rocky banks of the brisk, the blue water is the
-          holy Narmada and is a popular picnic spot for visitors. This waterfall is the most famous among all the Amarkantak Waterfalls due to its association with the Hindu saint.
-        </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc1', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Amarkantak/dugdh dhara.jpg" alt="dugdh dhara" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Dugdh Dhara</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
-        <p class="text-gray-700 text-justify text-justify line-clamp-4" id="desc2">
-          People take a one-kilometre trek from the Kapil Dhara to the next Narmada fall which is Dugdh Dhara. This trek is quite a popular thing to do in Amarkantak among the tourists. It is surrounded by rocky steps with wild bushes. The froth of water looks like a stream of Dugdh (Milk), naming it the Dugdh Dhara waterfall.
-        </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc2', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Amarkantak/narmada-udgam.jpg" alt="narmada udgam" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Narmada Udgam</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
-        <p class="text-gray-700 text-justify line-clamp-4" id="desc3">
-          Three rivers - the holy Narmada, the Sone and the Johila emerge from the womb of Amarkantak. A rising stream of Narmada can be seen at The Narmada Udgam Temple which is the most visited place in Amarkantak. Every year on the occasion of Narmada Jayanti, devotees in abundance gather here to attend the special event. Narmada Udgam Temple is surrounded by wonderful natural wonders like Narmada kund, Sonemuda (the source of river Sone), plunging Dugdhara falls and the Kapildhara falls.
-        </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc3', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Amarkantak/yantra-mandir.jpeg" alt="yantra-mandir" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Shri Yantra Mandir</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
-        <p class="text-gray-700 text-justify line-clamp-4" id="desc4">
-          The most noticeable feature of the Shri Yantra Mandir is the massive sculpture with four heads at the entrance path. The head represents the face of goddess Laxmi, Saraswati, Kali, and Bhuvaneshwari. They are accompanied by statues of Lord Ganesha and Kartik, as well as 64 exquisitely carved deities also known as Chaunsath Yoginis. The temple is constructed as a 3D projection of the Sri Yantra  or Sri Chakra, which forms the core of the Sri Vidya worship in Hinduism.
-        </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc4', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Amarkantak/mai-ki-bagiya.jpeg" alt="mai-ki-bagiya" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Mai Ki Bagiya</h3>
-        <p class="text-sm text-gray-600 mb-2">Best Time to Visit: September to February</p>
-        <p class="text-gray-700 text-justify line-clamp-4" id="desc5">
-          The natural tree grove known as Mai ki Bagiya, surrounds the woodland and is devoted to the Goddess Narmada. The garden has Gulbakavli, Roses, and other blooming plants in addition to mango, banana, and other fruit trees. The garden also houses a Charanodak Kund pond and a small temple dedicated to the Goddess Narmada. This location is thought to be where the Narmada river actually originated. It is believed that the water stream that first emerged in Mai's garden has since continued on and now emerges at the current Narmada origin temple.
-        </p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc5', this)">Read more</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<script>
-  function toggleReadMore(id, btn) {
-    const para = document.getElementById(id);
-    if (para.classList.contains("line-clamp-4")) {
-      para.classList.remove("line-clamp-4");
-      btn.textContent = "Read less";
-    } else {
-      para.classList.add("line-clamp-4");
-      btn.textContent = "Read more";
+<!-- Attractions -->
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <style>
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: 400px;
+      perspective: 1000px;
     }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .flip-card-back {
+      background-color: #fff;
+      transform: rotateY(180deg);
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .read-more-btn {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
-</script>
-
-<style>
-  .line-clamp-4 {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .read-more-btn:hover {
+    background-color: #1d4ed8;
   }
 </style>
-
-
-  <!-- Famous in Amarkantak Section -->
-  <section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-8">Things Amarkantak is Famous For</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div class="text-center">
-        <img src="images/Amarkantak/dal bafla.jpg" alt="malwa Cuisine" class="w-full h-48 object-contain rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Malwa Cuisine</h3>
-        <p class="text-gray-700 text-justify">Amarkantak is known for its vegetarian cuisine, with Dal Bafla being a particularly famous dish.</p>
+  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Amarkantak</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">अमरकंटक के प्रमुख आकर्षण</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Sample Card With Flip -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/Amarkantak/narmada-udgam.jpg" alt="Narmada Udgam" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Narmada Udgam</h3>
+            <h3 class="text-xl font-semibold hi hidden">नर्मदा उद्गम स्थल</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">The sacred origin point of the Narmada River, surrounded by temples and serenity. Three rivers - the holy Narmada, the Sone and the Johila emerge from the womb of Amarkantak. A rising stream of Narmada can be seen at The Narmada Udgam Temple which is the most visited place in Amarkantak. Every year on the occasion of Narmada Jayanti, devotees in abundance gather here to attend the special event. Narmada Udgam Temple is surrounded by wonderful natural wonders like Narmada kund, Sonemuda (the source of river Sone), plunging Dugdhara falls and the Kapildhara falls.
+        </p>
+          <p class="text-gray-700 text-justify hi hidden">नर्मदा नदी की पवित्र उद्गम स्थल, जो पवित्र मंदिरों से घिरा हुआ है।</p>
+        </div>
       </div>
-
-      <div class="text-center">
-        <img src="images/Amarkantak/baiga.jpeg" alt="Baiga Fabric" class="w-full h-48 object-contain rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Baiga Adivasi Fabric</h3>
-        <p class="text-gray-700 text-justify">The Baiga Adivasi tribe, residing in Central India, have a unique relationship with fabric, particularly in their traditional attire.</p>
-      </div>
-
-      <div class="text-center">
-        <img src="images/Amarkantak/herbs.jpeg" alt="herbs" class="w-full h-48 object-contain rounded-lg mb-2">
-        <h3 class="text-xl font-semibold">Herbs</h3>
-        <p class="text-gray-700 text-justify">These medicinal plants, include single herbal supplements, Ayurvedic oils and massage balms, and traditional formulations like Triphala churna, Sitopaladi churna, and Arogya Vardhini Vati.</p>
-      </div>
-
     </div>
-  </section>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/Amarkantak/kapil dhara.jpg" alt="Kapildhara Waterfall" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Kapildhara Waterfall</h3>
+            <h3 class="text-xl font-semibold hi hidden">कपिलधारा झरना</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">A picturesque waterfall formed by Narmada, 100 feet tall. It is associated with the legends of Saint Kapil or Kapila. It is said that he spent 12 years in meditation at this place.
+          The holy Narmada pours downhill as a gigantic waterfall forms the Kapil Dhara waterfall. On the rocky banks of the brisk, the blue water is the
+          holy Narmada and is a popular picnic spot for visitors. This waterfall is the most famous among all the Amarkantak Waterfalls due to its association with the Hindu saint.</p>
+          <p class="text-gray-700 text-justify hi hidden">नर्मदा की धारा से निकला एक सुंदर झरना, जिसकी ऊँचाई लगभग 100 फीट है।</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/Amarkantak/sonemuda.jpg" alt="Sonemuda" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Sonemuda</h3>
+            <h3 class="text-xl font-semibold hi hidden">सोनेमुड़ा</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">Origin of the Son River with natural beauty and tranquility.</p>
+          <p class="text-gray-700 text-justify hi hidden">सोन नदी की उत्पत्ति स्थल जो प्राकृतिक सौंदर्य और शांति से परिपूर्ण है।</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/Amarkantak/dugdh dhara.jpg" alt="Dugdh Dhara" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Dugdh Dhara</h3>
+            <h3 class="text-xl font-semibold hi hidden">दुग्धधारा</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">A scenic waterfall near Kapildhara, resembling the flow of milk.People take a one-kilometre trek from the Kapil Dhara to the next Narmada fall which is Dugdh Dhara. This trek is quite a popular thing to do in Amarkantak among the tourists. It is surrounded by rocky steps with wild bushes. The froth of water looks like a stream of Dugdh (Milk), naming it the Dugdh Dhara waterfall.
+       </p>
+          <p class="text-gray-700 text-justify hi hidden">कपिलधारा के पास स्थित यह झरना दूध की धार जैसा प्रतीत होता है।</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front bg-white shadow-lg">
+          <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Yantra Mandir" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold en">Yantra Mandir</h3>
+            <h3 class="text-xl font-semibold hi hidden">यंत्र मंदिर</h3>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <p class="text-gray-700 text-justify en">A unique temple showcasing sacred geometries and spiritual energy points. The most noticeable feature of the Shri Yantra Mandir is the massive sculpture with four heads at the entrance path. The head represents the face of goddess Laxmi, Saraswati, Kali, and Bhuvaneshwari. They are accompanied by statues of Lord Ganesha and Kartik, as well as 64 exquisitely carved deities also known as Chaunsath Yoginis. The temple is constructed as a 3D projection of the Sri Yantra  or Sri Chakra, which forms the core of the Sri Vidya worship in Hinduism.
+       </p>
+          <p class="text-gray-700 text-justify hi hidden">एक अद्भुत मंदिर जहाँ पवित्र यंत्र और आध्यात्मिक ऊर्जा केंद्र देखे जा सकते हैं।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  function setLang(lang) {
+    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+  }
+  // Auto-close flipped cards when scrolling
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('.flip-card.flipped').forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const outOfView = rect.bottom < 0 || rect.top > window.innerHeight;
+      if (outOfView) {
+        card.classList.remove('flipped');
+      }
+      });
+  });
+</script>
+</section>
+
+<section class="bg-indigo-50 py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center text-black mb-8 en">Famous Products and Local Food</h2>
+  <h2 class="text-3xl font-bold text-center  text-black mb-8 hi hidden">प्रसिद्ध उत्पाद और स्थानीय व्यंजन</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/Amarkantak/amla.jpg" alt="Amla Products" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Amla-Based Products</h3>
+      <h3 class="text-xl font-semibold hi hidden">आंवला उत्पाद</h3>
+      <p class="text-gray-700 text-justify en">Amarkantak is famous for organic amla (Indian gooseberry) used in juices, candies, and Ayurvedic medicines.</p>
+      <p class="text-gray-700 text-justify hi hidden">अमरकंटक का आंवला जैविक और औषधीय गुणों से भरपूर होता है, जो जूस, कैंडी और आयुर्वेदिक दवाओं में उपयोग होता है।</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/Amarkantak/kodo-kutki.jpg" alt="Kodo Kutki Grains" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Kodo & Kutki Grains</h3>
+      <h3 class="text-xl font-semibold hi hidden">कोदो और कुटकी अनाज</h3>
+      <p class="text-gray-700 text-justify en">Traditional millet grains grown by local tribes, rich in fiber and nutrition.</p>
+      <p class="text-gray-700 text-justify hi hidden">स्थानीय जनजातियों द्वारा उगाए जाने वाले ये मोटे अनाज फाइबर और पोषण से भरपूर होते हैं।</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/Amarkantak/herbal-products.jpg" alt="Herbal Remedies" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Herbal Remedies</h3>
+      <h3 class="text-xl font-semibold hi hidden">जड़ी-बूटी उपचार</h3>
+      <p class="text-gray-700 text-justify en">Forest-based herbs like harra, bahera, and tulsi are collected and sold for traditional healing.</p>
+      <p class="text-gray-700 text-justify hi hidden">वनों से प्राप्त हर्रा, बहेरा और तुलसी जैसी जड़ी-बूटियों से पारंपरिक उपचार किया जाता है।</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/Amarkantak/tribal-thali.jpg" alt="Tribal Cuisine" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Tribal Cuisine</h3>
+      <h3 class="text-xl font-semibold hi hidden">आदिवासी व्यंजन</h3>
+      <p class="text-gray-700 text-justify en">Experience authentic tribal food made from local grains, roots, and herbs cooked in clay pots.</p>
+      <p class="text-gray-700 text-justify hi hidden">स्थानीय अनाज, कंद और जड़ी-बूटियों से मिट्टी के बर्तनों में तैयार की गई पारंपरिक आदिवासी थाली।</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <img src="images/Amarkantak/souvenirs.jpg" alt="Spiritual Souvenirs" class="w-full h-48 object-contain rounded mb-4">
+      <h3 class="text-xl font-semibold en">Spiritual Souvenirs</h3>
+      <h3 class="text-xl font-semibold hi hidden">आध्यात्मिक स्मृति चिन्ह</h3>
+      <p class="text-gray-700 text-justify en">Handmade idols, rudraksha beads, and yantras crafted by local artisans are popular spiritual gifts.</p>
+      <p class="text-gray-700 text-justify hi hidden">स्थानीय कारीगरों द्वारा बनाए गए हस्तनिर्मित मूर्तियाँ, रुद्राक्ष और यंत्र आध्यात्मिक भेंट के रूप में प्रसिद्ध हैं।</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Continue with Famous For section and rest of the HTML -->
+ <section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8 en">Maheshwar Photo Gallery</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">महेश्वर फोटो गैलरी</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/maheshwar.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+  </div>
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+  </div>
+</div>
+<script>
+ 
+  function showImage(src) {
+    document.getElementById("popupImage").src = src;
+    document.getElementById("imagePopup").classList.remove("hidden");
+  }
+
+  function hideImage() {
+    document.getElementById("imagePopup").classList.add("hidden");
+    document.getElementById("popupImage").src = "";
+  }
+</script>
+</section>
+
+<!-- Image Modal -->
+
+
+<!-- Travel Options -->
+<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
+  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Maheshwar</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">महेश्वर आने-जाने के साधन</h2>
+  <div class="flex flex-col md:flex-row justify-around gap-8">
+    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest railway stations: Barwaha (39 km), Indore (91 km)</li>
+        <li class="hi hidden">नजदीकी रेलवे स्टेशन: बड़वाहा (39 किमी), इंदौर (91 किमी)</li>
+        <li class="en">Connected via local taxis and buses</li>
+        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
+      </ul>
+    </div>
+    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
+        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
+        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
+        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+</section>
+
+
 
   <section id="section9">
         <div class="section9">
@@ -433,11 +432,7 @@
                 <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
             </div>
             </div>
-            
-            
-           
-            
-            
+      
             <script>
                 function showPopup(id) {
                     document.getElementById(id).style.display = 'block';
@@ -447,14 +442,26 @@
                     document.getElementById(id).style.display = 'none';
                 }
             </script>
-            
-            
-            
-       </section>
+             </section>
 
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+  }
+  // Auto-close flipped cards when scrolling
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('.flip-card.flipped').forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const outOfView = rect.bottom < 0 || rect.top > window.innerHeight;
+      if (outOfView) {
+        card.classList.remove('flipped');
+      }
+      });
+  });
+</script>
 
+<div id="footer-placeholder"></div>
 <script>
   fetch("footer1.html")
     .then(res => res.text())
