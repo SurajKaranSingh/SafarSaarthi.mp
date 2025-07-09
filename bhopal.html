@@ -9,10 +9,21 @@
 </head>
 <body class=" text-gray-900">
 
-  <!-- Hero Section -->
- <header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Upper_Lake_Bhopal.jpg');">
-  <div class="absolute top-4 right-4 z-50">
+  <!-- Header -->
+<div class="flex justify-between items-center py-4 px-6 bg-gray-800 text-white fixed top-0 left-0 w-full z-50 shadow">
+  <div class="font-bold text-xl">Travel Saarthi</div>
+  <div class="text-center">
+    <span class="lang-toggle" onclick="setLang('en')">English</span> |
+    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
+  </div>
+  <div>
     <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
+  </div>
+</div>
+
+  <!-- Hero Section -->
+ <header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/bhopal/bhopal.jpg');">
+  <div class="absolute top-4 right-4 z-50">
   </div>
   <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
     <div class="text-center px-4">
@@ -46,7 +57,7 @@
 
       <!-- Attraction Card -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Sanchi_Stupa.jpg" alt="Sanchi Stupa" class="w-full h-48 object-cover">
+        <img src="images/Bhopal/sanchistupa.jpg" alt="Sanchi Stupa" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold">Sanchi Stupa</h3>
           <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
@@ -55,7 +66,7 @@
       </div>
 
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Van_Vihar_Bhopal.jpg" alt="Van Vihar National Park" class="w-full h-48 object-cover">
+        <img src="images/Bhopal/vanvihar.jpg" alt="Van Vihar National Park" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold">Van Vihar National Park</h3>
           <p class="text-sm text-gray-600 mb-2">Best Time to Visit: November to February</p>
@@ -64,7 +75,7 @@
       </div>
 
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Bharat_Bhavan.jpg" alt="Bharat Bhavan" class="w-full h-48 object-cover">
+        <img src="images/Bhopal/bharatbhavan.jpg" alt="Bharat Bhavan" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold">Bharat Bhavan</h3>
           <p class="text-sm text-gray-600 mb-2">Best Time to Visit: Year-round</p>
@@ -73,7 +84,7 @@
       </div>
 
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Taj-ul-Masajid_Bhopal.jpg" alt="Taj-ul-Masajid" class="w-full h-48 object-cover">
+        <img src="images/Bhopal/tajulmasajid.jpg" alt="Taj-ul-Masajid" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold">Taj-ul-Masajid</h3>
           <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
@@ -82,11 +93,20 @@
       </div>
 
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Upper_Lake_Bhopal_View.jpg" alt="Upper Lake" class="w-full h-48 object-cover">
+        <img src="images/Bhopal/bhojtal.webp" alt="Upper Lake" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold">Upper Lake (Bhojtal)</h3>
           <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
           <p class="text-gray-700">The oldest man-made lake in India, perfect for boating, sunset views, and peaceful strolls.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="images/Bhopal/tribal museum.jpg" alt="Indira Gandhi Rashtriya Manav Sangrahalaya (Tribal Museum)" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Indira Gandhi Rashtriya Manav Sangrahalaya (Tribal Museum)</h3>
+          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
+          <p class="text-gray-700">Indira Gandhi Rashtriya Manav Sangrahalaya (Tribal Museum) is an open-air museum in Bhopal showcasing the rich cultural heritage and lifestyle of Indian tribes.</p>
         </div>
       </div>
 
@@ -99,19 +119,19 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <div class="text-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bhopali_Gosht_Korma.jpg" alt="Bhopali Cuisine" class="w-full h-48 object-cover rounded-lg mb-2">
+        <img src="images/Bhopal/bhopalifood.jpg" alt="Bhopali Cuisine" class="w-full h-48 object-cover rounded-lg mb-2">
         <h3 class="text-xl font-semibold">Bhopali Cuisine</h3>
         <p class="text-gray-700">Bhopal is famous for its kebabs, biryani, and Bhopali gosht korma, reflecting its Nawabi legacy.</p>
       </div>
 
       <div class="text-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Zardozi_work.jpg" alt="Zardozi Work" class="w-full h-48 object-cover rounded-lg mb-2">
+        <img src="images/Bhopal/work.jpg" alt="Zardozi Work" class="w-full h-48 object-cover rounded-lg mb-2">
         <h3 class="text-xl font-semibold">Zardozi Embroidery</h3>
         <p class="text-gray-700">Exquisite hand embroidery using gold and silver threads, traditionally worn on festive and bridal attire.</p>
       </div>
 
       <div class="text-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Bhopal_Bidri_Work.jpg" alt="Bidriware" class="w-full h-48 object-cover rounded-lg mb-2">
+        <img src="images/Bhopal/bidriware.jpg" alt="Bidriware" class="w-full h-48 object-cover rounded-lg mb-2">
         <h3 class="text-xl font-semibold">Bidriware Handicrafts</h3>
         <p class="text-gray-700">Bhopal is also known for its fine metal handicrafts inlaid with silver, called Bidriware, a heritage art form.</p>
       </div>
@@ -120,15 +140,15 @@
   </section>
 
   <section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Maheshwar Photo Gallery</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">महेश्वर फोटो गैलरी</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 en">Bhopal Photo Gallery</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">भोपाल फोटो गैलरी</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Bhopal/kamlapati fort.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Bhopal/manubhan tekri.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Bhopal/moti masjid.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Bhopal/udaygiri.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Bhopal/gohar mahal.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Bhopal/lower lake.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
   </div>
   <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
   <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
@@ -155,15 +175,15 @@
 
 <!-- Travel Options -->
 <section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
-  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Maheshwar</h2>
-  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">महेश्वर आने-जाने के साधन</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Bhopal</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">भोपाल आने-जाने के साधन</h2>
   <div class="flex flex-col md:flex-row justify-around gap-8">
     <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
       <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
       <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
       <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest railway stations: Barwaha (39 km), Indore (91 km)</li>
-        <li class="hi hidden">नजदीकी रेलवे स्टेशन: बड़वाहा (39 किमी), इंदौर (91 किमी)</li>
+        <li class="en">Nearest railway stations: Bhopal , Rani Kamalapati Station</li>
+        <li class="hi hidden">नजदीकी रेलवे स्टेशन: भोपाल , रानी कमलापति स्टेशन</li>
         <li class="en">Connected via local taxis and buses</li>
         <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
       </ul>
@@ -172,8 +192,8 @@
       <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
       <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
       <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
-        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
+        <li class="en">Nearest Airport: Raja Bhoj Airport,Bhopal</li>
+        <li class="hi hidden">निकटतम हवाई अड्डा: राजा भोज हवाई अड्डा,भोपाल </li>
         <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
         <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
       </ul>
