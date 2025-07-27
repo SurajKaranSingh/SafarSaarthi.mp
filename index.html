@@ -1,760 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Planner</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #206680; /* Slight teal tint from the water */
-
-        }
-        header {
-            background-color: #093245;
-            color: rgb(136, 76, 220);
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .section {
-            
-            margin: 20px;
-            
-            /* border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-        }
-        .section h2 {
-            color: whitesmoke;
-        }
-    
-        .section1 {
-    padding: 30px;
-    margin: 20px auto;
-    background: linear-gradient(135deg, #1e3341, #3a5568);
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 800px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.section1:hover {
-    transform: scale(1.02);
-}
-
-.section1 h2 {
-    color: #ffffff;
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.section1 p {
-    color: #ddd;
-    font-size: 1.1em;
-    margin-bottom: 20px;
-}
-
-.responsive-video {
-    width: 20%;
-    max-width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.responsive-video:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .section1 {
-        padding: 20px;
-        margin: 10px;
-    }
-
-    .section1 h2 {
-        font-size: 1.5em;
-    }
-
-    .section1 p {
-        font-size: 1em;
-    }
-
-    .responsive-video {
-        width: 100%;
-    }
-}
-
-        .section5 {
-    padding: 30px;
-    margin: 20px auto;
-    background: linear-gradient(135deg, #1e3341, #3a5568);
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 800px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.section5:hover {
-    transform: scale(1.02);
-}
-
-.section5 h2 {
-    color: #ffffff;
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.section5 p {
-    color: #ddd;
-    font-size: 1.1em;
-    margin-bottom: 20px;
-}
-
-.responsive-video {
-    width: 100%;
-    max-width: 900px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.responsive-video:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .section5 {
-        padding: 20px;
-        margin: 10px;
-    }
-
-    .section5 h2 {
-        font-size: 1.5em;
-    }
-
-    .section5 p {
-        font-size: 1em;
-    }
-
-    .responsive-video {
-        width: 100%;
-    }
-}
-
-        .container {
-            display: flex; /* Flex layout for horizontal scrolling */
-            overflow-x: auto; /* Enable horizontal scrolling */
-            gap: 40px; /* Spacing between cards */
-            padding-bottom: 10px;
-        }
-        .platform-card {
-            min-width: 300px; /* Minimum width to fit within the scrolling area */
-            flex: 0 0 auto; /* Prevents the card from shrinking or growing */
-            height: 400px;
-            background-size: contain;
-            background-position: center;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(241, 237, 237, 0.1);
-            transition: transform 0.3s;
-            color: rgb(249, 231, 231);
-            position: relative;
-            background-image: no-repeat;
-            background-color: #f0f0f0;
-
-        }
-        .platform-card:hover {
-            transform: scale(1.05);
-        }
-        .platform-card1 {
-            min-width: 270px; /* Minimum width to fit within the scrolling area */
-            flex: 0 0 auto; /* Prevents the card from shrinking or growing */
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            color: white;
-            position: relative;
-        }
-        .platform-card1:hover {
-            transform: scale(1.05);
-        }
-        .platform-card2 {
-            min-width: 300px; /* Minimum width to fit within the scrolling area */
-            flex: 0 0 auto; /* Prevents the card from shrinking or growing */
-            height: 350px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            color: rgb(244, 248, 249);
-            position: relative;
-        }
-        .platform-card2:hover {
-            transform: scale(1.05);
-        }
-        .platform-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
-        }
-        .platform-content h3 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-        .platform-content p {
-            margin: 5% 0;
-        }
-        .platform-content a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 15px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .platform-content a:hover {
-            background-color: #388E3C;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-       
-        .section8 {
-            padding: 20px 0;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h2 {
-            color: white;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Swiper Container */
-        .swiper {
-            width: 90%;
-            max-width: 1200px;
-            padding-bottom: 50px;
-        }
-
-        /* Card Styles */
-        .swiper-slide {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            width: 90%;
-            max-width: 300px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .swiper-slide img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .swiper-slide h3 {
-            font-size: 16px;
-            margin: 10px 0;
-            color: #333;
-        }
-
-        .swiper-slide p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Pagination Dots */
-        .swiper-pagination-bullet {
-            background: white;
-            opacity: 0.7;
-        }
-
-        .swiper-pagination-bullet-active {
-            background: #ffffff;
-            opacity: 1;
-        }
-
-        /* Navigation Buttons */
-        .swiper-button-next, .swiper-button-prev {
-            color: white;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .swiper-slide {
-                width: 80%;
-                max-width: 250px;
-            }
-            .swiper-slide img {
-                width: 70px;
-                height: 70px;
-            }
-            .swiper-slide h3 {
-                font-size: 14px;
-            }
-            .swiper-slide p {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .swiper-slide {
-                width: 100%;
-                max-width: 220px;
-            }
-            .swiper-slide img {
-                width: 60px;
-                height: 60px;
-            }
-            .swiper-slide h3 {
-                font-size: 12px;
-            }
-            .swiper-slide p {
-                font-size: 10px;
-            }
-        }
-
-        
-        
-        .container1 {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 20px auto;
-    gap: 20px;
-}
-
-.category {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    height: 250px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-}
-
-.category img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-.overlay h2 {
-    margin: 10px 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.overlay button {
-    padding: 10px;
-    background-color: #ffcc00;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-@media (min-width: 768px) {
-    .category {
-        width: 45%;
-        height: 300px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .category {
-        width: 30%;
-        height: 350px;
-    }
-}
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            width: 60%;
-            text-align: center;
-        }
-        .popup .options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .popup .option {
-            width: 150px;
-            text-align: center;
-        }
-        .popup img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-        }
-        .popup a {
-            display: block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        .close-btn {
-            display: block;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<!-- <script src="./global.js"></script> -->
-<body >
-
-      <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.5;
-    background-color: #6b879f;
-  }
-
-.ts-hero {
-  width: 100%;
-  height: 100vh;
-  background-image: url('images/Madhya Pradesh.png'); /* Desktop image */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 0 5vw 5vh 5vw;
-}
-
-/* Mobile & Tablet: Different image */
-@media (max-width: 1024px) {
-  .ts-hero {
-    background-image: url('images/Madhya\ Pradesh\ \(mobile\).png'); /* Mobile image */
-    background-position: left center;
-    background-size: contain;
-  }
-}
-
-
-  .ts-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 20px;
-  }
-
-  .ts-hero-content {
-    color: #fff;
-    max-width: 90%;
-    z-index: 1;
-  }
-
-  .ts-hero-content h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    margin-bottom: 15px;
-  }
-
-  .ts-hero-content p {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    font-weight: 400;
-  }
-
-  section {
-    padding: 60px 5vw;
-    text-align: center;
-  }
-
-  section h2 {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    margin-bottom: 20px;
-  }
-
-  @media (max-width: 480px) {
-    .ts-hero {
-      align-items: flex-end;
-      padding: 0 4vw 4vh 4vw;
-    }
-
-    .ts-hero-content {
-      max-width: 100%;
-    }
-
-    .ts-hero-content h1 {
-      text-align: left;
-    }
-
-    .ts-hero-content p {
-      text-align: left;
-    }
-  }
-</style>
-
-     
-     
-      
-
-     
-    
-  <section class="ts-hero relative">
-  
-</section>
-
-
-     
-<section style="max-width: 1200px; margin: 40px auto; padding: 20px;">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Saarthi</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .mp-two-col {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      border-radius: 15px;
-      align-items: stretch;
-    }
-
-    .mp-video {
-      flex: 4;
-      min-width: 300px;
-      background: linear-gradient(135deg, #1e3341, #3a5568);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .mp-video video {
-      width: 100%;
+    html, body {
       height: 100%;
-      object-fit: cover;
-      border-radius: 15px;
-      flex-grow: 1;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
     }
-
-    .platform-cardmp {
-      flex: 2;
-      min-width: 260px;
-      min-height: 300px; /* ✅ Ensure card is visible */
-      background-color: white;
-      background-image: url('images/tourismlogo.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      border-radius: 15px;
-      color: rgb(25, 24, 24);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      box-shadow: 0 6px 20px rgba(59, 56, 56, 0.4);
-      position: relative;
-      overflow: hidden;
+    .city-scroll::-webkit-scrollbar,
+    .package-scroll::-webkit-scrollbar {
+      height: 8px;
     }
-
-    .platform-contentmp {
-      z-index: 1;
-      position: relative;
-    }
-
-    .platform-cardmp::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(to top, rgba(74, 72, 72, 0.6), rgba(255, 255, 255, 0.05));
-      z-index: 0;
-    }
-
-    .platform-contentmp a {
-      display: inline-block;
-      padding: 10px 16px;
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #1e3341;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-      font-size: 1rem;
-    }
-
-    .platform-contentmp a:hover {
-      background-color: #f0f0f0;
-    }
-
-    @media screen and (max-width: 768px) {
-      .mp-two-col {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .mp-video, .platform-cardmp {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-      }
-
-      .mp-video video {
-        height: auto;
-      }
-
-      .platform-cardmp {
-        background-size: cover; /* ✅ Use cover for better behavior */
-        padding: 16px;
-        min-height: 250px; /* ✅ Maintain presence */
-      }
-
-      .platform-contentmp a {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-      }
+    .city-scroll::-webkit-scrollbar-thumb,
+    .package-scroll::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
     }
   </style>
-
-  <div class="mp-two-col">
-    <!-- Video Section -->
-    <div class="mp-video">
-      <video controls autoplay muted playsinline>
-        <source src="videos/mptourism1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <!-- Info Card Section -->
-    <div class="platform-cardmp" id="mptourism">
-      <div class="platform-contentmp">
-        <a href="https://tourism.mp.gov.in/">Know your Madhya Pradesh</a>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="text-xl font-bold text-indigo-600">Travel Saarthi</div>
+      
+      <nav class="hidden md:flex space-x-6">
+        <a href="#hero" class="hover:text-indigo-600">Home</a>
+        <a href="#discover" class="hover:text-indigo-600">Discover</a>
+        <a href="#Tours" class="hover:text-indigo-600">Tours</a>
+         <a href="#Book now" class="hover:text-indigo-600">Book Now</a>
+        <a href="#contact" class="hover:text-indigo-600">Contact</a>
+      </nav>
+      <div class="md:hidden">
+        <button id="menuBtn" class="focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <div id="mobileMenu" class="hidden absolute right-4 mt-2 bg-white shadow rounded p-4 space-y-2">
+          <a href="#hero" class="block">Home</a>
+          <a href="#discover" class="block">Discover</a>
+          <a href="#contact" class="block">Contact</a>
+           <a href="#Tours" class="hover:text-indigo-600">Tours</a>
+         <a href="#Book now" class="hover:text-indigo-600">Book Now</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
+  <!-- Hero Section -->
+  <section id="hero" class="pt-20">
+    <img src="images/Madhya Pradesh.png" alt="Hero" class="w-full h-auto object-cover" />
+  </section>
 
+  <!-- Discover Section Unified Column Layout -->
+  <section id="discover" class="max-w-7xl mx-auto mt-10 px-4 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    <!-- Left Column -->
+    <div class="md:col-span-3 lg:col-span-4 space-y-6 max-h-screen overflow-y-auto pb-8">
+      <div class="bg-white shadow rounded p-4">
+        
+        <video autoplay muted playsinline controls class="w-full rounded">
+          <source src="videos/mptourism1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-
-<section id="trips">
- 
-    <div class="section">
-            <style>
-  .city-search-container {
-    text-align: center;
-    margin: 30px auto;
-    max-width: 400px;
-    padding: 20px;
-    background: linear-gradient(145deg, #f0f0f0, #d9e4f0);
-    border-radius: 15px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  .city-search-container label {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 12px;
-  }
-
-  .city-search-container select {
-    width: 100%;
-    padding: 12px 14px;
-    font-size: 1rem;
-    border: 2px solid #bdc3c7;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .city-search-container select:hover {
-    border-color: #3498db;
-  }
-
-  .city-search-container select:focus {
-    outline: none;
-    border-color: #2980b9;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
-  }
-</style>
-
-<div class="city-search-container">
-  <label for="city-search">🌆 Search City</label>
-  <select id="city-search" onchange="scrollToCard(this.value)">
-    <option value="">-- Select a City --</option>
-    <option value="Bhopal">Bhopal</option>
+      <div class="bg-white shadow rounded p-4">
+        <label for="citySelect" class="font-medium">Select a City 🌆:</label>
+        <select id="citySelect" class="w-full mt-2 p-2 border rounded">
+          <option value="">-- Select a City --</option>
+          <option value="Bhopal">Bhopal</option>
     <option value="Sanchi">Sanchi</option>
     <option value="Bhimbetka">Bhimbetka</option>
     <option value="Pachmarhi">Pachmarhi</option>
-    <option value="Tawa">Tawa</option>
     <option value="Indore">Indore</option>
     <option value="Ujjain">Ujjain</option>
     <option value="Dewas">Dewas</option>
@@ -765,7 +88,7 @@
     <option value="Mandsaur">Mandsaur</option>
     <option value="Gwalior">Gwalior</option>
     <option value="Shivpuri">Shivpuri</option>
-    <option value="Kuno">Kuno</option>
+    
     <option value="Orchha">Orchha</option>
     <option value="Tikamgarh">Tikamgarh</option>
     <option value="Chanderi">Chanderi</option>
@@ -778,723 +101,429 @@
     <option value="Satna">Satna</option>
     <option value="Rewa">Rewa</option>
     <option value="Panna">Panna</option>
-  </select>
-</div>
+        </select>
+      </div>
 
+      <div class="city-scroll flex space-x-4 overflow-x-auto py-4" id="cityCards">
+        <!-- city cards remain unchanged -->
+         <div class="city-scroll flex space-x-4 overflow-x-auto py-4" id="cityCards">
+          <div id="Amarkantak" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
+            <p>Lake City of India</p>
+            <a href="amarkantak.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Bandhavgarh" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/Bandhavgarh.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Bandhavgarh</h3>
+            <p>Food Capital of MP</p>
+            <a href="bandhavgarh.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Bhimbedka" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/bhimbedka.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Bhimbedka</h3>
+            <p>City of Mahakal</p>
+            <a href="bhimbedka.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Bhopal" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/Bhopal.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Bhopal</h3>
+            <p>Lake City of India</p>
+            <a href="bhopal.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Burhanpur" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/burhanpur.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Burhanpur</h3>
+            <p>Food Capital of MP</p>
+            <a href="burhanpur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Chanderi" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/chanderi.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Chanderi</h3>
+            <p>City of Mahakal</p>
+            <a href="chanderi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Chitrakoot" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/chitrakoot.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Chitrakoot</h3>
+            <p>Lake City of India</p>
+            <a href="chitrakoot.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Dewas" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/dewas.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Dewas</h3>
+            <p>Food Capital of MP</p>
+            <a href="dewas.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Gwalior" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/gwalior.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Gwalior</h3>
+            <p>City of Mahakal</p>
+            <a href="gwalior.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+           <div id="Indore" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/indore.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Indore</h3>
+            <p>Food Capital of MP</p>
+            <a href="indore.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Jabalpur" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/bhedaghat-jabalpur.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Jabalpur</h3>
+            <p>City of Mahakal</p>
+            <a href="jabalpur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+           <div id="Kanha" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/kanha.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Kanha</h3>
+            <p>Food Capital of MP</p>
+            <a href="kanha.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Khajuraho" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
+            <p>City of Mahakal</p>
+            <a href="khajuraho.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Maheshwar" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/maheshwar.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Maheshwar</h3>
+            <p>Food Capital of MP</p>
+            <a href="maheshwar.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Mandu" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/mandu.png" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Mandu</h3>
+            <p>Food Capital of MP</p>
+            <a href="mandu.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Mandsaur" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/mandsour.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Mandsaur</h3>
+            <p>City of Mahakal</p>
+            <a href="mandsaur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Orchha" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Orchha</h3>
+            <p>Food Capital of MP</p>
+            <a href="orchha.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Omkareshwar" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/omkareshwar.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Omkareshwar</h3>
+            <p>City of Mahakal</p>
+            <a href="omkareshwar.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Panna" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/panna.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Panna</h3>
+            <p>Food Capital of MP</p>
+            <a href="panna.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Pachmarhi" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
+            <p>City of Mahakal</p>
+            <a href="pachmarhi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Rewa" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/rewa.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Rewa</h3>
+            <p>Food Capital of MP</p>
+            <a href="rewa.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Sanchi" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/sanchi.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Sanchi</h3>
+            <p>City of Mahakal</p>
+            <a href="sanchi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Satna" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/satna.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Satna</h3>
+            <p>Food Capital of MP</p>
+            <a href="satna.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Shivpuri" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/shivpuri.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Shivpuri</h3>
+            <p>City of Mahakal</p>
+            <a href="shivpuri.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+           <div id="Tikamgarh" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/tikamgarh.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Tikamgarh</h3>
+            <p>Food Capital of MP</p>
+            <a href="tikamgarh.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
+          <div id="Ujjain" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Ujjain</h3>
+            <p>City of Mahakal</p>
+            <a href="ujjain.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
+          </div>
 
-<script>
-  function scrollToCard(id) {
-    if (!id) return;
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-</script>
-            <h2>Explore by Cities
-            </h2>
-
-               <!-- Complete Madhya Pradesh Tourism Cards Section -->
-<div class="container">
-    <div class="platform-card" id="Amarkantak" style="background-image: url('images/amarkantak.webp');">
-    <div class="platform-content">
-      <h3>Amarkantak</h3>
-      <p>Narmada Origin, Kapil Dhara</p>
-      <a href="amarkantak.html">Explore</a>
+        </div>
+      </div>
     </div>
-  </div>
-    <div class="platform-card" id="Bandhavgarh" style="background-image: url('images/Bandhavgarh.webp');">
-    <div class="platform-content">
-      <h3>Bandhavgarh</h3>
-      <p>Bandhavgarh National Park</p>
-      <a href="bandhavgarh.html">Explore</a>
+
+    <!-- Right Column -->
+    <div class="md:col-span-1 flex items-start">
+      <div class="bg-white shadow rounded p-4 text-center w-full">
+        <img src="images/tourismlogo.png" alt="MP Tourism" class="mx-auto mb-4 h-24 w-auto" />
+        <a href="https://tourism.mp.gov.in/" target="_blank" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Visit MP Tourism</a>
+      </div>
     </div>
-  </div>
-    <div class="platform-card" id="Bhimbetka" style="background-image: url('images/bhimbedka.jpeg');">
-    <div class="platform-content">
-      <h3>Bhimbetka</h3>
-      <p>Rock Shelters, Cave Paintings</p>
-      <a href="bhimbedka.html">Explore</a>
-    </div>
-  </div>
-  <div class="platform-card" id="Bhopal" style="background-image: url('images/Bhopal.webp');">
-    <div class="platform-content">
-      <h3>Bhopal</h3>
-      <p>Upper Lake, Sanchi Stupa, Van Vihar</p>
-      <a href="bhopal.html">Explore</a>
-    </div>
-  </div>
+  </section>
 
-    <div class="platform-card" id="Burhanpur" style="background-image: url('images/burhanpur.webp');">
-    <div class="platform-content">
-      <h3>Burhanpur</h3>
-      <p>Shahi Qila, Dargah-E-Hakimi</p>
-      <a href="burhanpur.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Chanderi" style="background-image: url('images/chanderi.webp');">
-    <div class="platform-content">
-      <h3>Chanderi</h3>
-      <p>Chanderi Fort, Jain Temples</p>
-      <a href="chanderi.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Chitrakoot" style="background-image: url('images/chitrakoot.jpg');">
-    <div class="platform-content">
-      <h3>Chitrakoot</h3>
-      <p>Ram Ghat, Hanuman Dhara</p>
-      <a href="chitrakoot.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Dewas" style="background-image: url('images/dewas.jpg');">
-    <div class="platform-content">
-      <h3>Dewas</h3>
-      <p>Tekri Mata Temple</p>
-      <a href="dewas.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Gwalior" style="background-image: url('images/gwalior.jpg');">
-    <div class="platform-content">
-      <h3>Gwalior</h3>
-      <p>Gwalior Fort, Jai Vilas Palace</p>
-      <a href="gwalior.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Indore" style="background-image: url('images/indore.webp');">
-    <div class="platform-content">
-      <h3>Indore</h3>
-      <p>Rajwada Palace, Sarafa Bazaar, Lal Bagh Palace</p>
-      <a href="indore.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Jabalpur" style="background-image: url('images/bhedaghat-jabalpur.webp');">
-    <div class="platform-content">
-      <h3>Jabalpur</h3>
-      <p>Bhedaghat, Dhuandhar Falls</p>
-      <a href="jabalpur.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Kanha" style="background-image: url('images/kanha.jpg');">
-    <div class="platform-content">
-      <h3>Kanha</h3>
-      <p>Kanha National Park, Tiger Safari</p>
-      <a href="kanha.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Khajuraho" style="background-image: url('images/khajuraho.jpg');">
-    <div class="platform-content">
-      <h3>Khajuraho</h3>
-      <p>UNESCO Temples, Light & Sound Show</p>
-      <a href="khajuraho.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Maheshwar" style="background-image: url('images/maheshwar.jpg');">
-    <div class="platform-content">
-      <h3>Maheshwar</h3>
-      <p>Ahilya Fort, Narmada Ghats</p>
-      <a href="maheshwar.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Mandsaur" style="background-image: url('images/mandsour.webp');">
-    <div class="platform-content">
-      <h3>Mandsaur</h3>
-      <p>Pashupatinath Temple, Gandhi Sagar</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Mandu" style="background-image: url('images/mandu.png');">
-    <div class="platform-content">
-      <h3>Mandu</h3>
-      <p>Jahaz Mahal, Roopmati Pavilion</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Omkareshwar" style="background-image: url('images/omkareshwar.jpg');">
-    <div class="platform-content">
-      <h3>Omkareshwar</h3>
-      <p>Jyotirlinga Temple, Parikrama Path</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Orchha" style="background-image: url('images/orchha.jpg');">
-    <div class="platform-content">
-      <h3>Orchha</h3>
-      <p>Orchha Fort, Betwa River, Raja Mahal</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Pachmarhi" style="background-image: url('images/pachmarhi.webp');">
-    <div class="platform-content">
-      <h3>Pachmarhi</h3>
-      <p>Bee Falls, Jatashankar Caves, Dhupgarh</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Panna" style="background-image: url('images/panna.webp');">
-    <div class="platform-content">
-      <h3>Panna</h3>
-      <p>Panna Tiger Reserve, Pandav Falls</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Rewa" style="background-image: url('images/rewa.webp');">
-    <div class="platform-content">
-      <h3>Rewa</h3>
-      <p>White Tiger Safari, Govindgarh Palace</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Sanchi" style="background-image: url('images/sanchi.webp');">
-    <div class="platform-content">
-      <h3>Sanchi</h3>
-      <p>Great Stupa, Ashoka Pillar</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Satna" style="background-image: url('images/satna.jpg');">
-    <div class="platform-content">
-      <h3>Satna</h3>
-      <p>Maihar Devi Temple</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Shivpuri" style="background-image: url('images/shivpuri.webp');">
-    <div class="platform-content">
-      <h3>Shivpuri</h3>
-      <p>Madhav National Park, Chhatris</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Tawa" style="background-image: url('images/tawa.png');">
-    <div class="platform-content">
-      <h3>Tawa</h3>
-      <p>Tawa Dam, Satpura National Park</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="platform-card" id="Tikamgarh" style="background-image: url('images/tikamgarh.webp');">
-    <div class="platform-content">
-      <h3>Tikamgarh</h3>
-      <p>Tikamgarh Fort</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-
-    <div class="platform-card" id="Ujjain" style="background-image: url('images/ujjain.png');">
-    <div class="platform-content">
-      <h3>Ujjain</h3>
-      <p>Mahakaleshwar Jyotirlinga, Ram Ghat</p>
-      <a href="soon.html">Explore</a>
-    </div>
-  </div>
-</div>
-</div>
-
-</section>
-<section id="Packages" style="max-width: 1200px; margin: 40px auto; padding: 20px;">
-  <style>
-  .tour-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: stretch; /* Ensures equal height columns */
-    padding: 20px;
-  }
-
-  .left-video {
-    flex: 1;
-    min-width: 280px;
-    max-width: 800px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #1e3341, #3a5568);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .left-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-    flex-grow: 1; /* Fill the container */
-  }
-
-  .right-tour {
-    flex: 1;
-    min-width: 280px;
-    max-width: 600px;
-    padding: 10px;
-    background-color: #1e3341;
-    color: white;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  .right-tour h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    color: #f4f8fb;
-  }
-
-  .scroll-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 15px;
-    padding: 10px 0;
-  }
-
-  .scroll-container::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .scroll-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-  }
-
-  .platform-card1 {
-    flex: 0 0 auto;
-    width: clamp(240px, 45%, 400px);
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    min-height: 360px;
-    border-radius: 12px;
-    color: white;
-    position: relative;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 15px;
-  }
-
-  .platform-card1::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
-    border-radius: 12px;
-    z-index: 0;
-  }
-
-  .platform-content1 {
-    position: relative;
-    z-index: 1;
-  }
-
-  .platform-card1 h3 {
-    margin: 0;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-  }
-
-  .platform-card1 p {
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
-    margin: 6px 0;
-  }
-
-  .platform-card1 a {
-    display: inline-block;
-    padding: 8px 12px;
-    background: #ffffff;
-    color: #1e3341;
-    font-weight: bold;
-    border-radius: 6px;
-    text-decoration: none;
-    margin-top: 8px;
-    transition: background 0.3s;
-    font-size: 0.9rem;
-  }
-
-  .platform-card1 a:hover {
-    background: #f0f0f0;
-  }
-
-  @media (max-width: 768px) {
-    .tour-layout {
-      flex-direction: column;
-      padding: 10px;
-      align-items: stretch;
-    }
-
-    .left-video, .right-tour {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .scroll-container {
-      gap: 10px;
-      padding-bottom: 15px;
-    }
-
-    .platform-card1 {
-      width: 90%;
-      min-height: 300px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .platform-card1 {
-      width: 95%;
-    }
-
-    .platform-card1 p {
-      font-size: 0.85rem;
-    }
-
-    .platform-card1 a {
-      font-size: 0.85rem;
-    }
-  }
-</style>
-
-
-  <div class="tour-layout">
-    <!-- Left: Video -->
-    <div class="left-video">
-      <video controls autoplay muted>
+  <!-- Tour Package Section with Same Two Column Layout -->
+  <section id="Tours" class="max-w-7xl mx-auto mt-10 px-4 grid grid-cols-1 md:grid-cols-5 gap-6">
+    <!-- Left Column -->
+    <div class="md:col-span-2">
+      <video autoplay muted playsinline controls class="w-full rounded shadow">
         <source src="videos/mptourism2.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
+    <!-- Right Column -->
+    <div class="md:col-span-3">
+      <div class="package-scroll flex space-x-4 overflow-x-auto py-4">
+        <!-- 6 Tour Package Cards remain unchanged -->
 
-    <!-- Right: Tour Cards -->
-    <div class="right-tour">
-      <h2>Tour Packages</h2>
-      <div class="scroll-container">
-        <div class="platform-card1" style="background-image: url('images/pachmarhi.webp');">
-          <div class="platform-content1">
-            <h3>Pachmarhi</h3>
+        <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
             <p>"Tour Package"</p>
-            <a href="package.pachmarhi.html">Plan Now</a>
+            <a href="package.pachmarhi.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
           </div>
-        </div>
-        <div class="platform-card1" style="background-image: url('images/ujjain.png');">
-          <div class="platform-content1">
-            <h3>Mahakaleshwar</h3>
+          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Mahakaleshwar</h3>
             <p>"Tour Package"</p>
-            <a href="package.mahakal.html">Plan Now</a>
+            <a href="package.mahakal.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
           </div>
-        </div>
-        <div class="platform-card1" style="background-image: url('images/kuno.webp');">
-          <div class="platform-content1">
-            <h3>Kuno</h3>
+          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/kuno.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Kuno</h3>
             <p>"Tour Package"</p>
-            <a href="package.kuno.html">Plan Now</a>
+            <a href="package.kuno.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
           </div>
-        </div>
-        <div class="platform-card1" style="background-image: url('images/orchha.jpg');">
-          <div class="platform-content1">
-            <h3>Orchha</h3>
+          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Orchha</h3>
             <p>"Tour Package"</p>
-            <a href="package.orchha.html">Plan Now</a>
+            <a href="package.orchha.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
           </div>
-        </div>
-        <div class="platform-card1" style="background-image: url('images/khajuraho.jpg');">
-          <div class="platform-content1">
-            <h3>Khajraho</h3>
+          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
             <p>"Tour Package"</p>
-            <a href="package.khajuraho.html">Plan Now</a>
+            <a href="package.khajuraho.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
           </div>
-        </div>
-        <div class="platform-card1" style="background-image: url('images/amarkantak.webp');">
-          <div class="platform-content1">
-            <h3>Amarkantak</h3>
+          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
+            <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
+            <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
             <p>"Tour Package"</p>
-            <a href="package.amarkantak.html">Plan Now</a>
+            <a href="package.amarkantak.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
           </div>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Booking Section -->
+<section id="Book now" class="max-w-7xl mx-auto mt-10 px-4">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Train & Flight Booking -->
+    <div class="bg-white shadow rounded p-4 text-center">
+      <img src="images/train.flight.jpg" alt="Train & Flight" class="w-full h-32 object-cover rounded mb-4">
+      <h3 class="text-lg font-semibold mb-2">Tickets</h3>
+      <button onclick="showOptions('transportOptions')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
+      <div id="transportOptions" class="hidden mt-4 space-y-2">
+        <img src="images/irctc.jpg" alt="Train" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.irctc.co.in/', '_blank')">
+        <img src="images/redbus.png" alt="Flight" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.redbus.in/railways', '_blank')">
+        <img src="images/ixigo.png" alt="Flight" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.ixigo.com/trains', '_blank')">
+        <img src="images/makemytrip.webp" alt="Flight" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.makemytrip.com/railways/', '_blank')">
+
+      </div>
+    </div>
+
+    <!-- Hotel Booking -->
+    <div class="bg-white shadow rounded p-4 text-center">
+      <img src="images/hotel.jpg" alt="Hotel" class="w-full h-32 object-cover rounded mb-4">
+      <h3 class="text-lg font-semibold mb-2">Hotel Booking</h3>
+      <button onclick="showOptions('hotelOptions')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
+      <div id="hotelOptions" class="hidden mt-4 space-y-2">
+        <img src="images/oyo.png" alt="OYO" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.oyorooms.com/', '_blank')">
+        <img src="images/goibibo.jpeg" alt="Goibibo" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.goibibo.com/hotels/', '_blank')">
+        <img src="images/redbus.png" alt="OYO" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.redbus.in/hotels', '_blank')">
+        <img src="images/makemytrip.webp" alt="Goibibo" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.makemytrip.com/hotels/', '_blank')">
+        <img src="images/agoda.png" alt="Goibibo" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.agoda.com/en-in/?site_id=1922885&tag=6f147157-60b8-459f-af1a-9935d44970e9&gad_source=1&gad_campaignid=21035020746&gbraid=0AAAAAD-GdVkyUP_0QqDzzADGh5uFdnMMr&device=c&network=g&adid=702597669000&rand=431946503533468382&expid=&adpos=&aud=kwd-2230651387&gclid=Cj0KCQjwnJfEBhCzARIsAIMtfKJrC1g-t70oYPQXUPOIRKsYJ76Skj-LiZfLaKiRnxwc361xA6HzH48aAoKBEALw_wcB&checkIn=2025-07-04&checkOut=2025-07-05&adults=2&rooms=1&pslc=1&ds=UQnWe2l3hCfT6V3Y', '_blank')">
+      </div>
+    </div>
+
+    <!-- Taxi & Auto Booking -->
+    <div class="bg-white shadow rounded p-4 text-center">
+      <img src="images/cabs.png" alt="Taxi" class="w-full h-32 object-cover rounded mb-4">
+      <h3 class="text-lg font-semibold mb-2">Taxi Booking</h3>
+      <button onclick="showOptions('taxiOptions')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
+      <div id="taxiOptions" class="hidden mt-4 space-y-2">
+        <img src="images/ola.png" alt="Ola" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.olacabs.com/', '_blank')">
+        <img src="images/uber.png" alt="Uber" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.uber.com/', '_blank')">
+         <img src="images/Rapido.png" alt="Uber" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.rapido.bike/Home', '_blank')">
+      </div>
+    </div>
+
+    <!-- Food Delivery -->
+    <div class="bg-white shadow rounded p-4 text-center">
+      <img src="images/food.jpg" alt="Food" class="w-full h-32 object-cover rounded mb-4">
+      <h3 class="text-lg font-semibold mb-2">Food Delivery</h3>
+      <button onclick="showOptions('foodOptions')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
+      <div id="foodOptions" class="hidden mt-4 space-y-2">
+        <img src="images/swiggy.png" alt="Swiggy" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.swiggy.com/', '_blank')">
+        <img src="images/zomato.png" alt="Zomato" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.zomato.com/', '_blank')">
       </div>
     </div>
   </div>
 </section>
 
 
-      
-      </section>
-      
-      
-     
-       <section id="tickets">
-        <div class="section8">
-            <h2>Ticket Booking Platforms</h2>
-            
-            <!-- Swiper Container -->
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-        
-                    <!-- Card 1 -->
-                    <div class="swiper-slide">
-                        <img src="images/irctc.jpg" alt="IRCTC">
-                        <h3>IRCTC</h3>
-                        <p>Book train tickets across India with ease through IRCTC.</p>
-                        <a href="https://www.irctc.co.in/" target="_blank">Book Now</a>
-                    </div>
-        
-                    <!-- Card 2 -->
-                    <div class="swiper-slide">
-                        <img src="images/redbus.png" alt="REDBUS">
-                        <h3>redbus</h3>
-                        <p>Book train & Bus with guaranteed tickets across India with ease through Redbus.</p>
-                        <a href="https://www.redbus.in/" target="_blank">Book Now</a>
-                       
-                    </div>
-        
-                    <!-- Card 3 -->
-                    <div class="swiper-slide">
-                        <img src="images/makemytrip.webp" alt="MAKEMYTRIP">
-                        <h3>makemytrip</h3>
-                        <p>Book train, Bus & Flight  tickets with guarantee across India with ease through MakeMyTrip.</p>
-                        <a href="https://www.makemytrip.com/" target="_blank">Book Now</a>
-                    </div>
-        
-                    <!-- Card 4 -->
-                    <div class="swiper-slide">
-                        <img src="images/ixigo.png" alt="ixigo">
-                        <h3>ixigo</h3>
-                        <p>>Book train & Flight  tickets across India with ease through ixigo.</p>
-                        <a href="https://www.ixigo.com/" target="_blank">Book Now</a>
-                    </div>
-        
-                     <!-- Card 5 -->
-                     <div class="swiper-slide">
-                        <img src="images/abhibus.png" alt="abhibus">
-                        <h3>abhibus</h3>
-                        <p>Book Bus, train & flight tickets across India with ease through abhibus.</p>
-                        <a href="https://www.abhibus.com/" target="_blank">Book Now</a>
-                    </div>
-        
-                </div>
-        
-                <!-- Pagination -->
-                <div class="swiper-pagination"></div>
-        
-                <!-- Navigation Buttons -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-       </section>
-     
-       <section id="section9">
-        <div class="section9">
-            <div class="container1">
-                <div class="category hotels">
-                    <img src="images/hotel.jpg" alt="hotels">
-                    <div class="overlay">
-                    <h2>Hotels Booking</h2>
-                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
-                </div>
-                <div class="category cabs">
-                    <img src="images/cabs.png" alt="cabs">
-                    <div class="overlay">
-                    <h2>Cabs & Taxi</h2>
-                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
-                </div>
-                <div class="category food">
-                    <img src="images/food.jpg" alt="food">
-                    <div class="overlay">
-                    <h2>Food Delivery</h2>
-                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
-                </div>
-            </div>
-            
-            <!-- Popups with Imagess -->
-            <div id="hotelPopup" class="popup">
-                <h2>Hotels Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.goibibo.com/hotels/" target="_blank">
-                            <img src="images/goibibo.jpeg" alt="Goibibo">
-                           
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.oyorooms.com/" target="_blank">
-                            <img src="images/oyo.png" alt="OYO">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.makemytrip.com/" target="_blank">
-                            <img src="images/makemytrip.webp" alt="MakeMyTrip">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.agoda.com/en-in/" target="_blank">
-                            <img src="images/agoda.png" alt="Agoda">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
-            </div>
-            
-            <div id="taxiPopup" class="popup">
-                <h2>Cabs & Taxi Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://book.olacabs.com/" target="_blank">
-                            <img src="images/ola.png" alt="Ola">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.uber.com/in/en/" target="_blank">
-                            <img src="images/uber.png" alt="Uber">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.rapido.bike/" target="_blank">
-                            <img src="images/Rapido.png" alt="Rapido">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
-            </div>
-            
-            <div id="foodPopup" class="popup">
-                <h2>Food Delivery Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.zomato.com/" target="_blank">
-                            <img src="images/zomato.png" alt="Zomato">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.swiggy.com/" target="_blank">
-                            <img src="images/swiggy.png" alt="Swiggy">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://blinkit.com/" target="_blank">
-                            <img src="images/blinkit.png" alt="Blinkit">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.bigbasket.com/" target="_blank">
-                            <img src="images/bigbasket.png" alt="BigBasket">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.zeptonow.com/" target="_blank">
-                            <img src="images/zepto.png" alt="Zepto">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
-            </div>
-            </div>
-            
-            
-           
-            
-            
-            <script>
-                function showPopup(id) {
-                    document.getElementById(id).style.display = 'block';
-                }
-                
-                function closePopup(id) {
-                    document.getElementById(id).style.display = 'none';
-                }
-            </script>
-            
-            
-            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-            
-            <script>
-                var swiper = new Swiper(".mySwiper", {
-                    effect: "coverflow",
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: "auto",
-                    coverflowEffect: {
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 3,
-                        slideShadows: false,
-                    },
-                    loop: true,
-                    pagination: {
-                        el: ".swiper-pagination",
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev",
-                    },
-                });
-            </script>
-       </section>
-     
-       
+<script>
+function showOptions(id) {
+  document.querySelectorAll('#' + id).forEach(el => el.classList.toggle('hidden'));
+}
+</script>
 
+<!-- Review and Contact Section -->
+<!-- Review and Contact Section -->
+<!-- Review and Contact Section -->
+<section id="contact" class="max-w-7xl mx-auto mt-10 px-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Reviews Column -->
+    <div class="md:col-span-2 bg-white shadow rounded p-6">
+      <h2 class="text-2xl font-bold mb-4">Top Reviews from Google Maps</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:grid" id="reviewCards">
+        <!-- Reviews will be injected here -->
+      </div>
+    </div>
+
+    <!-- Contact Form Column -->
+    <div class="bg-white shadow rounded p-6">
+      <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+      <form action="mailto:suraj9893007987@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium">Name</label>
+          <input type="text" name="name" required class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Email</label>
+          <input type="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">How can I help you?</label>
+          <textarea name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
 
 <script>
-    function scrollLeft(containerId) {
-        document.getElementById(containerId).scrollBy({ left: -300, behavior: 'smooth' });
-    }
-    function scrollRight(containerId) {
-        document.getElementById(containerId).scrollBy({ left: 300, behavior: 'smooth' });
-    }
-</script>
-<!-- Place this where you want the footer -->
-<div id="footer-placeholder"></div>
+function showOptions(id) {
+  document.querySelectorAll('#' + id).forEach(el => el.classList.toggle('hidden'));
+}
 
+// Mock Google Reviews (replace with API in production)
+const reviews = [
+  {
+    author: "Anjali M.",
+    text: "Madhya Pradesh tourism offers a diverse and enriching experience. The hospitality and scenic beauty are unmatched!"
+  },
+  {
+    author: "Rohit K.",
+    text: "From wildlife to temples, every visit has been memorable. Highly recommended for all types of travelers."
+  },
+  {
+    author: "Sneha R.",
+    text: "Seamless booking and friendly locals made our trip amazing. MP truly is the heart of India."
+  },
+  {
+    author: "Amit S.",
+    text: "Great infrastructure and well-maintained tourist spots. The Khajuraho temples are a must-visit!"
+  },
+  {
+    author: "Pooja D.",
+    text: "The wildlife sanctuaries and national parks were breathtaking. Very good arrangements throughout."
+  },
+  {
+    author: "Nikhil B.",
+    text: "MP offers a balance of history, culture, and nature. Wonderful hospitality and food as well."
+  }
+];
+
+const reviewContainer = document.getElementById('reviewCards');
+reviews.forEach((review, index) => {
+  const card = document.createElement('div');
+  card.className = 'bg-gray-100 p-4 rounded shadow review-slide';
+  card.innerHTML = `<p class='mb-2 text-sm text-gray-800'>"${review.text}"</p><p class='text-sm font-semibold text-right'>- ${review.author}</p>`;
+  reviewContainer.appendChild(card);
+});
+
+// Auto scroll for mobile view
+if (window.innerWidth < 768) {
+  let startIndex = 0;
+  const interval = 5000;
+
+  function showMobileReviews() {
+    const allReviews = document.querySelectorAll('.review-slide');
+    allReviews.forEach((el, i) => {
+      el.style.display = (i >= startIndex && i < startIndex + 2) ? 'block' : 'none';
+    });
+    startIndex = (startIndex + 2) % reviews.length;
+  }
+
+  showMobileReviews();
+  setInterval(showMobileReviews, interval);
+}
+</script>
+
+<style>
+@media (max-width: 767px) {
+  #reviewCards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .review-slide {
+    width: 100%;
+  }
+}
+</style>
+
+
+  <div id="footer-placeholder"></div>
 <script>
   fetch("footer.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("footer-placeholder").innerHTML = data;
     });
+
 </script>
 
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', function () {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
 
-
-
-
-
-
-
+    document.getElementById('citySelect').addEventListener('change', function () {
+      const value = this.value;
+      const target = document.getElementById(value);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      }
+    });
+  </script>
 </body>
 </html>
