@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Saarthi</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
   <style>
     html, body {
       height: 100%;
@@ -30,11 +33,11 @@
       <div class="text-xl font-bold text-indigo-600">Travel Saarthi</div>
       
       <nav class="hidden md:flex space-x-6">
-        <a href="#hero" class="hover:text-indigo-600">Home</a>
-        <a href="#discover" class="hover:text-indigo-600">Discover</a>
-        <a href="#Tours" class="hover:text-indigo-600">Tours</a>
-         <a href="#Book now" class="hover:text-indigo-600">Book Now</a>
-        <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        <a href="#hero" class="hover:text-indigo-600"><strong>Home</strong></a>
+        <a href="#discover" class="hover:text-indigo-600"><strong>Discover</strong></a>
+        <a href="#Tours" class="hover:text-indigo-600"><strong>Tours</strong></a>
+         <a href="#Book now" class="hover:text-indigo-600"><strong>Book Now</strong></a>
+        <a href="#contact" class="hover:text-indigo-600"><strong>Contact</strong></a>
       </nav>
       <div class="md:hidden">
         <button id="menuBtn" class="focus:outline-none">
@@ -42,28 +45,29 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <div id="mobileMenu" class="hidden absolute right-4 mt-2 bg-white shadow rounded p-4 space-y-2">
-          <a href="#hero" class="block">Home</a>
-          <a href="#discover" class="block">Discover</a>
-          <a href="#contact" class="block">Contact</a>
-           <a href="#Tours" class="hover:text-indigo-600">Tours</a>
-         <a href="#Book now" class="hover:text-indigo-600">Book Now</a>
+        <div id="mobileMenu" class="hidden absolute right-5 mt-2 bg-white shadow rounded p-4 space-y-2">
+          <a href="#hero" class="block"><strong>Home</strong></a>
+          <a href="#discover" class="block"><strong>Discover</strong></a>
+          <a href="#contact" class="block"><strong>Contact</strong></a>
+          <a href="#Tours" class="block hover:text-indigo-600"><strong>Tours</strong></a>
+          <a href="#Book now" class="block hover:text-indigo-600"><strong>Bookings</strong></a>
         </div>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section id="hero" class="pt-20">
+  <section id="hero" >
     <img src="images/Madhya Pradesh.png" alt="Hero" class="w-full h-auto object-cover" />
   </section>
 
   <!-- Discover Section Unified Column Layout -->
-  <section id="discover" class="max-w-7xl mx-auto mt-10 px-4 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
+<section id="discover" class="max-w-7xl mx-auto mt-10 px-4">
+  <h2 class="text-3xl md:text-4xl font-extrabold text-center text-red-800 font-serif tracking-wide drop-shadow-md">Explore Madhya Pradesh</h2><br>
+  <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
     <!-- Left Column -->
     <div class="md:col-span-3 lg:col-span-4 space-y-6 max-h-screen overflow-y-auto pb-8">
       <div class="bg-white shadow rounded p-4">
-        
         <video autoplay muted playsinline controls class="w-full rounded">
           <source src="videos/mptourism1.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -75,264 +79,398 @@
         <select id="citySelect" class="w-full mt-2 p-2 border rounded">
           <option value="">-- Select a City --</option>
           <option value="Bhopal">Bhopal</option>
-    <option value="Sanchi">Sanchi</option>
-    <option value="Bhimbetka">Bhimbetka</option>
-    <option value="Pachmarhi">Pachmarhi</option>
-    <option value="Indore">Indore</option>
-    <option value="Ujjain">Ujjain</option>
-    <option value="Dewas">Dewas</option>
-    <option value="Maheshwar">Maheshwar</option>
-    <option value="Omkareshwar">Omkareshwar</option>
-    <option value="Mandu">Mandu</option>
-    <option value="Burhanpur">Burhanpur</option>
-    <option value="Mandsaur">Mandsaur</option>
-    <option value="Gwalior">Gwalior</option>
-    <option value="Shivpuri">Shivpuri</option>
-    
-    <option value="Orchha">Orchha</option>
-    <option value="Tikamgarh">Tikamgarh</option>
-    <option value="Chanderi">Chanderi</option>
-    <option value="Jabalpur">Jabalpur</option>
-    <option value="Bandhavgarh">Bandhavgarh</option>
-    <option value="Amarkantak">Amarkantak</option>
-    <option value="Kanha">Kanha</option>
-    <option value="Chitrakoot">Chitrakoot</option>
-    <option value="Khajuraho">Khajuraho</option>
-    <option value="Satna">Satna</option>
-    <option value="Rewa">Rewa</option>
-    <option value="Panna">Panna</option>
+          <option value="Sanchi">Sanchi</option>
+          <option value="Bhimbetka">Bhimbetka</option>
+          <option value="Pachmarhi">Pachmarhi</option>
+          <option value="Indore">Indore</option>
+          <option value="Ujjain">Ujjain</option>
+          <option value="Dewas">Dewas</option>
+          <option value="Maheshwar">Maheshwar</option>
+          <option value="Omkareshwar">Omkareshwar</option>
+          <option value="Mandu">Mandu</option>
+          <option value="Burhanpur">Burhanpur</option>
+          <option value="Mandsaur">Mandsaur</option>
+          <option value="Gwalior">Gwalior</option>
+          <option value="Shivpuri">Shivpuri</option>
+          <option value="Orchha">Orchha</option>
+          <option value="Tikamgarh">Tikamgarh</option>
+          <option value="Chanderi">Chanderi</option>
+          <option value="Jabalpur">Jabalpur</option>
+          <option value="Bandhavgarh">Bandhavgarh</option>
+          <option value="Amarkantak">Amarkantak</option>
+          <option value="Kanha">Kanha</option>
+          <option value="Chitrakoot">Chitrakoot</option>
+          <option value="Khajuraho">Khajuraho</option>
+          <option value="Satna">Satna</option>
+          <option value="Rewa">Rewa</option>
+          <option value="Panna">Panna</option>
         </select>
       </div>
 
       <div class="city-scroll flex space-x-4 overflow-x-auto py-4" id="cityCards">
-        <!-- city cards remain unchanged -->
-         <div class="city-scroll flex space-x-4 overflow-x-auto py-4" id="cityCards">
-          <div id="Amarkantak" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
-            <p>Origin of Narmada River, rich in spiritual and natural beauty.</p>
-            <a href="amarkantak.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Bandhavgarh" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/Bandhavgarh.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Bandhavgarh</h3>
-            <p>Popular tiger reserve with high tiger density and historical fort.</p>
-            <a href="bandhavgarh.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Bhimbedka" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/bhimbedka.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Bhimbedka</h3>
-            <p>Home to prehistoric rock shelters and cave paintings.</p>
-            <a href="bhimbedka.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Bhopal" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/Bhopal.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Bhopal</h3>
-            <p>Lake City of India</p>
-            <a href="bhopal.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Burhanpur" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/burhanpur.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Burhanpur</h3>
-            <p>Historic city with Mughal monuments and textiles.</p>
-            <a href="burhanpur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Chanderi" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/chanderi.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Chanderi</h3>
-            <p>Famous for silk sarees and Islamic-era architecture.</p>
-            <a href="chanderi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Chitrakoot" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/chitrakoot.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Chitrakoot</h3>
-            <p>Spiritual town linked to Lord Rama's exile years.</p>
-            <a href="chitrakoot.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Dewas" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/dewas.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Dewas</h3>
-            <p>Known for Tekri Mata Temple and industrial development.</p>
-            <a href="dewas.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Gwalior" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/gwalior.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Gwalior</h3>
-            <p>Famous for majestic Gwalior Fort and classical music heritage.</p>
-            <a href="gwalior.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-           <div id="Indore" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/indore.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Indore</h3>
-            <p>Food Capital of MP</p>
-            <a href="indore.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Jabalpur" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/bhedaghat-jabalpur.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Jabalpur</h3>
-            <p>Known for Marble Rocks at Bhedaghat and Dhuandhar Falls.</p>
-            <a href="jabalpur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-           <div id="Kanha" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/kanha.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Kanha</h3>
-            <p>Inspiration for The Jungle Book, famous for tiger and barasingha conservation.</p>
-            <a href="kanha.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Khajuraho" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
-            <p>World-renowned temples with exquisite erotic carvings.</p>
-            <a href="khajuraho.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Maheshwar" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/maheshwar.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Maheshwar</h3>
-            <p>Historic town on Narmada, known for ghats and handloom sarees.</p>
-            <a href="maheshwar.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Mandu" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/mandu.png" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Mandu</h3>
-            <p>City of architectural ruins and romantic folklore of Baz Bahadur & Roopmati.</p>
-            <a href="mandu.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Mandsaur" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/mandsour.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Mandsaur</h3>
-            <p>Known for Pashupatinath Temple and historical fort.</p>
-            <a href="mandsaur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Orchha" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Orchha</h3>
-            <p>Medieval town with palaces, temples, and riverfront views.</p>
-            <a href="orchha.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Omkareshwar" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/omkareshwar.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Omkareshwar</h3>
-            <p>Island shaped like Om, home to a revered Jyotirlinga temple.</p>
-            <a href="omkareshwar.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Panna" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/panna.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Panna</h3>
-            <p>Known for diamond mines and tiger reserve.</p>
-            <a href="panna.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Pachmarhi" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
-            <p>Only hill station of Madhya Pradesh with waterfalls and caves.</p>
-            <a href="pachmarhi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Rewa" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/rewa.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Rewa</h3>
-            <p>Origin of the white tiger and known for waterfalls and fort.</p>
-            <a href="rewa.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Sanchi" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/sanchi.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Sanchi</h3>
-            <p>Famous for ancient Buddhist stupas and UNESCO heritage site.</p>
-            <a href="sanchi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Satna" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/satna.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Satna</h3>
-            <p>Industrial city and gateway to religious towns like Chitrakoot.</p>
-            <a href="satna.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Shivpuri" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/shivpuri.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Shivpuri</h3>
-            <p>Wildlife sanctuary and palatial heritage of Scindia dynasty</p>
-            <a href="shivpuri.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-           <div id="Tikamgarh" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/tikamgarh.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Tikamgarh</h3>
-            <p>Land of temples and forts with rich Bundelkhand culture.</p>
-            <a href="tikamgarh.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
-          <div id="Ujjain" class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Ujjain</h3>
-            <p>City of Mahakal</p>
-            <a href="ujjain.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded">Explore</a>
-          </div>
+          <div id="Amarkantak" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
+      <p class="text-sm leading-snug mt-1">Origin of Narmada River, rich in spiritual and natural beauty.</p>
+    </div>
+    <a href="amarkantak.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
 
-        </div>
+  <div id="Bandhavgarh" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/Bandhavgarh.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Bandhavgarh</h3>
+      <p class="text-sm leading-snug mt-1">Popular tiger reserve with high tiger density and historical fort.</p>
+    </div>
+    <a href="bandhavgarh.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Bhimbedka" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/bhimbedka.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Bhimbedka</h3>
+      <p class="text-sm leading-snug mt-1">Home to prehistoric rock shelters and cave paintings.</p>
+    </div>
+    <a href="bhimbedka.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Bhopal" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/Bhopal.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Bhopal</h3>
+      <p class="text-sm leading-snug mt-1">Lake City of India</p>
+    </div>
+    <a href="bhopal.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Burhanpur" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/burhanpur.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Burhanpur</h3>
+      <p class="text-sm leading-snug mt-1">Historic city with Mughal monuments and textiles.</p>
+    </div>
+    <a href="burhanpur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Chanderi" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/chanderi.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Chanderi</h3>
+      <p class="text-sm leading-snug mt-1">Famous for silk sarees and Islamic-era architecture.</p>
+    </div>
+    <a href="chanderi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Chitrakoot" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/chitrakoot.jpg" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Chitrakoot</h3>
+      <p class="text-sm leading-snug mt-1">Spiritual town linked to Lord Rama's exile years.</p>
+    </div>
+    <a href="chitrakoot.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Dewas" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/dewas.jpg" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Dewas</h3>
+      <p class="text-sm leading-snug mt-1">Known for Tekri Mata Temple and industrial development.</p>
+    </div>
+    <a href="dewas.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Gwalior" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/gwalior.jpg" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Gwalior</h3>
+      <p class="text-sm leading-snug mt-1">Famous for majestic Gwalior Fort and classical music heritage.</p>
+    </div>
+    <a href="gwalior.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Indore" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+  <img src="images/indore.webp" class="w-full h-40 object-cover rounded" />
+  <div>
+    <h3 class="text-lg font-semibold mt-2">Indore</h3>
+    <p class="text-sm leading-snug mt-1">Food Capital of MP</p>
+  </div>
+  <a href="indore.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+</div>
+
+<div id="Jabalpur" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+  <img src="images/bhedaghat-jabalpur.webp" class="w-full h-40 object-cover rounded" />
+  <div>
+    <h3 class="text-lg font-semibold mt-2">Jabalpur</h3>
+    <p class="text-sm leading-snug mt-1">Known for Marble Rocks at Bhedaghat and Dhuandhar Falls.</p>
+  </div>
+  <a href="jabalpur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+</div>
+
+<div id="Kanha" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+  <img src="images/kanha.jpg" class="w-full h-40 object-cover rounded" />
+  <div>
+    <h3 class="text-lg font-semibold mt-2">Kanha</h3>
+    <p class="text-sm leading-snug mt-1">Inspiration for The Jungle Book, famous for tiger and barasingha conservation.</p>
+  </div>
+  <a href="kanha.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+</div>
+
+<div id="Khajuraho" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+  <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
+  <div>
+    <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
+    <p class="text-sm leading-snug mt-1">World-renowned temples with exquisite erotic carvings.</p>
+  </div>
+  <a href="khajuraho.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+</div>
+<div id="Maheshwar" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/maheshwar.jpg" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Maheshwar</h3>
+      <p class="text-sm leading-snug mt-1">Historic town on Narmada, known for ghats and handloom sarees.</p>
+    </div>
+    <a href="maheshwar.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Mandu" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/mandu.png" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Mandu</h3>
+      <p class="text-sm leading-snug mt-1">City of architectural ruins and romantic folklore of Baz Bahadur & Roopmati.</p>
+    </div>
+    <a href="mandu.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Mandsaur" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/mandsour.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Mandsaur</h3>
+      <p class="text-sm leading-snug mt-1">Known for Pashupatinath Temple and historical fort.</p>
+    </div>
+    <a href="mandsaur.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Orchha" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Orchha</h3>
+      <p class="text-sm leading-snug mt-1">Medieval town with palaces, temples, and riverfront views.</p>
+    </div>
+    <a href="orchha.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Omkareshwar" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/omkareshwar.jpg" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Omkareshwar</h3>
+      <p class="text-sm leading-snug mt-1">Island shaped like Om, home to a revered Jyotirlinga temple.</p>
+    </div>
+    <a href="omkareshwar.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Panna" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/panna.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Panna</h3>
+      <p class="text-sm leading-snug mt-1">Known for diamond mines and tiger reserve.</p>
+    </div>
+    <a href="panna.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Pachmarhi" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
+      <p class="text-sm leading-snug mt-1">Only hill station of Madhya Pradesh with waterfalls and caves.</p>
+    </div>
+    <a href="pachmarhi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Rewa" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/rewa.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Rewa</h3>
+      <p class="text-sm leading-snug mt-1">Origin of the white tiger and known for waterfalls and fort.</p>
+    </div>
+    <a href="rewa.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Sanchi" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/sanchi.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Sanchi</h3>
+      <p class="text-sm leading-snug mt-1">Famous for ancient Buddhist stupas and UNESCO heritage site.</p>
+    </div>
+    <a href="sanchi.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Satna" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/satna.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Satna</h3>
+      <p class="text-sm leading-snug mt-1">Industrial city and gateway to religious towns like Chitrakoot.</p>
+    </div>
+    <a href="satna.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Shivpuri" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/shivpuri.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Shivpuri</h3>
+      <p class="text-sm leading-snug mt-1">Wildlife sanctuary and palatial heritage of Scindia dynasty</p>
+    </div>
+    <a href="shivpuri.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Tikamgarh" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/tikamgarh.webp" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Tikamgarh</h3>
+      <p class="text-sm leading-snug mt-1">Land of temples and forts with rich Bundelkhand culture.</p>
+    </div>
+    <a href="tikamgarh.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
+
+  <div id="Ujjain" class="min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+    <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
+    <div>
+      <h3 class="text-lg font-semibold mt-2">Ujjain</h3>
+      <p class="text-sm leading-snug mt-1">City of Mahakal</p>
+    </div>
+    <a href="ujjain.html" class="mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+  </div>
       </div>
     </div>
 
     <!-- Right Column -->
-    <div class="md:col-span-1 flex items-start">
+    <div class="md:col-span-1 flex flex-col items-start space-y-6">
+      <!-- MP Tourism Logo and Button -->
       <div class="bg-white shadow rounded p-4 text-center w-full">
         <img src="images/tourismlogo.png" alt="MP Tourism" class="mx-auto mb-4 h-24 w-auto" />
         <a href="https://tourism.mp.gov.in/" target="_blank" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Visit MP Tourism</a>
       </div>
-    </div>
-  </section>
 
-  <!-- Tour Package Section with Same Two Column Layout -->
-  <section id="Tours" class="max-w-7xl mx-auto mt-10 px-4 grid grid-cols-1 md:grid-cols-5 gap-6">
-    <!-- Left Column -->
-    <div class="md:col-span-2">
-      <video autoplay muted playsinline controls class="w-full rounded shadow">
-        <source src="videos/mptourism2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <!-- Right Column -->
-    <div class="md:col-span-3">
-      <div class="package-scroll flex space-x-4 overflow-x-auto py-4">
-        <!-- 6 Tour Package Cards remain unchanged -->
+      <!-- Promotional Video (Portrait) -->
+      <div class="bg-white shadow rounded p-2 w-full">
+        <video autoplay loop muted playsinline class="w-full h-[600px] object-cover rounded" id="promoVideo">
+          <source src="videos/mp promotional.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
 
-        <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
-            <p>"Tour Package"</p>
-            <a href="package.pachmarhi.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-          </div>
-          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Mahakaleshwar</h3>
-            <p>"Tour Package"</p>
-            <a href="package.mahakal.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-          </div>
-          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/kuno.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Kuno</h3>
-            <p>"Tour Package"</p>
-            <a href="package.kuno.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-          </div>
-          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Orchha</h3>
-            <p>"Tour Package"</p>
-            <a href="package.orchha.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-          </div>
-          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
-            <p>"Tour Package"</p>
-            <a href="package.khajuraho.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-          </div>
-          <div class="min-w-[250px] bg-white shadow rounded p-4 flex-shrink-0">
-            <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
-            <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
-            <p>"Tour Package"</p>
-            <a href="package.amarkantak.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-          </div>
+        <!-- Mute/Unmute Button -->
+        <div class="text-center mt-2">
+          <button onclick="toggleMute()" class="bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-700">
+            🔇 / 🔊
+          </button>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+  function toggleMute() {
+    const video = document.getElementById("promoVideo");
+    video.muted = !video.muted;
+  }
+</script>
+
+
+  <!-- Tour Package Section with Same Two Column Layout -->
+<section id="Tours" class="max-w-7xl mx-auto mt-10 px-4">
+  <!-- Section Heading -->
+  <div class="w-full mb-6">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-blue-800 font-serif tracking-wide drop-shadow-md">
+      M.P Tour Packages
+    </h2>
+  </div>
+
+  <!-- Flex Container for Equal Height Columns -->
+  <div class="flex flex-col md:flex-row gap-6 items-stretch">
+    
+    <!-- Left Column: Video -->
+    <div class="md:w-2/5 w-full">
+      <div class="h-full">
+        <video autoplay muted playsinline controls class="w-full h-full object-cover rounded shadow">
+          <source src="videos/mptourism2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Right Column: Scrollable Package Cards -->
+    <div class="md:w-3/5 w-full">
+      <div class="flex space-x-4 overflow-x-auto py-4 h-full scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-100">
+        <!-- Repeatable Package Cards -->
+        <div class="min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+          <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
+          <div>
+            <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
+            <p>"Tour Package"</p>
+          </div>
+          <a href="package.pachmarhi.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
+        </div>
+
+        <div class="min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+          <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
+          <div>
+            <h3 class="text-lg font-semibold mt-2">Mahakaleshwar</h3>
+            <p>"Tour Package"</p>
+          </div>
+          <a href="package.mahakal.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
+        </div>
+
+        <div class="min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+          <img src="images/kuno.webp" class="w-full h-40 object-cover rounded" />
+          <div>
+            <h3 class="text-lg font-semibold mt-2">Kuno</h3>
+            <p>"Tour Package"</p>
+          </div>
+          <a href="package.kuno.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
+        </div>
+
+        <div class="min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+          <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
+          <div>
+            <h3 class="text-lg font-semibold mt-2">Orchha</h3>
+            <p>"Tour Package"</p>
+          </div>
+          <a href="package.orchha.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
+        </div>
+
+        <div class="min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+          <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
+          <div>
+            <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
+            <p>"Tour Package"</p>
+          </div>
+          <a href="package.khajuraho.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
+        </div>
+
+        <div class="min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
+          <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
+          <div>
+            <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
+            <p>"Tour Package"</p>
+          </div>
+          <a href="package.amarkantak.html" class="mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Additional Booking Section -->
 <section id="Book now" class="max-w-7xl mx-auto mt-10 px-4">
+  <!-- Section Heading -->
+  <div class="col-span-full mb-6">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-green-700 font-serif tracking-wide drop-shadow-md">
+      Plan Your Bookings
+    </h2>
+  </div>
+
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
     <!-- Train & Flight Booking -->
     <div class="bg-white shadow rounded p-4 text-center">
@@ -344,7 +482,6 @@
         <img src="images/redbus.png" alt="Flight" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.redbus.in/railways', '_blank')">
         <img src="images/ixigo.png" alt="Flight" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.ixigo.com/trains', '_blank')">
         <img src="images/makemytrip.webp" alt="Flight" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.makemytrip.com/railways/', '_blank')">
-
       </div>
     </div>
 
@@ -358,7 +495,7 @@
         <img src="images/goibibo.jpeg" alt="Goibibo" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.goibibo.com/hotels/', '_blank')">
         <img src="images/redbus.png" alt="OYO" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.redbus.in/hotels', '_blank')">
         <img src="images/makemytrip.webp" alt="Goibibo" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.makemytrip.com/hotels/', '_blank')">
-        <img src="images/agoda.png" alt="Goibibo" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.agoda.com/en-in/?site_id=1922885&tag=6f147157-60b8-459f-af1a-9935d44970e9&gad_source=1&gad_campaignid=21035020746&gbraid=0AAAAAD-GdVkyUP_0QqDzzADGh5uFdnMMr&device=c&network=g&adid=702597669000&rand=431946503533468382&expid=&adpos=&aud=kwd-2230651387&gclid=Cj0KCQjwnJfEBhCzARIsAIMtfKJrC1g-t70oYPQXUPOIRKsYJ76Skj-LiZfLaKiRnxwc361xA6HzH48aAoKBEALw_wcB&checkIn=2025-07-04&checkOut=2025-07-05&adults=2&rooms=1&pslc=1&ds=UQnWe2l3hCfT6V3Y', '_blank')">
+        <img src="images/agoda.png" alt="Agoda" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.agoda.com/en-in/', '_blank')">
       </div>
     </div>
 
@@ -370,7 +507,7 @@
       <div id="taxiOptions" class="hidden mt-4 space-y-2">
         <img src="images/ola.png" alt="Ola" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.olacabs.com/', '_blank')">
         <img src="images/uber.png" alt="Uber" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.uber.com/', '_blank')">
-         <img src="images/Rapido.png" alt="Uber" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.rapido.bike/Home', '_blank')">
+        <img src="images/Rapido.png" alt="Rapido" class="w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.rapido.bike/Home', '_blank')">
       </div>
     </div>
 
@@ -388,14 +525,14 @@
 </section>
 
 
+
 <script>
 function showOptions(id) {
   document.querySelectorAll('#' + id).forEach(el => el.classList.toggle('hidden'));
 }
 </script>
 
-<!-- Review and Contact Section -->
-<!-- Review and Contact Section -->
+
 <!-- Review and Contact Section -->
 <section id="contact" class="max-w-7xl mx-auto mt-10 px-4">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -515,10 +652,6 @@ if (window.innerWidth < 768) {
 
   function closePopup(id) {
     document.getElementById(id).style.display = 'none';
-  }
-  function setLang(lang) {
-    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
   }
 </script>
 
