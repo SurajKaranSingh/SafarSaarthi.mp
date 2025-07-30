@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Explore Amarkantak - Tourism Guide</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   
 </head>
@@ -21,25 +23,93 @@
 </div>
 
 <!-- Hero Section -->
-<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/amarkantak.webp');">
-  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
-    <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Amarkantak</h1>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">अमरकंटक में आपका स्वागत है</h1>
-      <p class="text-lg md:text-2xl en">Origin of Narmada, Land of Pilgrimage</p>
-      <p class="text-lg md:text-2xl hi hidden">नर्मदा की जन्मभूमि, तीर्थ यात्राय का ग्राम</p>
+<header class="relative h-screen bg-cover bg-center text-white" style="background-image: url('images/amarkantak.webp');">
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30 z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 h-full flex items-center justify-center">
+    <div class="text-center px-4 max-w-3xl">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-md animate-fade-in en">Welcome to Amarkantak</h1>
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-md animate-fade-in hi hidden">अमरकंटक में आपका स्वागत है</h1>
+      
+      <p class="text-lg sm:text-xl md:text-2xl font-medium drop-shadow-sm animate-fade-in-slow en">Origin of Narmada, Land of Pilgrimage</p>
+      <p class="text-lg sm:text-xl md:text-2xl font-medium drop-shadow-sm animate-fade-in-slow hi hidden">नर्मदा की जन्मभूमि, तीर्थ यात्राय का ग्राम</p>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator (Optional) -->
+  <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-20">
+    <div class="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-1 animate-bounce">
+      <div class="w-1 h-1 bg-white rounded-full"></div>
     </div>
   </div>
 </header>
 
-<section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
+<section class="max-w-7xl mx-auto mt-20 px-4 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+  <!-- Left: Video Column -->
+<div class="relative group">
+  <video
+    id="amarkantakVideo"
+    autoplay
+    muted
+    loop
+    playsinline
+    class="rounded-lg shadow-lg w-full cursor-pointer"
+    onclick="window.open('images/Amarkantak/amarkantak_video.mp4', '_blank')"
+    oncontextmenu="return false"
+    controlsList="nodownload noplaybackrate nofullscreen">
+    <source src="images/Amarkantak/amarkantak_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Custom Mute/Unmute Button -->
+  <button
+    onclick="toggleAmarkantakMute()"
+    class="absolute top-2 right-2 bg-black bg-opacity-60 text-white text-sm px-2 py-1 rounded hover:bg-opacity-80 z-10">
+    🔇 / 🔊
+  </button>
+
+  <!-- Hover Tooltip -->
+  <div class="absolute bottom-2 right-2 text-xs text-white bg-black bg-opacity-50 px-2 py-1 rounded hidden group-hover:block">
+    Click to open in full screen tab 🔗
+  </div>
+  <script>
+  function toggleAmarkantakMute() {
+    const video = document.getElementById("amarkantakVideo");
+    video.muted = !video.muted;
+  }
+</script>
+
+</div>
+
+
+  <!-- Right: Ad Banner Column -->
+  <div class="flex justify-center items-center">
+    <a href="#ad-link" target="_blank">
+      <img src="images/advertisement banner.webp" alt="Ad Banner" class="rounded-lg shadow-lg w-full max-h-80 object-cover">
+    </a>
+  </div>
+</section>
+<br>
+  
+<section id="discover" class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
   <div class="max-w-7xl mx-auto">
     <h2 class="text-4xl font-bold text-center text-green-800 mb-12 en">Discover Amarkantak</h2>
     <h2 class="text-4xl font-bold text-center text-green-800 mb-12 hi hidden">अमरकंटक के बारे में जानिए</h2>
     <div class="flex flex-col lg:flex-row items-center gap-10">
-      <div class="w-full lg:w-1/2">
-        <iframe class="w-full h-80 border-4 border-green-100 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d106591.43739583119!2d81.64826971598842!3d22.6964265388438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1splaces%20to%20visit%20in%20amarkantak!5e1!3m2!1sen!2sin!4v1752598919183!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+    <div class="w-full lg:w-1/2">
+  <div class="overflow-hidden rounded-xl shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl border-4 border-green-200">
+    <iframe
+      class="w-full h-80 rounded-lg"
+      src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d106591.43739583119!2d81.full826971598842!3d22.69full265388438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1splaces%20to%20visit%20in%20amarkantak!5e1!3m2!1sen!2sin!4v1752598919183!5m2!1sen!2sin"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
       <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
         <div class="en">
           <h3 class="text-2xl font-semibold text-green-700 mb-4">Spiritual Serenity of Amarkantak</h3>
@@ -66,7 +136,7 @@
 
 
 <!-- Attractions -->
-<section class="py-12 px-4 max-w-7xl mx-auto">
+<section id="attractions" class="py-12 px-4 max-w-7xl mx-auto">
   <style>
     .flip-card {
       background-color: transparent;
@@ -117,12 +187,13 @@
 </style>
   <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Amarkantak</h2>
   <h2 class="text-3xl font-bold text-center mb-8 hi hidden">अमरकंटक के प्रमुख आकर्षण</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
     <!-- Sample Card With Flip -->
     <div class="flip-card" onclick="this.classList.toggle('flipped')">
       <div class="flip-card-inner">
         <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/narmada-udgam.jpg" alt="Narmada Udgam" class="w-full h-64 object-cover">
+          <img src="images/Amarkantak/narmada-udgam.jpg" alt="Narmada Udgam" class="w-full h-full object-contain">
           <div class="p-4">
             <h3 class="text-xl font-semibold en">Narmada Udgam</h3>
             <h3 class="text-xl font-semibold hi hidden">नर्मदा उद्गम स्थल</h3>
@@ -139,7 +210,7 @@
     <div class="flip-card" onclick="this.classList.toggle('flipped')">
       <div class="flip-card-inner">
         <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/kapil.dhara.jpg" alt="Kapildhara Waterfall" class="w-full h-64 object-cover">
+          <img src="images/Amarkantak/kapil.dhara.jpg" alt="Kapildhara Waterfall" class="w-full h-full object-contain">
           <div class="p-4">
             <h3 class="text-xl font-semibold en">Kapildhara Waterfall</h3>
             <h3 class="text-xl font-semibold hi hidden">कपिलधारा झरना</h3>
@@ -158,7 +229,7 @@
     <div class="flip-card" onclick="this.classList.toggle('flipped')">
       <div class="flip-card-inner">
         <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/sonemuda.jpg" alt="Sonemuda" class="w-full h-64 object-cover">
+          <img src="images/Amarkantak/sonemuda.jpg" alt="Sonemuda" class="w-full h-full object-contain">
           <div class="p-4">
             <h3 class="text-xl font-semibold en">Sonemuda</h3>
             <h3 class="text-xl font-semibold hi hidden">सोनेमुड़ा</h3>
@@ -175,7 +246,7 @@
     <div class="flip-card" onclick="this.classList.toggle('flipped')">
       <div class="flip-card-inner">
         <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/dugdh dhara.jpg" alt="Dugdh Dhara" class="w-full h-64 object-cover">
+          <img src="images/Amarkantak/dugdh dhara.jpg" alt="Dugdh Dhara" class="w-full h-full object-contain">
           <div class="p-4">
             <h3 class="text-xl font-semibold en">Dugdh Dhara</h3>
             <h3 class="text-xl font-semibold hi hidden">दुग्धधारा</h3>
@@ -193,7 +264,7 @@
     <div class="flip-card" onclick="this.classList.toggle('flipped')">
       <div class="flip-card-inner">
         <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Yantra Mandir" class="w-full h-64 object-cover">
+          <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Yantra Mandir" class="w-full h-full object-contain">
           <div class="p-4">
             <h3 class="text-xl font-semibold en">Yantra Mandir</h3>
             <h3 class="text-xl font-semibold hi hidden">यंत्र मंदिर</h3>
@@ -201,7 +272,7 @@
           </div>
         </div>
         <div class="flip-card-back">
-          <p class="text-gray-700 text-justify en">A unique temple showcasing sacred geometries and spiritual energy points. The most noticeable feature of the Shri Yantra Mandir is the massive sculpture with four heads at the entrance path. The head represents the face of goddess Laxmi, Saraswati, Kali, and Bhuvaneshwari. They are accompanied by statues of Lord Ganesha and Kartik, as well as 64 exquisitely carved deities also known as Chaunsath Yoginis. The temple is constructed as a 3D projection of the Sri Yantra  or Sri Chakra, which forms the core of the Sri Vidya worship in Hinduism.
+          <p class="text-gray-700 text-justify en">A unique temple showcasing sacred geometries and spiritual energy points. The most noticeable feature of the Shri Yantra Mandir is the massive sculpture with four heads at the entrance path. The head represents the face of goddess Laxmi, Saraswati, Kali, and Bhuvaneshwari. They are accompanied by statues of Lord Ganesha and Kartik, as well as full exquisitely carved deities also known as Chaunsath Yoginis. The temple is constructed as a 3D projection of the Sri Yantra  or Sri Chakra, which forms the core of the Sri Vidya worship in Hinduism.
        </p>
           <p class="text-gray-700 text-justify hi hidden">एक अद्भुत मंदिर जहाँ पवित्र यंत्र और आध्यात्मिक ऊर्जा केंद्र देखे जा सकते हैं।</p>
         </div>
@@ -226,7 +297,7 @@
 </script>
 </section>
 
-<section class="bg-indigo-50 py-12 px-4 max-w-7xl mx-auto">
+<section id="products" class="bg-indigo-50 py-12 px-4 max-w-7xl mx-auto">
   <h2 class="text-3xl font-bold text-center text-black mb-8 en">Famous Products and Local Food</h2>
   <h2 class="text-3xl font-bold text-center  text-black mb-8 hi hidden">प्रसिद्ध उत्पाद और स्थानीय व्यंजन</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -271,36 +342,41 @@
 
 
 <!-- Continue with Famous For section and rest of the HTML -->
- <section class="py-12 px-4 max-w-7xl mx-auto">
+ <section id="gallery" class="py-12 px-4 max-w-7xl mx-auto">
   <h2 class="text-3xl font-bold text-center mb-8 en">Amarkantak Photo Gallery</h2>
   <h2 class="text-3xl font-bold text-center mb-8 hi hidden">अमरकंटक फोटो गैलरी</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="images/Amarkantak/kapil.dhara.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/dugdh dhara.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/sonemuda.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/amarkantak.webp" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/gallery.webp" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-  </div>
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-  </div>
-</div>
-<script>
- 
-  function showImage(src) {
-    document.getElementById("popupImage").src = src;
-    document.getElementById("imagePopup").classList.remove("hidden");
-  }
 
-  function hideImage() {
-    document.getElementById("imagePopup").classList.add("hidden");
-    document.getElementById("popupImage").src = "";
-  }
-</script>
+  <!-- Responsive Grid: Always 3 columns, 2 rows -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
+    <img src="images/Amarkantak/kapil.dhara.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Amarkantak/dugdh dhara.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Gallery Image 3" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Amarkantak/sonemuda.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/amarkantak.webp" alt="Gallery Image 5" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Amarkantak/gallery.webp" alt="Gallery Image 6" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
+  </div>
+
+  <!-- Image Popup Modal -->
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold text-black">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    function showImage(src) {
+      document.getElementById("popupImage").src = src;
+      document.getElementById("imagePopup").classList.remove("hidden");
+    }
+    function hideImage() {
+      document.getElementById("imagePopup").classList.add("hidden");
+      document.getElementById("popupImage").src = "";
+    }
+  </script>
 </section>
+
 
 <!-- Image Modal -->
 
@@ -342,7 +418,7 @@
 
 
 
-  <section id="section9">
+  <section id="Book now">
         <div class="section9">
             <div class="container1">
                 <div class="category hotels">
@@ -487,6 +563,112 @@
       });
   });
 </script>
+
+
+<section id="contact" class="max-w-7xl mx-auto mt-10 px-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Reviews Column -->
+    <div class="md:col-span-2 bg-white shadow rounded p-6">
+      <h2 class="text-2xl font-bold mb-4">Top Reviews from Google Maps</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:grid" id="reviewCards">
+        <!-- Reviews will be injected here -->
+      </div>
+    </div>
+
+    <!-- Contact Form Column -->
+    <div class="bg-white shadow rounded p-6">
+      <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+      <form action="mailto:suraj9893007987@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium">Name</label>
+          <input type="text" name="name" required class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Email</label>
+          <input type="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">How can I help you?</label>
+          <textarea name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+function showOptions(id) {
+  document.querySelectorAll('#' + id).forEach(el => el.classList.toggle('hidden'));
+}
+
+// Mock Google Reviews (replace with API in production)
+const reviews = [
+  {
+    author: "Anjali M.",
+    text: "Madhya Pradesh tourism offers a diverse and enriching experience. The hospitality and scenic beauty are unmatched!"
+  },
+  {
+    author: "Rohit K.",
+    text: "From wildlife to temples, every visit has been memorable. Highly recommended for all types of travelers."
+  },
+  {
+    author: "Sneha R.",
+    text: "Seamless booking and friendly locals made our trip amazing. MP truly is the heart of India."
+  },
+  {
+    author: "Amit S.",
+    text: "Great infrastructure and well-maintained tourist spots. The Khajuraho temples are a must-visit!"
+  },
+  {
+    author: "Pooja D.",
+    text: "The wildlife sanctuaries and national parks were breathtaking. Very good arrangements throughout."
+  },
+  {
+    author: "Nikhil B.",
+    text: "MP offers a balance of history, culture, and nature. Wonderful hospitality and food as well."
+  }
+];
+
+const reviewContainer = document.getElementById('reviewCards');
+reviews.forEach((review, index) => {
+  const card = document.createElement('div');
+  card.className = 'bg-gray-100 p-4 rounded shadow review-slide';
+  card.innerHTML = `<p class='mb-2 text-sm text-gray-800'>"${review.text}"</p><p class='text-sm font-semibold text-right'>- ${review.author}</p>`;
+  reviewContainer.appendChild(card);
+});
+
+// Auto scroll for mobile view
+if (window.innerWidth < 768) {
+  let startIndex = 0;
+  const interval = 5000;
+
+  function showMobileReviews() {
+    const allReviews = document.querySelectorAll('.review-slide');
+    allReviews.forEach((el, i) => {
+      el.style.display = (i >= startIndex && i < startIndex + 2) ? 'block' : 'none';
+    });
+    startIndex = (startIndex + 2) % reviews.length;
+  }
+
+  showMobileReviews();
+  setInterval(showMobileReviews, interval);
+}
+</script>
+
+<style>
+@media (max-width: 767px) {
+  #reviewCards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .review-slide {
+    width: 100%;
+  }
+}
+</style>
+
 
 <div id="footer-placeholder"></div>
 <script>

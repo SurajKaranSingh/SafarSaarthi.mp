@@ -60,19 +60,43 @@
   <section id="hero" >
     <img src="images/Madhya Pradesh.png" alt="Hero" class="w-full h-auto object-cover" />
   </section>
-
+<!-- Advertisement Banner Section -->
+<section id="advertisement" class="w-full">
+  <div class="relative">
+    <a href="https://your-ad-link.com" target="_blank">
+      <img src="images/advertisement banner.webp" alt="Advertisement" class="w-full h-auto object-cover max-h-[250px]" />
+    </a>
+    <!-- Optional Overlay Text -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <h2 class="text-white text-2xl md:text-4xl font-bold text-center px-4">Your Advertisement Here</h2>
+    </div>
+  </div>
+</section>
   <!-- Discover Section Unified Column Layout -->
 <section id="discover" class="max-w-7xl mx-auto mt-10 px-4">
   <h2 class="text-3xl md:text-4xl font-extrabold text-center text-red-800 font-serif tracking-wide drop-shadow-md">Explore Madhya Pradesh</h2><br>
   <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
     <!-- Left Column -->
     <div class="md:col-span-3 lg:col-span-4 space-y-6 max-h-screen overflow-y-auto pb-8">
-      <div class="bg-white shadow rounded p-4">
-        <video autoplay muted playsinline controls class="w-full rounded">
-          <source src="videos/mptourism1.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <div class="bg-white shadow rounded p-4 relative">
+  <video id="mpVideo" autoplay muted playsinline loop class="w-full rounded">
+    <source src="videos/mptourism1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Mute/Unmute Toggle Button -->
+  <button onclick="toggleMainMute()" class="absolute top-2 right-2 bg-gray-800 text-white px-3 py-1 text-sm rounded hover:bg-gray-700 z-10">
+    🔇 / 🔊
+  </button>
+  <script>
+  function toggleMainMute() {
+    const video = document.getElementById("mpVideo");
+    video.muted = !video.muted;
+  }
+</script>
+
+</div>
+
 
       <div class="bg-white shadow rounded p-4">
         <label for="citySelect" class="font-medium">Select a City 🌆:</label>
@@ -391,12 +415,25 @@
     
     <!-- Left Column: Video -->
     <div class="md:w-2/5 w-full">
-      <div class="h-full">
-        <video autoplay muted playsinline controls class="w-full h-full object-cover rounded shadow">
-          <source src="videos/mptourism2.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <div class="h-full relative">
+  <video id="mpVideo2" autoplay muted playsinline loop class="w-full h-full object-cover rounded shadow">
+    <source src="videos/mptourism2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Mute/Unmute Toggle Button -->
+  <button onclick="toggleMute2()" class="absolute top-2 right-2 bg-gray-800 text-white px-3 py-1 text-sm rounded hover:bg-gray-700 z-10">
+    🔇 / 🔊
+  </button>
+  <script>
+  function toggleMute2() {
+    const video = document.getElementById("mpVideo2");
+    video.muted = !video.muted;
+  }
+</script>
+
+</div>
+
     </div>
 
     <!-- Right Column: Scrollable Package Cards -->
