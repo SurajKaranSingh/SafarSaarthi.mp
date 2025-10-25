@@ -3,648 +3,448 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Saarthi</title>
+  <title>Travel Saarthi - Discover the Heart of India</title>
+  
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    /* --- Base Styles & Custom Properties --- */
+    :root {
+      --color-primary: #047857; /* Emerald Green */
+      --color-secondary: #D97706; /* Amber */
+      --color-background: #FDFBF6;
+      --color-text: #1F2937;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Lato', sans-serif;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
-    /* --- Animated Background --- */
     body {
-      background: linear-gradient(-45deg, #e0e7ff, #c7d2fe, #bfdbfe, #dbeafe);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      font-family: var(--font-body);
     }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+    }
+
+    /* --- Header Scroll Effect --- */
+    .header-scrolled {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
     
-    /* --- NEW: On-Scroll Fade-In Animation --- */
-    .fade-in-section {
+    /* --- On-Scroll Fade-In Animation --- */
+    .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .fade-in-section.is-visible {
+    .reveal-on-scroll.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* --- NEW: Card and Button Hover Animations --- */
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* --- Custom Button & Card Styles --- */
+    .btn-primary {
+      background-color: var(--color-primary);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px -5px rgba(4, 120, 87, 0.5);
     }
-    .card-hover:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    .btn-primary:hover {
+      background-color: #059669;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px -5px rgba(4, 120, 87, 0.7);
     }
-    
-    .button-hover {
-        transition: transform 0.2s ease, background-color 0.2s ease;
+    .card {
+        background-color: #FFFFFF;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        overflow: hidden;
     }
-    .button-hover:hover {
-        transform: translateY(-2px);
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .card-image-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+        border-radius: 12px;
     }
 
-
-    /* --- Scrollbar Styles --- */
-    .city-scroll::-webkit-scrollbar,
-    .package-scroll::-webkit-scrollbar {
+    /* --- Custom Scrollbar --- */
+    .custom-scrollbar::-webkit-scrollbar {
       height: 8px;
     }
-    .city-scroll::-webkit-scrollbar-thumb,
-    .package-scroll::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: var(--color-primary);
+      border-radius: 10px;
     }
-
-    @media (max-width: 767px) {
-      #reviewCards {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .review-slide {
-        width: 100%;
-      }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #e0e0e0;
+      border-radius: 10px;
     }
   </style>
 </head>
-<body class="text-gray-900">
-  <header class="fixed top-0 left-0 w-full bg-white backdrop-blur-sm shadow-md z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="text-xl font-bold text-indigo-600">Travel Saarthi</div>
+<body class="antialiased">
+
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-3xl font-bold text-white" style="font-family: var(--font-heading);">Travel Saarthi</a>
       
-      <nav class="hidden md:flex space-x-6">
-        <a href="#hero" class="hover:text-indigo-600"><strong>Home</strong></a>
-        <a href="#discover" class="hover:text-indigo-600"><strong>Discover</strong></a>
-        <a href="#Tours" class="hover:text-indigo-600"><strong>Tours</strong></a>
-        <a href="#Book now" class="hover:text-indigo-600"><strong>Book Now</strong></a>
-        <a href="#contact" class="hover:text-indigo-600"><strong>Contact</strong></a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#discover" class="text-white hover:text-gray-200">Discover</a>
+        <a href="#tours" class="text-white hover:text-gray-200">Tours</a>
+        <a href="#why-us" class="text-white hover:text-gray-200">Why Us</a>
+        <a href="#contact" class="text-white hover:text-gray-200">Contact</a>
+        <a href="#book" class="btn-primary text-white px-5 py-2 rounded-full font-bold">Book Now</a>
       </nav>
-      <div class="md:hidden">
-        <button id="menuBtn" class="focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-        <div id="mobileMenu" class="hidden absolute right-5 mt-2 bg-white shadow rounded p-4 space-y-2">
-          <a href="#hero" class="block"><strong>Home</strong></a>
-          <a href="#discover" class="block"><strong>Discover</strong></a>
-          <a href="#contact" class="block"><strong>Contact</strong></a>
-          <a href="#Tours" class="block hover:text-indigo-600"><strong>Tours</strong></a>
-          <a href="#Book now" class="block hover:text-indigo-600"><strong>Bookings</strong></a>
-        </div>
-      </div>
+
+      <button id="menuBtn" class="md:hidden text-white focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white p-6">
+        <a href="#discover" class="block py-2 text-gray-700">Discover</a>
+        <a href="#tours" class="block py-2 text-gray-700">Tours</a>
+        <a href="#why-us" class="block py-2 text-gray-700">Why Us</a>
+        <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+        <a href="#book" class="block mt-4 btn-primary text-white text-center px-5 py-2 rounded-full font-bold">Book Now</a>
     </div>
   </header>
 
-  <section id="hero" >
-    <img src="images/Madhya Pradesh.png" alt="Hero" class="w-full h-auto object-cover" />
-  </section>
-
-  <section id="advertisement" class="w-full fade-in-section">
-    <div class="relative">
-      <a href="https://your-ad-link.com" target="_blank">
-        <img src="images/advertisement banner.webp" alt="Advertisement" class="w-full h-auto object-cover max-h-[250px]" />
-      </a>
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-        <h2 class="text-white text-2xl md:text-4xl font-bold text-center px-4">Your Advertisement Here</h2>
+  <main>
+    <section id="hero" class="h-screen w-full relative flex items-center justify-center text-white">
+      <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+        <source src="videos/mptourism1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
+      <div class="z-20 text-center px-4">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">The Heart of India</h1>
+        <p class="text-lg md:text-2xl mb-8 max-w-2xl mx-auto" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);">Explore the rich heritage, vibrant culture, and breathtaking wildlife of Madhya Pradesh.</p>
+        <a href="#discover" class="btn-primary text-white text-lg px-8 py-3 rounded-full font-bold">Start Your Journey <i class="fas fa-arrow-right ml-2"></i></a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="discover" class="max-w-7xl mx-auto mt-10 px-4 fade-in-section">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-red-800 font-serif tracking-wide drop-shadow-md">Explore Madhya Pradesh</h2><br>
-    <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
-      <div class="md:col-span-3 lg:col-span-4 space-y-6 max-h-screen overflow-y-auto pb-8 rounded-lg">
-        <div class="bg-white shadow rounded p-4 relative">
-          <video id="mpVideo" autoplay muted playsinline loop class="w-full rounded">
-            <source src="videos/mptourism1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <button onclick="toggleMainMute()" class="absolute top-2 right-2 bg-gray-800 text-white px-3 py-1 text-sm rounded hover:bg-gray-700 z-10">🔇 / 🔊</button>
+    <section id="discover" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Discover Destinations</h2>
+          <p class="text-lg text-gray-600 mt-2">Find your next adventure in the diverse landscapes of M.P.</p>
         </div>
 
-        <div class="bg-white shadow rounded p-4">
-          <label for="citySelect" class="font-medium">Select a City 🌆:</label>
-          <select id="citySelect" class="w-full mt-2 p-2 border rounded">
-            <option value="">-- Select a City --</option>
-            <option value="Bhopal">Bhopal</option>
-            <option value="Sanchi">Sanchi</option>
-            <option value="Bhimbetka">Bhimbetka</option>
-            <option value="Pachmarhi">Pachmarhi</option>
-            <option value="Indore">Indore</option>
-            <option value="Ujjain">Ujjain</option>
-            <option value="Dewas">Dewas</option>
-            <option value="Maheshwar">Maheshwar</option>
-            <option value="Omkareshwar">Omkareshwar</option>
-            <option value="Mandu">Mandu</option>
-            <option value="Burhanpur">Burhanpur</option>
-            <option value="Mandsaur">Mandsaur</option>
-            <option value="Gwalior">Gwalior</option>
-            <option value="Shivpuri">Shivpuri</option>
-            <option value="Orchha">Orchha</option>
-            <option value="Tikamgarh">Tikamgarh</option>
-            <option value="Chanderi">Chanderi</option>
-            <option value="Jabalpur">Jabalpur</option>
-            <option value="Bandhavgarh">Bandhavgarh</option>
-            <option value="Amarkantak">Amarkantak</option>
-            <option value="Kanha">Kanha</option>
-            <option value="Chitrakoot">Chitrakoot</option>
-            <option value="Khajuraho">Khajuraho</option>
-            <option value="Satna">Satna</option>
-            <option value="Rewa">Rewa</option>
-            <option value="Panna">Panna</option>
+        <div class="mb-8 reveal-on-scroll">
+            <select id="citySelect" class="w-full md:w-1/3 mx-auto p-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-green-500">
+                <option value="">-- Jump to a City --</option>
+                <option value="Bhopal">Bhopal</option><option value="Sanchi">Sanchi</option><option value="Bhimbetka">Bhimbetka</option><option value="Pachmarhi">Pachmarhi</option><option value="Indore">Indore</option><option value="Ujjain">Ujjain</option><option value="Maheshwar">Maheshwar</option><option value="Omkareshwar">Omkareshwar</option><option value="Mandu">Mandu</option><option value="Gwalior">Gwalior</option><option value="Orchha">Orchha</option><option value="Jabalpur">Jabalpur</option><option value="Bandhavgarh">Bandhavgarh</option><option value="Kanha">Kanha</option><option value="Khajuraho">Khajuraho</option><option value="Panna">Panna</option>
             </select>
         </div>
 
-        <div class="city-scroll flex space-x-4 overflow-x-auto py-4" id="cityCards">
-            <div id="Amarkantak" class="card-hover card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
-              <p class="text-sm leading-snug mt-1">Origin of Narmada River, <br>rich in spiritual and natural beauty.</p>
-            </div>
-            <a href="amarkantak.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+        <div class="custom-scrollbar flex space-x-6 overflow-x-auto py-4 -mx-6 px-6 reveal-on-scroll">
+          <div id="Bhopal" class="flex-shrink-0 w-72 h-96 relative rounded-xl card-image-overlay card">
+              <img src="images/Bhopal.webp" class="w-full h-full object-cover rounded-xl" />
+              <div class="absolute bottom-0 left-0 p-5 text-white">
+                  <h3 class="text-2xl font-bold">Bhopal</h3>
+                  <p class="text-sm">The serene 'City of Lakes'.</p>
+                  <a href="bhopal.html" class="mt-3 inline-block text-amber-400 font-bold hover:underline">Explore &rarr;</a>
+              </div>
           </div>
-
-          <div id="Bandhavgarh" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/Bandhavgarh.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Bandhavgarh</h3>
-              <p class="text-sm leading-snug mt-1">Popular tiger reserve with high <br>tiger density and historical fort.</p>
-            </div>
-            <a href="bandhavgarh.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+          <div id="Jabalpur" class="flex-shrink-0 w-72 h-96 relative rounded-xl card-image-overlay card">
+              <img src="images/bhedaghat-jabalpur.webp" class="w-full h-full object-cover rounded-xl" />
+              <div class="absolute bottom-0 left-0 p-5 text-white">
+                  <h3 class="text-2xl font-bold">Jabalpur</h3>
+                  <p class="text-sm">Home of the Marble Rocks.</p>
+                  <a href="jabalpur.html" class="mt-3 inline-block text-amber-400 font-bold hover:underline">Explore &rarr;</a>
+              </div>
           </div>
-
-          <div id="Bhimbedka" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/bhimbedka.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Bhimbedka</h3>
-              <p class="text-sm leading-snug mt-1">Home to prehistoric rock <br>shelters and cave paintings.</p>
-            </div>
-            <a href="bhimbedka.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+          <div id="Bandhavgarh" class="flex-shrink-0 w-72 h-96 relative rounded-xl card-image-overlay card">
+              <img src="images/Bandhavgarh.webp" class="w-full h-full object-cover rounded-xl" />
+              <div class="absolute bottom-0 left-0 p-5 text-white">
+                  <h3 class="text-2xl font-bold">Bandhavgarh</h3>
+                  <p class="text-sm">A dense tiger sanctuary.</p>
+                  <a href="bandhavgarh.html" class="mt-3 inline-block text-amber-400 font-bold hover:underline">Explore &rarr;</a>
+              </div>
           </div>
-
-          <div id="Bhopal" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/Bhopal.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Bhopal</h3>
-              <p class="text-sm leading-snug mt-1">Lake City of India</p>
-            </div>
-            <a href="bhopal.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+          <div id="Khajuraho" class="flex-shrink-0 w-72 h-96 relative rounded-xl card-image-overlay card">
+              <img src="images/khajuraho.jpg" class="w-full h-full object-cover rounded-xl" />
+              <div class="absolute bottom-0 left-0 p-5 text-white">
+                  <h3 class="text-2xl font-bold">Khajuraho</h3>
+                  <p class="text-sm">Temples of intricate art.</p>
+                  <a href="khajuraho.html" class="mt-3 inline-block text-amber-400 font-bold hover:underline">Explore &rarr;</a>
+              </div>
           </div>
-
-          <div id="Burhanpur" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/burhanpur.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Burhanpur</h3>
-              <p class="text-sm leading-snug mt-1">Historic city with Mughal<br> monuments and textiles.</p>
-            </div>
-            <a href="burhanpur.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
+           <div id="Pachmarhi" class="flex-shrink-0 w-72 h-96 relative rounded-xl card-image-overlay card">
+              <img src="images/pachmarhi.webp" class="w-full h-full object-cover rounded-xl" />
+              <div class="absolute bottom-0 left-0 p-5 text-white">
+                  <h3 class="text-2xl font-bold">Pachmarhi</h3>
+                  <p class="text-sm">The queen of Satpura.</p>
+                  <a href="pachmarhi.html" class="mt-3 inline-block text-amber-400 font-bold hover:underline">Explore &rarr;</a>
+              </div>
           </div>
-
-          <div id="Chanderi" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/chanderi.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Chanderi</h3>
-              <p class="text-sm leading-snug mt-1">Famous for silk sarees and<br> Islamic-era architecture.</p>
-            </div>
-            <a href="chanderi.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Chitrakoot" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/chitrakoot.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Chitrakoot</h3>
-              <p class="text-sm leading-snug mt-1">Spiritual town linked to <br>Lord Rama's exile years.</p>
-            </div>
-            <a href="chitrakoot.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Dewas" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/dewas.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Dewas</h3>
-              <p class="text-sm leading-snug mt-1">Known for Tekri Mata Temple<br> and industrial development.</p>
-            </div>
-            <a href="dewas.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Gwalior" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/gwalior.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Gwalior</h3>
-              <p class="text-sm leading-snug mt-1">Famous for majestic Gwalior Fort<br> and classical music heritage.</p>
-            </div>
-            <a href="gwalior.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Indore" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/indore.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Indore</h3>
-              <p class="text-sm leading-snug mt-1">Food Capital of MP</p>
-            </div>
-            <a href="indore.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Jabalpur" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/bhedaghat-jabalpur.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Jabalpur</h3>
-              <p class="text-sm leading-snug mt-1">Known for Marble Rocks at<br> Bhedaghat and Dhuandhar Falls.</p>
-            </div>
-            <a href="jabalpur.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Kanha" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/kanha.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Kanha</h3>
-              <p class="text-sm leading-snug mt-1">Inspiration for The Jungle Book, <br>famous for tiger and barasingha<br> conservation.</p>
-            </div>
-            <a href="kanha.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Khajuraho" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
-              <p class="text-sm leading-snug mt-1">World-renowned temples with<br> exquisite erotic carvings.</p>
-            </div>
-            <a href="khajuraho.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-          <div id="Maheshwar" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/maheshwar.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Maheshwar</h3>
-              <p class="text-sm leading-snug mt-1">Historic town on Narmada,<br> known for ghats and handloom<br> sarees.</p>
-            </div>
-            <a href="maheshwar.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Mandu" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/mandu.png" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Mandu</h3>
-              <p class="text-sm leading-snug mt-1">City of architectural ruins and <br>romantic folklore of Baz Bahadur<br> & Roopmati.</p>
-            </div>
-            <a href="mandu.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Mandsaur" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/mandsour.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Mandsaur</h3>
-              <p class="text-sm leading-snug mt-1">Known for Pashupatinath Temple<br> and historical fort.</p>
-            </div>
-            <a href="mandsaur.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Orchha" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Orchha</h3>
-              <p class="text-sm leading-snug mt-1">Medieval town with palaces,<br> temples, and riverfront views.</p>
-            </div>
-            <a href="orchha.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Omkareshwar" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/omkareshwar.jpg" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Omkareshwar</h3>
-              <p class="text-sm leading-snug mt-1">Island shaped like Om, home to<br> a revered Jyotirlinga temple.</p>
-            </div>
-            <a href="omkareshwar.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Panna" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/panna.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Panna</h3>
-              <p class="text-sm leading-snug mt-1">Known for diamond mines <br>and tiger reserve.</p>
-            </div>
-            <a href="panna.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Pachmarhi" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
-              <p class="text-sm leading-snug mt-1">Only hill station of Madhya <br>Pradesh with waterfalls and caves.</p>
-            </div>
-            <a href="pachmarhi.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Rewa" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/rewa.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Rewa</h3>
-              <p class="text-sm leading-snug mt-1">Origin of the white tiger and<br> known for waterfalls and fort.</p>
-            </div>
-            <a href="rewa.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Sanchi" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/sanchi.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Sanchi</h3>
-              <p class="text-sm leading-snug mt-1">Famous for ancient Buddhist <br> stupas and UNESCO heritage site.</p>
-            </div>
-            <a href="sanchi.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Satna" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/satna.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Satna</h3>
-              <p class="text-sm leading-snug mt-1">Industrial city and gateway <br>to religious towns like Chitrakoot.</p>
-            </div>
-            <a href="satna.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Shivpuri" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/shivpuri.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Shivpuri</h3>
-              <p class="text-sm leading-snug mt-1">Wildlife sanctuary and palatial<br> heritage of Scindia dynasty</p>
-            </div>
-            <a href="shivpuri.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Tikamgarh" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/tikamgarh.webp" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Tikamgarh</h3>
-              <p class="text-sm leading-snug mt-1">Land of temples and forts<br> with rich Bundelkhand culture.</p>
-            </div>
-            <a href="tikamgarh.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-
-          <div id="Ujjain" class="card-hover min-w-[250px] max-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-            <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
-            <div>
-              <h3 class="text-lg font-semibold mt-2">Ujjain</h3>
-              <p class="text-sm leading-snug mt-1">City of Mahakal</p>
-            </div>
-            <a href="ujjain.html" class="button-hover mt-2 inline-block px-4 py-1 bg-indigo-600 text-white rounded text-center">Explore</a>
-          </div>
-            </div>
-      </div>
-
-      <div class="md:col-span-1 flex flex-col items-start space-y-6">
-        <div class="bg-white shadow rounded p-4 text-center w-full card-hover">
-          <img src="images/tourismlogo.png" alt="MP Tourism" class="mx-auto mb-4 h-24 w-auto" />
-          <a href="https://tourism.mp.gov.in/" target="_blank" class="button-hover inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Visit MP Tourism</a>
-        </div>
-        <div class="bg-white shadow rounded p-2 w-full card-hover">
-          <video autoplay loop muted playsinline class="w-full h-[600px] object-cover rounded" id="promoVideo">
-            <source src="videos/mp promotional.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="text-center mt-2">
-            <button onclick="toggleMute()" class="button-hover bg-gray-800 text-white px-4 py-1 rounded hover:bg-gray-700">🔇 / 🔊</button>
+          <div id="Ujjain" class="flex-shrink-0 w-72 h-96 relative rounded-xl card-image-overlay card">
+              <img src="images/ujjain.png" class="w-full h-full object-cover rounded-xl" />
+              <div class="absolute bottom-0 left-0 p-5 text-white">
+                  <h3 class="text-2xl font-bold">Ujjain</h3>
+                  <p class="text-sm">The spiritual city of Mahakal.</p>
+                  <a href="ujjain.html" class="mt-3 inline-block text-amber-400 font-bold hover:underline">Explore &rarr;</a>
+              </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="Tours" class="max-w-7xl mx-auto mt-10 px-4 fade-in-section">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-blue-800 font-serif tracking-wide drop-shadow-md">M.P Tour Packages</h2>
-    <div class="flex flex-col md:flex-row gap-6 items-stretch mt-6">
-      <div class="md:w-2/5 w-full">
-        <div class="h-full relative">
-          <video id="mpVideo2" autoplay muted playsinline loop class="w-full h-full object-cover rounded shadow">
-            <source src="videos/mptourism2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <button onclick="toggleMute2()" class="absolute top-2 right-2 bg-gray-800 text-white px-3 py-1 text-sm rounded hover:bg-gray-700 z-10">🔇 / 🔊</button>
+    <section id="tours" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Curated Tour Packages</h2>
+          <p class="text-lg text-gray-600 mt-2">Handpicked journeys for an unforgettable experience.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="card reveal-on-scroll">
+            <img src="images/khajuraho.jpg" alt="Spiritual & Heritage Tour" class="w-full h-56 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800">Spiritual & Heritage Tour</h3>
+              <p class="text-gray-600 mt-2">6 Days / 5 Nights</p>
+              <p class="mt-4 text-sm">Visit the divine temples of Ujjain, Omkareshwar, and the historic marvels of Mandu.</p>
+              <div class="mt-6 flex justify-between items-center">
+                <span class="text-xl font-bold text-green-700">₹25,000</span>
+                <a href="#" class="btn-primary text-white px-5 py-2 rounded-full text-sm font-bold">View Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="card reveal-on-scroll">
+            <img src="images/Bandhavgarh.webp" alt="Wildlife Adventure" class="w-full h-56 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800">Wildlife Adventure</h3>
+              <p class="text-gray-600 mt-2">5 Days / 4 Nights</p>
+              <p class="mt-4 text-sm">Explore the dense jungles of Kanha and Bandhavgarh, home to the majestic Royal Bengal Tiger.</p>
+              <div class="mt-6 flex justify-between items-center">
+                <span class="text-xl font-bold text-green-700">₹35,000</span>
+                <a href="#" class="btn-primary text-white px-5 py-2 rounded-full text-sm font-bold">View Details</a>
+              </div>
+            </div>
+          </div>
+          <div class="card reveal-on-scroll">
+            <img src="images/pachmarhi.webp" alt="Nature's Retreat" class="w-full h-56 object-cover">
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800">Nature's Retreat</h3>
+              <p class="text-gray-600 mt-2">4 Days / 3 Nights</p>
+              <p class="mt-4 text-sm">Unwind in the serene hill station of Pachmarhi, with its waterfalls, caves, and viewpoints.</p>
+              <div class="mt-6 flex justify-between items-center">
+                <span class="text-xl font-bold text-green-700">₹18,000</span>
+                <a href="#" class="btn-primary text-white px-5 py-2 rounded-full text-sm font-bold">View Details</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="md:w-3/5 w-full">
-        <div class="flex space-x-4 overflow-x-auto py-4 h-full">
-                  <div class="card-hover min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-          <img src="images/pachmarhi.webp" class="w-full h-40 object-cover rounded" />
+    </section>
+    
+    <section id="why-us" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Why Travel With Saarthi?</h2>
+                    <p class="text-lg text-gray-600 mt-4 mb-8">We don't just plan trips; we craft experiences. Our local expertise and commitment to quality ensure your journey is seamless, authentic, and unforgettable.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><i class="fas fa-map-marked-alt text-xl"></i></div>
+                            <div class="ml-4">
+                                <h4 class="text-xl font-bold">Expert Local Guides</h4>
+                                <p class="text-gray-600">Discover hidden gems with guides who know the land by heart.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><i class="fas fa-gem text-xl"></i></div>
+                            <div class="ml-4">
+                                <h4 class="text-xl font-bold">Tailor-Made Itineraries</h4>
+                                <p class="text-gray-600">Your trip, your way. We customize every detail to match your interests.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-green-100 text-green-700 flex items-center justify-center"><i class="fas fa-headset text-xl"></i></div>
+                            <div class="ml-4">
+                                <h4 class="text-xl font-bold">24/7 Support</h4>
+                                <p class="text-gray-600">We're here for you anytime, ensuring a worry-free vacation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-8 bg-gray-50 reveal-on-scroll">
+                    <i class="fas fa-quote-left text-green-600 text-4xl mb-4"></i>
+                    <p id="reviewText" class="text-lg text-gray-700 italic mb-6">"Seamless booking and friendly locals made our trip amazing. MP truly is the heart of India. Travel Saarthi's team was exceptional!"</p>
+                    <div class="flex items-center">
+                        <img id="reviewAuthorImg" src="https://i.pravatar.cc/60?u=sneha" alt="Reviewer" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <p id="reviewAuthorName" class="font-bold text-lg">- Sneha R.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Plan Your Trip</h2>
+          <p class="text-lg text-gray-600 mt-2">Everything you need to book your perfect getaway.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div class="card p-8 reveal-on-scroll">
+                <i class="fas fa-plane-departure text-5xl text-green-600 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-3">Flights</h3>
+                <p class="text-gray-600 mb-6">Find the best deals on flights to and from Madhya Pradesh.</p>
+                <a href="https://www.makemytrip.com/flights/" target="_blank" class="font-bold text-green-700 hover:underline">Book Now &rarr;</a>
+            </div>
+            <div class="card p-8 reveal-on-scroll">
+                <i class="fas fa-hotel text-5xl text-green-600 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-3">Hotels</h3>
+                <p class="text-gray-600 mb-6">Comfortable stays for every budget, from luxury resorts to cozy homestays.</p>
+                <a href="https://www.goibibo.com/hotels/" target="_blank" class="font-bold text-green-700 hover:underline">Book Now &rarr;</a>
+            </div>
+            <div class="card p-8 reveal-on-scroll">
+                <i class="fas fa-train text-5xl text-green-600 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-3">Trains</h3>
+                <p class="text-gray-600 mb-6">Book your train tickets easily through our trusted partners.</p>
+                <a href="https://www.irctc.co.in/" target="_blank" class="font-bold text-green-700 hover:underline">Book Now &rarr;</a>
+            </div>
+            <div class="card p-8 reveal-on-scroll">
+                <i class="fas fa-taxi text-5xl text-green-600 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-3">Cabs</h3>
+                <p class="text-gray-600 mb-6">Reliable and safe taxi services for local and outstation travel.</p>
+                <a href="https://www.olacabs.com/" target="_blank" class="font-bold text-green-700 hover:underline">Book Now &rarr;</a>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="bg-gray-800 text-white rounded-2xl shadow-2xl p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-on-scroll">
           <div>
-            <h3 class="text-lg font-semibold mt-2">Pachmarhi</h3>
-            <p>"Tour Package"</p>
+            <h2 class="text-4xl md:text-5xl font-bold">Have Questions?</h2>
+            <p class="mt-4 text-lg text-gray-300">Our travel experts are ready to help you plan the trip of a lifetime. Reach out to us!</p>
+            <div class="mt-8 space-y-4">
+                <p><i class="fas fa-envelope mr-3 text-green-400"></i> mail.team.travalsaarthi@gmail.com</p>
+                <p><i class="fas fa-phone mr-3 text-green-400"></i> +91-123-456-7890</p>
+                <p><i class="fas fa-map-marker-alt mr-3 text-green-400"></i> Bhopal, Madhya Pradesh, India</p>
+            </div>
           </div>
-          <a href="package.pachmarhi.html" class="button-hover mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
+          <form action="mailto:mail.team.travalsaarthi@gmail.com" method="post" enctype="text/plain" class="space-y-5">
+            <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="email" name="email" placeholder="Your Email" required class="w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <textarea name="message" rows="5" placeholder="Your Message" required class="w-full bg-gray-700 border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+            <button type="submit" class="w-full btn-primary text-white font-bold py-3 rounded-lg">Send Message</button>
+          </form>
         </div>
-
-        <div class="card-hover min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-          <img src="images/ujjain.png" class="w-full h-40 object-cover rounded" />
-          <div>
-            <h3 class="text-lg font-semibold mt-2">Mahakaleshwar</h3>
-            <p>"Tour Package"</p>
-          </div>
-          <a href="package.mahakal.html" class="button-hover mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-        </div>
-
-        <div class="card-hover min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-          <img src="images/kuno.webp" class="w-full h-40 object-cover rounded" />
-          <div>
-            <h3 class="text-lg font-semibold mt-2">Kuno</h3>
-            <p>"Tour Package"</p>
-          </div>
-          <a href="package.kuno.html" class="button-hover mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-        </div>
-
-        <div class="card-hover min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-          <img src="images/orchha.jpg" class="w-full h-40 object-cover rounded" />
-          <div>
-            <h3 class="text-lg font-semibold mt-2">Orchha</h3>
-            <p>"Tour Package"</p>
-          </div>
-          <a href="package.orchha.html" class="button-hover mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-        </div>
-
-        <div class="card-hover min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-          <img src="images/khajuraho.jpg" class="w-full h-40 object-cover rounded" />
-          <div>
-            <h3 class="text-lg font-semibold mt-2">Khajuraho</h3>
-            <p>"Tour Package"</p>
-          </div>
-          <a href="package.khajuraho.html" class="button-hover mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-        </div>
-
-        <div class="card-hover min-w-[250px] h-[400px] bg-white shadow rounded p-4 flex-shrink-0 flex flex-col justify-between">
-          <img src="images/amarkantak.webp" class="w-full h-40 object-cover rounded" />
-          <div>
-            <h3 class="text-lg font-semibold mt-2">Amarkantak</h3>
-            <p>"Tour Package"</p>
-          </div>
-          <a href="package.amarkantak.html" class="button-hover mt-2 inline-block px-4 py-1 bg-blue-600 text-white rounded">Plan Now</a>
-        </div>
-          </div>
       </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="container mx-auto px-6 text-center">
+        <h3 class="text-3xl font-bold text-white mb-4" style="font-family: var(--font-heading);">Travel Saarthi</h3>
+        <p class="max-w-xl mx-auto mb-6">Crafting unforgettable journeys through the heart of India.</p>
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="#" class="text-2xl hover:text-green-400"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-2xl hover:text-green-400"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-2xl hover:text-green-400"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="text-sm text-gray-500">&copy; 2025 Travel Saarthi. All Rights Reserved. Designed with ❤️.</p>
     </div>
-  </section>
-
-  <section id="Book now" class="max-w-7xl mx-auto mt-10 px-4 fade-in-section">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-green-700 font-serif tracking-wide drop-shadow-md">Plan Your Bookings</h2>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-      <div class="card-hover bg-white/80 backdrop-blur-sm shadow-lg rounded-lg p-4 text-center">
-      <img src="images/train.flight.jpg" alt="Train & Flight" class="w-full h-32 object-cover rounded mb-4">
-      <h3 class="text-lg font-semibold mb-2">Tickets</h3>
-      <button onclick="showOptions('transportOptions')" class="button-hover bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
-      <div id="transportOptions" class="hidden mt-4 space-y-2">
-        <img src="images/irctc.jpg" alt="Train" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.irctc.co.in/', '_blank')">
-        <img src="images/redbus.png" alt="Flight" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.redbus.in/railways', '_blank')">
-        <img src="images/ixigo.png" alt="Flight" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.ixigo.com/trains', '_blank')">
-        <img src="images/makemytrip.webp" alt="Flight" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.makemytrip.com/railways/', '_blank')">
-      </div>
-    </div>
-
-    <div class="card-hover bg-white/80 backdrop-blur-sm shadow-lg rounded-lg p-4 text-center">
-      <img src="images/hotel.jpg" alt="Hotel" class="w-full h-32 object-cover rounded mb-4">
-      <h3 class="text-lg font-semibold mb-2">Hotel Booking</h3>
-      <button onclick="showOptions('hotelOptions')" class="button-hover bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
-      <div id="hotelOptions" class="hidden mt-4 space-y-2">
-        <img src="images/oyo.png" alt="OYO" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.oyorooms.com/', '_blank')">
-        <img src="images/goibibo.jpeg" alt="Goibibo" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.goibibo.com/hotels/', '_blank')">
-        <img src="images/redbus.png" alt="OYO" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.redbus.in/hotels', '_blank')">
-        <img src="images/makemytrip.webp" alt="Goibibo" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.makemytrip.com/hotels/', '_blank')">
-        <img src="images/agoda.png" alt="Agoda" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.agoda.com/en-in/', '_blank')">
-      </div>
-    </div>
-
-    <div class="card-hover bg-white/80 backdrop-blur-sm shadow-lg rounded-lg p-4 text-center">
-      <img src="images/cabs.png" alt="Taxi" class="w-full h-32 object-cover rounded mb-4">
-      <h3 class="text-lg font-semibold mb-2">Taxi Booking</h3>
-      <button onclick="showOptions('taxiOptions')" class="button-hover bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
-      <div id="taxiOptions" class="hidden mt-4 space-y-2">
-        <img src="images/ola.png" alt="Ola" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.olacabs.com/', '_blank')">
-        <img src="images/uber.png" alt="Uber" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.uber.com/', '_blank')">
-        <img src="images/Rapido.png" alt="Rapido" class="card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.rapido.bike/Home', '_blank')">
-      </div>
-    </div>
-
-    <div class="card-hover bg-white/80 backdrop-blur-sm shadow-lg rounded-lg p-4 text-center">
-      <img src="images/food.jpg" alt="Food" class="w-full h-32 object-cover rounded mb-4">
-      <h3 class="text-lg font-semibold mb-2">Food Delivery</h3>
-      <button onclick="showOptions('foodOptions')" class="button-hover bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Now</button>
-      <div id="foodOptions" class="hidden mt-4 space-y-2">
-        <img src="images/swiggy.png" alt="Swiggy" class=" card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.swiggy.com/', '_blank')">
-        <img src="images/zomato.png" alt="Zomato" class=" card-hover w-20 h-20 mx-auto cursor-pointer" onclick="window.open('https:www.zomato.com/', '_blank')">
-      </div>
-    </div>
-      </div>
-  </section>
-
-  <section id="contact" class="max-w-7xl mx-auto mt-10 px-4 fade-in-section">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="md:col-span-2 bg-white backdrop-blur-sm shadow-lg rounded-lg p-6">
-        <h2 class="text-2xl font-bold mb-4">Top Reviews</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="reviewCards">
-          </div>
-      </div>
-      <div class="bg-white backdrop-blur-sm shadow-lg rounded-lg p-6">
-        <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
-        <form action="mailto:mail.team.travalsaarthi@gmail.com" method="post" enctype="text/plain" class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium">Name</label>
-          <input type="text" name="name" required class="w-full border border-gray-300 rounded px-3 py-2 bg-white/50">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">Email</label>
-          <input type="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2 bg-white/50">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">How can I help you?</label>
-          <textarea name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2 bg-white/50"></textarea>
-        </div>
-        <button type="submit" class="button-hover bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
-      </form>
-      </div>
-    </div>
-  </section>
-
-  <div id="footer-placeholder" class="mt-10"></div>
+  </footer>
 
   <script>
-    // --- Mute/Unmute Video Functions ---
-    function toggleMainMute() { document.getElementById("mpVideo").muted = !document.getElementById("mpVideo").muted; }
-    function toggleMute() { document.getElementById("promoVideo").muted = !document.getElementById("promoVideo").muted; }
-    function toggleMute2() { document.getElementById("mpVideo2").muted = !document.getElementById("mpVideo2").muted; }
-    
-    // --- NEW: Intersection Observer for On-Scroll Animations ---
-    const observer = new IntersectionObserver((entries) => {
+    document.addEventListener('DOMContentLoaded', function () {
+      // --- Header Scroll Effect ---
+      const header = document.getElementById('mainHeader');
+      const headerTextColorElements = header.querySelectorAll('a, button');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('header-scrolled');
+          headerTextColorElements.forEach(el => el.classList.replace('text-white', 'text-gray-800'));
+        } else {
+          header.classList.remove('header-scrolled');
+          headerTextColorElements.forEach(el => el.classList.replace('text-gray-800', 'text-white'));
+        }
+      });
+
+      // --- Mobile Menu Toggle ---
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // --- On-Scroll Reveal Animation ---
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
         });
-    }, {
-        threshold: 0.1 // Trigger when 10% of the element is visible
-    });
-
-    const sections = document.querySelectorAll('.fade-in-section');
-    sections.forEach((section) => {
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal-on-scroll').forEach((section) => {
         observer.observe(section);
+      });
+
+      // --- City Dropdown Scroll ---
+      document.getElementById('citySelect').addEventListener('change', function () {
+        const targetId = this.value;
+        if (targetId) {
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          }
+        }
+      });
+      
+      // --- Testimonial Slider ---
+      const reviews = [
+        { author: "Anjali M.", text: "A diverse and enriching experience. The hospitality and scenic beauty of Madhya Pradesh are unmatched!", avatar: "https://i.pravatar.cc/60?u=anjali" },
+        { author: "Rohit K.", text: "From majestic wildlife to ancient temples, every visit has been memorable. Travel Saarthi planned everything perfectly. Highly recommended.", avatar: "https://i.pravatar.cc/60?u=rohit" },
+        { author: "Sneha R.", text: "Seamless booking and friendly locals made our trip amazing. MP truly is the heart of India. Travel Saarthi's team was exceptional!", avatar: "https://i.pravatar.cc/60?u=sneha" },
+        { author: "Amit S.", text: "Great infrastructure and well-maintained tourist spots. The Khajuraho temples are a must-visit, and our guide was incredibly knowledgeable.", avatar: "https://i.pravatar.cc/60?u=amit" }
+      ];
+      let currentReview = 0;
+      const reviewTextEl = document.getElementById('reviewText');
+      const reviewAuthorNameEl = document.getElementById('reviewAuthorName');
+      const reviewAuthorImgEl = document.getElementById('reviewAuthorImg');
+
+      setInterval(() => {
+        currentReview = (currentReview + 1) % reviews.length;
+        reviewTextEl.style.opacity = 0;
+        reviewAuthorNameEl.style.opacity = 0;
+        reviewAuthorImgEl.style.opacity = 0;
+
+        setTimeout(() => {
+          reviewTextEl.textContent = `"${reviews[currentReview].text}"`;
+          reviewAuthorNameEl.textContent = `- ${reviews[currentReview].author}`;
+          reviewAuthorImgEl.src = reviews[currentReview].avatar;
+          reviewTextEl.style.opacity = 1;
+          reviewAuthorNameEl.style.opacity = 1;
+          reviewAuthorImgEl.style.opacity = 1;
+        }, 500);
+      }, 5000); // Change review every 5 seconds
+
     });
-
-    // --- Existing Scripts ---
-    document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
-    
-    document.getElementById('citySelect').addEventListener('change', function () {
-        const target = document.getElementById(this.value);
-        if (target) target.scrollIntoView({ behavior: 'smooth', inline: 'start' });
-    });
-
-    function showOptions(id) {
-        document.querySelectorAll('#transportOptions, #hotelOptions, #taxiOptions, #foodOptions').forEach(el => {
-            if (el.id !== id) el.classList.add('hidden');
-        });
-        document.getElementById(id).classList.toggle('hidden');
-    }
-
-    // Mock reviews, footer fetch, etc. (your existing scripts)
-    const reviews = [
-      { author: "Anjali M.", text: "A diverse and enriching experience. Hospitality and scenic beauty are unmatched!" },
-      { author: "Rohit K.", text: "From wildlife to temples, every visit has been memorable. Highly recommended." },
-      {
-      author: "Sneha R.",
-      text: "Seamless booking and friendly locals made our trip amazing. MP truly is the heart of India."
-    },
-    {
-      author: "Amit S.",
-      text: "Great infrastructure and well-maintained tourist spots. The Khajuraho temples are a must-visit!"
-    },
-    {
-      author: "Pooja D.",
-      text: "The wildlife sanctuaries and national parks were breathtaking. Very good arrangements throughout."
-    },
-    {
-      author: "Nikhil B.",
-      text: "MP offers a balance of history, culture, and nature. Wonderful hospitality and food as well."
-    }
-    ];
-    const reviewContainer = document.getElementById('reviewCards');
-    reviews.forEach(review => {
-        const card = document.createElement('div');
-        card.className = 'bg-gray-100 p-4 rounded shadow review-slide';
-        card.innerHTML = `<p class='mb-2 text-sm text-gray-800'>"${review.text}"</p><p class='text-sm font-semibold text-right'>- ${review.author}</p>`;
-        reviewContainer.appendChild(card);
-    });
-
-    fetch("footer.html").then(res => res.text()).then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-    });
-
   </script>
 </body>
 </html>

@@ -1,683 +1,696 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Amarkantak - Tourism Guide</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Font Awesome CDN -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Amarkantak · The Sacred Origin</title>
   
-</head>
-<body class="text-gray-900 pt-20">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Header Bar -->
-<div class="fixed top-0 left-0 w-full bg-gray-800 text-white flex justify-between items-center px-4 py-2 z-50">
-  <div class="text-xl font-bold">Travel Saarthi</div>
-  <div>
-    <span class="lang-toggle" onclick="setLang('en')">English</span> |
-    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
-  </div>
-  <a href="index.html" class="bg-white text-black px-4 py-1 rounded">Home</a>
-</div>
-
-<!-- Hero Section -->
-<header class="relative h-screen bg-cover bg-center text-white" style="background-image: url('images/amarkantak.webp');">
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30 z-10"></div>
-
-  <!-- Content -->
-  <div class="relative z-20 h-full flex items-center justify-center">
-    <div class="text-center px-4 max-w-3xl">
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-md animate-fade-in en">Welcome to Amarkantak</h1>
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-md animate-fade-in hi hidden">अमरकंटक में आपका स्वागत है</h1>
-      
-      <p class="text-lg sm:text-xl md:text-2xl font-medium drop-shadow-sm animate-fade-in-slow en">Origin of Narmada, Land of Pilgrimage</p>
-      <p class="text-lg sm:text-xl md:text-2xl font-medium drop-shadow-sm animate-fade-in-slow hi hidden">नर्मदा की जन्मभूमि, तीर्थ यात्राय का ग्राम</p>
-    </div>
-  </div>
-
-  <!-- Scroll Down Indicator (Optional) -->
-  <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-20">
-    <div class="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-1 animate-bounce">
-      <div class="w-1 h-1 bg-white rounded-full"></div>
-    </div>
-  </div>
-</header>
-
-<section class="max-w-7xl mx-auto mt-20 px-4 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-  <!-- Left: Video Column -->
-<div class="relative group">
-  <video
-    id="amarkantakVideo"
-    autoplay
-    muted
-    loop
-    playsinline
-    class="rounded-lg shadow-lg w-full cursor-pointer"
-    onclick="window.open('images/Amarkantak/amarkantak_video.mp4', '_blank')"
-    oncontextmenu="return false"
-    controlsList="nodownload noplaybackrate nofullscreen">
-    <source src="images/Amarkantak/amarkantak_video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Custom Mute/Unmute Button -->
-  <button
-    onclick="toggleAmarkantakMute()"
-    class="absolute top-2 right-2 bg-black bg-opacity-60 text-white text-sm px-2 py-1 rounded hover:bg-opacity-80 z-10">
-    🔇 / 🔊
-  </button>
-
-  <!-- Hover Tooltip -->
-  <div class="absolute bottom-2 right-2 text-xs text-white bg-black bg-opacity-50 px-2 py-1 rounded hidden group-hover:block">
-    Click to open in full screen tab 🔗
-  </div>
-  <script>
-  function toggleAmarkantakMute() {
-    const video = document.getElementById("amarkantakVideo");
-    video.muted = !video.muted;
-  }
-</script>
-
-</div>
-
-
-  <!-- Right: Ad Banner Column -->
-  <div class="flex justify-center items-center">
-    <a href="#ad-link" target="_blank">
-      <img src="images/advertisement banner.webp" alt="Ad Banner" class="rounded-lg shadow-lg w-full max-h-80 object-cover">
-    </a>
-  </div>
-</section>
-<br>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
   
-<section id="discover" class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 en">Discover Amarkantak</h2>
-    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 hi hidden">अमरकंटक के बारे में जानिए</h2>
-    <div class="flex flex-col lg:flex-row items-center gap-10">
-    <div class="w-full lg:w-1/2">
-  <div class="overflow-hidden rounded-xl shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl border-4 border-green-200">
-    <iframe
-      class="w-full h-80 rounded-lg"
-      src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d106591.43739583119!2d81.full826971598842!3d22.69full265388438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1splaces%20to%20visit%20in%20amarkantak!5e1!3m2!1sen!2sin!4v1752598919183!5m2!1sen!2sin"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</div>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-      <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
-        <div class="en">
-          <h3 class="text-2xl font-semibold text-green-700 mb-4">Spiritual Serenity of Amarkantak</h3>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed">
-            Amarkantak is a sacred hill town located at the meeting point of the Vindhya and Satpura ranges in Madhya Pradesh. It is the origin of three major rivers: Narmada, Son, and Johila, and is revered as "Teerthraj" – the king of pilgrimage sites.
-          </p>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed mt-4">
-            Surrounded by lush forests and dotted with ancient temples, waterfalls, and natural springs, Amarkantak offers spiritual solace and breathtaking natural beauty.
-          </p>
-        </div>
-        <div class="hi hidden">
-          <h3 class="text-2xl font-semibold text-green-700 mb-4">अमरकंटक की आध्यात्मिक शांति</h3>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed">
-            अमरकंटक मध्यप्रदेश में विंध्य और सतपुड़ा पर्वतमालाओं के संगम पर स्थित एक पवित्र पहाड़ी नगर है। यह नर्मदा, सोन और जोहिला नदियों का उद्गम स्थल है और "तीर्थराज" के नाम से प्रसिद्ध है।
-          </p>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed mt-4">
-            घने जंगलों से घिरा और प्राचीन मंदिरों, जलप्रपातों और प्राकृतिक झरनों से सुसज्जित अमरकंटक आध्यात्मिक शांति और अद्भुत प्राकृतिक सौंदर्य प्रदान करता है।
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Attractions -->
-<section id="attractions" class="py-12 px-4 max-w-7xl mx-auto">
-  <style>
-    .flip-card {
-      background-color: transparent;
-      width: 100%;
-      height: 400px;
-      perspective: 1000px;
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-    }
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 0.5rem;
-      overflow: hidden;
-    }
-    .flip-card-back {
-      background-color: #fff;
-      transform: rotateY(180deg);
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-    .read-more-btn {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #2563eb;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  .read-more-btn:hover {
-    background-color: #1d4ed8;
-  }
-</style>
-  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Amarkantak</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">अमरकंटक के प्रमुख आकर्षण</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-
-    <!-- Sample Card With Flip -->
-    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/narmada-udgam.jpg" alt="Narmada Udgam" class="w-full h-full object-contain">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold en">Narmada Udgam</h3>
-            <h3 class="text-xl font-semibold hi hidden">नर्मदा उद्गम स्थल</h3>
-            <button class="read-more-btn">Read More</button>
-          </div>
-        </div>
-        <div class="flip-card-back">
-          <p class="text-gray-700 text-justify en">The sacred origin point of the Narmada River, surrounded by temples and serenity. Three rivers - the holy Narmada, the Sone and the Johila emerge from the womb of Amarkantak. A rising stream of Narmada can be seen at The Narmada Udgam Temple which is the most visited place in Amarkantak. Every year on the occasion of Narmada Jayanti, devotees in abundance gather here to attend the special event. Narmada Udgam Temple is surrounded by wonderful natural wonders like Narmada kund, Sonemuda (the source of river Sone), plunging Dugdhara falls and the Kapildhara falls.
-        </p>
-          <p class="text-gray-700 text-justify hi hidden">नर्मदा नदी की पवित्र उद्गम स्थल, जो पवित्र मंदिरों से घिरा हुआ है।</p>
-        </div>
-      </div>
-    </div>
-    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/kapil.dhara.jpg" alt="Kapildhara Waterfall" class="w-full h-full object-contain">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold en">Kapildhara Waterfall</h3>
-            <h3 class="text-xl font-semibold hi hidden">कपिलधारा झरना</h3>
-            <button class="read-more-btn">Read More</button>
-          </div>
-        </div>
-        <div class="flip-card-back">
-          <p class="text-gray-700 text-justify en">A picturesque waterfall formed by Narmada, 100 feet tall. It is associated with the legends of Saint Kapil or Kapila. It is said that he spent 12 years in meditation at this place.
-          The holy Narmada pours downhill as a gigantic waterfall forms the Kapil Dhara waterfall. On the rocky banks of the brisk, the blue water is the
-          holy Narmada and is a popular picnic spot for visitors. This waterfall is the most famous among all the Amarkantak Waterfalls due to its association with the Hindu saint.</p>
-          <p class="text-gray-700 text-justify hi hidden">नर्मदा की धारा से निकला एक सुंदर झरना, जिसकी ऊँचाई लगभग 100 फीट है।</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/sonemuda.jpg" alt="Sonemuda" class="w-full h-full object-contain">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold en">Sonemuda</h3>
-            <h3 class="text-xl font-semibold hi hidden">सोनेमुड़ा</h3>
-            <button class="read-more-btn">Read More</button>
-          </div>
-        </div>
-        <div class="flip-card-back">
-          <p class="text-gray-700 text-justify en">Origin of the Son River with natural beauty and tranquility.</p>
-          <p class="text-gray-700 text-justify hi hidden">सोन नदी की उत्पत्ति स्थल जो प्राकृतिक सौंदर्य और शांति से परिपूर्ण है।</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/dugdh dhara.jpg" alt="Dugdh Dhara" class="w-full h-full object-contain">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold en">Dugdh Dhara</h3>
-            <h3 class="text-xl font-semibold hi hidden">दुग्धधारा</h3>
-            <button class="read-more-btn">Read More</button>
-          </div>
-        </div>
-        <div class="flip-card-back">
-          <p class="text-gray-700 text-justify en">A scenic waterfall near Kapildhara, resembling the flow of milk.People take a one-kilometre trek from the Kapil Dhara to the next Narmada fall which is Dugdh Dhara. This trek is quite a popular thing to do in Amarkantak among the tourists. It is surrounded by rocky steps with wild bushes. The froth of water looks like a stream of Dugdh (Milk), naming it the Dugdh Dhara waterfall.
-       </p>
-          <p class="text-gray-700 text-justify hi hidden">कपिलधारा के पास स्थित यह झरना दूध की धार जैसा प्रतीत होता है।</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="this.classList.toggle('flipped')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front bg-white shadow-lg">
-          <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Yantra Mandir" class="w-full h-full object-contain">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold en">Yantra Mandir</h3>
-            <h3 class="text-xl font-semibold hi hidden">यंत्र मंदिर</h3>
-            <button class="read-more-btn">Read More</button>
-          </div>
-        </div>
-        <div class="flip-card-back">
-          <p class="text-gray-700 text-justify en">A unique temple showcasing sacred geometries and spiritual energy points. The most noticeable feature of the Shri Yantra Mandir is the massive sculpture with four heads at the entrance path. The head represents the face of goddess Laxmi, Saraswati, Kali, and Bhuvaneshwari. They are accompanied by statues of Lord Ganesha and Kartik, as well as full exquisitely carved deities also known as Chaunsath Yoginis. The temple is constructed as a 3D projection of the Sri Yantra  or Sri Chakra, which forms the core of the Sri Vidya worship in Hinduism.
-       </p>
-          <p class="text-gray-700 text-justify hi hidden">एक अद्भुत मंदिर जहाँ पवित्र यंत्र और आध्यात्मिक ऊर्जा केंद्र देखे जा सकते हैं।</p>
-        </div>
-      </div>
-    </div>
-  </div>
   <script>
-  function setLang(lang) {
-    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
-  }
-  // Auto-close flipped cards when scrolling
-  window.addEventListener('scroll', () => {
-    document.querySelectorAll('.flip-card.flipped').forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const outOfView = rect.bottom < 0 || rect.top > window.innerHeight;
-      if (outOfView) {
-        card.classList.remove('flipped');
+    // Configure Tailwind to use our custom fonts and colors
+    tailwind.config = {
+      darkMode: 'class', // Enable dark mode
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Lora', 'serif'],
+          },
+          colors: {
+            // New Vibrant Color Palette
+            brand: {
+              light: '#fef3c7', // Amber 100
+              DEFAULT: '#f59e0b', // Amber 500
+              dark: '#b45309', // Amber 700
+            },
+            secondary: {
+              light: '#ccfbf1', // Teal 100
+              DEFAULT: '#0d9488', // Teal 600
+              dark: '#134e4a',   // Teal 900
+            },
+            bglight: '#fffbeb' // Amber 50 (Beige background)
+          }
+        }
       }
-      });
-  });
-</script>
-</section>
-
-<section id="products" class="bg-indigo-50 py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center text-black mb-8 en">Famous Products and Local Food</h2>
-  <h2 class="text-3xl font-bold text-center  text-black mb-8 hi hidden">प्रसिद्ध उत्पाद और स्थानीय व्यंजन</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <img src="images/Amarkantak/amla.jpeg" alt="Amla Products" class="w-full h-48 object-contain rounded mb-4">
-      <h3 class="text-xl font-semibold en">Amla-Based Products</h3>
-      <h3 class="text-xl font-semibold hi hidden">आंवला उत्पाद</h3>
-      <p class="text-gray-700 text-justify en">Amarkantak is famous for organic amla (Indian gooseberry) used in juices, candies, and Ayurvedic medicines.</p>
-      <p class="text-gray-700 text-justify hi hidden">अमरकंटक का आंवला जैविक और औषधीय गुणों से भरपूर होता है, जो जूस, कैंडी और आयुर्वेदिक दवाओं में उपयोग होता है।</p>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <img src="images/Amarkantak/kodo.jpeg" alt="Kodo Kutki Grains" class="w-full h-48 object-contain rounded mb-4">
-      <h3 class="text-xl font-semibold en">Kodo & Kutki Grains</h3>
-      <h3 class="text-xl font-semibold hi hidden">कोदो और कुटकी अनाज</h3>
-      <p class="text-gray-700 text-justify en">Traditional millet grains grown by local tribes, rich in fiber and nutrition.</p>
-      <p class="text-gray-700 text-justify hi hidden">स्थानीय जनजातियों द्वारा उगाए जाने वाले ये मोटे अनाज फाइबर और पोषण से भरपूर होते हैं।</p>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <img src="images/Amarkantak/herbs.jpeg" alt="Herbal Remedies" class="w-full h-48 object-contain rounded mb-4">
-      <h3 class="text-xl font-semibold en">Herbal Remedies</h3>
-      <h3 class="text-xl font-semibold hi hidden">जड़ी-बूटी उपचार</h3>
-      <p class="text-gray-700 text-justify en">Forest-based herbs like harra, bahera, and tulsi are collected and sold for traditional healing.</p>
-      <p class="text-gray-700 text-justify hi hidden">वनों से प्राप्त हर्रा, बहेरा और तुलसी जैसी जड़ी-बूटियों से पारंपरिक उपचार किया जाता है।</p>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <img src="images/Amarkantak/BAIGA THALI 1.jpeg" alt="Tribal Cuisine" class="w-full h-48 object-contain rounded mb-4">
-      <h3 class="text-xl font-semibold en">Tribal Cuisine</h3>
-      <h3 class="text-xl font-semibold hi hidden">आदिवासी व्यंजन</h3>
-      <p class="text-gray-700 text-justify en">Experience authentic tribal food made from local grains, roots, and herbs cooked in clay pots.</p>
-      <p class="text-gray-700 text-justify hi hidden">स्थानीय अनाज, कंद और जड़ी-बूटियों से मिट्टी के बर्तनों में तैयार की गई पारंपरिक आदिवासी थाली।</p>
-    </div>
-
-    
-
-  </div>
-</section>
-
-
-
-<!-- Continue with Famous For section and rest of the HTML -->
- <section id="gallery" class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Amarkantak Photo Gallery</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">अमरकंटक फोटो गैलरी</h2>
-
-  <!-- Responsive Grid: Always 3 columns, 2 rows -->
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
-    <img src="images/Amarkantak/kapil.dhara.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/dugdh dhara.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Gallery Image 3" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/sonemuda.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/amarkantak.webp" alt="Gallery Image 5" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Amarkantak/gallery.webp" alt="Gallery Image 6" class="rounded-lg shadow-md object-contain w-full h-full cursor-pointer" onclick="showImage(this.src)">
-  </div>
-
-  <!-- Image Popup Modal -->
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold text-black">&times;</button>
-      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-    </div>
-  </div>
-
-  <!-- JS -->
-  <script>
-    function showImage(src) {
-      document.getElementById("popupImage").src = src;
-      document.getElementById("imagePopup").classList.remove("hidden");
-    }
-    function hideImage() {
-      document.getElementById("imagePopup").classList.add("hidden");
-      document.getElementById("popupImage").src = "";
     }
   </script>
+
+  <style>
+    /* Custom styles for the new design */
+    body {
+      background-color: #fffbeb; /* Light beige background */
+    }
+    .dark body {
+      background-color: #18181b; /* Dark zinc background */
+    }
+
+    /* Glassmorphism Header */
+    .glass-header {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-width: 1px;
+      border-color: rgba(230, 230, 230, 0.5);
+    }
+    .dark .glass-header {
+      background-color: rgba(30, 30, 30, 0.8);
+      border-color: rgba(60, 60, 60, 0.8);
+    }
+
+    /* Tab styles for 'How to Reach' */
+    .tab-btn {
+      transition: all 0.3s ease;
+    }
+    .tab-btn.active {
+      background-color: #0d9488; /* secondary.DEFAULT */
+      color: white;
+      box-shadow: 0 4px 10px rgba(13, 148, 136, 0.3);
+    }
+    .dark .tab-btn.active {
+      background-color: #14b8a6; /* Lighter teal for dark mode */
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="text-slate-800 dark:text-slate-200 font-sans antialiased">
+
+  <header class="fixed top-0 left-0 w-full glass-header z-50">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#home" class="flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary-DEFAULT text-white shadow-lg">
+          <i class="fa-solid fa-compass"></i>
+        </span>
+        <span class="font-serif text-xl font-bold text-secondary-dark dark:text-white">Travel Saarthi</span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-6 font-medium">
+        <a href="#about" class="hover:text-secondary-DEFAULT dark:hover:text-secondary-light">About</a>
+        <a href="#attractions" class="hover:text-secondary-DEFAULT dark:hover:text-secondary-light">Attractions</a>
+        <a href="#gallery" class="hover:text-secondary-DEFAULT dark:hover:text-secondary-light">Gallery</a>
+        <a href="#booking" class="hover:text-secondary-DEFAULT dark:hover:text-secondary-light">Book</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="text-sm font-medium">
+          <button onclick="setLang('en')" class="lang-toggle en-btn px-2 py-1 rounded-md bg-secondary-light text-secondary-dark">EN</button>
+          <button onclick="setLang('hi')" class="lang-toggle hi-btn px-2 py-1 rounded-md text-slate-600 dark:text-slate-300">हि</button>
+        </div>
+        
+        <button id="themeBtn" class="h-9 w-9 flex items-center justify-center rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <section id="home" class="relative h-screen flex items-center justify-center text-white">
+    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover z-0">
+      <source src="images/Amarkantak/amarkantak_video.mp4" type="video/mp4">
+      </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/30 z-10"></div>
+    
+    <div class="relative z-20 text-center px-4">
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg en">Explore Amarkantak</h1>
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg hi hidden">अमरकंटक का अन्वेषण करें</h1>
+      
+      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm en">The Sacred Origin of the Narmada River</p>
+      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm hi hidden">नर्मदा नदी का पवित्र उद्गम स्थल</p>
+      
+      <a href="#about" class="mt-8 inline-block px-6 py-3 rounded-full bg-brand-DEFAULT text-secondary-dark font-bold shadow-lg hover:bg-brand-light transition duration-300 hover:shadow-xl transform hover:-translate-y-0.5">
+        <span class="en">Discover Now</span>
+        <span class="hi hidden">अभी खोजें</span>
+      </a>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+      <div class="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center pt-2 animate-bounce">
+        <div class="w-1 h-2 rounded-full bg-white"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+    <main class="lg:col-span-2 space-y-16">
+      
+      <section id="about">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-secondary-dark dark:text-secondary-light en">The Soul of Amarkantak</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">अमरकंटक की आत्मा</h2>
+        
+        <div class="mt-6 text-lg space-y-4 text-slate-700 dark:text-slate-300">
+          <p class="en">Amarkantak, the 'Teerthraj' (king of pilgrimages), is a sacred town where the Vindhya and Satpura ranges meet. It is the holy origin of three rivers: the Narmada, the Son, and the Johila. This land is a unique blend of spiritual energy, lush forests, and serene waterfalls, offering solace to both pilgrims and nature lovers.</p>
+          <p class="hi hidden">अमरकंटक, 'तीर्थराज' (तीर्थों का राजा), एक पवित्र नगर है जहाँ विंध्य और सतपुड़ा पर्वतमालाएँ मिलती हैं। यह तीन नदियों- नर्मदा, सोन और जोहिला का पवित्र उद्गम स्थल है। यह भूमि आध्यात्मिक ऊर्जा, हरे-भरे जंगलों और शांत झरनों का एक अनूठा मिश्रण है, जो तीर्थयात्रियों और प्रकृति प्रेमियों दोनों को शांति प्रदान करती है।</p>
+        </div>
+      </section>
+
+      <section id="attractions">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-secondary-dark dark:text-secondary-light en">Key Attractions</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">प्रमुख आकर्षण</h2>
+        
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Amarkantak/narmada-udgam.jpg" alt="Narmada Udgam" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light en">Narmada Udgam Temple</h3>
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">नर्मदा उद्गम मंदिर</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">The sacred kund from which the Narmada River originates, surrounded by ancient temples.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">पवित्र कुंड जहाँ से नर्मदा नदी निकलती है, जो प्राचीन मंदिरों से घिरा है।</p>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Amarkantak/kapil.dhara.jpg" alt="Kapildhara" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light en">Kapildhara Waterfall</h3>
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">कपिलधारा जलप्रपात</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">A stunning 100-foot waterfall said to be where the sage Kapila meditated.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">एक 100 फुट का आश्चर्यजनक झरना, जहाँ कहा जाता है कि कपिल मुनि ने ध्यान किया था।</p>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Yantra Mandir" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light en">Shri Yantra Mandir</h3>
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">श्री यंत्र मंदिर</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">A unique temple with intricate 3D geometry, dedicated to the divine goddesses.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">एक अद्वितीय मंदिर जिसमें जटिल 3D ज्यामिति है, जो दिव्य देवियों को समर्पित है।</p>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Amarkantak/sonemuda.jpg" alt="Sonemuda" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light en">Sonemuda</h3>
+              <h3 class="font-serif text-xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">सोनमुड़ा</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">The origin point of the Son River, offering panoramic views of the valley below.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">सोन नदी का उद्गम स्थल, जो नीचे घाटी के मनोरम दृश्य प्रस्तुत करता है।</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-to-reach">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-secondary-dark dark:text-secondary-light en">How to Reach Amarkantak</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">अमरकंटक कैसे पहुँचें</h2>
+
+        <div class="mt-8">
+          <div class="flex flex-wrap gap-2 md:gap-4">
+            <button class="tab-btn active px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('air')">
+              <i class="fa-solid fa-plane mr-2"></i> <span class="en">By Air</span> <span class="hi hidden">हवाई मार्ग</span>
+            </button>
+            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('train')">
+              <i class="fa-solid fa-train mr-2"></i> <span class="en">By Train</span> <span class="hi hidden">रेल मार्ग</span>
+            </button>
+            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('road')">
+              <i class="fa-solid fa-road mr-2"></i> <span class="en">By Road</span> <span class="hi hidden">सड़क मार्ग</span>
+            </button>
+          </div>
+
+          <div class="mt-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6">
+           <div id="content-air" class="tab-content active">
+    <p class="en">The nearest airport is <strong class="text-secondary-DEFAULT">Jabalpur Airport (JLR)</strong>, approximately 240 km away. You can hire a taxi from the airport for the 4-5 hour drive to Amarkantak. Raipur Airport (RPR) is also an option, around 245 km away.</p>
+    <p class="hi hidden">निकटतम हवाई अड्डा <strong class="text-secondary-DEFAULT">जबलपुर हवाई अड्डा (JLR)</strong> है, जो लगभग 240 किमी दूर है। आप हवाई अड्डे से अमरकंटक के लिए 4-5 घंटे की ड्राइव के लिए टैक्सी किराए पर ले सकते हैं। रायपुर हवाई अड्डा (RPR) भी एक विकल्प है, जो लगभग 245 किमी दूर है।</p>
+    
+    <button class="en image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Amarkantak/FLIGHT.png">
+      Show Air Route Map
+    </button>
+    <button class="hi hidden image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Amarkantak/FLIGHT.png">
+      हवाई मार्ग का नक्शा देखें
+    </button>
+</div>
+<div id="imageNotificationPopup" class="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-75 p-4" style="display: none;">
+  <div class="relative w-full max-w-lg rounded-xl bg-white dark:bg-slate-800 shadow-xl">
+    
+    <button id="closeImagePopup" class="absolute -top-3 -right-3 z-10 h-8 w-8 rounded-full bg-red-600 text-white flex items-center justify-center text-lg font-bold hover:bg-red-700 active:scale-95">&times;</button>
+    
+    <div class="rounded-xl overflow-hidden">
+      <img id="popupImageSrc" src="" alt="Notification Image" class="w-full h-auto object-contain" style="max-height: 80vh;">
+    </div>
+
+  </div>
+</div>
+<script>
+  // --- Image Notification Popup Logic ---
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    const imagePopup = document.getElementById('imageNotificationPopup');
+    const closeImagePopupBtn = document.getElementById('closeImagePopup');
+    const popupImage = document.getElementById('popupImageSrc');
+    const allImageButtons = document.querySelectorAll('.image-popup-btn');
+
+    if (!imagePopup || !closeImagePopupBtn || !popupImage) {
+        console.error('Image popup elements not found!');
+        return;
+    }
+
+    const openPopup = (imgSrc) => {
+        if (imgSrc) {
+            popupImage.src = imgSrc;
+            imagePopup.style.display = 'flex';
+        } else {
+            console.error('No image source provided for popup.');
+        }
+    };
+
+    const closePopup = () => {
+        imagePopup.style.display = 'none';
+        popupImage.src = ''; // Clear image src
+    };
+
+    // Add click listener to all image buttons
+    allImageButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const imgSrc = e.currentTarget.getAttribute('data-img');
+            openPopup(imgSrc);
+        });
+    });
+
+    // Add click listener to close button
+    closeImagePopupBtn.addEventListener('click', closePopup);
+
+    // Add click listener to background overlay to close
+    imagePopup.addEventListener('click', (e) => {
+        if (e.target === imagePopup) {
+            closePopup();
+        }
+    });
+    
+    // Add escape key listener
+    document.addEventListener('keydown', (e) => {
+        if ((e.key === 'Escape' || e.key === 'Esc') && imagePopup.style.display === 'flex') {
+            closePopup();
+        }
+    });
+
+  });
+</script>
+<div id="content-train" class="tab-content">
+    <p class="en">The nearest railway station is <strong class="text-secondary-DEFAULT">Pendra Road (PEN)</strong>, which is 29 km away in Chhattisgarh. It is well-connected to major cities. Taxis and local buses are available from the station to Amarkantak.</p>
+    <p class="hi hidden">निकटतम रेलवे स्टेशन <strong class="text-secondary-DEFAULT">पेंड्रा रोड (PEN)</strong> है, जो छत्तीसगढ़ में 29 किमी दूर है। यह प्रमुख शहरों से अच्छी तरह जुड़ा हुआ है। स्टेशन से अमरकंटक के लिए टैक्सियाँ और स्थानीय बसें उपलब्ध हैं।</p>
+    
+    <button class="en image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Amarkantak/pendra road.png">
+      Show Train List
+    </button>
+    <button class="hi hidden image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Amarkantak/pendra road.png">
+      ट्रेन सूची देखें
+    </button>
+</div>
+            <div id="content-road" class="tab-content">
+              <p class="en">Amarkantak is well-connected by state highways. Regular bus services are available from Jabalpur (240 km), Rewa (260 km), and Bilaspur (120 km). The drive is scenic, passing through lush green forests and hills.</p>
+              <p class="hi hidden">अमरकंटक राज्य राजमार्गों द्वारा अच्छी तरह से जुड़ा हुआ है। जबलपुर (240 किमी), रीवा (260 किमी), और बिलासपुर (120 किमी) से नियमित बस सेवाएं उपलब्ध हैं। हरे-भरे जंगलों और पहाड़ियों से गुजरते हुए यह ड्राइव बहुत मनोरम है।</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="space-y-10 lg:sticky lg:top-24 lg:h-screen">
+      
+      <section id="booking" class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-6 border-t-4 border-brand-DEFAULT">
+    <h3 class="font-serif text-2xl font-bold text-secondary-dark dark:text-secondary-light en">Book Your Trip</h3>
+    <h3 class="font-serif text-2xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">अपनी यात्रा बुक करें</h3>
+
+    <div class="mt-5 grid grid-cols-2 gap-3">
+
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-secondary-DEFAULT text-white font-semibold hover:bg-secondary-dark transition duration-300 booking-popup-trigger"
+           data-category="hotels" data-popup-title-en="Find Hotels" data-popup-title-hi="होटल खोजें">
+            <i class="fa-solid fa-hotel w-5 text-center"></i>
+            <span class="en">Find Hotels</span>
+            <span class="hi hidden">होटल खोजें</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-secondary-DEFAULT text-white font-semibold hover:bg-secondary-dark transition duration-300 booking-popup-trigger"
+           data-category="taxis" data-popup-title-en="Book Taxis" data-popup-title-hi="टैक्सी बुक करें">
+            <i class="fa-solid fa-taxi w-5 text-center"></i>
+            <span class="en">Book Taxis</span>
+            <span class="hi hidden">टैक्सी बुक करें</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-secondary-DEFAULT text-white font-semibold hover:bg-secondary-dark transition duration-300 booking-popup-trigger"
+           data-category="tickets" data-popup-title-en="Book Tickets" data-popup-title-hi="टिकट बुक करें">
+            <i class="fa-solid fa-train-subway w-5 text-center"></i>
+            <span class="en">Book Tickets</span>
+            <span class="hi hidden">टिकट बुक करें</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-secondary-DEFAULT text-white font-semibold hover:bg-secondary-dark transition duration-300 booking-popup-trigger"
+           data-category="food" data-popup-title-en="Order Food" data-popup-title-hi="खाना ऑर्डर करें">
+            <i class="fa-solid fa-utensils w-5 text-center"></i>
+            <span class="en">Order Food</span>
+            <span class="hi hidden">खाना ऑर्डर करें</span>
+        </a>
+
+    </div>
+    <div id="subOptionsPopup" class="fixed inset-0 z-[1001] flex items-center justify-center bg-black bg-opacity-75 p-4" style="display: none;">
+  <div class="relative w-full max-w-md rounded-xl bg-white dark:bg-slate-800 shadow-xl flex flex-col">
+
+    <div class="flex justify-between items-center p-4 border-b border-slate-200 dark:border-slate-700">
+        <h4 id="subOptionsPopupTitle" class="text-lg font-semibold text-slate-800 dark:text-slate-100">Booking Options</h4>
+        <button id="closeSubOptionsPopup" class="text-slate-500 hover:text-slate-800 dark:hover:text-white text-3xl leading-none">&times;</button>
+    </div>
+
+    <div id="subOptionsContainer" class="p-6 grid grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto">
+        </div>
+
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Define Sub-options Data ---
+    const subOptionsData = {
+        hotels: [
+            { name: "MakeMyTrip", url: "https://www.makemytrip.com/hotels/" },
+            { name: "Redbus", url: "https://www.redbus.in/hotels/" },
+            { name: "OYO", url: "https://www.oyorooms.com/" },
+            { name: "Agoda", url: "https://www.agoda.com/" },
+            { name: "Goibibo", url: "https://www.goibibo.com/hotels/" }
+        ],
+        taxis: [
+            { name: "Ola", url: "https://www.olacabs.com/" },
+            { name: "Uber", url: "https://www.uber.com/in/en/" },
+            { name: "Rapido", url: "https://www.rapido.bike/" }
+        ],
+        tickets: [
+            { name: "IRCTC", url: "https://www.irctc.co.in/" },
+            { name: "Ixigo", url: "https://www.ixigo.com/" },
+            { name: "MakeMyTrip", url: "https://www.makemytrip.com/" },
+            { name: "Redbus", url: "https://www.redbus.in/" },
+            { name: "Goibibo", url: "https://www.goibibo.com/" }
+        ],
+        food: [
+            { name: "Zomato", url: "https://www.zomato.com/" },
+            { name: "Swiggy", url: "https://www.swiggy.com/" },
+            { name: "Blinkit", url: "https://blinkit.com/" },
+            { name: "Zepto", url: "https://www.zepto.com/" }
+        ]
+    };
+
+    // --- Sub-options Link Popup Logic ---
+    const subOptionsPopup = document.getElementById('subOptionsPopup');
+    const closeSubOptionsPopupBtn = document.getElementById('closeSubOptionsPopup');
+    const subOptionsPopupTitle = document.getElementById('subOptionsPopupTitle');
+    const subOptionsContainer = document.getElementById('subOptionsContainer');
+    const bookingPopupTriggers = document.querySelectorAll('.booking-popup-trigger'); // Class on main category links
+
+    // Store the currently active category trigger for language updates
+    let activeCategoryTrigger = null;
+
+    if (!subOptionsPopup || !closeSubOptionsPopupBtn || !subOptionsPopupTitle || !subOptionsContainer || bookingPopupTriggers.length === 0) {
+        console.error('Sub-options popup elements or triggers not found!');
+        return;
+    }
+
+    const openSubOptionsPopup = (category, titleEn, titleHi) => {
+        const options = subOptionsData[category];
+        if (!options) {
+            console.error(`No sub-options found for category: ${category}`);
+            return;
+        }
+
+        activeCategoryTrigger = document.querySelector(`.booking-popup-trigger[data-category="${category}"]`); // Store the trigger
+
+        const currentLang = document.documentElement.lang || 'en';
+        subOptionsPopupTitle.textContent = currentLang === 'hi' ? titleHi : titleEn;
+
+        // Clear previous options
+        subOptionsContainer.innerHTML = '';
+
+        // Generate and append new links
+        options.forEach(option => {
+            const link = document.createElement('a');
+            link.href = option.url;
+            link.target = "_blank"; // Open in new tab
+            link.rel = "noopener noreferrer";
+            link.textContent = option.name;
+            // Style the link like a button/pill
+            link.className = "block text-center rounded-lg bg-slate-100 dark:bg-slate-700/50 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all duration-200 active:scale-95";
+            subOptionsContainer.appendChild(link);
+        });
+
+        subOptionsPopup.style.display = 'flex';
+    };
+
+    const closeSubOptionsPopup = () => {
+        subOptionsPopup.style.display = 'none';
+        subOptionsContainer.innerHTML = ''; // Clear content
+        subOptionsPopupTitle.textContent = '';
+        activeCategoryTrigger = null; // Clear the active trigger
+    };
+
+    bookingPopupTriggers.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = e.currentTarget.getAttribute('data-category');
+            const titleEn = e.currentTarget.getAttribute('data-popup-title-en');
+            const titleHi = e.currentTarget.getAttribute('data-popup-title-hi');
+            openSubOptionsPopup(category, titleEn, titleHi);
+        });
+    });
+
+    closeSubOptionsPopupBtn.addEventListener('click', closeSubOptionsPopup);
+
+    subOptionsPopup.addEventListener('click', (e) => {
+        if (e.target === subOptionsPopup) {
+            closeSubOptionsPopup();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if ((e.key === 'Escape' || e.key === 'Esc') && subOptionsPopup.style.display === 'flex') {
+            closeSubOptionsPopup();
+        }
+    });
+
+    // --- Language Change Listener Update ---
+    // Ensure this function is globally accessible if your setLang function is global
+    window.updateSubOptionsPopupTitleOnLangChange = () => {
+        if (subOptionsPopup.style.display === 'flex' && activeCategoryTrigger) {
+            const currentLang = document.documentElement.lang || 'en';
+            const titleEn = activeCategoryTrigger.getAttribute('data-popup-title-en');
+            const titleHi = activeCategoryTrigger.getAttribute('data-popup-title-hi');
+            subOptionsPopupTitle.textContent = currentLang === 'hi' ? titleHi : titleEn;
+        }
+    };
+
+    // --- Connect Language Toggle to Popup Update ---
+    // You need to call `updateSubOptionsPopupTitleOnLangChange()` inside your
+    // existing `setLang` function, right after setting the language.
+    // Example (modify your *existing* setLang function):
+    /*
+    window.setLang = (lang) => {
+        // ... your existing language hiding/showing logic ...
+        // ... your existing button styling logic ...
+        document.documentElement.lang = lang; // Set lang attribute
+
+        // ADD THIS LINE:
+        if(window.updateSubOptionsPopupTitleOnLangChange) {
+           window.updateSubOptionsPopupTitleOnLangChange();
+        }
+    };
+    */
+
+  });
+</script>
 </section>
 
+      <section id="products">
+        <h3 class="font-serif text-2xl font-bold text-secondary-dark dark:text-secondary-light en">Local Specialties</h3>
+        <h3 class="font-serif text-2xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">स्थानीय विशेषताएँ</h3>
+        
+        <div class="mt-4 flex gap-4 overflow-x-auto pb-4">
+          <div class="flex-shrink-0 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-3 text-center">
+            <img src="images/Amarkantak/amla.jpeg" alt="Amla" class="w-full h-24 object-contain rounded">
+            <h4 class="mt-2 font-semibold text-sm en">Amla Products</h4>
+            <h4 class="mt-2 font-semibold text-sm hi hidden">आंवला उत्पाद</h4>
+          </div>
+          <div class="flex-shrink-0 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-3 text-center">
+            <img src="images/Amarkantak/kodo.jpeg" alt="Kodo" class="w-full h-24 object-contain rounded">
+            <h4 class="mt-2 font-semibold text-sm en">Kodo-Kutki Grains</h4>
+            <h4 class="mt-2 font-semibold text-sm hi hidden">कोदो-कुटकी अनाज</h4>
+          </div>
+          <div class="flex-shrink-0 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-3 text-center">
+            <img src="images/Amarkantak/herbs.jpeg" alt="Herbs" class="w-full h-24 object-contain rounded">
+            <h4 class="mt-2 font-semibold text-sm en">Forest Herbs</h4>
+            <h4 class="mt-2 font-semibold text-sm hi hidden">वन जड़ी बूटियों</h4>
+          </div>
+          <div class="flex-shrink-0 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-3 text-center">
+            <img src="images/Amarkantak/BAIGA THALI 1.jpeg" alt="Tribal Food" class="w-full h-24 object-contain rounded">
+            <h4 class="mt-2 font-semibold text-sm en">Tribal Cuisine</h4>
+            <h4 class="mt-2 font-semibold text-sm hi hidden">आदिवासी व्यंजन</h4>
+          </div>
+        </div>
+      </section>
 
-<!-- Image Modal -->
+      <section id="map">
+        <h3 class="font-serif text-2xl font-bold text-secondary-dark dark:text-secondary-light en">Location on Map</h3>
+        <h3 class="font-serif text-2xl font-bold text-secondary-dark dark:text-secondary-light hi hidden">नक्शे पर स्थान</h3>
+        <div class="mt-4 rounded-xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-700">
+          <iframe
+            class="w-full h-72"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30005.86908127387!2d81.73335588661678!3d22.6734199147551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a286006b9b32e1d%3A0x6c61f22c159a16f6!2sAmarkantak%2C%20Madhya%20Pradesh%20484886!5e0!3m2!1sen!2sin!4v1671234567890"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </section>
+      
+    </aside>
 
-
-<!-- Travel Options -->
-<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
-  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Amarkantak</h2>
-  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">अमरकंटक आने-जाने के साधन</h2>
-  <div class="flex flex-col md:flex-row justify-around gap-8">
-    <div onclick="showImage('images/Amarkantak/pendra road.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest railway stations:  Pendra Road (29 km)</li>
-        <li class="hi hidden">नजदीकी रेलवे स्टेशन: </li>
-        <li class="en">Connected via local taxis and buses</li>
-        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
-      </ul>
-    </div>
-    <div onclick="showImage('images/Amarkantak/FLIGHT.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest Airport: Dumna Airport, Jabalpur</li>
-        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
-        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad, Banglore</li>
-        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
-      </ul>
-    </div>
   </div>
 
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+  <section id="gallery" class="py-16 bg-white dark:bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-center text-secondary-dark dark:text-secondary-light en">Moments from Amarkantak</h2>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-center text-secondary-dark dark:text-secondary-light hi hidden">अमरकंटक के कुछ पल</h2>
+      
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Amarkantak/kapil.dhara.jpg" alt="Gallery Image 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Amarkantak/dugdh dhara.jpg" alt="Gallery Image 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Gallery Image 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Amarkantak/sonemuda.jpg" alt="Gallery Image 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/amarkantak.webp" alt="Gallery Image 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Amarkantak/gallery.webp" alt="Gallery Image 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="imagePopup" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-[100]" onclick="hideImage()">
+    <div class="bg-white p-2 rounded-lg shadow-2xl relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-white text-black text-2xl font-bold">&times;</button>
       <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
     </div>
   </div>
-</section>
 
-
-
-  <section id="Book now">
-        <div class="section9">
-            <div class="container1">
-                <div class="category hotels">
-                    <img src="images/hotel.jpg" alt="hotels">
-                    <div class="overlay">
-                    <h2>Hotels Booking</h2>
-                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
-                </div>
-                <div class="category cabs">
-                    <img src="images/cabs.png" alt="cabs">
-                    <div class="overlay">
-                    <h2>Cabs & Taxi</h2>
-                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
-                </div>
-                <div class="category food">
-                    <img src="images/food.jpg" alt="food">
-                    <div class="overlay">
-                    <h2>Food Delivery</h2>
-                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
-                </div>
-            </div>
-            
-            <!-- Popups with Imagess -->
-            <div id="hotelPopup" class="popup">
-                <h2>Hotels Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.goibibo.com/hotels/" target="_blank">
-                            <img src="images/goibibo.jpeg" alt="Goibibo">
-                           
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.oyorooms.com/" target="_blank">
-                            <img src="images/oyo.png" alt="OYO">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=07032025&checkout=07042025&city=CTBHO&country=IN&filterData=HOTEL_PRICE_BUCKET%7C0-1500%2C1500-3000&locusId=CTBHO&locusType=city&regionNearByExp=3&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Bhopal" target="_blank">
-                            <img src="images/makemytrip.webp" alt="MakeMyTrip">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.agoda.com/en-in/" target="_blank">
-                            <img src="images/agoda.png" alt="Agoda">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
-            </div>
-            
-            <div id="taxiPopup" class="popup">
-                <h2>Cabs & Taxi Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://book.olacabs.com/" target="_blank">
-                            <img src="images/ola.png" alt="Ola">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.uber.com/in/en/" target="_blank">
-                            <img src="images/uber.png" alt="Uber">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.rapido.bike/" target="_blank">
-                            <img src="images/Rapido.png" alt="Rapido">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
-            </div>
-            
-            <div id="foodPopup" class="popup">
-                <h2>Food Delivery Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.zomato.com/" target="_blank">
-                            <img src="images/zomato.png" alt="Zomato">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.swiggy.com/" target="_blank">
-                            <img src="images/swiggy.png" alt="Swiggy">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://blinkit.com/" target="_blank">
-                            <img src="images/blinkit.png" alt="Blinkit">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.bigbasket.com/" target="_blank">
-                            <img src="images/bigbasket.png" alt="BigBasket">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.zeptonow.com/" target="_blank">
-                            <img src="images/zepto.png" alt="Zepto">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
-            </div>
-            </div>
-      
-            <script>
-                function showPopup(id) {
-                    document.getElementById(id).style.display = 'block';
-                }
-                
-                function closePopup(id) {
-                    document.getElementById(id).style.display = 'none';
-                }
-            </script>
-             </section>
-
-<script>
-  function setLang(lang) {
-    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
-  }
-  // Auto-close flipped cards when scrolling
-  window.addEventListener('scroll', () => {
-    document.querySelectorAll('.flip-card.flipped').forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const outOfView = rect.bottom < 0 || rect.top > window.innerHeight;
-      if (outOfView) {
-        card.classList.remove('flipped');
-      }
-      });
-  });
-</script>
-
-
-<section id="contact" class="max-w-7xl mx-auto mt-10 px-4">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Reviews Column -->
-    <div class="md:col-span-2 bg-white shadow rounded p-6">
-      <h2 class="text-2xl font-bold mb-4">Top Reviews from Google Maps</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:grid" id="reviewCards">
-        <!-- Reviews will be injected here -->
+  <footer class="py-10 bg-secondary-dark dark:bg-zinc-900 text-secondary-light dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <a href="#home" class="font-serif text-2xl font-bold text-white">Travel Saarthi</a>
+      <p class="mt-2 text-sm text-secondary-light/80 en">Your guide to the Heart of India.</p>
+      <p class="mt-2 text-sm text-secondary-light/80 hi hidden">भारत के हृदय के लिए आपका मार्गदर्शक।</p>
+      <div class="mt-6 flex justify-center gap-6">
+        <a href="index.html" class="font-semibold text-white hover:text-brand-DEFAULT en">Home</a>
+        <a href="index.html" class="font-semibold text-white hover:text-brand-DEFAULT hi hidden">होम</a>
       </div>
+      <p class="mt-6 text-xs text-secondary-light/60">&copy; 2024 Travel Saarthi. All rights reserved.</p>
     </div>
+  </footer>
 
-    <!-- Contact Form Column -->
-    <div class="bg-white shadow rounded p-6">
-      <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
-      <form action="mailto:suraj9893007987@gmail.com" method="post" enctype="text/plain" class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium">Name</label>
-          <input type="text" name="name" required class="w-full border border-gray-300 rounded px-3 py-2">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">Email</label>
-          <input type="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">How can I help you?</label>
-          <textarea name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
-        </div>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
-      </form>
-    </div>
-  </div>
-</section>
 
-<script>
-function showOptions(id) {
-  document.querySelectorAll('#' + id).forEach(el => el.classList.toggle('hidden'));
-}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
 
-// Mock Google Reviews (replace with API in production)
-const reviews = [
-  {
-    author: "Anjali M.",
-    text: "Madhya Pradesh tourism offers a diverse and enriching experience. The hospitality and scenic beauty are unmatched!"
-  },
-  {
-    author: "Rohit K.",
-    text: "From wildlife to temples, every visit has been memorable. Highly recommended for all types of travelers."
-  },
-  {
-    author: "Sneha R.",
-    text: "Seamless booking and friendly locals made our trip amazing. MP truly is the heart of India."
-  },
-  {
-    author: "Amit S.",
-    text: "Great infrastructure and well-maintained tourist spots. The Khajuraho temples are a must-visit!"
-  },
-  {
-    author: "Pooja D.",
-    text: "The wildlife sanctuaries and national parks were breathtaking. Very good arrangements throughout."
-  },
-  {
-    author: "Nikhil B.",
-    text: "MP offers a balance of history, culture, and nature. Wonderful hospitality and food as well."
-  }
-];
+      // === Theme Toggle ===
+      const htmlEl = document.documentElement;
+      const themeBtn = document.getElementById('themeBtn');
+      const themeIcon = document.getElementById('themeIcon');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme');
 
-const reviewContainer = document.getElementById('reviewCards');
-reviews.forEach((review, index) => {
-  const card = document.createElement('div');
-  card.className = 'bg-gray-100 p-4 rounded shadow review-slide';
-  card.innerHTML = `<p class='mb-2 text-sm text-gray-800'>"${review.text}"</p><p class='text-sm font-semibold text-right'>- ${review.author}</p>`;
-  reviewContainer.appendChild(card);
-});
+      const setDark = () => {
+        htmlEl.classList.add('dark');
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'dark');
+      };
+      const setLight = () => {
+        htmlEl.classList.remove('dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'light');
+      };
 
-// Auto scroll for mobile view
-if (window.innerWidth < 768) {
-  let startIndex = 0;
-  const interval = 5000;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        setDark();
+      } else {
+        themeIcon.classList.add('fa-sun'); // Set light icon
+      }
+      themeBtn.addEventListener('click', () => {
+        htmlEl.classList.contains('dark') ? setLight() : setDark();
+      });
 
-  function showMobileReviews() {
-    const allReviews = document.querySelectorAll('.review-slide');
-    allReviews.forEach((el, i) => {
-      el.style.display = (i >= startIndex && i < startIndex + 2) ? 'block' : 'none';
+      
+      // === Language Toggle ===
+      window.setLang = (lang) => {
+        // Hide all elements
+        document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+        // Show elements for the selected language
+        document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+        
+        // Style the buttons
+        const enBtn = document.querySelector('.en-btn');
+        const hiBtn = document.querySelector('.hi-btn');
+        if (lang === 'en') {
+          enBtn.classList.add('bg-secondary-light', 'text-secondary-dark');
+          enBtn.classList.remove('text-slate-600', 'dark:text-slate-300');
+          hiBtn.classList.remove('bg-secondary-light', 'text-secondary-dark');
+          hiBtn.classList.add('text-slate-600', 'dark:text-slate-300');
+        } else {
+          hiBtn.classList.add('bg-secondary-light', 'text-secondary-dark');
+          hiBtn.classList.remove('text-slate-600', 'dark:text-slate-300');
+          enBtn.classList.remove('bg-secondary-light', 'text-secondary-dark');
+          enBtn.classList.add('text-slate-600', 'dark:text-slate-300');
+        }
+      };
+
+      
+      // === Tabbed Interface for "How to Reach" ===
+      window.showTab = (tabName) => {
+        // Hide all content
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        // Deactivate all buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+        // Show selected content
+        document.getElementById('content-' + tabName).classList.add('active');
+        // Activate selected button
+        document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
+      };
+
+      
+      // === Gallery Image Popup ===
+      const popup = document.getElementById('imagePopup');
+      const popupImg = document.getElementById('popupImage');
+      
+      window.showImage = (src) => {
+        popupImg.src = src;
+        popup.classList.remove('hidden');
+        popup.classList.add('flex');
+      };
+      
+      window.hideImage = () => {
+        popup.classList.add('hidden');
+        popup.classList.remove('flex');
+        popupImg.src = "";
+      };
+
     });
-    startIndex = (startIndex + 2) % reviews.length;
-  }
-
-  showMobileReviews();
-  setInterval(showMobileReviews, interval);
-}
-</script>
-
-<style>
-@media (max-width: 767px) {
-  #reviewCards {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .review-slide {
-    width: 100%;
-  }
-}
-</style>
-
-
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer1.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
+  </script>
 
 </body>
 </html>

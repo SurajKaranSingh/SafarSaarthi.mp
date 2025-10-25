@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Saarthi · Heart of India</title>
+  
+  <!-- Tailwind v3 (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui"],
+            serif: ["Fraunces", "ui-serif"],
+          },
+          colors: {
+            brand: {
+              50:  "#eefdfb",
+              100: "#cbf6ee",
+              200: "#98ecde",
+              300: "#67e0cd",
+              400: "#3fd2b9",
+              500: "#22c7ab",
+              600: "#16a392",
+              700: "#148378",
+              800: "#146861",
+              900: "#0f4b44"
+            }
+          },
+          boxShadow: {
+            float: "0 12px 40px rgba(34, 199, 171, .25)",
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    :root { --blob: radial-gradient(35% 40% at 20% 20%, rgba(34,199,171,.25), transparent 60%), radial-gradient(30% 35% at 80% 30%, rgba(99,102,241,.20), transparent 60%); }
+    body { background: linear-gradient(180deg, #f0fdfa, #eef2ff 35%, #ffffff 60%) fixed; }
+    .blob-bg { background-image: var(--blob); }
+    .glass { background: rgba(255,255,255,.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .reveal { opacity: 0; transform: translateY(22px); transition: all .7s cubic-bezier(.2,.6,.2,1); }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+    @keyframes marquee { 0% { transform: translateX(100%);} 100% { transform: translateX(-100%);} }
+  </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-brand-100">
+  <!-- ===== HEADER ===== -->
+  <header id="topbar" class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mt-4 mb-3 flex items-center justify-between rounded-2xl glass ring-1 ring-black/5 px-4 py-3 shadow-float">
+        <a href="#home" class="flex items-center gap-3">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-white shadow">
+            <i class="fa-solid fa-compass"></i>
+          </span>
+          <span class="font-extrabold tracking-tight">Travel Saarthi</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-[15px] font-semibold">
+          <a class="hover:text-brand-700" href="#discover">Discover</a>
+          <a class="hover:text-brand-700" href="#tours">Tours</a>
+          <a class="hover:text-brand-700" href="#plan">Plan</a>
+          <a class="hover:text-brand-700" href="#guide">Guide</a>
+          <a class="hover:text-brand-700" href="#contact">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <button id="themeBtn" class="hidden sm:inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium hover:bg-white">
+            <i class="fa-solid fa-circle-half-stroke"></i><span>Theme</span>
+          </button>
+          <button id="menuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-white">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="hidden md:hidden -mt-2 mb-4 rounded-2xl glass ring-1 ring-black/5 p-4">
+        <a class="block px-2 py-2 rounded-lg hover:bg-white/60" href="#discover">Discover</a>
+        <a class="block px-2 py-2 rounded-lg hover:bg-white/60" href="#tours">Tours</a>
+        <a class="block px-2 py-2 rounded-lg hover:bg-white/60" href="#plan">Plan</a>
+        <a class="block px-2 py-2 rounded-lg hover:bg-white/60" href="#guide">Guide</a>
+        <a class="block px-2 py-2 rounded-lg hover:bg-white/60" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="pt-28">
+    <div class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 blob-bg"></div>
+      <div class="relative">
+        <img src="images/Madhya Pradesh.png" alt="Madhya Pradesh hero" class="h-[62vh] w-full object-cover rounded-b-[2.25rem]" />
+        <div class="absolute inset-0 rounded-b-[2.25rem] bg-gradient-to-t from-slate-900/70 via-slate-900/30 to-transparent"></div>
+      </div>
+      <div class="absolute inset-0 grid place-items-center px-4">
+        <div class="text-center text-white">
+          <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm ring-1 ring-white/25 backdrop-blur">
+            <span class="h-2 w-2 rounded-full bg-emerald-300 animate-pulse"></span> Curated trails across MP
+          </p>
+          <h1 class="mt-5 text-4xl md:text-6xl font-extrabold font-serif tracking-tight drop-shadow">Find Your Story in the Heart of India</h1>
+          <p class="mx-auto mt-4 max-w-2xl text-lg md:text-xl text-white/90">Safaris, shrines, forts and food—discover, plan, and go.</p>
+          <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="#discover" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 font-semibold shadow-lg hover:bg-brand-700">
+              <i class="fa-solid fa-location-dot"></i> Explore Places
+            </a>
+            <a href="#plan" class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-5 py-3 font-semibold ring-1 ring-white/25 hover:bg-white/20">
+              <i class="fa-solid fa-suitcase-rolling"></i> Plan Trip
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="bg-white/70 backdrop-blur border-y border-white/60">
+      <div class="mx-auto max-w-7xl px-4 py-2 relative overflow-hidden">
+        <div class="flex items-center gap-2 text-sm font-medium text-slate-700">
+          <i class="fa-solid fa-bullhorn text-brand-600"></i>
+          <div class="whitespace-nowrap" style="animation: marquee 22s linear infinite;">
+            Safari bookings open · Heritage walks in Orchha & Mandu · Bhasma Aarti slots · Indore street-food trail · River ghats at Maheshwar & Omkareshwar · Marble Rocks in full flow
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DISCOVER ===== -->
+  <section id="discover" class="reveal mx-auto max-w-7xl px-4 py-14">
+    <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-serif">Discover Destinations</h2>
+        <p class="mt-2 text-slate-600 max-w-2xl">Quick jump, search, or browse: temples, jungles, heritage towns and hillscapes.</p>
+      </div>
+      <div class="w-full md:w-[520px]">
+        <div class="flex items-center gap-2 rounded-2xl glass ring-1 ring-slate-200 p-2 shadow">
+          <i class="fa-solid fa-magnifying-glass ml-2 text-slate-500"></i>
+          <input id="citySearch" type="text" placeholder="Search city… (Khajuraho, Pachmarhi, Indore)" class="w-full bg-transparent outline-none px-2 py-2" />
+          <select id="citySelect" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm">
+            <option value="">Quick jump…</option>
+            <option>Amarkantak</option><option>Bandhavgarh</option><option>Bhopal</option><option>Bhimbetka</option><option>Pachmarhi</option><option>Indore</option><option>Ujjain</option><option>Mandu</option><option>Maheshwar</option><option>Orchha</option><option>Khajuraho</option><option>Kanha</option><option>Jabalpur</option><option>Chanderi</option><option>Chitrakoot</option><option>Omkareshwar</option><option>Panna</option><option>Rewa</option><option>Sanchi</option><option>Shivpuri</option><option>Burhanpur</option><option>Mandsaur</option><option>Tikamgarh</option><option>Satna</option><option>Dewas</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promo Row -->
+    <div class="grid lg:grid-cols-[1.35fr_.65fr] gap-6 mb-10">
+      <div class="relative overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-float">
+        <video id="mpVideo" autoplay muted playsinline loop class="w-full h-[380px] md:h-[460px] object-cover">
+          <source src="videos/mptourism1.mp4" type="video/mp4" />
+        </video>
+        <button id="mainMute" class="absolute top-3 right-3 rounded-xl bg-black/60 text-white px-3 py-1.5 text-sm hover:bg-black/70">
+          <span class="inline-block w-5 text-center"><i class="fa-solid fa-volume-xmark"></i></span> Toggle
+        </button>
+      </div>
+      <div class="space-y-6">
+        <div class="glass rounded-2xl ring-1 ring-slate-200 p-6 text-center shadow">
+          <img src="images/tourismlogo.png" alt="MP Tourism" class="mx-auto h-20 w-auto" />
+          <p class="mt-3 text-sm text-slate-600">Permits, stays, and official updates.</p>
+          <a class="mt-4 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold text-white hover:bg-brand-700" href="https://tourism.mp.gov.in/" target="_blank" rel="noopener">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit MP Tourism
+          </a>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-float">
+          <video id="promoVideo" autoplay muted playsinline loop class="w-full h-[220px] object-cover">
+            <source src="videos/mp promotional.mp4" type="video/mp4" />
+          </video>
+          <button id="promoMute" class="absolute top-3 right-3 rounded-xl bg-black/60 text-white px-3 py-1.5 text-sm hover:bg-black/70">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroller: Top Picks -->
+    <h3 class="mb-4 text-lg font-bold tracking-wide text-brand-800">Top Picks</h3>
+    <div id="topScroller" class="flex gap-5 overflow-x-auto pb-2 snap-x snap-mandatory">
+      <!-- Cards -->
+      <div data-city="Amarkantak" class="snap-start min-w-[260px] max-w-[260px]">
+        <article class="card h-[360px] rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow">
+          <img src="images/amarkantak.webp" class="h-40 w-full object-cover" alt="Amarkantak"/>
+          <div class="p-4"><h4 class="font-semibold text-lg">Amarkantak</h4><p class="mt-1 text-sm text-slate-600">Narmada origin · serene ghats.</p><a href="amarkantak.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Explore <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+      </div>
+      <div data-city="Bandhavgarh" class="snap-start min-w-[260px] max-w-[260px]">
+        <article class="card h-[360px] rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow">
+          <img src="images/Bandhavgarh.webp" class="h-40 w-full object-cover" alt="Bandhavgarh"/>
+          <div class="p-4"><h4 class="font-semibold text-lg">Bandhavgarh</h4><p class="mt-1 text-sm text-slate-600">High tiger density · ancient fort.</p><a href="bandhavgarh.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Explore <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+      </div>
+      <div data-city="Bhimbetka" class="snap-start min-w-[260px] max-w-[260px]">
+        <article class="card h-[360px] rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow">
+          <img src="images/bhimbedka.webp" class="h-40 w-full object-cover" alt="Bhimbetka"/>
+          <div class="p-4"><h4 class="font-semibold text-lg">Bhimbetka</h4><p class="mt-1 text-sm text-slate-600">UNESCO rock shelters & art.</p><a href="bhimbedka.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Explore <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+      </div>
+      <div data-city="Indore" class="snap-start min-w-[260px] max-w-[260px]">
+        <article class="card h-[360px] rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow">
+          <img src="images/indore.webp" class="h-40 w-full object-cover" alt="Indore"/>
+          <div class="p-4"><h4 class="font-semibold text-lg">Indore</h4><p class="mt-1 text-sm text-slate-600">Street food capital · smart city.</p><a href="indore.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Explore <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+      </div>
+      <div data-city="Khajuraho" class="snap-start min-w-[260px] max-w-[260px]">
+        <article class="card h-[360px] rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow">
+          <img src="images/khajuraho.jpg" class="h-40 w-full object-cover" alt="Khajuraho"/>
+          <div class="p-4"><h4 class="font-semibold text-lg">Khajuraho</h4><p class="mt-1 text-sm text-slate-600">Temple sculpture & light shows.</p><a href="khajuraho.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Explore <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Filterable Grid -->
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="cityGrid">
+      <article data-city="Bhopal" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/Bhopal.webp" class="h-44 w-full object-cover" alt="Bhopal"/><div class="p-4"><h4 class="font-semibold text-lg">Bhopal</h4><p class="mt-1 text-sm text-slate-600">Lake city · museums & cuisine.</p><a href="bhopal.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      <article data-city="Ujjain" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/ujjain.png" class="h-44 w-full object-cover" alt="Ujjain"/><div class="p-4"><h4 class="font-semibold text-lg">Ujjain</h4><p class="mt-1 text-sm text-slate-600">Mahakaleshwar · Shipra ghats.</p><a href="ujjain.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      <article data-city="Mandu" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/mandu.png" class="h-44 w-full object-cover" alt="Mandu"/><div class="p-4"><h4 class="font-semibold text-lg">Mandu</h4><p class="mt-1 text-sm text-slate-600">Romance & ruins in Malwa hills.</p><a href="mandu.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      <article data-city="Maheshwar" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/maheshwar.jpg" class="h-44 w-full object-cover" alt="Maheshwar"/><div class="p-4"><h4 class="font-semibold text-lg">Maheshwar</h4><p class="mt-1 text-sm text-slate-600">Handloom saris · riverfront fort.</p><a href="maheshwar.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      <article data-city="Jabalpur" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/bhedaghat-jabalpur.webp" class="h-44 w-full object-cover" alt="Jabalpur"/><div class="p-4"><h4 class="font-semibold text-lg">Jabalpur</h4><p class="mt-1 text-sm text-slate-600">Marble rocks & Dhuandhar.</p><a href="jabalpur.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      <article data-city="Kanha" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/kanha.jpg" class="h-44 w-full object-cover" alt="Kanha"/><div class="p-4"><h4 class="font-semibold text-lg">Kanha</h4><p class="mt-1 text-sm text-slate-600">Barasingha & tiger trails.</p><a href="kanha.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      <article data-city="Khajuraho" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/khajuraho.jpg" class="h-44 w-full object-cover" alt="Khajuraho"/><div class="p-4"><h4 class="font-semibold text-lg">Khajuraho</h4><p class="mt-1 text-sm text-slate-600">Temple art & sound‑and‑light.</p><a href="khajuraho.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+      <article data-city="Omkareshwar" class="cityCard card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow"><img src="images/omkareshwar.jpg" class="h-44 w-full object-cover" alt="Omkareshwar"/><div class="p-4"><h4 class="font-semibold text-lg">Omkareshwar</h4><p class="mt-1 text-sm text-slate-600">Island temple shaped like ॐ.</p><a href="omkareshwar.html" class="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-white text-sm hover:bg-slate-800">Read more <i class="fa-solid fa-arrow-right"></i></a></div></article>
+    </div>
+  </section>
+
+  <!-- ===== TOURS ===== -->
+  <section id="tours" class="reveal mx-auto max-w-7xl px-4 py-14">
+    <div class="mb-8 flex items-end justify-between">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-serif">Curated Tour Packages</h2>
+        <p class="mt-2 text-slate-600">Fixed itineraries with flexible add‑ons. Transparent prices.</p>
+      </div>
+      <a href="#plan" class="hidden md:inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-white">
+        <i class="fa-solid fa-sparkles"></i> Build your own
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow flex flex-col"><img src="images/pachmarhi.webp" class="h-44 w-full object-cover" alt="Pachmarhi"/><div class="p-5 flex-1 flex flex-col"><div class="flex items-center justify-between"><h3 class="font-semibold text-lg">Pachmarhi Escape</h3><span class="rounded-full bg-emerald-100 text-emerald-700 text-xs px-2 py-1">3D · 2N</span></div><p class="mt-2 text-sm text-slate-600">Bee Falls · Jata Shankar · Sunset points</p><div class="mt-auto flex items-center justify-between pt-4"><span class="text-lg font-bold">₹ 8,999</span><a href="package.pachmarhi.html" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Plan now <i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+      <article class="card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow flex flex-col"><img src="images/ujjain.png" class="h-44 w-full object-cover" alt="Mahakaleshwar"/><div class="p-5 flex-1 flex flex-col"><div class="flex items-center justify-between"><h3 class="font-semibold text-lg">Mahakaleshwar Darshan</h3><span class="rounded-full bg-indigo-100 text-indigo-700 text-xs px-2 py-1">1D</span></div><p class="mt-2 text-sm text-slate-600">Bhasma Aarti · Temple circuit · Shipra ghats</p><div class="mt-auto flex items-center justify-between pt-4"><span class="text-lg font-bold">₹ 1,999</span><a href="package.mahakal.html" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Plan now <i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+      <article class="card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow flex flex-col"><img src="images/khajuraho.jpg" class="h-44 w-full object-cover" alt="Khajuraho"/><div class="p-5 flex-1 flex flex-col"><div class="flex items-center justify-between"><h3 class="font-semibold text-lg">Khajuraho Heritage</h3><span class="rounded-full bg-rose-100 text-rose-700 text-xs px-2 py-1">2D · 1N</span></div><p class="mt-2 text-sm text-slate-600">UNESCO temples · light & sound</p><div class="mt-auto flex items-center justify-between pt-4"><span class="text-lg font-bold">₹ 6,499</span><a href="package.khajuraho.html" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Plan now <i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+      <article class="card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow flex flex-col"><img src="images/orchha.jpg" class="h-44 w-full object-cover" alt="Orchha"/><div class="p-5 flex-1 flex flex-col"><div class="flex items-center justify-between"><h3 class="font-semibold text-lg">Orchha Fort Trails</h3><span class="rounded-full bg-amber-100 text-amber-700 text-xs px-2 py-1">2D · 1N</span></div><p class="mt-2 text-sm text-slate-600">Bundeli architecture · riverside sunset</p><div class="mt-auto flex items-center justify-between pt-4"><span class="text-lg font-bold">₹ 4,999</span><a href="package.orchha.html" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Plan now <i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+      <article class="card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow flex flex-col"><img src="images/kuno.webp" class="h-44 w-full object-cover" alt="Kuno"/><div class="p-5 flex-1 flex flex-col"><div class="flex items-center justify-between"><h3 class="font-semibold text-lg">Kuno Rewilding</h3><span class="rounded-full bg-emerald-100 text-emerald-700 text-xs px-2 py-1">2D · 1N</span></div><p class="mt-2 text-sm text-slate-600">Grasslands · wildlife & eco‑stays</p><div class="mt-auto flex items-center justify-between pt-4"><span class="text-lg font-bold">₹ 5,999</span><a href="package.kuno.html" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Plan now <i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+      <article class="card rounded-2xl overflow-hidden bg-white ring-1 ring-slate-200 shadow flex flex-col"><img src="images/amarkantak.webp" class="h-44 w-full object-cover" alt="Amarkantak"/><div class="p-5 flex-1 flex flex-col"><div class="flex items-center justify-between"><h3 class="font-semibold text-lg">Amarkantak Pilgrim</h3><span class="rounded-full bg-indigo-100 text-indigo-700 text-xs px-2 py-1">2D · 1N</span></div><p class="mt-2 text-sm text-slate-600">Narmada source · temples & forests</p><div class="mt-auto flex items-center justify-between pt-4"><span class="text-lg font-bold">₹ 5,499</span><a href="package.amarkantak.html" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-3 py-1.5 text-white text-sm hover:bg-brand-700">Plan now <i class="fa-solid fa-arrow-right"></i></a></div></div></article>
+    </div>
+  </section>
+
+  <!-- ===== PLAN (Quick Links) ===== -->
+  <section id="plan" class="reveal mx-auto max-w-7xl px-4 py-14">
+    <h2 class="text-3xl md:text-4xl font-extrabold font-serif">Plan Your Bookings</h2>
+    <p class="mt-2 text-slate-600">Open trusted partners in a new tab. We never store your details.</p>
+    <div class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="card rounded-2xl glass ring-1 ring-slate-200 p-5"><img src="images/train.flight.jpg" class="h-28 w-full object-cover rounded-lg" alt="Tickets" /><h3 class="mt-4 font-semibold">Tickets</h3><div class="mt-3 grid grid-cols-2 gap-3"><button onclick="openLink('https://www.irctc.co.in/')" class="partner">IRCTC</button><button onclick="openLink('https://www.ixigo.com/trains')" class="partner">Ixigo</button><button onclick="openLink('https://www.makemytrip.com/railways/')" class="partner">MakeMyTrip</button><button onclick="openLink('https://www.redbus.in/railways')" class="partner">redBus</button></div></article>
+      <article class="card rounded-2xl glass ring-1 ring-slate-200 p-5"><img src="images/hotel.jpg" class="h-28 w-full object-cover rounded-lg" alt="Hotels" /><h3 class="mt-4 font-semibold">Hotel Booking</h3><div class="mt-3 grid grid-cols-2 gap-3"><button onclick="openLink('https://www.oyorooms.com/')" class="partner">OYO</button><button onclick="openLink('https://www.goibibo.com/hotels/')" class="partner">Goibibo</button><button onclick="openLink('https://www.makemytrip.com/hotels/')" class="partner">MakeMyTrip</button><button onclick="openLink('https://www.agoda.com/en-in/')" class="partner">Agoda</button></div></article>
+      <article class="card rounded-2xl glass ring-1 ring-slate-200 p-5"><img src="images/cabs.png" class="h-28 w-full object-cover rounded-lg" alt="Cabs" /><h3 class="mt-4 font-semibold">Taxi Booking</h3><div class="mt-3 grid grid-cols-3 gap-2"><button onclick="openLink('https://www.olacabs.com/')" class="partner">Ola</button><button onclick="openLink('https://www.uber.com/')" class="partner">Uber</button><button onclick="openLink('https://www.rapido.bike/Home')" class="partner">Rapido</button></div></article>
+      <article class="card rounded-2xl glass ring-1 ring-slate-200 p-5"><img src="images/food.jpg" class="h-28 w-full object-cover rounded-lg" alt="Food" /><h3 class="mt-4 font-semibold">Food Delivery</h3><div class="mt-3 grid grid-cols-2 gap-3"><button onclick="openLink('https://www.swiggy.com/')" class="partner">Swiggy</button><button onclick="openLink('https://www.zomato.com/')" class="partner">Zomato</button></div></article>
+    </div>
+  </section>
+
+  <!-- ===== MINI GUIDE (NEW) ===== -->
+  <section id="guide" class="reveal mx-auto max-w-7xl px-4 py-14">
+    <div class="grid lg:grid-cols-3 gap-6">
+      <article class="card rounded-2xl bg-white ring-1 ring-slate-200 p-6"><div class="flex items-center gap-3"><span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700"><i class="fa-solid fa-cloud-sun"></i></span><h3 class="font-semibold">Best Seasons</h3></div><p class="mt-3 text-sm text-slate-600">Oct–Mar: Pleasant for most cities. Apr–Jun: Safaris peak but hot. Jul–Sep: Waterfalls & greenery.</p></article>
+      <article class="card rounded-2xl bg-white ring-1 ring-slate-200 p-6"><div class="flex items-center gap-3"><span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700"><i class="fa-solid fa-train-subway"></i></span><h3 class="font-semibold">Getting Around</h3></div><p class="mt-3 text-sm text-slate-600">Trains connect major hubs. For interiors, reserve cabs early. Keep cash for remote areas.</p></article>
+      <article class="card rounded-2xl bg-white ring-1 ring-slate-200 p-6"><div class="flex items-center gap-3"><span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700"><i class="fa-solid fa-shield-heart"></i></span><h3 class="font-semibold">Stay Safe</h3></div><p class="mt-3 text-sm text-slate-600">Respect local customs at temples. Forest rules are strict—follow guides; no plastic in core zones.</p></article>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS & CONTACT ===== -->
+  <section id="contact" class="reveal mx-auto max-w-7xl px-4 pb-20">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 card rounded-2xl bg-white ring-1 ring-slate-200 p-6">
+        <h3 class="text-2xl font-bold mb-4">Top Reviews</h3>
+        <div id="reviewWrap" class="grid sm:grid-cols-2 gap-4"></div>
+      </div>
+      <div class="card rounded-2xl bg-white ring-1 ring-slate-200 p-6">
+        <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+        <form action="mailto:mail.team.travalsaarthi@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+          <div><label class="block text-sm font-medium">Name</label><input name="name" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" /></div>
+          <div><label class="block text-sm font-medium">Email</label><input type="email" name="email" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" /></div>
+          <div><label class="block text-sm font-medium">How can we help?</label><textarea name="message" rows="4" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2"></textarea></div>
+          <button class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 font-semibold text-white hover:bg-brand-700" type="submit"><i class="fa-solid fa-paper-plane"></i> Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t bg-white/70 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+      <div>
+        <div class="flex items-center gap-2 font-bold"><span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white"><i class="fa-solid fa-compass"></i></span> Travel Saarthi</div>
+        <p class="mt-3 text-slate-600">Curated MP experiences. Built with love for explorers.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Explore</h4>
+        <ul class="space-y-1 text-slate-600">
+          <li><a href="#discover" class="hover:text-slate-900">Destinations</a></li>
+          <li><a href="#tours" class="hover:text-slate-900">Packages</a></li>
+          <li><a href="#plan" class="hover:text-slate-900">Plan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Help</h4>
+        <ul class="space-y-1 text-slate-600">
+          <li><a href="#guide" class="hover:text-slate-900">Travel Guide</a></li>
+          <li><a href="#contact" class="hover:text-slate-900">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Legal</h4>
+        <p class="text-slate-600">We link to external partners only. © <span id="year"></span> Travel Saarthi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Mobile menu
+    document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
+
+    // Theme toggle (light/dark)
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') !== 'dark';
+      root.setAttribute('data-theme', isLight ? 'dark' : 'light');
+      document.body.classList.toggle('bg-slate-900', !isLight);
+      document.body.classList.toggle('text-slate-100', !isLight);
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Videos mute toggle
+    const v1 = document.getElementById('mpVideo');
+    const v2 = document.getElementById('promoVideo');
+    document.getElementById('mainMute').addEventListener('click', () => v1.muted = !v1.muted);
+    document.getElementById('promoMute').addEventListener('click', () => v2.muted = !v2.muted);
+
+    // City search + quick jump
+    const grid = document.getElementById('cityGrid');
+    const cards = Array.from(grid.querySelectorAll('.cityCard'));
+    const search = document.getElementById('citySearch');
+    const select = document.getElementById('citySelect');
+    search.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      cards.forEach(c => c.classList.toggle('hidden', !c.dataset.city.toLowerCase().includes(q)));
+    });
+    select.addEventListener('change', function () {
+      const target = document.querySelector(`[data-city="${this.value}"]`);
+      if (target) target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    });
+
+    // Partner buttons
+    window.openLink = (url) => window.open(url, '_blank', 'noopener');
+
+    // Reviews
+    const reviews = [
+      { author: "Anjali M.", text: "A diverse and enriching experience. Hospitality and scenic beauty are unmatched!" },
+      { author: "Rohit K.", text: "From wildlife to temples, every visit has been memorable. Highly recommended." },
+      { author: "Sneha R.", text: "Seamless booking and friendly locals made our trip amazing. MP truly is the heart of India." },
+      { author: "Amit S.", text: "Great infrastructure and well-maintained tourist spots. Khajuraho is a must-visit!" },
+      { author: "Pooja D.", text: "The national parks were breathtaking. Very good arrangements throughout." },
+      { author: "Nikhil B.", text: "Balanced mix of history, culture, and nature. Wonderful hospitality and food." }
+    ];
+    const reviewWrap = document.getElementById('reviewWrap');
+    reviews.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'rounded-xl bg-slate-50 p-4 ring-1 ring-slate-100';
+      card.innerHTML = `<p class='mb-2 text-sm text-slate-800'>"${r.text}"</p><p class='text-sm font-semibold text-right'>– ${r.author}</p>`;
+      reviewWrap.appendChild(card);
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,403 +1,639 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Burhanpur - Tourism Guide</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Explore Burhanpur · Mughal Marvel on the Tapti</title>
+
+  <!-- Tailwind (v3 CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <script>
+    /* Greenstone palette (to echo Bhimbetka page structure) */
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','sans-serif'], serif: ['Lora','serif'] },
+          colors: {
+            tapti:  { light:'#ecfdf5', DEFAULT:'#065f46', dark:'#064e3b' }, /* deep teal */
+            sand:   { light:'#fff7ed', DEFAULT:'#b45309', dark:'#7c2d12' }, /* warm sand/amber */
+            ash:    { light:'#f1f5f9', DEFAULT:'#0b0f14', dark:'#0b0f14' }, /* charcoal bg */
+            tealx:  { light:'#99f6e4', DEFAULT:'#14b8a6', dark:'#0f766e' }
+          },
+          boxShadow: {
+            glow: '0 0 0 3px rgba(20,184,166,.12), 0 8px 30px rgba(0,0,0,.18)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body{ background:#f8fafc; }
+    .dark body{ background:#0b0f14; }
+    .glass-header{ background:rgba(255,255,255,.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(100,100,100,.15) }
+    .dark .glass-header{ background:rgba(12,14,17,.72); border-color:rgba(90,90,90,.25) }
+
+    .tab-btn{ transition:.25s }
+    .tab-btn.active{ background:#14b8a6; color:#fff; box-shadow:0 8px 18px rgba(20,184,166,.35) }
+    .tab-content{ display:none }
+    .tab-content.active{ display:block }
+
+    /* Horizontal scroller cosmetics */
+    .hx-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      white-space: nowrap;
+    }
+    .hx-scroll > * { scroll-snap-align: start; }
+    .hx-mask {
+      -webkit-mask-image: linear-gradient(to right, transparent 0, black 32px, black calc(100% - 32px), transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, black 32px, black calc(100% - 32px), transparent 100%);
+    }
+    .hx-scroll::-webkit-scrollbar { height: 10px; }
+    .hx-scroll::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 9999px; }
+
+    .milestone{
+      background:linear-gradient(135deg,#ecfdf5 0%,#ffffff 100%);
+    }
+    .dark .milestone{
+      background:linear-gradient(135deg,#0f1318 0%,#0a0e13 100%);
+    }
+    .milestone:hover{ transform:translateY(-4px); box-shadow:0 10px 26px rgba(0,0,0,.25); }
+    .chip{ backdrop-filter: blur(8px) saturate(1.1); }
+  </style>
 </head>
-<body class="text-gray-900 pt-20">
 
-<!-- Header Bar -->
-<div class="flex justify-between items-center py-4 px-6 bg-gray-700 text-white fixed top-0 left-0 w-full z-50 shadow">
-  <div class="font-bold text-xl">Travel Saarthi</div>
-  <div class="text-center">
-    <span class="lang-toggle" onclick="setLang('en')">English</span> |
-    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
-  </div>
-  <div>
-    <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
-  </div>
-</div>
+<body class="text-slate-800 dark:text-slate-200 font-sans antialiased">
 
-<!-- Hero Section -->
-<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/burhanpur.webp');">
-  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
-    <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Burhanpur</h1>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">बुरहानपुर में आपका स्वागत है</h1>
-      <p class="text-lg md:text-2xl en">A Mughal Marvel on the Banks of Tapti</p>
-      <p class="text-lg md:text-2xl hi hidden">ताप्ती किनारे बसा मुग़ल शिल्प का अनमोल रत्न</p>
-    </div>
-  </div>
-</header>
-
-<!-- Map + Info -->
-<section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 en">Discover Burhanpur</h2>
-    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 hi hidden">बुरहानपुर के बारे में जानिए</h2>
-    <div class="flex flex-col lg:flex-row items-center gap-10">
-      <div class="w-full lg:w-1/2">
-        <iframe class="w-full h-80 border-4 border-green-100 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.9263884842815!2d76.20726037471285!3d21.309223279055633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd81fc726f1ed2f%3A0xe5fd9f79677d02f0!2sBurhanpur%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1751900000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full glass-header z-50">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-tapti-DEFAULT text-white shadow">
+          <i class="fa-solid fa-landmark"></i>
+        </span>
+        <span class="font-serif text-xl font-bold text-tapti-DEFAULT dark:text-white">Travel Saarthi</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 font-medium">
+        <a href="#about" class="hover:text-tapti-DEFAULT dark:hover:text-tealx-light">About</a>
+        <a href="#timeline" class="hover:text-tapti-DEFAULT dark:hover:text-tealx-light">Timeline</a>
+        <a href="#attractions" class="hover:text-tapti-DEFAULT dark:hover:text-tealx-light">Attractions</a>
+        <a href="#map-and-around" class="hover:text-tapti-DEFAULT dark:hover:text-tealx-light">In & Around</a>
+        <a href="#gallery" class="hover:text-tapti-DEFAULT dark:hover:text-tealx-light">Gallery</a>
+        <a href="#booking" class="hover:text-tapti-DEFAULT dark:hover:text-tealx-light">Book</a>
       </div>
-      <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
-        <div class="en">
-          <h3 class="text-2xl font-semibold text-green-700 mb-4">A Glimpse into Burhanpur</h3>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed">
-            Burhanpur is a historical city in Madhya Pradesh, rich in Mughal architecture, spiritual legacy, and cultural diversity. Known for its majestic forts, tombs, and mosques, it once served as a major outpost of the Mughal empire.
-          </p>
+      <div class="flex items-center gap-2">
+        <div class="text-sm font-medium">
+          <button onclick="setLang('en')" class="en-btn px-2 py-1 rounded-md bg-tealx-light text-tealx-dark">EN</button>
+          <button onclick="setLang('hi')" class="hi-btn px-2 py-1 rounded-md text-slate-600 dark:text-slate-300">हि</button>
         </div>
-        <div class="hi hidden">
-          <h3 class="text-2xl font-semibold text-green-700 mb-4">बुरहानपुर की एक झलक</h3>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed">
-            बुरहानपुर मध्यप्रदेश का एक ऐतिहासिक शहर है, जो मुग़ल वास्तुकला, आध्यात्मिक धरोहर और सांस्कृतिक विविधता से भरपूर है। यह मुग़ल साम्राज्य का प्रमुख केंद्र रहा है और इसके किले, मकबरे व मस्जिदें इसकी भव्यता को दर्शाते हैं।
-          </p>
+        <button id="themeBtn" class="h-9 w-9 flex items-center justify-center rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+        <a href="index.html" class="ml-1 hidden md:inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow hover:bg-slate-100">Back</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative h-screen flex items-center justify-center text-white">
+    <!-- If you have a Burhanpur hero video, replace the image with <video> similar to Bhimbetka -->
+    <img src="images/burhanpur.webp" alt="Burhanpur Hero" class="absolute inset-0 h-full w-full object-cover z-0">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(6,95,70,.55),transparent_40%),radial-gradient(circle_at_70%_80%,rgba(180,83,9,.40),transparent_45%),linear-gradient(to_top,rgba(0,0,0,.6),rgba(0,0,0,.35))] z-10"></div>
+
+    <div class="relative z-20 text-center px-4">
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg en">Burhanpur · Mughal Marvel on the Tapti</h1>
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg hi hidden">बुरहानपुर · ताप्ती तट का मुग़ल नगीना</h1>
+      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm en">Forts · Mosques · Tombs · Textile Heritage</p>
+      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm hi hidden">किले · मस्जिदें · मकबरे · वस्त्र विरासत</p>
+      <a href="#about" class="mt-8 inline-block px-6 py-3 rounded-full bg-tapti-DEFAULT text-white font-bold shadow-glow hover:bg-tapti-dark transition duration-300 hover:shadow-xl transform hover:-translate-y-0.5">
+        <span class="en">Discover Now</span><span class="hi hidden">अभी खोजें</span>
+      </a>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+      <div class="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center pt-2 animate-bounce">
+        <div class="w-1 h-2 rounded-full bg-white"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN GRID -->
+  <div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+    <!-- MAIN CONTENT -->
+    <main class="lg:col-span-2 space-y-16">
+
+      <!-- ABOUT -->
+      <section id="about">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">The Soul of Burhanpur</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">बुरहानपुर की आत्मा</h2>
+
+        <div class="mt-8 grid gap-8 lg:grid-cols-2">
+          <article class="bg-white dark:bg-slate-800 rounded-xl shadow p-6">
+            <div class="space-y-4 text-lg leading-relaxed text-slate-700 dark:text-slate-300">
+              <p class="en">Once a strategic Mughal outpost on the Tapti, Burhanpur blends military architecture with refined aesthetics—gateway forts, caravanserais, exquisite tombs, and riverside ghats.</p>
+              <p class="hi hidden">ताप्ती के किनारे स्थित बुरहानपुर मुग़ल काल का रणनीतिक केंद्र रहा—दुर्ग, सराय, खूबसूरत मकबरे और नदीघाट इसकी पहचान हैं।</p>
+              <p class="en">Today it’s equally famed for handloom sarees and banana-fibre textiles—living crafts that keep its historic trade routes alive.</p>
+              <p class="hi hidden">आज यह हथकरघा साड़ियों और केले के रेशों के वस्त्रों के लिए भी प्रसिद्ध है—ऐसी जीवित शिल्प परंपरा जो पुराने व्यापार मार्गों को जीवंत रखती है।</p>
+            </div>
+          </article>
+
+          <!-- Quick chips -->
+          <aside class="bg-white dark:bg-slate-800 rounded-xl shadow p-6">
+            <div class="flex flex-wrap gap-2">
+              <span class="chip px-3 py-1 rounded-full bg-sand-light text-sand-dark text-sm font-semibold">Heritage City</span>
+              <span class="chip px-3 py-1 rounded-full bg-tealx-light/60 text-tealx-dark text-sm font-semibold en">Best time: Oct–Mar</span>
+              <span class="chip px-3 py-1 rounded-full bg-tealx-light/60 text-tealx-dark text-sm font-semibold hi hidden">उचित समय: अक्तू–मार्च</span>
+              <span class="chip px-3 py-1 rounded-full bg-tapti-light text-tapti-DEFAULT text-sm font-semibold">Tapti Riverfront</span>
+              <span class="chip px-3 py-1 rounded-full bg-slate-200/70 dark:bg-slate-700/60 text-sm">Textile markets</span>
+            </div>
+            <div class="mt-6 text-sm text-slate-600 dark:text-slate-400">
+              <p class="en"><i class="fa-solid fa-location-dot mr-2 text-tapti-DEFAULT"></i>~340 km from Indore · NH-52 corridor</p>
+              <p class="hi hidden"><i class="fa-solid fa-location-dot mr-2 text-tapti-DEFAULT"></i>इंदौर से ~340 किमी · एनएच-52</p>
+            </div>
+          </aside>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section id="timeline">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">History Timeline</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">इतिहास कालक्रम</h2>
+
+        <div class="mt-6 overflow-x-auto pb-4">
+          <div class="min-w-[720px] flex gap-4">
+            <!-- Khandesh / Early Sultanate -->
+            <div class="milestone flex-1 rounded-xl p-5 border border-tapti-DEFAULT/15">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-tapti-DEFAULT text-white grid place-items-center"><i class="fa-solid fa-tower-observation"></i></span>
+                <h3 class="font-serif text-xl font-semibold en">Sultanate & Faruqi (14th–16th c.)</h3>
+                <h3 class="font-serif text-xl font-semibold hi hidden">सल्तनती व फ़रूकी (14–16वीं)</h3>
+              </div>
+              <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm en">Growth as a fortified trade town in Khandesh.</p>
+              <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm hi hidden">खंडेश में दुर्गनगरी व व्यापार केंद्र के रूप में विकास।</p>
+            </div>
+            <!-- Mughal apex -->
+            <div class="milestone flex-1 rounded-xl p-5 border border-tapti-DEFAULT/15">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-sand-DEFAULT text-white grid place-items-center"><i class="fa-solid fa-crown"></i></span>
+                <h3 class="font-serif text-xl font-semibold en">Mughal Zenith (16th–18th c.)</h3>
+                <h3 class="font-serif text-xl font-semibold hi hidden">मुग़ल उत्कर्ष (16–18वीं)</h3>
+              </div>
+              <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm en">Caravanserais, sarais, mosques, and river logistics.</p>
+              <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm hi hidden">सराय, मस्जिदें व नदी मार्ग—समृद्ध ठिकाना।</p>
+            </div>
+            <!-- Maratha & Colonial -->
+            <div class="milestone flex-1 rounded-xl p-5 border border-tapti-DEFAULT/15">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-tealx-DEFAULT text-white grid place-items-center"><i class="fa-solid fa-scroll"></i></span>
+                <h3 class="font-serif text-xl font-semibold en">Maratha & Colonial (18th–20th c.)</h3>
+                <h3 class="font-serif text-xl font-semibold hi hidden">मराठा व औपनिवेशिक (18–20वीं)</h3>
+              </div>
+              <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm en">Textile crafts flourish; forts retain strategic value.</p>
+              <p class="mt-3 text-slate-700 dark:text-slate-300 text-sm hi hidden">वस्त्र शिल्प फले-फूले; दुर्ग रणनीतिक रूप से महत्त्वपूर्ण।</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ATTRACTIONS -->
+      <section id="attractions">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">Top Attractions</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">प्रमुख आकर्षण</h2>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <img src="images/Burhanpur/asirgarh-fort.jpg" alt="Asirgarh Fort" class="w-full h-56 object-cover"/>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold en">Asirgarh Fort</h3>
+              <h3 class="text-xl font-semibold hi hidden">असीरगढ़ किला</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Gateway to the Deccan; sweeping Satpura views.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">दक्कन का द्वार; सतपुड़ा के अद्भुत नज़ारे।</p>
+            </div>
+          </article>
+
+          <article class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <img src="images/Burhanpur/akbari-sarai.jpg" alt="Akbari Sarai" class="w-full h-56 object-cover"/>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold en">Akbari Sarai</h3>
+              <h3 class="text-xl font-semibold hi hidden">अकबरी सराय</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Mughal caravanserai with fine arches & courtyards.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">मेहराबों व आंगनों वाली मुग़ल-कालीन सराय।</p>
+            </div>
+          </article>
+
+          <article class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <img src="images/Burhanpur/jay-stambh.jpg" alt="Jay Stambh" class="w-full h-56 object-cover"/>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold en">Jay Stambh</h3>
+              <h3 class="text-xl font-semibold hi hidden">जय स्तंभ</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Symbol of civic pride—illumined during festivals.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">नागरिक गौरव का प्रतीक—त्योहारों पर रोशन।</p>
+            </div>
+          </article>
+
+          <article class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <img src="images/Burhanpur/rahapadi-kund.jpg" alt="Rahapadi Kund" class="w-full h-56 object-cover"/>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold en">Rahapadi Kund</h3>
+              <h3 class="text-xl font-semibold hi hidden">रहापाड़ी कुंड</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Monsoon cascade & natural pool on city outskirts.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">शांत झरना व प्राकृतिक कुंड—शहर की बाहरी सीमा।</p>
+            </div>
+          </article>
+
+          <article class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <img src="images/Burhanpur/nadir-shah-tomb.jpg" alt="Tomb of Nadir Shah" class="w-full h-56 object-cover"/>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold en">Tomb of Nadir Shah</h3>
+              <h3 class="text-xl font-semibold hi hidden">नादिर शाह का मकबरा</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Indo-Persian blend; a quiet, lesser-known gem.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">इंडो-फ़ारसी शैली; शांत व कम परिचित स्थल।</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- HOW TO REACH -->
+      <section id="how-to-reach">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">How to Reach</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">कैसे पहुँचे</h2>
+
+        <div class="mt-8">
+          <div class="flex flex-wrap gap-2 md:gap-4">
+            <button class="tab-btn active px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('air')">
+              <i class="fa-solid fa-plane mr-2"></i><span class="en">By Air</span><span class="hi hidden">हवाई मार्ग</span>
+            </button>
+            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('train')">
+              <i class="fa-solid fa-train mr-2"></i><span class="en">By Train</span><span class="hi hidden">रेल मार्ग</span>
+            </button>
+            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('road')">
+              <i class="fa-solid fa-road mr-2"></i><span class="en">By Road</span><span class="hi hidden">सड़क मार्ग</span>
+            </button>
+          </div>
+
+          <div class="mt-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6">
+            <div id="content-air" class="tab-content active">
+              <p class="en">Nearest airports: <strong class="text-tealx-DEFAULT">Indore (IDR)</strong> ~340 km; <strong class="text-tealx-DEFAULT">Aurangabad (IXU)</strong> ~190 km. Cabs/buses to Burhanpur.</p>
+              <p class="hi hidden">निकटतम हवाई अड्डे: <strong class="text-tealx-DEFAULT">इंदौर (IDR)</strong> ~340 किमी; <strong class="text-tealx-DEFAULT">औरंगाबाद (IXU)</strong> ~190 किमी। टैक्सी/बस द्वारा पहुँचे।</p>
+              <button class="image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Burhanpur/air.png">
+                <span class="en">Show Air Route Map</span><span class="hi hidden">हवाई मार्ग का नक्शा</span>
+              </button>
+            </div>
+
+            <div id="content-train" class="tab-content">
+              <p class="en">Major station: <strong class="text-tealx-DEFAULT">Burhanpur (BAU)</strong> on Central Railway. Trains from Mumbai, Bhusawal, Khandwa, Itarsi.</p>
+              <p class="hi hidden">मुख्य स्टेशन: <strong class="text-tealx-DEFAULT">बुरहानपुर (BAU)</strong> सेंट्रल रेलवे पर। मुंबई, भुसावल, खंडवा, इटारसी से ट्रेनें।</p>
+              <button class="image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Burhanpur/train.png">
+                <span class="en">Show Train Map/List</span><span class="hi hidden">ट्रेन सूची/मानचित्र</span>
+              </button>
+            </div>
+
+            <div id="content-road" class="tab-content">
+              <p class="en">Well connected via NH-52 & state highways. Comfortable drives from <em>Indore, Jalgaon, Khandwa, Bhusawal</em>.</p>
+              <p class="hi hidden">एनएच-52 व राज्य मार्गों से सुगम—<em>इंदौर, जलगाँव, खंडवा, भुसावल</em> से सुविधाजनक यात्रा।</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route popup -->
+        <div id="imageNotificationPopup" class="fixed inset-0 z-[1000] hidden items-center justify-center bg-black bg-opacity-75 p-4">
+          <div class="relative w-full max-w-lg rounded-xl bg-white dark:bg-slate-800 shadow-xl">
+            <button id="closeImagePopup" class="absolute -top-3 -right-3 z-10 h-8 w-8 rounded-full bg-red-600 text-white flex items-center justify-center text-lg font-bold hover:bg-red-700 active:scale-95">&times;</button>
+            <div class="rounded-xl overflow-hidden">
+              <img id="popupImageSrc" src="" alt="Route Image" class="w-full h-auto object-contain" style="max-height:80vh;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAP + IN & AROUND (side-by-side; same width as How to Reach) -->
+      <section id="map-and-around">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+          <!-- LEFT: Map -->
+          <div>
+            <h3 class="font-serif text-2xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">Location on Map</h3>
+            <h3 class="font-serif text-2xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">नक्शे पर स्थान</h3>
+
+            <div class="mt-4 rounded-xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-700">
+              <iframe class="w-full h-80"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.9263884842815!2d76.20726037471285!3d21.309223279055633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd81fc726f1ed2f%3A0xe5fd9f79677d02f0!2sBurhanpur%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1751900000000"
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <!-- RIGHT: Famous (horizontal scroll) -->
+          <div>
+            <div class="flex items-end justify-between gap-4">
+              <div>
+                <h2 class="font-serif text-2xl md:text-3xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">Famous In & Around</h2>
+                <h2 class="font-serif text-2xl md:text-3xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">आसपास की प्रसिद्ध चीजें</h2>
+              </div>
+
+              <div class="flex gap-2">
+                <button id="famousPrev" class="h-9 w-9 grid place-items-center rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95" aria-label="Scroll left">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="famousNext" class="h-9 w-9 grid place-items-center rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95" aria-label="Scroll right">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="famousStrip" class="mt-4 hx-scroll hx-mask rounded-xl bg-white/60 dark:bg-slate-800/60 p-4 shadow-inner border border-slate-200 dark:border-slate-700">
+              <!-- Card 1 -->
+              <div class="inline-block align-top w-64 mr-4">
+                <div class="rounded-lg shadow bg-slate-50 dark:bg-slate-900 p-4 text-center h-full">
+                  <img src="images/Burhanpur/banana-fabric.jpg" alt="Banana Fiber Fabric" class="w-full h-40 object-contain rounded mb-3">
+                  <h3 class="text-lg font-semibold en">Banana Fiber Fabric</h3>
+                  <h3 class="text-lg font-semibold hi hidden">केले के रेशे से बने वस्त्र</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400 en">Eco-friendly, locally woven textiles<br> for sarees & ethnic wear.</p>
+                  <p class="text-sm text-slate-600 dark:text-slate-400 hi hidden">पर्यावरण-अनुकूल, स्थानीय बुने वस्त्र<br>—साड़ियाँ व पारंपरिक परिधान।</p>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="inline-block align-top w-64 mr-4">
+                <div class="rounded-lg shadow bg-slate-50 dark:bg-slate-900 p-4 text-center h-full">
+                  <img src="images/Burhanpur/handloom-sarees.jpg" alt="Handloom Sarees" class="w-full h-40 object-contain rounded mb-3">
+                  <h3 class="text-lg font-semibold en">Handloom Sarees</h3>
+                  <h3 class="text-lg font-semibold hi hidden">हथकरघा साड़ियाँ</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400 en">Rich textures, distinctive motifs—<br>shopping streets buzz nightly.</p>
+                  <p class="text-sm text-slate-600 dark:text-slate-400 hi hidden">समृद्ध बुनावट, अनोखे रूपांकन<br>—बाज़ारों में चहल-पहल।</p>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="inline-block align-top w-64 mr-4">
+                <div class="rounded-lg shadow bg-slate-50 dark:bg-slate-900 p-4 text-center h-full">
+                  <img src="images/Burhanpur/sweets.jpg" alt="Burhanpuri Sweets" class="w-full h-40 object-contain rounded mb-3">
+                  <h3 class="text-lg font-semibold en">Burhanpuri Sweets</h3>
+                  <h3 class="text-lg font-semibold hi hidden">बुरहानपुरी मिठाइयाँ</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400 en">Mawa jalebi, imarti & more <br>—authentic regional flavours.</p>
+                  <p class="text-sm text-slate-600 dark:text-slate-400 hi hidden">मावा जलेबी, इमरती व अन्य<br>—खाँटी स्थानीय स्वाद।</p>
+                </div>
+              </div>
+
+              <!-- Add more inline cards as needed -->
+            </div>
+
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 en">Tip: Scroll right to see more.</p>
+            <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 hi hidden">संकेत: अधिक देखने के लिए दाईं ओर स्क्रोल करें।</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="space-y-10 lg:sticky lg:top-24 lg:h-screen">
+
+      <!-- BOOKING -->
+      <section id="booking" class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-6 border-t-4 border-tapti-DEFAULT">
+        <h3 class="font-serif text-2xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">Book Your Trip</h3>
+        <h3 class="font-serif text-2xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">अपनी यात्रा बुक करें</h3>
+        <div class="mt-5 grid grid-cols-2 gap-3">
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx-DEFAULT text-white font-semibold hover:bg-tealx-dark transition duration-300 booking-popup-trigger" data-category="hotels" data-popup-title-en="Find Hotels" data-popup-title-hi="होटल खोजें">
+            <i class="fa-solid fa-hotel w-5 text-center"></i><span class="en">Find Hotels</span><span class="hi hidden">होटल खोजें</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx-DEFAULT text-white font-semibold hover:bg-tealx-dark transition duration-300 booking-popup-trigger" data-category="taxis" data-popup-title-en="Book Cabs" data-popup-title-hi="कैब बुक करें">
+            <i class="fa-solid fa-taxi w-5 text-center"></i><span class="en">Book Cabs</span><span class="hi hidden">कैब बुक करें</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx-DEFAULT text-white font-semibold hover:bg-tealx-dark transition duration-300 booking-popup-trigger" data-category="tickets" data-popup-title-en="Book Tickets" data-popup-title-hi="टिकट बुक करें">
+            <i class="fa-solid fa-ticket w-5 text-center"></i><span class="en">Book Tickets</span><span class="hi hidden">टिकट बुक करें</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx-DEFAULT text-white font-semibold hover:bg-tealx-dark transition duration-300 booking-popup-trigger" data-category="food" data-popup-title-en="Order Food" data-popup-title-hi="खाना ऑर्डर करें">
+            <i class="fa-solid fa-utensils w-5 text-center"></i><span class="en">Order Food</span><span class="hi hidden">खाना ऑर्डर करें</span>
+          </a>
+        </div>
+
+        <!-- Sub-options Modal -->
+        <div id="subOptionsPopup" class="fixed inset-0 z-[1001] hidden items-center justify-center bg-black bg-opacity-75 p-4">
+          <div class="relative w-full max-w-md rounded-xl bg-white dark:bg-slate-800 shadow-xl flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b border-slate-200 dark:border-slate-700">
+              <h4 id="subOptionsPopupTitle" class="text-lg font-semibold text-slate-800 dark:text-slate-100">Booking Options</h4>
+              <button id="closeSubOptionsPopup" class="text-slate-500 hover:text-slate-800 dark:hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div id="subOptionsContainer" class="p-6 grid grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MINI GALLERY -->
+      <section class="bg-white dark:bg-slate-800 rounded-xl shadow p-6">
+        <h3 class="font-serif text-2xl font-bold text-tapti-DEFAULT dark:text-tealx-light en">Photo Highlights</h3>
+        <h3 class="font-serif text-2xl font-bold text-tapti-DEFAULT dark:text-tealx-light hi hidden">झलकियाँ</h3>
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <img src="images/Burhanpur/asirgarh-fort.jpg" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
+          <img src="images/Burhanpur/akbari-sarai.jpg" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
+          <img src="images/Burhanpur/jay-stambh.jpg" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
+          <img src="images/Burhanpur/rahapadi-kund.jpg" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
+        </div>
+      </section>
+    </aside>
   </div>
-</section>
 
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Burhanpur</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">बुरहानपुर के प्रमुख आकर्षण</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Burhanpur/asirgarh-fort.jpg" alt="Asirgarh Fort" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Asirgarh Fort</h3>
-        <h3 class="text-xl font-semibold hi hidden">असीरगढ़ किला</h3>
-        <p class="text-sm text-gray-600 mb-2 en">Best Time: October to March</p>
-        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: अक्टूबर से मार्च</p>
-        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc4">Perched atop the Satpura range, this majestic fort is often called the 'Gateway to South India' and offers panoramic views and historical significance.</p>
-        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc4-hi">सतपुड़ा पर्वतमाला की चोटी पर स्थित यह भव्य किला 'दक्षिण भारत का द्वार' कहलाता है और अपने ऐतिहासिक महत्व व सुंदर दृश्यावली के लिए प्रसिद्ध है।</p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc4', this)">Read more</button>
+  <!-- FULL GALLERY -->
+  <section id="gallery" class="py-16 bg-white dark:bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-center text-tapti-DEFAULT dark:text-tealx-light en">Burhanpur Photo Gallery</h2>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-center text-tapti-DEFAULT dark:text-tealx-light hi hidden">बुरहानपुर फोटो गैलरी</h2>
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+        <img src="images/Burhanpur/" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)" alt="">
+        <img src="images/Burhanpur/akbari-sarai.jpg" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)" alt="">
+        <img src="images/Burhanpur/jay-stambh.jpg" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)" alt="">
+        <img src="images/Burhanpur/rahapadi-kund.jpg" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)" alt="">
+        <img src="images/Burhanpur/nadir-shah-tomb.jpg" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)" alt="">
+        <img src="images/burhanpur.webp" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)" alt="">
       </div>
     </div>
+  </section>
 
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Burhanpur/akbari-sarai.jpg" alt="Akbari Sarai" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Akbari Sarai</h3>
-        <h3 class="text-xl font-semibold hi hidden">अकबरी सराय</h3>
-        <p class="text-sm text-gray-600 mb-2 en">Best Time: November to February</p>
-        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: नवम्बर से फरवरी</p>
-        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc5">Built during the Mughal era, Akbari Sarai served as a grand rest stop for royal caravans, showcasing elegant arches and Mughal architecture.</p>
-        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc5-hi">मुगल काल में निर्मित, अकबरी सराय राजसी यात्रियों के लिए एक विश्राम स्थल थी, जिसमें सुंदर मेहराबें और मुग़ल शैली की वास्तुकला देखी जा सकती है।</p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc5', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Burhanpur/jay-stambh.jpg" alt="Jay Stambh" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Jay Stambh</h3>
-        <h3 class="text-xl font-semibold hi hidden">जय स्तंभ</h3>
-        <p class="text-sm text-gray-600 mb-2 en">Best Time: Year-round</p>
-        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: पूरे वर्ष</p>
-        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc6">A tall pillar commemorating freedom and historical pride, Jay Stambh stands at the heart of the city and is lit up during celebrations.</p>
-        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc6-hi">स्वतंत्रता और ऐतिहासिक गर्व का प्रतीक जय स्तंभ शहर के केंद्र में स्थित है और त्योहारों के समय रोशनी से सजाया जाता है।</p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc6', this)">Read more</button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Burhanpur/rahapadi-kund.jpg" alt="Rahapadi Kund" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Rahapadi Kund</h3>
-        <h3 class="text-xl font-semibold hi hidden">रहापाड़ी कुंड</h3>
-        <p class="text-sm text-gray-600 mb-2 en">Best Time: Monsoon to Winter</p>
-        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: वर्षा से सर्दियों तक</p>
-        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc7">A serene waterfall and natural kund located in the outskirts of Burhanpur, perfect for nature lovers and trekking enthusiasts.</p>
-        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc7-hi">बुरहानपुर के बाहरी क्षेत्र में स्थित एक शांत जलप्रपात और प्राकृतिक कुंड, जो प्रकृति प्रेमियों और ट्रेकिंग के शौकीनों के लिए आदर्श स्थान है।</p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc7', this)">Read more</button>
-      </div>
-    </div>
-
-
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Burhanpur/nadir-shah-tomb.jpg" alt="Tomb of Nadir Shah" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Tomb of Nadir Shah</h3>
-        <h3 class="text-xl font-semibold hi hidden">नादिर शाह का मकबरा</h3>
-        <p class="text-sm text-gray-600 mb-2 en">Best Time: October to February</p>
-        <p class="text-sm text-gray-600 mb-2 hi hidden">घूमने का समय: अक्टूबर से फरवरी</p>
-        <p class="text-gray-700 text-justify line-clamp-4 en" id="desc8">This lesser-known tomb in Burhanpur is believed to be associated with the Persian ruler Nadir Shah, reflecting Indo-Persian architectural blend and local reverence.</p>
-        <p class="text-gray-700 text-justify line-clamp-4 hi hidden" id="desc8-hi">बुरहानपुर में स्थित यह कम प्रसिद्ध मकबरा फ़ारसी शासक नादिर शाह से जुड़ा माना जाता है, जो इंडो-फ़ारसी वास्तुकला और स्थानीय श्रद्धा का उदाहरण है।</p>
-        <button class="mt-2 text-blue-600 hover:underline" onclick="toggleReadMore('desc8', this)">Read more</button>
-      </div>
-    </div>
-</div></section>
-
-<!-- Famous Things in Burhanpur -->
-<section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-black text-center mb-8 en">Things Burhanpur is Famous For</h2>
-  <h2 class="text-3xl font-bold text-black text-center mb-8 hi hidden">बुरहानपुर की प्रसिद्ध चीजें</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-    <div class="text-center">
-      <img src="images/Burhanpur/banana-fabric.jpg" alt="Banana Fiber Fabric" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Banana Fiber Fabric</h3>
-      <h3 class="text-xl font-semibold hi hidden">केले के रेशे से बने वस्त्र</h3>
-      <p class="text-gray-700 text-justify en">Burhanpur is known for weaving fine fabric from banana fiber, an eco-friendly and traditional textile used in sarees and ethnic wear.</p>
-      <p class="text-gray-700 text-justify hi hidden">बुरहानपुर केले के रेशों से बने वस्त्रों के लिए प्रसिद्ध है, जो साड़ियों और पारंपरिक परिधानों में उपयोग होते हैं। यह पर्यावरण अनुकूल कपड़ा है।</p>
-    </div>
-
-    <div class="text-center">
-      <img src="images/Burhanpur/handloom-sarees.jpg" alt="Handloom Sarees" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Handloom Sarees</h3>
-      <h3 class="text-xl font-semibold hi hidden">हथकरघा साड़ियाँ</h3>
-      <p class="text-gray-700 text-justify en">Traditional handloom sarees made in Burhanpur are appreciated for their unique patterns and rich textures by shoppers across India.</p>
-      <p class="text-gray-700 text-justify hi hidden">बुरहानपुर की हथकरघा साड़ियाँ अपने विशिष्ट डिज़ाइन और समृद्ध बुनावट के लिए पूरे भारत में पसंद की जाती हैं।</p>
-    </div>
-
-    <div class="text-center">
-      <img src="images/Burhanpur/sweets.jpg" alt="Burhanpur Sweets" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Burhanpur Sweets</h3>
-      <h3 class="text-xl font-semibold hi hidden">बुरहानपुरी मिठाइयाँ</h3>
-      <p class="text-gray-700 text-justify en">Mawa Jalebi, Imarti, and other traditional sweets from Burhanpur are a must-try for visitors seeking authentic regional flavors.</p>
-      <p class="text-gray-700 text-justify hi hidden">मावा जलेबी, इमरती और अन्य पारंपरिक बुरहानपुरी मिठाइयाँ स्थानीय स्वाद का अद्भुत अनुभव कराती हैं।</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Maheshwar Photo Gallery</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">महेश्वर फोटो गैलरी</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-  </div>
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-  </div>
-</div>
-<script>
- 
-  function showImage(src) {
-    document.getElementById("popupImage").src = src;
-    document.getElementById("imagePopup").classList.remove("hidden");
-  }
-
-  function hideImage() {
-    document.getElementById("imagePopup").classList.add("hidden");
-    document.getElementById("popupImage").src = "";
-  }
-</script>
-</section>
-
-<!-- Image Modal -->
-
-
-<!-- Travel Options -->
-<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
-  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Maheshwar</h2>
-  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">महेश्वर आने-जाने के साधन</h2>
-  <div class="flex flex-col md:flex-row justify-around gap-8">
-    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest railway stations: Barwaha (39 km), Indore (91 km)</li>
-        <li class="hi hidden">नजदीकी रेलवे स्टेशन: बड़वाहा (39 किमी), इंदौर (91 किमी)</li>
-        <li class="en">Connected via local taxis and buses</li>
-        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
-      </ul>
-    </div>
-    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
-        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
-        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
-        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+  <!-- Lightbox -->
+  <div id="imagePopup" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-[100] items-center justify-center" onclick="hideImage()">
+    <div class="bg-white p-2 rounded-lg shadow-2xl relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-white text-black text-2xl font-bold">&times;</button>
       <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
     </div>
   </div>
-</section>
 
+  <!-- FOOTER -->
+  <footer class="py-10 bg-tapti-dark dark:bg-black text-sand-light">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <a href="#home" class="font-serif text-2xl font-bold text-white">Travel Saarthi</a>
+      <p class="mt-2 text-sm text-slate-200/80 en">Your guide to Burhanpur’s living heritage.</p>
+      <p class="mt-2 text-sm text-slate-200/80 hi hidden">बुरहानपुर की जीवंत विरासत का आपका मार्गदर्शक।</p>
+      <div class="mt-6 flex justify-center gap-6">
+        <a href="index.html" class="font-semibold text-white hover:text-sand-light en">Home</a>
+        <a href="index.html" class="font-semibold text-white hover:text-sand-light hi hidden">होम</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-300/70">© 2025 Travel Saarthi. All rights reserved.</p>
+    </div>
+  </footer>
 
+  <script>
+    /* Theme toggle */
+    const htmlEl = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    const setDark = ()=>{ htmlEl.classList.add('dark'); themeIcon.classList.replace('fa-sun','fa-moon'); localStorage.setItem('theme','dark'); };
+    const setLight = ()=>{ htmlEl.classList.remove('dark'); themeIcon.classList.replace('fa-moon','fa-sun'); localStorage.setItem('theme','light'); };
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) { setDark(); } else { themeIcon.classList.add('fa-sun'); }
+    themeBtn.addEventListener('click', ()=> htmlEl.classList.contains('dark') ? setLight() : setDark());
 
+    /* Language toggle */
+    window.setLang = (lang) => {
+      document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+      const enBtn = document.querySelector('.en-btn'); const hiBtn = document.querySelector('.hi-btn');
+      if (lang === 'en'){ enBtn.classList.add('bg-tealx-light','text-tealx-dark'); enBtn.classList.remove('text-slate-600','dark:text-slate-300');
+        hiBtn.classList.remove('bg-tealx-light','text-tealx-dark'); hiBtn.classList.add('text-slate-600','dark:text-slate-300');
+      } else { hiBtn.classList.add('bg-tealx-light','text-tealx-dark'); hiBtn.classList.remove('text-slate-600','dark:text-slate-300');
+        enBtn.classList.remove('bg-tealx-light','text-tealx-dark'); enBtn.classList.add('text-slate-600','dark:text-slate-300'); }
+      document.documentElement.lang = lang;
+      if (window.updateSubOptionsPopupTitleOnLangChange) window.updateSubOptionsPopupTitleOnLangChange();
+    };
 
-<script>
-  function toggleReadMore(id, btn) {
-    const para = document.getElementById(id);
-    if (para.classList.contains("line-clamp-4")) {
-      para.classList.remove("line-clamp-4");
-      btn.textContent = "Read less";
-    } else {
-      para.classList.add("line-clamp-4");
-      btn.textContent = "Read more";
+    /* Tabs */
+    window.showTab = (tabName) => {
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('content-' + tabName).classList.add('active');
+      document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
+    };
+
+    /* Lightbox */
+    const popup = document.getElementById('imagePopup');
+    const popupImg = document.getElementById('popupImage');
+    window.showImage = (src) => { popupImg.src = src; popup.classList.remove('hidden'); popup.classList.add('flex'); };
+    window.hideImage = () => { popup.classList.add('hidden'); popup.classList.remove('flex'); popupImg.src = ""; };
+
+    /* Route image popup */
+    const routeModal = document.getElementById('imageNotificationPopup');
+    const routeImg = document.getElementById('popupImageSrc');
+    const routeClose = document.getElementById('closeImagePopup');
+    const routeBtns = document.querySelectorAll('.image-popup-btn');
+    const openRoute = (src)=>{ if(!routeModal) return; routeImg.src = src; routeModal.classList.remove('hidden'); routeModal.classList.add('flex'); };
+    const closeRoute = ()=>{ if(!routeModal) return; routeModal.classList.add('hidden'); routeModal.classList.remove('flex'); routeImg.src=''; };
+    routeBtns.forEach(b => b.addEventListener('click', (e)=>{ e.preventDefault(); openRoute(e.currentTarget.getAttribute('data-img')); }));
+    if (routeClose) routeClose.addEventListener('click', closeRoute);
+    if (routeModal){
+      routeModal.addEventListener('click', (e)=>{ if(e.target===routeModal) closeRoute(); });
+      document.addEventListener('keydown', (e)=>{ if((e.key==='Escape'||e.key==='Esc') && !routeModal.classList.contains('hidden')) closeRoute(); });
     }
-  }
 
-  function setLang(lang) {
-    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
-  }
-</script>
-<section id="section9">
-        <div class="section9">
-            <div class="container1">
-                <div class="category hotels">
-                    <img src="images/hotel.jpg" alt="hotels">
-                    <div class="overlay">
-                    <h2>Hotels Booking</h2>
-                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
-                </div>
-                <div class="category cabs">
-                    <img src="images/cabs.png" alt="cabs">
-                    <div class="overlay">
-                    <h2>Cabs & Taxi</h2>
-                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
-                </div>
-                <div class="category food">
-                    <img src="images/food.jpg" alt="food">
-                    <div class="overlay">
-                    <h2>Food Delivery</h2>
-                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
-                </div>
-            </div>
-            
-            <!-- Popups with Imagess -->
-            <div id="hotelPopup" class="popup">
-                <h2>Hotels Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.goibibo.com/hotels/" target="_blank">
-                            <img src="images/goibibo.jpeg" alt="Goibibo">
-                           
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.oyorooms.com/" target="_blank">
-                            <img src="images/oyo.png" alt="OYO">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=07032025&checkout=07042025&city=CTBHO&country=IN&filterData=HOTEL_PRICE_BUCKET%7C0-1500%2C1500-3000&locusId=CTBHO&locusType=city&regionNearByExp=3&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Bhopal" target="_blank">
-                            <img src="images/makemytrip.webp" alt="MakeMyTrip">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.agoda.com/en-in/" target="_blank">
-                            <img src="images/agoda.png" alt="Agoda">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
-            </div>
-            
-            <div id="taxiPopup" class="popup">
-                <h2>Cabs & Taxi Booking Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://book.olacabs.com/" target="_blank">
-                            <img src="images/ola.png" alt="Ola">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.uber.com/in/en/" target="_blank">
-                            <img src="images/uber.png" alt="Uber">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.rapido.bike/" target="_blank">
-                            <img src="images/Rapido.png" alt="Rapido">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
-            </div>
-            
-            <div id="foodPopup" class="popup">
-                <h2>Food Delivery Platforms</h2>
-                <div class="options">
-                    <div class="option">
-                        <a href="https://www.zomato.com/" target="_blank">
-                            <img src="images/zomato.png" alt="Zomato">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.swiggy.com/" target="_blank">
-                            <img src="images/swiggy.png" alt="Swiggy">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://blinkit.com/" target="_blank">
-                            <img src="images/blinkit.png" alt="Blinkit">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.bigbasket.com/" target="_blank">
-                            <img src="images/bigbasket.png" alt="BigBasket">
-                            
-                        </a>
-                    </div>
-                    <div class="option">
-                        <a href="https://www.zeptonow.com/" target="_blank">
-                            <img src="images/zepto.png" alt="Zepto">
-                            
-                        </a>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
-            </div>
-            </div>
-            
-            
-           
-            
-            
-            <script>
-                function showPopup(id) {
-                    document.getElementById(id).style.display = 'block';
-                }
-                
-                function closePopup(id) {
-                    document.getElementById(id).style.display = 'none';
-                }
-            </script>
-            
-            
-            
-       </section>
-<!-- Footer -->
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer1.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
+    /* Booking sub-options */
+    const subOptionsData = {
+      hotels: [
+        { name:'MakeMyTrip', url:'https://www.makemytrip.com/hotels/' },
+        { name:'Goibibo', url:'https://www.goibibo.com/hotels/' },
+        { name:'OYO', url:'https://www.oyorooms.com/' },
+        { name:'Agoda', url:'https://www.agoda.com/en-in/' }
+      ],
+      taxis: [
+        { name:'Ola', url:'https://book.olacabs.com/' },
+        { name:'Uber', url:'https://www.uber.com/in/en/' },
+        { name:'Rapido', url:'https://www.rapido.bike/' }
+      ],
+      tickets: [
+        { name:'IRCTC', url:'https://www.irctc.co.in/' },
+        { name:'Ixigo', url:'https://www.ixigo.com/' },
+        { name:'Redbus', url:'https://www.redbus.in/' },
+        { name:'Goibibo', url:'https://www.goibibo.com/' }
+      ],
+      food: [
+        { name:'Zomato', url:'https://www.zomato.com/' },
+        { name:'Swiggy', url:'https://www.swiggy.com/' },
+        { name:'Blinkit', url:'https://blinkit.com/' },
+        { name:'Zepto', url:'https://www.zepto.com/' }
+      ]
+    };
 
+    const subOptionsPopup = document.getElementById('subOptionsPopup');
+    const closeSubOptionsPopupBtn = document.getElementById('closeSubOptionsPopup');
+    const subOptionsPopupTitle = document.getElementById('subOptionsPopupTitle');
+    const subOptionsContainer = document.getElementById('subOptionsContainer');
+    const bookingTriggers = document.querySelectorAll('.booking-popup-trigger');
+    let activeCategoryTrigger = null;
+
+    const openSub = (cat, te, th) => {
+      const opts = subOptionsData[cat]; if(!opts) return;
+      activeCategoryTrigger = document.querySelector(`.booking-popup-trigger[data-category="${cat}"]`);
+      const lang = document.documentElement.lang || 'en';
+      subOptionsPopupTitle.textContent = lang === 'hi' ? th : te;
+      subOptionsContainer.innerHTML = '';
+      opts.forEach(o => {
+        const a = document.createElement('a'); a.href = o.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = o.name;
+        a.className = 'block text-center rounded-lg bg-slate-100 dark:bg-slate-700/50 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all duration-200 active:scale-95';
+        subOptionsContainer.appendChild(a);
+      });
+      subOptionsPopup.classList.remove('hidden'); subOptionsPopup.classList.add('flex');
+    };
+
+    const closeSub = ()=>{ subOptionsPopup.classList.add('hidden'); subOptionsPopup.classList.remove('flex'); subOptionsContainer.innerHTML=''; subOptionsPopupTitle.textContent=''; activeCategoryTrigger=null; };
+
+    bookingTriggers.forEach(btn => btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      openSub(btn.getAttribute('data-category'), btn.getAttribute('data-popup-title-en'), btn.getAttribute('data-popup-title-hi'));
+    }));
+    if (closeSubOptionsPopupBtn) closeSubOptionsPopupBtn.addEventListener('click', closeSub);
+    if (subOptionsPopup) {
+      subOptionsPopup.addEventListener('click', (e)=>{ if(e.target===subOptionsPopup) closeSub(); });
+      document.addEventListener('keydown', (e)=>{ if((e.key==='Escape'||e.key==='Esc') && !subOptionsPopup.classList.contains('hidden')) closeSub(); });
+    }
+
+    window.updateSubOptionsPopupTitleOnLangChange = () => {
+      if (!subOptionsPopup.classList.contains('hidden') && activeCategoryTrigger) {
+        const lang = document.documentElement.lang || 'en';
+        const te = activeCategoryTrigger.getAttribute('data-popup-title-en');
+        const th = activeCategoryTrigger.getAttribute('data-popup-title-hi');
+        subOptionsPopupTitle.textContent = lang === 'hi' ? th : te;
+      }
+    };
+
+    /* Famous strip arrows + drag */
+    (() => {
+      const strip = document.getElementById('famousStrip');
+      const prev  = document.getElementById('famousPrev');
+      const next  = document.getElementById('famousNext');
+      if (!strip || !prev || !next) return;
+
+      const step = () => {
+        const first = strip.querySelector('div.inline-block');
+        return (first?.clientWidth || 256) + 16; // card width + gap
+      };
+
+      prev.addEventListener('click', () => strip.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next.addEventListener('click', () => strip.scrollBy({ left:  step(), behavior: 'smooth' }));
+
+      // Drag-to-scroll
+      let isDown = false, startX = 0, scrollLeft = 0;
+      strip.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; strip.classList.add('cursor-grabbing'); });
+      strip.addEventListener('mouseleave', () => { isDown = false; strip.classList.remove('cursor-grabbing'); });
+      strip.addEventListener('mouseup', () => { isDown = false; strip.classList.remove('cursor-grabbing'); });
+      strip.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - strip.offsetLeft;
+        const walk = (x - startX) * 1;
+        strip.scrollLeft = scrollLeft - walk;
+      });
+    })();
+  </script>
 </body>
 </html>

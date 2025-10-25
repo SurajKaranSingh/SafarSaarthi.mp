@@ -2,173 +2,456 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Khajuraho Tour Package</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="package.css">
+
+  <style>
+    :root{
+      /* Vibrant, temple-inspired palette */
+      --bg:#0a0e14;                /* deep slate */
+      --text:#f7f8ff;              /* near-white */
+      --muted:#d7defe;             /* soft lavender */
+      --line:#1b2540;
+      --card:#0f1b2f;              /* card base */
+      --chip:#13223a;
+
+      --saffron:#f59e0b;           /* temple saffron */
+      --ruby:#ef476f;              /* red sandstone accent */
+      --aqua:#22d3ee;              /* aqua neon */
+      --violet:#7c3aed;            /* royal violet */
+
+      --r:16px;
+      --border:1px solid rgba(255,255,255,.10);
+      --shadow:0 12px 40px rgba(0,0,0,.38);
+      --glow:0 0 28px rgba(124,58,237,.35),0 0 50px rgba(34,211,238,.22);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(80vmax 60vmax at 110% -10%, rgba(124,58,237,.14), transparent 60%),
+        radial-gradient(70vmax 50vmax at -10% 110%, rgba(34,211,238,.12), transparent 60%),
+        var(--bg) url('images/khajuraho.jpg') center / cover fixed no-repeat;
+    }
+
+    /* Top scroll progress */
+    .scrollbar{
+      position:fixed; inset:0 0 auto 0; height:4px; z-index:1200;
+      background:linear-gradient(90deg,var(--saffron),var(--ruby),var(--aqua),var(--violet));
+      width:0%;
+      box-shadow:var(--glow);
+    }
+
+    /* NAV */
+    nav{
+      position:sticky; top:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 18px;
+      background:rgba(5,8,13,.65);
+      backdrop-filter:blur(10px);
+      border-bottom:var(--border);
+    }
+    nav div, nav a{color:var(--text)}
+    nav a{
+      text-decoration:none; color:var(--muted); font-weight:600;
+      padding:8px 12px; border-radius:12px; border:1px solid transparent;
+    }
+    nav a:hover{border-color:rgba(255,255,255,.12); color:#fff}
+
+    /* HERO – Khajuraho background with temple arch frame */
+    header{
+      position:relative; overflow:hidden;
+      padding:90px 20px 54px; text-align:center; isolation:isolate;
+      color:#fff;
+    }
+    /* soft gradient overlay for readability over bg image */
+    header::before{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(10,14,20,.6), rgba(10,14,20,.75) 50%, rgba(10,14,20,.9));
+      z-index:-1;
+    }
+    .arch{
+      /* stylized temple arch outline */
+      width:min(1200px,92vw); margin:0 auto 16px;
+      aspect-ratio:6/1.8; position:relative;
+      background:
+        radial-gradient(120% 220% at 50% -40%, rgba(245,158,11,.20), transparent 60%),
+        radial-gradient(120% 220% at 50% 140%, rgba(34,211,238,.16), transparent 60%);
+      -webkit-mask:
+        radial-gradient(180% 120% at 50% -20%, #000 35%, transparent 36%) top/100% 62% no-repeat,
+        linear-gradient(#000,#000) bottom/100% 42% no-repeat;
+              mask:
+        radial-gradient(180% 120% at 50% -20%, #000 35%, transparent 36%) top/100% 62% no-repeat,
+        linear-gradient(#000,#000) bottom/100% 42% no-repeat;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      box-shadow:inset 0 0 80px rgba(0,0,0,.45);
+    }
+    h1{
+      margin:.4rem 0 .5rem;
+      font-size:clamp(30px,5vw,56px);
+      text-shadow:0 10px 40px rgba(0,0,0,.45);
+    }
+    .sub{
+      max-width:820px; margin:0 auto; color:#eef; opacity:.95; font-weight:300;
+      text-shadow:0 4px 25px rgba(0,0,0,.35);
+    }
+    .chips{
+      margin:20px auto 0; display:flex; gap:10px; justify-content:center; flex-wrap:wrap
+    }
+    .chip{
+      background:rgba(255,255,255,.08);
+      border:var(--border); color:#def; padding:8px 12px; border-radius:999px; font-size:12px;
+      backdrop-filter:blur(6px)
+    }
+
+    /* TIMELINE SECTION */
+    .wrap{
+      max-width:1200px; margin:0 auto; padding:26px 16px 90px;
+      background:linear-gradient(180deg, rgba(10,14,20,.75), rgba(10,14,20,.92));
+      border-top:var(--border);
+      border-bottom:var(--border);
+      box-shadow:0 40px 60px rgba(0,0,0,.35) inset;
+    }
+    .timeline-head{
+      display:flex; align-items:end; gap:12px; justify-content:space-between; margin-bottom:10px;
+    }
+    .timeline-head h2{margin:0; font-size:clamp(22px,3.2vw,34px)}
+    .prog{
+      flex:1; height:6px; background:var(--line); border-radius:999px; overflow:hidden;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .prog .bar{
+      height:100%; width:0%;
+      background:linear-gradient(90deg,var(--saffron),var(--ruby),var(--aqua),var(--violet));
+      box-shadow:var(--glow);
+    }
+
+    /* CARDS */
+    .grid{
+      display:grid; gap:22px;
+      grid-template-columns:repeat(auto-fit, minmax(290px, 1fr));
+      margin-top:10px;
+    }
+    .card{
+      position:relative; perspective:1200px; height:560px;
+    }
+    .inner{
+      position:absolute; inset:0; border-radius:var(--r); overflow:hidden; transform-style:preserve-3d;
+      transition:transform .8s cubic-bezier(.19,1,.22,1);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:var(--border); box-shadow:var(--shadow);
+    }
+    .card.is-flipped .inner{ transform:rotateY(180deg) }
+
+    .face{
+      position:absolute; inset:0; padding:16px; display:flex; flex-direction:column; gap:12px;
+      backface-visibility:hidden; -webkit-backface-visibility:hidden;
+      transform:translateZ(0); -webkit-transform:translateZ(0);
+    }
+    .front{
+      background:
+        radial-gradient(80% 60% at 10% 0%, rgba(245,158,11,.12), transparent 50%),
+        radial-gradient(70% 60% at 100% 0%, rgba(34,211,238,.10), transparent 60%),
+        linear-gradient(180deg, rgba(124,58,237,.12), transparent 46%);
+      z-index:2;
+    }
+    .back{
+      transform:rotateY(180deg);
+      background:
+        radial-gradient(80% 60% at 0% 100%, rgba(239,71,111,.14), transparent 50%),
+        radial-gradient(70% 60% at 100% 100%, rgba(34,211,238,.12), transparent 60%),
+        linear-gradient(180deg, rgba(124,58,237,.10), transparent 46%);
+      z-index:1;
+    }
+
+    .day{
+      align-self:flex-start;
+      background:linear-gradient(90deg,var(--saffron),var(--ruby));
+      color:#0b0f16; font-weight:900; font-size:12px; padding:6px 10px; border-radius:999px;
+      box-shadow:var(--glow); border:1px solid rgba(0,0,0,.15)
+    }
+    .title{font-size:20px; margin:0}
+    .desc{color:#d7defe; font-size:14px; line-height:1.65}
+
+    .cover{
+      position:relative; flex:1; border-radius:14px; overflow:hidden; border:var(--border);
+    }
+    .cover img{width:100%; height:100%; object-fit:cover; display:block}
+    .cover::after{
+      content:""; position:absolute; inset:auto 0 0 0; height:42%;
+      background:linear-gradient(180deg,transparent,rgba(9,17,31,.82));
+    }
+
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      cursor:pointer; border:none; border-radius:12px; padding:10px 14px; font-weight:800;
+      background:var(--chip); color:var(--text); border:var(--border);
+      transition:transform .2s ease, filter .2s ease;
+    }
+    .btn.primary{background:linear-gradient(90deg,var(--aqua),var(--violet)); color:#09111f; box-shadow:var(--glow)}
+    .btn:hover{transform:translateY(-2px)}
+
+    .back-scroll{
+      flex:1; min-height:190px; max-height:250px; overflow:auto;
+      border-radius:12px; padding:12px; background:rgba(9,17,31,.50); border:var(--border);
+      color:#e8eeff; font-size:14px; line-height:1.75;
+    }
+
+    /* Modal (Train List) */
+    .modal{
+      position:fixed; inset:0; display:none; place-items:center; padding:20px; z-index:1500;
+      background:rgba(0,0,0,.65);
+    }
+    .modal.open{display:grid}
+    .modal-card{
+      width:min(100%,1000px); max-height:85vh; background:var(--card); border-radius:18px; overflow:hidden;
+      border:var(--border); box-shadow:0 30px 80px rgba(0,0,0,.55);
+    }
+    .modal-head{
+      padding:12px 16px; display:flex; align-items:center; justify-content:space-between;
+      background:linear-gradient(90deg, rgba(245,158,11,.25), rgba(34,211,238,.25));
+      border-bottom:var(--border);
+    }
+    .modal-body{padding:12px; overflow:auto}
+    .modal-body img{width:100%; height:auto; border-radius:10px}
+
+    footer{
+      padding:26px 16px; text-align:center; color:#c9d3ff; border-top:var(--border);
+      background:linear-gradient(180deg, rgba(10,14,20,.92), rgba(10,14,20,.98));
+    }
+
+    /* Reveal animation */
+    .appear{opacity:0; transform:translateY(22px) scale(.98)}
+    .appear.show{opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease}
+
+    /* Flip hardening: visibility fallback to guarantee correct face */
+    .card .back{visibility:hidden}
+    .card.is-flipped .back{visibility:visible}
+    .card.is-flipped .front{visibility:hidden}
+
+    /* Responsive tweaks */
+    @media (max-width:520px){
+      .card{height:560px}
+      .desc, .back-scroll{font-size:13.5px}
+    }
+  </style>
 </head>
+
 <body>
+  <div class="scrollbar" id="scrollbar"></div>
+
   <nav>
     <div><strong>Travel Saarthi</strong></div>
     <div><a href="index.html">Home</a></div>
   </nav>
 
   <header>
+    <div class="mesh arch"></div>
     <h1>Khajuraho Tour Circuit</h1>
+    <p class="sub">From the legendary temples of Khajuraho to Panna’s wilderness and Chitrakoot’s serenity — a colorful, scroll-smooth journey.</p>
+    <div class="chips">
+      <span class="chip">UNESCO Heritage</span>
+      <span class="chip">Chandela Architecture</span>
+      <span class="chip">Tiger Safari</span>
+      <span class="chip">Ramayan Trails</span>
+    </div>
   </header>
 
-  <div class="timeline-container">
-    <div class="timeline-line"></div>
-    <script>
-      const timelineData = [
-        {
-          day: "Day 1",
-          title: "Khajuraho",
-          desc: "Begin your journey in Khajuraho – the UNESCO World Heritage site known for its erotic sculptures and intricate carvings.",
-          back: `Explore the magnificent temple complex of Khajuraho, a testament to Chandela architecture.<br>
+  <section class="wrap">
+    <div class="timeline-head">
+      <h2>Plan Overview</h2>
+      <div class="prog"><div class="bar" id="bar"></div></div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- Train List Modal -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Train list image">
+    <div class="modal-card">
+      <div class="modal-head">
+        <strong>Train List</strong>
+        <button class="btn" id="closeModal">Close</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImg" alt="Train image">
+      </div>
+    </div>
+  </div>
+
+  <footer>© <span id="yr"></span> Travel Saarthi • Khajuraho Circuit</footer>
+
+  <script>
+    /* ===== Original content preserved exactly ===== */
+    const timelineData = [
+      {
+        day: "Day 1",
+        title: "Khajuraho",
+        desc: "Begin your journey in Khajuraho – the UNESCO World Heritage site known for its erotic sculptures and intricate carvings.",
+        back: `Explore the magnificent temple complex of Khajuraho, a testament to Chandela architecture.<br>
           1. Western Group of Temples – Kandariya Mahadev, Vishwanath<br>
           2. Eastern & Southern Temple Groups<br>
           3. Light & Sound Show<br>
           4. Tribal and Folk Art Museum<br>
           After sightseeing, depart for Panna the next morning.`,
-          img: "khajuraho.jpg",
-          backImg: "khajuraho.train.png",
-          link: "khajuraho.html"
-        },
-        {
-          day: "Day 2",
-          title: "Panna",
-          desc: "Feel the wilderness in Panna – famous for its national park and diamond mines.",
-          back: `Drive 25 km from Khajuraho to Panna.<br>
+        img: "khajuraho.jpg",
+        backImg: "khajuraho.train.png",
+        link: "khajuraho.html"
+      },
+      {
+        day: "Day 2",
+        title: "Panna",
+        desc: "Feel the wilderness in Panna – famous for its national park and diamond mines.",
+        back: `Drive 25 km from Khajuraho to Panna.<br>
           1. Panna National Park – Tiger Safari<br>
           2. Pandav Falls<br>
           3. Diamond Mines Viewpoint (optional)<br>
           Rest at a jungle resort. Travel next morning to Satna.`,
-          img: "panna.jpg",
-          backImg: "panna.train.png",
-          link: "panna.html"
-        },
-        {
-          day: "Day 3",
-          title: "Satna",
-          desc: "Spiritual and industrial city with ancient roots and pilgrimage relevance.",
-          back: `In Satna, explore both modern industry and ancient spirituality:<br>
+        img: "panna.jpg",
+        backImg: "panna.train.png",
+        link: "panna.html"
+      },
+      {
+        day: "Day 3",
+        title: "Satna",
+        desc: "Spiritual and industrial city with ancient roots and pilgrimage relevance.",
+        back: `In Satna, explore both modern industry and ancient spirituality:<br>
           1. Bharhut Stupa (Archaeological site)<br>
           2. Venkatesh Mandir<br>
           3. Sharadha Devi Temple<br>
           Overnight halt in Satna and proceed to Rewa next day.`,
-          img: "satna.jpg",
-          backImg: "satna.train.png",
-          link: "satna.html"
-        },
-        {
-          day: "Day 4",
-          title: "Rewa",
-          desc: "Land of waterfalls and white tigers, Rewa boasts both natural and royal attractions.",
-          back: `From Satna, travel to Rewa (~50 km).<br>
+        img: "satna.jpg",
+        backImg: "satna.train.png",
+        link: "satna.html"
+      },
+      {
+        day: "Day 4",
+        title: "Rewa",
+        desc: "Land of waterfalls and white tigers, Rewa boasts both natural and royal attractions.",
+        back: `From Satna, travel to Rewa (~50 km).<br>
           1. Rewa Fort & Museum<br>
           2. Rani Talab<br>
           3. Govindgarh Palace<br>
           4. Keoti and Chachai Waterfalls<br>
           5. White Tiger Safari (Govindgarh)<br>
           Proceed to Chitrakoot next day.`,
-          img: "rewa.jpg",
-          backImg: "rewa.train.png",
-          link: "rewa.html"
-        },
-        {
-          day: "Day 5",
-          title: "Chitrakoot",
-          desc: "Land of Lord Ram's exile – full of mythological and natural beauty.",
-          back: `Explore this sacred destination associated with Ramayan:<br>
+        img: "rewa.jpg",
+        backImg: "rewa.train.png",
+        link: "rewa.html"
+      },
+      {
+        day: "Day 5",
+        title: "Chitrakoot",
+        desc: "Land of Lord Ram's exile – full of mythological and natural beauty.",
+        back: `Explore this sacred destination associated with Ramayan:<br>
           1. Kamadgiri Hill Parikrama<br>
           2. Gupt Godavari Caves<br>
           3. Ramghat (boat ride)<br>
           4. Hanuman Dhara<br>
           5. Sati Anusuya Ashram<br>
           After a spiritual day, drive to Amarkantak in the evening or stay overnight and move next day.`,
-          img: "chitrakoot.jpg",
-          backImg: "chitrakoot.train.png",
-          link: "chitrakoot.html"
-        },
-        
-      ];
+        img: "chitrakoot.jpg",
+        backImg: "chitrakoot.train.png",
+        link: "chitrakoot.html"
+      },
+    ];
 
-      document.write(`
-        <div id="imagePopup" class="image-popup" style="display:none; position:fixed; top:15%; left:50%; transform:translateX(-50%); z-index:9999; background:white; padding:10px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); max-width:90%; max-height:80vh; overflow:auto; text-align:center;">
-          <span class="close-popup" style="position:absolute; top:5px; right:10px; font-size:24px; font-weight:bold; cursor:pointer;">&times;</span>
-          <img id="popupImage" src="" alt="Popup Image" style="max-width:100%; max-height:70vh; border-radius:8px;">
-        </div>
-      `);
-
-      document.write(timelineData.map(({ day, title, desc, img, backImg, link, back }) => `
-        <div class="timeline-item">
-          <div class="timeline-card-wrapper">
-            <div class="timeline-card">
-              <div class="timeline-content front">
-                <h2>${title}</h2>
-                <p>${desc}</p>
-                <img src="images/${img}" alt="${title}">
-                <button class="check-button flip-btn">Check Now</button>
-              </div>
-              <div class="timeline-content back" style="display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; padding-bottom: 60px;">
-                <div class="back-text" style="padding-right: 10px;">
-                  <p>${back}</p>
-                </div>
-                <div class="back-buttons" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
-                  <a href="${link}" class="check-button" style="min-width: 130px; text-align: center;">Explore in Detail</a>
-                  <button class="check-button show-image-btn" data-img="images/${backImg}" style="min-width: 130px;">Train List</button>
-                </div>
-              </div>
+    /* ===== Build cards ===== */
+    const grid = document.getElementById('grid');
+    timelineData.forEach(d => {
+      const el = document.createElement('article');
+      el.className = 'card appear';
+      el.innerHTML = `
+        <div class="inner">
+          <div class="face front">
+            <span class="day">${d.day}</span>
+            <h3 class="title">${d.title}</h3>
+            <p class="desc">${d.desc}</p>
+            <div class="cover"><img src="images/${d.img}" alt="${d.title}"></div>
+            <div class="row">
+              <button class="btn primary check-button">Check Now</button>
+              <a class="btn" href="${d.link}">Explore in Detail</a>
             </div>
           </div>
-          <div class="timeline-dot">${day}</div>
-        </div>
-      `).join(""));
-
-      document.addEventListener("click", function(e) {
-        if (e.target.classList.contains("show-image-btn")) {
-          const imgSrc = e.target.getAttribute("data-img");
-          document.getElementById("popupImage").src = imgSrc;
-          document.getElementById("imagePopup").style.display = "block";
-        }
-        if (e.target.classList.contains("close-popup")) {
-          document.getElementById("imagePopup").style.display = "none";
-        }
-      });
-    </script>
-  </div>
-
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch("footer1.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
-
-    const items = document.querySelectorAll('.timeline-item');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const card = entry.target.querySelector('.timeline-card');
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          if (card && card.classList.contains('flipped')) {
-            card.classList.remove('flipped');
-          }
-        }
-      });
-    }, { threshold: 0.5 });
-
-    items.forEach(item => observer.observe(item));
-
-    document.addEventListener("click", function(e) {
-      if (e.target && e.target.classList.contains("flip-btn")) {
-        const card = e.target.closest(".timeline-card");
-        card.classList.toggle("flipped");
-      }
+          <div class="face back">
+            <span class="day">${d.day}</span>
+            <h3 class="title">${d.title} • Plan</h3>
+            <div class="back-scroll"><p>${d.back}</p></div>
+            <div class="row">
+              <a class="btn" href="${d.link}">Explore in Detail</a>
+              <button class="btn primary show-image-btn" data-img="images/${d.backImg}">Train List</button>
+              <button class="btn flip">Back</button>
+            </div>
+          </div>
+        </div>`;
+      grid.appendChild(el);
     });
+
+    /* ===== Modal (Train List) ===== */
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+
+    grid.addEventListener('click', e => {
+      const btn = e.target.closest('.show-image-btn');
+      if (!btn) return;
+      modalImg.src = btn.dataset.img;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    });
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      modalImg.removeAttribute('src');
+    });
+    modal.addEventListener('click', e => { if(e.target===modal) closeModal.click(); });
+
+    /* ===== Flip behavior (Check Now + Back) ===== */
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('.flip, .check-button');
+      if (!btn) return;
+      const card = btn.closest('.card');
+      const inner = card.querySelector('.inner');
+      // Clear any inline transforms that could override flip (defensive)
+      if (inner && inner.style && inner.style.transform) inner.style.transform = '';
+      card.classList.toggle('is-flipped');
+    });
+
+    /* ===== Appear animation ===== */
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('show'); });
+    },{threshold:.3});
+    document.querySelectorAll('.appear').forEach(el=>io.observe(el));
+
+    /* ===== Scroll progress (top) + section progress ===== */
+    const scrollbar = document.getElementById('scrollbar');
+    const bar = document.getElementById('bar');
+    const wrap = document.querySelector('.wrap');
+
+    function onScroll(){
+      // page progress
+      const dh = document.documentElement.scrollHeight - window.innerHeight;
+      const p = Math.max(0, Math.min(1, window.scrollY / (dh || 1)));
+      scrollbar.style.width = (p*100).toFixed(2) + '%';
+
+      // timeline section progress
+      const r = wrap.getBoundingClientRect();
+      const sc = Math.min(1, Math.max(0, (window.innerHeight - Math.max(0, r.top)) / (r.height || 1)));
+      bar.style.width = (sc*100).toFixed(1) + '%';
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+
+    /* ===== Footer year ===== */
+    document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
