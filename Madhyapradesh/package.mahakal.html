@@ -1,436 +1,778 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full overflow-hidden">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mahakaleshwar Tour - Dynamic Itinerary</title>
-  
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mahakal Tour Circuit · Shiv-Blue Edition</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
 
   <script>
-    // --- New "Cool" Tailwind Config ---
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            'sans': ['Poppins', 'sans-serif'],
-            'serif': ['Playfair Display', 'serif'],
-          }
+            sans: ['Manrope','system-ui','ui-sans-serif','sans-serif'],
+            serif: ['Fraunces','ui-serif','Georgia','serif'],
+          },
+          colors: {
+            night:'#071118',
+            indigoX:{ light:'#93c5fd', DEFAULT:'#3b82f6', deep:'#1e40af'},
+            tealX:  { light:'#5eead4', DEFAULT:'#14b8a6', deep:'#0f766e'},
+            slateX:'#0b1220'
+          },
+          boxShadow:{ card:'0 12px 36px rgba(0,0,0,.30)'}
         }
       }
     }
   </script>
-  
+
   <style>
-    /* --- Core styles for the new layout --- */
-    html {
-      scroll-behavior: smooth;
+    body{ background:#071118; color:#e5f0ff }
+    .mesh{
+      background:
+        radial-gradient(1200px 500px at 80% 8%, rgba(59,130,246,.18), transparent 60%),
+        radial-gradient(900px 420px at 15% 85%, rgba(20,184,166,.18), transparent 60%),
+        linear-gradient(180deg,#071118,#0b1220);
     }
-    body {
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
-      color: #f1f5f9; /* slate-100 */
-    }
+    .glass{ background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .hx{ scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch }
+    .hx>*{ scroll-snap-align:start }
+    .no-scrollbar::-webkit-scrollbar{ display:none } .no-scrollbar{ scrollbar-width:none; -ms-overflow-style:none }
 
-    /* Horizontal Scroller */
-    .scroller {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory; /* The magic! */
-      gap: 2.5rem; /* 40px */
-      padding: 2.5rem; /* 40px */
-      /* Hide scrollbar */
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-    }
-    .scroller::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
-    }
+    /* Looping gallery */
+    @keyframes slideX{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+    .loop{ animation: slideX 28s linear infinite }
+    .loop:hover{ animation-play-state: paused }
+    @media (prefers-reduced-motion: reduce){ .loop{ animation:none } }
 
-    /* 3D Flip Card Styles (Adapted from your CSS) */
-    .timeline-card-wrapper {
-      flex-shrink: 0;
-      width: 360px; /* Fixed width for a card */
-      height: 520px;
-      perspective: 1500px;
-      scroll-snap-align: center; /* Snap to the center */
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    .timeline-card-wrapper.show {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .timeline-card {
-      width: 100%;
-      height: 100%;
+    /* Flip core */
+    .card-wrap{ perspective:1400px; }
+    .card-3d{
       position: relative;
+      height: 420px;
       transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform .8s cubic-bezier(.2,.8,.2,1);
+      will-change: transform;
     }
-    
-    /* Dynamic Hover Flip (desktop) */
-    @media (min-width: 1024px) {
-      .timeline-card-wrapper:hover .timeline-card {
-        transform: rotateY(180deg);
-      }
-    }
-    
-    /* Click Flip (mobile) */
-    .timeline-card.flipped {
-      transform: rotateY(180deg);
-    }
-    
-    .timeline-content {
+    .card-3d.flipped{ transform: rotateY(180deg); }
+    .card-face{
       position: absolute;
-      width: 100%;
-      height: 100%;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
       backface-visibility: hidden;
-      border-radius: 1.5rem; /* 24px */
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      -webkit-backface-visibility: hidden;
     }
-
-    /* Front of Card */
-    .front {
-      background-color: #334155; /* slate-700 */
-      display: flex;
-      flex-direction: column;
-    }
-    .front img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    /* Back of Card (Glassmorphism) */
-    .back {
-      background: rgba(255, 255, 255, 0.1); /* Glass effect */
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      transform: rotateY(180deg);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1.5rem; /* 24px */
-      overflow-y: auto;
-    }
-    .back-text {
-      font-size: 0.9rem;
-      color: #e2e8f0; /* slate-200 */
-    }
-    .back-text strong {
-      color: #f8fafc; /* slate-50 */
-      font-weight: 600;
-    }
-    
-    /* Custom scrollbar for the card back */
-    .back::-webkit-scrollbar { width: 6px; }
-    .back::-webkit-scrollbar-track { background: transparent; }
-    .back::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
-    
-    /* Modal styles */
-    .modal.hidden { display: none; }
-    .modal-overlay {
-      background-color: rgba(0,0,0,0.7);
-      backdrop-filter: blur(8px);
-    }
-    .modal-content {
-      animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes zoomIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    .card-back{ transform: rotateY(180deg); }
   </style>
 </head>
 
-<body class="h-screen w-full flex flex-col font-sans">
+<body class="font-sans antialiased">
 
-  <nav class="flex-shrink-0 bg-black/20 backdrop-blur-md shadow-lg z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="font-serif text-3xl font-bold text-white">SafarSaarthi</div>
-      <a href="index.html" class="px-5 py-2 bg-white text-indigo-700 font-semibold rounded-full shadow-lg hover:bg-indigo-100 transition-colors duration-300">
-        Home
-      </a>
-    </div>
-  </nav>
+  <!-- HEADER -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 py-3 mt-3 glass rounded-2xl">
+      <div class="flex items-center justify-between">
+        <a href="/index.html" class="flex items-center gap-2">
+          <span class="h-9 w-9 grid place-items-center rounded-xl bg-gradient-to-br from-indigoX.DEFAULT to-tealX.DEFAULT text-night shadow" aria-hidden="true">
+            <!-- trident icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11 2a1 1 0 0 1 2 0v5h3l-4 4-4-4h3V2zM5 14a1 1 0 1 1 2 0v2a5 5 0 0 0 4 4.9V22h2v-1.1A5 5 0 0 0 17 16v-2a1 1 0 1 1 2 0v2a7 7 0 0 1-6 6.93A7 7 0 0 1 5 16v-2z"/></svg>
+          </span>
+          <span class="font-serif text-xl font-semibold">SafarSaarthi</span>
+        </a>
 
-  <main class="flex-grow w-full flex items-center justify-start overflow-hidden">
-    <div class="scroller w-full">
-      
-      <div class="timeline-card-wrapper show">
-        <div class="h-full w-full flex flex-col items-center justify-center text-center p-6">
-          <div class="w-24 h-24 rounded-full bg-gradient-to-br from-pink-500 to-indigo-600 flex items-center justify-center shadow-lg ring-4 ring-white/20">
-            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#plan" class="hover:text-indigoX.light"><span class="en">Plan</span><span class="hi hidden">योजना</span></a>
+          <a href="#itinerary" class="hover:text-indigoX.light"><span class="en">Itinerary</span><span class="hi hidden">यात्रा-क्रम</span></a>
+          <a href="#cards" class="hover:text-indigoX.light"><span class="en">Card View</span><span class="hi hidden">कार्ड दृश्य</span></a>
+          <a href="#map" class="hover:text-indigoX.light"><span class="en">Map</span><span class="hi hidden">मानचित्र</span></a>
+          <a href="#gallery" class="hover:text-indigoX.light"><span class="en">Gallery</span><span class="hi hidden">गैलरी</span></a>
+
+          <!-- Language switch -->
+          <div class="flex items-center gap-1 pl-2 ml-2 border-l border-white/15">
+            <button id="btnEN" class="px-2 py-1 rounded-md text-sm bg-indigoX.light/20 font-semibold">EN</button>
+            <button id="btnHI" class="px-2 py-1 rounded-md text-sm">हि</button>
           </div>
-          <h1 class="font-serif text-4xl font-bold mt-6">Mahakaleshwar Tour</h1>
-          <p class="text-xl text-slate-300 mt-2">Start your journey</p>
-          <p class="mt-4 text-slate-400">Swipe or scroll horizontally to explore the itinerary.</p>
+
+          <a href="/index.html" class="px-3 py-1.5 rounded-lg bg-indigoX.DEFAULT text-white font-semibold">
+            <span class="en">Home</span><span class="hi hidden">मुखपृष्ठ</span>
+          </a>
+        </div>
+
+        <!-- Mobile controls -->
+        <div class="md:hidden flex items-center gap-2">
+          <!-- Lang toggle (compact) -->
+          <div class="flex items-center gap-1">
+            <button id="mEN" class="px-2 py-1 rounded-md text-xs bg-indigoX.light/20 font-semibold">EN</button>
+            <button id="mHI" class="px-2 py-1 rounded-md text-xs">हि</button>
+          </div>
+          <!-- Hamburger -->
+          <button id="menuBtn" class="h-10 w-10 grid place-items-center rounded-xl hover:bg-white/10" aria-label="Menu">
+            <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
         </div>
       </div>
-      
-      <div id="timeline-container" class="contents"></div>
 
-      <div class="timeline-card-wrapper show">
-        <div class="h-full w-full flex flex-col items-center justify-center text-center p-6">
-          <div class="w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg ring-4 ring-white/20">
-            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </div>
-          <h1 class="font-serif text-4xl font-bold mt-6">Tour Complete</h1>
-          <p class="text-xl text-slate-300 mt-2">Ready to plan your trip?</p>
-          <p class="mt-4 text-slate-400">Visit our Home page to get started.</p>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden pt-3">
+        <div class="grid gap-2 text-sm">
+          <a href="#plan" class="px-3 py-2 rounded-lg hover:bg-white/10"><span class="en">Plan</span><span class="hi hidden">योजना</span></a>
+          <a href="#itinerary" class="px-3 py-2 rounded-lg hover:bg-white/10"><span class="en">Itinerary</span><span class="hi hidden">यात्रा-क्रम</span></a>
+          <a href="#cards" class="px-3 py-2 rounded-lg hover:bg-white/10"><span class="en">Card View</span><span class="hi hidden">कार्ड दृश्य</span></a>
+          <a href="#map" class="px-3 py-2 rounded-lg hover:bg-white/10"><span class="en">Map</span><span class="hi hidden">मानचित्र</span></a>
+          <a href="#gallery" class="px-3 py-2 rounded-lg hover:bg-white/10"><span class="en">Gallery</span><span class="hi hidden">गैलरी</span></a>
+          <a href="/index.html" class="px-3 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Home</span><span class="hi hidden">मुखपृष्ठ</span></a>
         </div>
       </div>
-      
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="mesh relative pt-28">
+    <div class="max-w-7xl mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="font-serif text-3xl sm:text-6xl font-extrabold leading-tight">
+          <span class="en">Mahakal Tour Circuit</span>
+          <span class="hi hidden">महाकाल टूर सर्किट</span>
+          <span class="block text-indigoX.light">
+            <span class="en">Devotion · Heritage · Narmada</span>
+            <span class="hi hidden">आस्था · विरासत · नर्मदा</span>
+          </span>
+        </h1>
+        <p class="mt-4 text-blue-100/80 text-lg">
+          <span class="en">From Ujjain’s Mahakaleshwar to Omkareshwar, Maheshwar ghats and Mandu’s palaces—your sacred heartland in 10 days.</span>
+          <span class="hi hidden">उज्जैन महाकालेश्वर से ओंकारेश्वर, महेश्वर घाट और मांडू के महलों तक—10 दिनों की पावन यात्रा।</span>
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#itinerary" class="px-5 py-3 rounded-xl bg-indigoX.DEFAULT text-white font-semibold shadow-card">
+            <span class="en">View Itinerary</span><span class="hi hidden">यात्रा-क्रम देखें</span>
+          </a>
+          <a href="#gallery" class="px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5">
+            <span class="en">Gallery</span><span class="hi hidden">गैलरी</span>
+          </a>
+        </div>
+      </div>
+      <div class="relative rounded-3xl overflow-hidden shadow-card ring-1 ring-white/10">
+        <img src="images/ujjain.png" alt="Ujjain" class="w-full h-[320px] md:h-[420px] object-cover" loading="lazy">
+      </div>
     </div>
-  </main>
-  
-  <footer class="flex-shrink-0 bg-black/10 py-4 text-center text-slate-400 text-sm">
-    © <span id="year"></span> SafarSaarthi. All rights reserved.
+  </section>
+
+  <!-- QUICK PLAN -->
+  <section id="plan" class="py-14">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="glass rounded-3xl p-6 md:p-8">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold">
+          <span class="en">Quick Plan</span><span class="hi hidden">त्वरित योजना</span>
+        </h2>
+        <p class="text-blue-100/80 mt-2">
+          <span class="en">Best time:</span><span class="hi hidden">सर्वोत्तम समय:</span>
+          <span class="text-indigoX.light font-semibold">Oct–Mar</span>
+          <span class="en"> · Rail + Cab · Temple + Heritage</span>
+          <span class="hi hidden"> · रेल + कैब · मंदिर + धरोहर</span>
+        </p>
+
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-blue-200/70"><span class="en">Day 1</span><span class="hi hidden">दिन 1</span></p>
+            <h3 class="font-semibold">Mandsaur / मंदसौर</h3>
+            <p class="text-blue-100/75 text-sm mt-1"><span class="en">Pashupatinath & Dharmarajeshwar.</span><span class="hi hidden">पशुपतिनाथ एवं धर्मराजेश्वर।</span></p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-blue-200/70"><span class="en">Day 2</span><span class="hi hidden">दिन 2</span></p>
+            <h3 class="font-semibold">Ujjain / उज्जैन</h3>
+            <p class="text-blue-100/75 text-sm mt-1"><span class="en">Mahakaleshwar, Mahakal Lok & ghats.</span><span class="hi hidden">महाकालेश्वर, महाकाल लोक व घाट।</span></p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-blue-200/70"><span class="en">Day 3–5</span><span class="hi hidden">दिन 3–5</span></p>
+            <h3 class="font-semibold">Dewas · Indore / देवास · इंदौर</h3>
+            <p class="text-blue-100/75 text-sm mt-1"><span class="en">Mata Tekri, Rajwada, Sarafa.</span><span class="hi hidden">माता टेकरी, राजवाड़ा, सराफा।</span></p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-blue-200/70"><span class="en">Day 6–10</span><span class="hi hidden">दिन 6–10</span></p>
+            <h3 class="font-semibold">Mandu · Maheshwar · Omkareshwar · Burhanpur / मांडू · महेश्वर · ओंकारेश्वर · बुरहानपुर</h3>
+            <p class="text-blue-100/75 text-sm mt-1"><span class="en">Jahaz Mahal to Narmada aartis.</span><span class="hi hidden">जहाज़ महल से नर्मदा आरतियों तक।</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARY (List + Mobile swipe) -->
+  <section id="itinerary" class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-end justify-between">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold">
+          <span class="en">Day-by-Day</span><span class="hi hidden">दिन-प्रतिदिन</span>
+        </h2>
+        <p class="text-blue-200/70 text-sm hidden md:block">
+          <span class="en">Swipe on mobile · Expand on desktop</span>
+          <span class="hi hidden">मोबाइल पर स्वाइप करें · डेस्कटॉप पर विस्तृत देखें</span>
+        </p>
+      </div>
+
+      <!-- Mobile/Tablet: swipe cards -->
+      <div class="mt-6 md:hidden overflow-x-auto hx no-scrollbar">
+        <div class="flex gap-4 min-w-max">
+          <!-- Mandsaur -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/mandsour.webp" alt="Mandsaur" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 1</span><span class="hi hidden">दिन 1</span></p>
+              <h3 class="font-bold text-lg">Mandsaur / मंदसौर</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Dharmarajeshwar (82 km), Pashupatinath (near station). Continue to Ujjain.</span>
+                <span class="hi hidden">धर्मराजेश्वर (82 किमी), पशुपतिनाथ (स्टेशन के पास)। आगे उज्जैन जाएँ।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/mandsor.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="mandsaur.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Ujjain -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/ujjain.png" alt="Ujjain" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 2</span><span class="hi hidden">दिन 2</span></p>
+              <h3 class="font-bold text-lg">Ujjain / उज्जैन</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Mahakaleshwar, Mahakal Lok, Kaal Bhairav, Mangalnath, ghats.</span>
+                <span class="hi hidden">महाकालेश्वर, महाकाल लोक, काल भैरव, मंगलनाथ, घाट।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/ujjain.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="ujjain.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Dewas -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/dewas.jpg" alt="Dewas" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 3</span><span class="hi hidden">दिन 3</span></p>
+              <h3 class="font-bold text-lg">Dewas / देवास</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Mata Tekri; onward to Indore (rail/bus).</span>
+                <span class="hi hidden">माता टेकरी; आगे इंदौर (रेल/बस)।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/dewastrain.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="bhopal.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Indore -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/indore.webp" alt="Indore" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 3–5</span><span class="hi hidden">दिन 3–5</span></p>
+              <h3 class="font-bold text-lg">Indore / इंदौर</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Rajwada, Khajrana, Lalbagh; Sarafa night eats.</span>
+                <span class="hi hidden">राजवाड़ा, खजराना, लालबाग; सराफा रात्री भोज्य।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="indore.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Mandu -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/mandu.png" alt="Mandu" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 6–7</span><span class="hi hidden">दिन 6–7</span></p>
+              <h3 class="font-bold text-lg">Mandu / मांडू</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Roopmati, Jahaz Mahal, Hindola, Hoshang Shah Tomb.</span>
+                <span class="hi hidden">रूपमती, जहाज़ महल, हिंदोला, होशंग शाह का मकबरा।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="mandu.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Maheshwar -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/maheshwar.jpg" alt="Maheshwar" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 8</span><span class="hi hidden">दिन 8</span></p>
+              <h3 class="font-bold text-lg">Maheshwar / महेश्वर</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Ahilya Fort & ghats; Sahastra Dhara rafting.</span>
+                <span class="hi hidden">अहिल्या किला व घाट; सहस्त्रधारा राफ्टिंग।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="maheshwar.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Omkareshwar -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/omkareshwar.jpg" alt="Omkareshwar" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 8</span><span class="hi hidden">दिन 8</span></p>
+              <h3 class="font-bold text-lg">Omkareshwar / ओंकारेश्वर</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Jyotirlinga, Mamleshwar, Parikrama; aarti after dusk.</span>
+                <span class="hi hidden">ज्योतिर्लिंग, ममलेश्वर, परिक्रमा; सांयकालीन आरती।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="omkareshwar.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Burhanpur -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/burhanpur.webp" alt="Burhanpur" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-blue-200/70"><span class="en">Day 9–10</span><span class="hi hidden">दिन 9–10</span></p>
+              <h3 class="font-bold text-lg">Burhanpur / बुरहानपुर</h3>
+              <p class="text-blue-100/80 text-sm mt-2">
+                <span class="en">Asirgarh, Black Taj, Shahi Qila, Kundi Bhandara.</span>
+                <span class="hi hidden">आसिरगढ़, ब्लैक ताज, शाही किला, कुंडी भंडारा।</span>
+              </p>
+              <div class="mt-3 flex gap-2">
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/burhanpur.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+                <a href="burhanpur.html" class="inline-block px-4 py-2 rounded-lg border border-white/15 text-sm">
+                  <span class="en">Explore →</span><span class="hi hidden">और जानें →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop: Accordion -->
+      <div class="mt-8 hidden md:block">
+        <div class="grid lg:grid-cols-2 gap-6">
+          <!-- Example row (repeat pattern below) -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/mandsour.webp" alt="Mandsaur" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 1</span><span class="hi hidden">दिन 1</span></p>
+                  <h3 class="font-semibold text-lg">Mandsaur / मंदसौर</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Dharmarajeshwar (82 km), Pashupatinath near station. Proceed to Ujjain.</span>
+                <span class="hi hidden">धर्मराजेश्वर (82 किमी), स्टेशन के पास पशुपतिनाथ। आगे उज्जैन जाएँ।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="mandsaur.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold">
+                  <span class="en">Explore</span><span class="hi hidden">जानें</span>
+                </a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/mandsor.train.png">
+                  <span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span>
+                </button>
+              </div>
+            </div>
+          </details>
+
+          <!-- Ujjain -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/ujjain.png" alt="Ujjain" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 2</span><span class="hi hidden">दिन 2</span></p>
+                  <h3 class="font-semibold text-lg">Ujjain / उज्जैन</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Mahakaleshwar & Mahakal Lok, Kaal Bhairav, Mangalnath, Bhartrihari Caves, Gadhkalika, ghats.</span>
+                <span class="hi hidden">महाकालेश्वर व महाकाल लोक, काल भैरव, मंगलनाथ, भरतृहारी गुफाएँ, गढ़कालिका, घाट।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="ujjain.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Explore</span><span class="hi hidden">जानें</span></a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/ujjain.train.png"><span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span></button>
+              </div>
+            </div>
+          </details>
+
+          <!-- Dewas -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/dewas.jpg" alt="Dewas" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 3</span><span class="hi hidden">दिन 3</span></p>
+                  <h3 class="font-semibold text-lg">Dewas / देवास</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Mata Tekri darshan; continue to Indore (rail/bus).</span>
+                <span class="hi hidden">माता टेकरी दर्शन; इंदौर को आगे बढ़ें (रेल/बस)।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="bhopal.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Explore</span><span class="hi hidden">जानें</span></a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/dewastrain.png"><span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span></button>
+              </div>
+            </div>
+          </details>
+
+          <!-- Indore -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/indore.webp" alt="Indore" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 3–5</span><span class="hi hidden">दिन 3–5</span></p>
+                  <h3 class="font-semibold text-lg">Indore / इंदौर</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Rajwada, 56 Dukan, Khajrana, Lalbagh; Sarafa night eats. Next: Patalpani → Jam Gate → Mandu.</span>
+                <span class="hi hidden">राजवाड़ा, 56 दुकान, खजराना, लालबाग; सराफा रात्री भोजन। आगे: पातालपानी → जाम गेट → मांडू।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="indore.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Explore</span><span class="hi hidden">जानें</span></a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png"><span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span></button>
+              </div>
+            </div>
+          </details>
+
+          <!-- Mandu -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/mandu.png" alt="Mandu" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 6–7</span><span class="hi hidden">दिन 6–7</span></p>
+                  <h3 class="font-semibold text-lg">Mandu / मांडू</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Roopmati, Baz Bahadur, Jahaz Mahal, Hindola Mahal, Hoshang Shah Tomb, Jami Masjid.</span>
+                <span class="hi hidden">रूपमती, बाज बहादुर, जहाज़ महल, हिंदोला महल, होशंग शाह मकबरा, जामी मस्जिद।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="mandu.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Explore</span><span class="hi hidden">जानें</span></a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png"><span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span></button>
+              </div>
+            </div>
+          </details>
+
+          <!-- Maheshwar -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/maheshwar.jpg" alt="Maheshwar" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 8</span><span class="hi hidden">दिन 8</span></p>
+                  <h3 class="font-semibold text-lg">Maheshwar / महेश्वर</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Ahilya Fort & ghats; Sahastra Dhara rafting. Proceed to Omkareshwar.</span>
+                <span class="hi hidden">अहिल्या किला व घाट; सहस्त्रधारा राफ्टिंग। आगे ओंकारेश्वर।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="maheshwar.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Explore</span><span class="hi hidden">जानें</span></a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png"><span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span></button>
+              </div>
+            </div>
+          </details>
+
+          <!-- Omkareshwar -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/omkareshwar.jpg" alt="Omkareshwar" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 8</span><span class="hi hidden">दिन 8</span></p>
+                  <h3 class="font-semibold text-lg">Omkareshwar / ओंकारेश्वर</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Jyotirlinga, Mamleshwar, Parikrama, Siddhanth; aarti after dusk. Night halt or back to Indore.</span>
+                <span class="hi hidden">ज्योतिर्लिंग, ममलेश्वर, परिक्रमा, सिद्धनाथ; सांझ आरती। रात्रि विश्राम या इंदौर वापसी।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="omkareshwar.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Explore</span><span class="hi hidden">जानें</span></a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/indore.train.png"><span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span></button>
+              </div>
+            </div>
+          </details>
+
+          <!-- Burhanpur -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <img src="images/burhanpur.webp" alt="Burhanpur" class="h-48 w-48 rounded-xl object-cover ring-1 ring-white/10">
+                <div class="flex-1">
+                  <p class="text-xs text-blue-200/70"><span class="en">Day 9–10</span><span class="hi hidden">दिन 9–10</span></p>
+                  <h3 class="font-semibold text-lg">Burhanpur / बुरहानपुर</h3>
+                </div>
+                <span class="text-blue-200/70 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-blue-100/85 text-sm">
+                <span class="en">Asirgarh, Jhanjhar Dam, Black Taj, Shahi Qila, Akbari Sarai, Kundi Bhandara.</span>
+                <span class="hi hidden">आसिरगढ़, झांझर डैम, ब्लैक ताज, शाही किला, अकबरी सराय, कुंडी भंडारा।</span>
+              </div>
+              <div class="flex items-center md:justify-end gap-2">
+                <a href="burhanpur.html" class="px-4 py-2 rounded-lg bg-indigoX.DEFAULT text-white font-semibold"><span class="en">Explore</span><span class="hi hidden">जानें</span></a>
+                <button class="modalBtn px-4 py-2 rounded-lg bg-white/15 text-sm" data-img="images/burhanpur.train.png"><span class="en">Train List</span><span class="hi hidden">ट्रेन सूची</span></button>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="map" class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="glass rounded-3xl p-6 md:p-8">
+        <div class="grid lg:grid-cols-3 gap-6 items-center">
+          <div class="lg:col-span-1">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">
+              <span class="en">Route at a Glance</span><span class="hi hidden">मार्ग एक नजर में</span>
+            </h2>
+            <p class="text-blue-100/85 mt-2">
+              <span class="en">Mandsaur → Ujjain → Dewas → Indore → Mandu → Maheshwar → Omkareshwar → Burhanpur.</span>
+              <span class="hi hidden">मंदसौर → उज्जैन → देवास → इंदौर → मांडू → महेश्वर → ओंकारेश्वर → बुरहानपुर।</span>
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-blue-100/80">
+              <li><span class="en">• Rail hubs: Ujjain, Indore, Burhanpur</span><span class="hi hidden">• प्रमुख रेल जंक्शन: उज्जैन, इंदौर, बुरहानपुर</span></li>
+              <li><span class="en">• River: Narmada at Maheshwar & Omkareshwar</span><span class="hi hidden">• नदी: महेश्वर व ओंकारेश्वर में नर्मदा</span></li>
+              <li><span class="en">• Best months: Oct–Mar</span><span class="hi hidden">• उपयुक्त माह: अक्तूबर–मार्च</span></li>
+            </ul>
+          </div>
+          <div class="lg:col-span-2 rounded-2xl overflow-hidden ring-1 ring-white/10">
+            <iframe class="w-full h-[320px] md:h-[380px]" loading="lazy" allowfullscreen
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126889.039!2d75.684!3d23.176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sUjjain!2sUjjain!5e0!3m2!1sen!2sin!4v1624100000000">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOPING GALLERY -->
+  <section id="gallery" class="py-14">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold">
+        <span class="en">Darshan & Heritage</span><span class="hi hidden">दर्शन व धरोहर</span>
+      </h2>
+      <p class="text-blue-200/70 mt-1">
+        <span class="en">Hover to pause · Tap any image to view larger</span>
+        <span class="hi hidden">रोकने हेतु होवर करें · बड़ा देखने के लिए छवि पर टैप करें</span>
+      </p>
+
+      <div class="mt-6 relative overflow-hidden rounded-3xl ring-1 ring-white/10">
+        <div class="flex gap-4 w-max loop">
+          <!-- set A -->
+          <img src="images/ujjain.png" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Ujjain" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/omkareshwar.jpg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Omkareshwar" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/maheshwar.jpg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Maheshwar" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/mandu.png" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Mandu" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/burhanpur.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Burhanpur" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/dewas.jpg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Dewas" onclick="showImg(this.src)" loading="lazy">
+          <!-- set B duplicate -->
+          <img src="images/ujjain.png" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Ujjain" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/omkareshwar.jpg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Omkareshwar" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/maheshwar.jpg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Maheshwar" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/mandu.png" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Mandu" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/burhanpur.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Burhanpur" onclick="showImg(this.src)" loading="lazy">
+          <img src="images/dewas.jpg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="Dewas" onclick="showImg(this.src)" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-10 pb-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="glass rounded-3xl p-6 md:p-8 grid md:grid-cols-2 gap-6 items-center">
+        <div>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold">
+            <span class="en">Plan with SafarSaarthi</span><span class="hi hidden">सफ़र सारथी के साथ योजना बनाएं</span>
+          </h3>
+          <p class="text-blue-100/85 mt-2">
+            <span class="en">Routes, stays, tickets and tips—curated for the Mahakal Circuit.</span>
+            <span class="hi hidden">रूट, ठहराव, टिकट और सुझाव—महाकाल सर्किट के लिए क्यूरेटेड।</span>
+          </p>
+        </div>
+        <div class="flex gap-3 md:justify-end">
+          <a href="#itinerary" class="px-4 py-2 rounded-xl bg-indigoX.DEFAULT text-white font-semibold">
+            <span class="en">Start Itinerary</span><span class="hi hidden">यात्रा-क्रम शुरू करें</span>
+          </a>
+          <a href="/index.html" class="px-4 py-2 rounded-xl border border-white/15 hover:bg-white/5">
+            <span class="en">Home</span><span class="hi hidden">मुखपृष्ठ</span>
+          </a>
+        </div>
+      </div>
+      <p class="text-center text-blue-200/70 text-xs mt-6">
+        © <span id="year"></span> SafarSaarthi ·
+        <span class="en">All rights reserved</span>
+        <span class="hi hidden">सर्वाधिकार सुरक्षित</span>
+      </p>
+    </div>
   </footer>
 
-  <div id="imagePopup" class="modal hidden fixed inset-0 z-[999] flex items-center justify-center p-4">
-    <div class="modal-overlay fixed inset-0"></div>
-    <div class="modal-content relative z-10 w-full max-w-3xl bg-white rounded-lg shadow-xl overflow-hidden">
-      <button class="close-popup absolute top-2 right-3 text-gray-400 hover:text-gray-800 text-4xl font-light">&times;</button>
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4" onclick="hideImg()">
+    <img id="lightImg" src="" alt="preview" class="max-h-[90vh] max-w-[92vw] rounded-2xl ring-1 ring-white/20 shadow-card" />
+  </div>
+
+  <!-- Modal for Train List -->
+  <div id="imagePopup" class="fixed inset-0 z-[999] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-md" data-close="true"></div>
+    <div class="relative z-10 w-full max-w-3xl bg-white rounded-lg shadow-xl overflow-hidden">
+      <button class="closeModal absolute top-2 right-3 text-gray-400 hover:text-gray-800 text-4xl font-light" aria-label="Close">&times;</button>
       <img id="popupImage" src="" alt="Train List" class="w-full h-auto max-h-[80vh] object-contain">
     </div>
   </div>
 
-
+  <!-- JS -->
   <script>
-    // --- The same timeline data from your file ---
-    const timelineData = [
-      {
-        day: " Day 1",
-        title: "Mandsor/Mandsaur",
-        desc: "Begin your journey in the city believed to be the home town of Mandodari, wife of Ravana.",
-        back: `To Explore Mandsaur follow the below route by keeping Railway station as starting point. To know more about the place in depth click on <strong>Explore more</strong> button.<br><br>
-        1. Shree Dharmarajeshwar temple (82 km)<br>
-        2. Pashupatinath Temple (2 km from station)<br><br>
-        After covering this you can move ahead to your next location <strong>Ujjain</strong> which can be reached through Bus & Train.`,
-        img: "mandsour.webp",
-        backImg: "mandsor.train.png",
-        link: "mandsaur.html"
-      },
-      {
-        day: "Day 2 ",
-        title: "Ujjain",
-        desc: "Explore the divine land that offers a unique blend of solitude and spiritual experiences.",
-        back: `Temple town of Madhya Pradesh, home to 100+ temples. Now you will explore some of main temples by following the below route starting from Ujjain railway station.<br><br>
-        1.Chintaman Ganesh Mandir (7 km)<br>
-        2.Jantar mantar (4 km)<br>
-        3.Shri Mahakaleshwar Jyotirlinga Temple & Mahakal Lok(3 km)<br>
-        4.Shri Dwarikadish Gopal Mandir (1km)<br>
-        5.Bhartrihari Caves (3 km)<br>
-        6.Gadhkalika Mata mandir (2 km)<br>
-        7.Kaal Bhairav Temple  (1.5 km)<br>
-        8.Kaliyadeh palace (4.5 km)<br>
-        9.Mangalnath Mandir (4.5 km)<br>
-        10.Ujjain railway Station (5 km)<br><br>
-        Rest at night and can leave to next destination early morning to <strong>Dewas</strong>, or directly to Indore.`,
-        img: "ujjain.png",
-        backImg: "ujjain.train.png",
-        link: "ujjain.html"
-      },
-      {
-        day: "Day 3",
-        title: "Dewas",
-        desc: "Visit the land of Mata ji Tekri.",
-        back: `The biggest attraction in Dewas is <strong>Mata Tekri</strong>, a place of peace and hope. From here you will move to your next destination which is <strong>Indore</strong>. You can reach Indore by Bus & Train both (note: all trains to Dewas either come from or go to Indore).`,
-        img: "dewas.jpg",
-        backImg: "dewastrain.png",
-        link: "bhopal.html"
-      },
-      {
-        day: "Day 3-5",
-        title: "Indore",
-        desc: "India's cleanest city, a fabulous place to visit that offers fantastic food to taste.",
-        back: `Follow the route to explore Indore:<br>
-        <strong>Day 3:</strong><br>
-        1. Rajwada Palace<br>
-        2. 56 Dukan <br>
-        3. Khajrana Ganesh Mandir<br>
-        <strong>Day 4:</strong><br>
-        4. Ralamandal wildlife Sanctuary/Indore zoo <br>
-        5. Annaurna Mandir<br>
-        6. Ranjeet Hanuman Mandir<br>
-        7. Lal Bagh Palace <br>
-        8. Bada Ganpati Mandir <br>
-        9. Sarafa Bazar (at night)<br>
-        <strong>Day 5:</strong><br>
-        Move to next destination <strong>Mandav</strong> Via <strong>Patal Pani & Jam Gate</strong>. Best way is to book a car.`,
-        img: "indore.webp",
-        backImg: "indore.train.png",
-        link: "indore.html"
-      },
-      {
-        day: "Day 6-7",
-        title: "Mandav",
-        desc: "A celebration in stone, of life and joy, and the love of poet-prince Baz Bahadur for Rani Roopmati.",
-        back: `While moving towards <strong>Mandu</strong> from Indore don't forget to visit two locations on the way:<br>
-        1. Patal Pani (30 km from Indore)<br>
-        2. Jam Gate (30 km from Patal Pani)<br>
-        <strong>Day 6 (Mandu):</strong><br>
-        3. Nilkanth Mahadev Mandir (60 km from Jam Gate)<br> 
-        4. Roopmati Pavilion<br>
-        5. Baaz Bahadur Palace<br>
-        <strong>Day 7 (Mandu):</strong><br>
-        6. Delhi gate <br>
-        7. Jahaj Mahal & Hindola Mahal <br>
-        8. Ashrafi Mahal <br>
-        9. Hoshang Shah Tomb<br>
-        10. Jami Masjid <br><br>
-        After exploring, move to your next destination: <strong>Maheshwar</strong>.`,
-        img: "mandu.png",
-        backImg: "indore.train.png",
-        link: "mandu.html"
-      },
-      {
-        day: "Day 8",
-        title: "Maheshwar",
-        desc: "The glorious city on the banks of the holy river Narmada, revived by Queen Ahilyabai Holkar.",
-        back: `Maheshwar is famous for its fort and river bank (ghat), seen in many movies. There are two main locations:<br><br>
-        1. Maheshwar Fort (40 km from Mandu)<br>
-        2. Sahastra Dhara (7 km from Maheshwar fort), good for river rafting.<br><br>
-        After this, move ahead to <strong>Omkareshwar</strong> by Bus.`,
-        img: "maheshwar.jpg",
-        backImg: "indore.train.png",
-        link: "maheshwar.html"
-      },
-      {
-        day: "Day 8",
-        title: "Omkareshwar",
-        desc: "Home to one of the 12 revered Jyotirlingas, on an island shaped like the sacred 'OM'.",
-        back: `This town holds great religious significance. You can cover most temples while doing the <strong>Parikrama</strong> of Mandhata Parwat.<br><br>
-        1. Mamleshwar Temple <br>
-        2. Omkareshwar Jyotirlinga temple<br>
-        3. Siddhanth Temple<br>
-        4. Gauri Sonmath Temple<br>
-        5. Kedareshwar temple<br>
-        6. Statue of Oneness<br><br>
-        The <strong>Night Aarti</strong> is famous. Stay overnight or return to Indore to catch a bus to <strong>Burhanpur</strong> (3-5 hrs).`,
-        img: "omkareshwar.jpg",
-        backImg: "indore.train.png",
-        link: "omkareshwar.html"
-      },
-      {
-        day: "Day 9-10",
-        title: "Burhanpur",
-        desc: "The historical city, once the capital of the Mughal Kingdom, known as the 'Gateway to Southern India'.",
-        back: `The magnificent mosques, tombs and palaces give you a sense of peak Mughal life.<br><br>
-        1. Asirgarh Fort (25 km from Railway station)<br>
-        2. Jhanjhar Dam (17 km from Asirgarh)<br>
-        3. Black Tajmahal (10 km from dam)<br>
-        4. Tomb of Nadir shah (3 km)<br>
-        5. Shahi Qila (10 km)<br>
-        6. Akbari Sarai (3 km)<br>
-        7. Jay Stambh (1 km)<br>
-        8. Kundi Bhandara (6 km)<br><br>
-        With this, your tour ends. You can travel back from Burhanpur railway station.`,
-        img: "burhanpur.webp",
-        backImg: "burhanpur.train.png",
-        link: "burhanpur.html"
+    // Language toggle
+    function setLang(lang){
+      document.documentElement.lang = lang === 'hi' ? 'hi' : 'en';
+      localStorage.setItem('lang', document.documentElement.lang);
+      // show/hide language chunks
+      document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden', document.documentElement.lang === 'hi'));
+      document.querySelectorAll('.hi').forEach(el => el.classList.toggle('hidden', document.documentElement.lang !== 'hi'));
+      // button states
+      const on = 'bg-indigoX.light/20 font-semibold';
+      const off = '';
+      const btnEN = document.getElementById('btnEN'), btnHI = document.getElementById('btnHI');
+      const mEN = document.getElementById('mEN'), mHI = document.getElementById('mHI');
+      if(btnEN && btnHI){
+        if(document.documentElement.lang === 'hi'){ btnEN.className='px-2 py-1 rounded-md text-sm '+off; btnHI.className='px-2 py-1 rounded-md text-sm '+on; }
+        else{ btnEN.className='px-2 py-1 rounded-md text-sm '+on; btnHI.className='px-2 py-1 rounded-md text-sm '+off; }
       }
-    ];
+      if(mEN && mHI){
+        if(document.documentElement.lang === 'hi'){ mEN.className='px-2 py-1 rounded-md text-xs '+off; mHI.className='px-2 py-1 rounded-md text-xs '+on; }
+        else{ mEN.className='px-2 py-1 rounded-md text-xs '+on; mHI.className='px-2 py-1 rounded-md text-xs '+off; }
+      }
+    }
+    // Init language (persisted)
+    const saved = localStorage.getItem('lang') || 'en';
+    setLang(saved);
 
-    
-    // --- Run scripts after the page loads ---
-    document.addEventListener("DOMContentLoaded", () => {
-      
-      // === 1. BUILD THE TIMELINE ===
-      const container = document.getElementById('timeline-container');
-      let htmlString = '';
-      
-      timelineData.forEach(item => {
-        htmlString += `
-          <div class="timeline-card-wrapper">
-            <div class="timeline-card">
-              <div class="timeline-content front">
-                <img src="images/${item.img}" alt="${item.title}">
-                <div class="p-6 flex-grow flex flex-col">
-                  <span class="font-semibold text-indigo-300 text-sm">${item.day.replace('<br>', ' ')}</span>
-                  <h2 class="font-serif text-3xl font-bold text-white mt-2">${item.title}</h2>
-                  <p class="text-slate-300 mt-3 text-sm">${item.desc}</p>
-                  <button class="check-button flip-btn mt-auto px-6 py-3 bg-gradient-to-r from-pink-500 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
-                    Check Now
-                  </button>
-                </div>
-              </div>
-              <div class="timeline-content back">
-                <div class="back-text">
-                  ${item.back}
-                </div>
-                <div class="mt-6 flex justify-center gap-4">
-                  <a href="${item.link}" class="px-5 py-2 bg-white text-indigo-700 font-semibold rounded-full shadow hover:bg-indigo-100 transition-colors duration-300 text-sm">
-                    Explore Page
-                  </a>
-                  <button class="show-image-btn px-5 py-2 bg-black/30 text-white font-semibold rounded-full shadow hover:bg-black/50 transition-colors duration-300 text-sm" data-img="images/${item.backImg}">
-                    Train List
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-      
-      // Inject the generated HTML into the container
-      container.innerHTML = htmlString;
+    // Header language buttons
+    document.getElementById('btnEN')?.addEventListener('click', ()=> setLang('en'));
+    document.getElementById('btnHI')?.addEventListener('click', ()=> setLang('hi'));
+    document.getElementById('mEN')?.addEventListener('click', ()=> setLang('en'));
+    document.getElementById('mHI')?.addEventListener('click', ()=> setLang('hi'));
 
-      
-      // === 2. INTERSECTION OBSERVER (For animations) ===
-      const items = document.querySelectorAll('.timeline-card-wrapper');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            // Add a staggered delay
-            entry.target.style.transitionDelay = `${index * 100}ms`;
-            entry.target.classList.add('show');
-          }
-        });
-      }, { threshold: 0.1 }); // Trigger when 10% is visible
-
-      items.forEach(item => observer.observe(item));
-
-      
-      // === 3. ALL CLICK LISTENERS ===
-      const modal = document.getElementById('imagePopup');
-      const modalImg = document.getElementById('popupImage');
-      
-      document.addEventListener("click", function(e) {
-        
-        // Flip button
-        if (e.target.classList.contains("flip-btn")) {
-          const card = e.target.closest(".timeline-card");
-          if (card) card.classList.toggle("flipped");
-        }
-        
-        // Show Train List modal
-        if (e.target.classList.contains("show-image-btn")) {
-          const imgSrc = e.target.getAttribute("data-img");
-          modalImg.src = imgSrc;
-          modal.classList.remove("hidden");
-        }
-        
-        // Close modal
-        if (e.target.classList.contains("close-popup") || e.target.classList.contains("modal-overlay")) {
-          modal.classList.add("hidden");
-        }
-      });
-      
-      
-      // === 4. SET FOOTER YEAR ===
-      document.getElementById('year').textContent = new Date().getFullYear();
-
+    // Hamburger
+    const menuBtn = document.getElementById('menuBtn');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', ()=>{
+      const open = !mobileMenu.classList.contains('hidden');
+      if(open){
+        mobileMenu.classList.add('hidden'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
+      }
     });
-  </script>
 
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const li = document.getElementById('lightImg');
+    window.showImg = (src)=>{ li.src = src; lb.classList.remove('hidden'); lb.classList.add('flex') }
+    window.hideImg = ()=>{ lb.classList.add('hidden'); lb.classList.remove('flex'); li.src='' }
+
+    // Flip handlers
+    document.addEventListener('click', (e)=>{
+      if(e.target.classList.contains('flipBtn')){
+        const card = e.target.closest('.card-wrap')?.querySelector('.card-3d');
+        card?.classList.toggle('flipped');
+      }
+    });
+
+    // Train list modal
+    const modal = document.getElementById('imagePopup');
+    const modalImg = document.getElementById('popupImage');
+    document.addEventListener('click', (e)=>{
+      if(e.target.classList.contains('modalBtn')){
+        const src = e.target.getAttribute('data-img');
+        modalImg.src = src || '';
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+      }
+      if(e.target.classList.contains('closeModal') || e.target.getAttribute('data-close')==='true'){
+        modal.classList.add('hidden'); modal.classList.remove('flex'); modalImg.src = '';
+      }
+    });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')){ modal.classList.add('hidden'); modal.classList.remove('flex'); modalImg.src=''; } });
+
+    // Year
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

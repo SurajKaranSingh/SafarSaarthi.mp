@@ -1,318 +1,487 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full overflow-hidden">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pachmarhi Tour - A Dynamic Journey</title>
-  
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pachmarhi Tour · 7 Days in the Satpuras</title>
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
 
   <script>
-    // --- New "Cool" Tailwind Config ---
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            // New "Cooler" fonts
-            'sans': ['Poppins', 'sans-serif'],
-            'serif': ['Playfair Display', 'serif'],
+            sans: ['Manrope', 'system-ui', 'ui-sans-serif', 'sans-serif'],
+            serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
           },
           colors: {
-            'brand-purple': '#4f46e5',
-            'brand-pink': '#ec4899',
+            ink: '#0b1014',
+            stone: '#11161b',
+            brand: { DEFAULT: '#16a34a', dark: '#065f46', light: '#86efac' },
+            accent: { DEFAULT: '#eab308', dark: '#a16207' }
+          },
+          boxShadow: {
+            card: '0 10px 30px rgba(0,0,0,.25)'
           }
         }
       }
     }
   </script>
-  
+
   <style>
-    /* --- Core styles for the scroll-snap layout --- */
-    html, body {
-      height: 100%;
-      overflow: hidden; /* Prevent double scrollbars */
-      background-color: #111;
+    body { background:#0b1014; color:#e5e7eb }
+    .glass { background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    /* Hero mesh */
+    .mesh {
+      background:
+        radial-gradient(1200px 500px at 80% 10%, rgba(22,163,74,.25), transparent 60%),
+        radial-gradient(800px 380px at 10% 90%, rgba(234,179,8,.18), transparent 60%),
+        linear-gradient(180deg, #0b1014, #11161b);
     }
-    
-    /* The main container IS the viewport */
-    .scroll-container {
-      height: 100vh;
-      overflow-y: scroll;
-      /* This is the magic: snaps vertically */
-      scroll-snap-type: y mandatory;
-    }
-
-    /* Each section is a snap point */
-    .scroll-panel {
-      height: 100vh;
-      width: 100%;
-      scroll-snap-align: start;
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem; /* 40px */
-    }
-
-    /* Full-screen overlay for text contrast */
-    .scroll-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-    }
-
-    /* "Glass" card style */
-    .glass-card {
-      position: relative;
-      z-index: 10;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1.5rem; /* 24px */
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-    
-    /* Custom scrollbar for the card */
-    .glass-card::-webkit-scrollbar { width: 6px; }
-    .glass-card::-webkit-scrollbar-track { background: transparent; }
-    .glass-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
-
-    /* Animated "Scroll Down" hint */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem; /* 40px */
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      color: white;
-      text-align: center;
-      animation: bounce 2s infinite;
-    }
-    .scroll-hint svg {
-      width: 1.5rem; /* 24px */
-      height: 1.5rem; /* 24px */
-      margin: 0 auto;
-    }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-      40% { transform: translate(-50%, -15px); }
-      60% { transform: translate(-50%, -5px); }
+    /* Horizontal scrollers */
+    .hx { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .hx > * { scroll-snap-align: start; }
+    .no-scrollbar::-webkit-scrollbar { display:none } .no-scrollbar { scrollbar-width:none; -ms-overflow-style:none }
+    /* Gallery infinite loop */
+    @keyframes slideX { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+    .loop { animation: slideX 28s linear infinite; }
+    .loop:hover { animation-play-state: paused; }
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .loop{ animation: none }
     }
   </style>
 </head>
 
-<body class="font-sans">
+<body class="font-sans antialiased">
 
-  <main class="scroll-container">
-
-    <section class="scroll-panel" style="background-image: url('images/pachmarhi.webp');">
-      <div class="relative z-10 text-center text-white p-6">
-        <h1 class="font-serif text-5xl md:text-8xl font-bold drop-shadow-lg">
-          Pachmarhi Tour
-        </h1>
-        <p class="font-sans text-xl md:text-3xl mt-4 max-w-2xl drop-shadow-md">
-          A Dynamic 7-Day Journey
-        </p>
-        <a href="index.html" class="inline-block mt-8 px-8 py-3 bg-gradient-to-r from-brand-purple to-brand-pink text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
-          Back to Home
+  <!-- HEADER -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 py-3 mt-3 glass rounded-2xl">
+      <div class="flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-2">
+          <span class="h-9 w-9 grid place-items-center rounded-xl bg-brand text-white shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 0 1 .94.66l1.3 3.57 3.77.31a1 1 0 0 1 .57 1.76l-2.85 2.16.99 3.66a1 1 0 0 1-1.46 1.14L12 14.5l-3.83 1.76a1 1 0 0 1-1.46-1.14l.99-3.66L4.85 8.3a1 1 0 0 1 .57-1.76l3.77-.31 1.3-3.57A1 1 0 0 1 12 2z"/></svg>
+          </span>
+          <span class="font-serif text-xl font-semibold">SafarSaarthi</span>
         </a>
-      </div>
-      
-      <div class="scroll-hint">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-        <span>Scroll to Begin</span>
-      </div>
-    </section>
 
-    <div id="timeline-container"></div>
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#plan" class="hover:text-brand-light">Plan</a>
+          <a href="#itinerary" class="hover:text-brand-light">Itinerary</a>
+          <a href="#map" class="hover:text-brand-light">Map</a>
+          <a href="#gallery" class="hover:text-brand-light">Gallery</a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg bg-brand text-ink font-semibold">Home</a>
+        </div>
 
-    <section class="scroll-panel" style="background-color: #1a1a1a;">
-      <div class="relative z-10 text-center text-white">
-        <h2 class="font-serif text-5xl font-bold">Tour Complete</h2>
-        <p class="text-xl mt-4">Ready to plan your trip?</p>
-        
-        <div class="mt-12">
-          <h3 class="font-serif text-2xl font-semibold">SafarSaarthi</h3>
-          <p class="mt-4 text-gray-300/80 max-w-lg">
-            Your complete guide to exploring the Heart of India. Discover, plan, and book your perfect trip.
-          </p>
-          <p class="mt-8 text-gray-400/60 text-sm">
-            © <span id="year"></span> SafarSaarthi. All rights reserved.
-          </p>
+        <!-- Hamburger -->
+        <button id="menuBtn" class="md:hidden h-10 w-10 grid place-items-center rounded-xl hover:bg-white/10">
+          <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden pt-3">
+        <div class="grid gap-2 text-sm">
+          <a href="#plan" class="px-3 py-2 rounded-lg hover:bg-white/10">Plan</a>
+          <a href="#itinerary" class="px-3 py-2 rounded-lg hover:bg-white/10">Itinerary</a>
+          <a href="#map" class="px-3 py-2 rounded-lg hover:bg-white/10">Map</a>
+          <a href="#gallery" class="px-3 py-2 rounded-lg hover:bg-white/10">Gallery</a>
+          <a href="index.html" class="px-3 py-2 rounded-lg bg-brand text-ink font-semibold">Home</a>
         </div>
       </div>
-    </section>
+    </nav>
+  </header>
 
-  </main>
-  
-  
-  <script>
-    // --- The same timeline data from your file ---
-    const timelineData = [
-      {
-        day: "Day 1-2",
-        title: "Bhopal",
-        desc: "Begin your journey in the City of Lakes.",
-        back: `To Explore Bhopal follow the below route which will help you to explore all places from Railway Station as the starting point:<br><br>
-  1. Taj-ul-Masjid (2.6 km)<br>
-  2. Gohar Mahal (1.2 km from Taj-ul-Masjid)<br>
-  3. Lake View (2.7 km from Gohar Mahal)<br>
-  4. Van Vihar National Park (3.3 km from Lake View)<br>
-  5. Indira Gandhi Manav Sangrahalaya (4.7 km from Van Vihar)<br>
-  6. Tribal Museum (1.6 km from Sangrahalaya)<br>
-  7. Regional Science Center (1.7 km from Tribal Museum)<br>
-  8. Birla Mandir (3.2 km from Science Center)<br>
-  9. Railway Station (4.5 km from Birla Mandir)<br><br>
-  You will require <strong>2 days</strong> to cover all the locations.<br>
-  To know more about these locations, famous food & products, click the <strong>Learn More</strong> button.`,
-        img: "Bhopal.webp",
-        link: "bhopal.html"
-      },
-      {
-        day: "Day 3",
-        title: "Sanchi",
-        desc: "Explore the iconic Buddhist monuments.",
-        back: `IT is the UNESCO World Heritage Site filled with serene stupas and historical insight. For exploring it you can come here by Train or Bus:<br>
-        <strong>Trains</strong><br>
-        1. Bhopal Bina Memu(61631) 7:30 Am<br>
-        2. Bilaspur Express(18235) 10:35 Am<br>
-        there are 3 more train you can check from irctc  but this are the perfect train options.<br>
-        <strong>Bus</strong>: you can get bus any time from ISBT/Nadra bus stand <br>
-        Sachi Stupa  is barely 1-1.5 km from Railway station & Bus stop.It will take  2- 3 hrs maximum so that you can retun back to bhopal  <br>
-        there are 5 trains but for best option i suggest <br> 
-        1. Bhopal Memu (11606) 12:39 Pm <br>
-        whereas you can come back by <strong>bus</strong> as well it will maximum take 1 hour.<br> From Bhopal you can take bus to <strong>Mandideep</strong> for next destination.  `,
-        img: "sanchi.webp",
-        link: "sanchi.html"
-      },
-      {
-        day: "Day 3",
-        title: "Bhojpur",
-        desc: "Visit the grand unfinished Shiva temple.",
-        back:  `Marvel at the gigantic Shiva Linga and learn about its unique architecture.For Exploring it you can come here by <strong>train & bus</strong> both from Bhopal to Mandideep from where you can come through rood its is just 11-20 km (repective to vehicle and road taken) `,
-        img: "bhimbedka.webp",
-        link: "bhopal.html"
-      },
-      {
-        day: "Day 3",
-        title: "Mandideep",
-        desc: "Take a restful overnight halt at Mandideep.",
-        back: "Recharge at this quiet town before heading to the land of ancient cave paintings and rock shelter.",
-        img: "pachmarhi.package/mandideep.jpeg",
-        link: "#"
-      },
-      {
-        day: "Day 4",
-        title: "Bhimbetka",
-        desc: "See ancient cave paintings and rock shelters.",
-        back: "A walk through prehistoric art and culture, surrounded by forest beauty.You can come here by <strong>Rental cars & Bus</strong> it wil take max 2 hours to explore and from there you can move to next destination called <strong> Vindhyavasini Vijayasana Mata Temple </strong> 50 km from bhimbedka via Obaidullaganj  ",
-        img: "bhimbedka.jpeg",
-        link: "bhimbedka.html"
-      },
-      {
-        day: "Day 4",
-        title: "Narmadapuram",
-        desc: "Take a restful overnight halt before the hills.",
-        back: "after cominf from <strong>vindhyavasini temple</strong> in Salkanpur you can move to <Strong>Narmadapuram</strong> located on the banks of the sacred Narmada River. Great evening stroll! and rest before heading toward the <strong>highlands of Satpura</strong> ",
-        img: "pachmarhi.package/narmadapuram.jpg",
-        link: "#"
-      },
-      {
-        day: "Day 5-6",
-        title: "Pachmarhi",
-        desc: "Enjoy waterfalls, caves, and scenic views.",
-        back: `To Explore Pachmarhi follow the below route-
-        <strong> Day 1</strong>:<br>
-  1. <strong>Morning</strong>:
-  Start with Bee Falls, a scenic waterfall known for its refreshing waters and surrounding trails.<br> 
-  2. <strong>Afternoon</strong>:
-  Head to Apsara Vihar, another beautiful waterfall with a calm pool, perfect for a relaxing dip. <br>
-  3. <strong>Evening</strong>:
-  Conclude the day with a visit to Priyadarshini Point, also known as Forsyth Point, offering panoramic views of the hills and valleys. <br>
-  <strong>Day 2:</strong><br>
-  1. <strong>Morning</strong>:
-  Explore the Pandava Caves, a historical site with religious significance, believed to be a refuge of the Pandava brothers. 
-  <br>2. <strong>Afternoon</strong>:
-  Trek to Dhoopgarh, the highest peak in the Satpura range, to witness a breathtaking sunset. 
-  <br> 3. <strong>Optional</strong>:
-  Consider a visit to Jatashankar Temple, a cave temple dedicated to Lord Shiva, known for its unique rock formations and natural springs. !`,
-        img: "pachmarhi.webp",
-        link: "pachmarhi.html"
-      },
-      {
-        day: "Day 7",
-        title: "Return to Bhopal",
-        desc: "Relax and reflect back in Bhopal.",
-        back: "Wrap up your tour with shopping and peaceful boating at Lower Lake or can cover the left over places of Bhopal.",
-        img: "Bhopal.webp",
-        link: "bhopal.html"
-      }
-    ];
+  <!-- HERO -->
+  <section id="home" class="mesh relative pt-28">
+    <div class="max-w-7xl mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="font-serif text-4xl sm:text-6xl font-extrabold leading-tight">
+          Pachmarhi Tour
+          <span class="block text-brand-light">7 Days in the Satpuras</span>
+        </h1>
+        <p class="mt-4 text-slate-300 text-lg">From lakeside Bhopal to misty Dhoopgarh sunsets—your week-long escape through heritage, forests and falls.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#itinerary" class="px-5 py-3 rounded-xl bg-brand text-ink font-semibold shadow-card">View Itinerary</a>
+          <a href="#plan" class="px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5">Quick Plan</a>
+        </div>
 
-    
-    // --- Run scripts after the page loads ---
-    document.addEventListener("DOMContentLoaded", () => {
-      
-      // === 1. BUILD THE TIMELINE ===
-      // (Replaces the old document.write and footer fetch)
-      
-      const container = document.getElementById('timeline-container');
-      let htmlString = '';
-      
-      timelineData.forEach(item => {
-        htmlString += `
-          <section class="scroll-panel" style="background-image: url('images/${item.img}');">
-            
-            <div class="glass-card w-full max-w-xl p-8 text-white">
-              
-              <span class="inline-block px-4 py-1 bg-gradient-to-r from-brand-purple to-brand-pink text-white text-sm font-bold rounded-full">
-                ${item.day.replace('<br>', ' ')}
-              </span>
-              
-              <h2 class="font-serif text-4xl md:text-5xl font-bold mt-4">${item.title}</h2>
-              <p class="font-sans text-xl text-white/90 mt-2">${item.desc}</p>
-              
-              <hr class="my-6 border-white/20">
-              
-              <div class="prose prose-lg prose-invert text-white/80 max-w-none font-sans font-light">
-                ${item.back}
+        <!-- Trip meter -->
+        <div class="mt-8 flex items-center gap-3">
+          <div class="h-2 flex-1 rounded bg-white/10 overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-brand to-accent w-1/3"></div>
+          </div>
+          <span class="text-xs uppercase tracking-wide text-slate-400">7 Stops</span>
+        </div>
+      </div>
+
+      <div class="relative rounded-3xl overflow-hidden shadow-card">
+        <img src="images/pachmarhi.webp" alt="Pachmarhi Hills" class="w-full h-[320px] md:h-[420px] object-cover">
+        <div class="absolute inset-0 ring-1 ring-inset ring-white/10"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK PLAN (chips + highlights) -->
+  <section id="plan" class="py-14">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="glass rounded-3xl p-6 md:p-8">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold">Quick Plan</h2>
+        <p class="text-slate-300 mt-2">Best time: <span class="text-brand-light font-semibold">Oct–Mar</span> · Transit: rail + cab · Pace: relaxed</p>
+
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-slate-400">Day 1–2</p>
+            <h3 class="font-semibold">Bhopal</h3>
+            <p class="text-slate-400 text-sm mt-1">Taj-ul-Masajid, Tribal Museum, Lake View.</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-slate-400">Day 3</p>
+            <h3 class="font-semibold">Sanchi & Bhojpur</h3>
+            <p class="text-slate-400 text-sm mt-1">Stupas & the great Shiva linga.</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-slate-400">Day 4</p>
+            <h3 class="font-semibold">Bhimbetka</h3>
+            <p class="text-slate-400 text-sm mt-1">Prehistoric rock art trails.</p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+            <p class="text-xs text-slate-400">Day 5–6</p>
+            <h3 class="font-semibold">Pachmarhi</h3>
+            <p class="text-slate-400 text-sm mt-1">Bee Falls, Dhoopgarh, Pandava Caves.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARY (accordion + swipe cards on mobile) -->
+  <section id="itinerary" class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-end justify-between">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold">Day-by-Day</h2>
+        <p class="text-slate-400 text-sm hidden md:block">Tap a day to view details</p>
+      </div>
+
+      <!-- Mobile/Tablet: horizontal cards -->
+      <div class="mt-6 md:hidden overflow-x-auto hx no-scrollbar">
+        <div class="flex gap-4 min-w-max">
+          <!-- Card template repeated -->
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/Bhopal.webp" alt="Bhopal" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-slate-400">Day 1–2</p>
+              <h3 class="font-bold text-lg">Bhopal</h3>
+              <p class="text-slate-300 text-sm mt-2">Start at Railway Station → Taj-ul-Masajid → Gohar Mahal → Lake View → Van Vihar → Tribal Museum → Birla Mandir.</p>
+              <a href="bhopal.html" class="inline-block mt-4 text-brand-light font-semibold">Explore →</a>
+            </div>
+          </div>
+
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/sanchi.webp" alt="Sanchi" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-slate-400">Day 3</p>
+              <h3 class="font-bold text-lg">Sanchi</h3>
+              <p class="text-slate-300 text-sm mt-2">UNESCO stupas & gateways. Easy half-day; return to Bhopal. Next: Mandideep/Bhojpur.</p>
+              <a href="sanchi.html" class="inline-block mt-4 text-brand-light font-semibold">Explore →</a>
+            </div>
+          </div>
+
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/bhimbedka.webp" alt="Bhojpur" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-slate-400">Day 3</p>
+              <h3 class="font-bold text-lg">Bhojpur</h3>
+              <p class="text-slate-300 text-sm mt-2">The unfinished Bhojeshwar—massive Shiva Linga; combine with Mandideep.</p>
+              <a href="bhopal.html" class="inline-block mt-4 text-brand-light font-semibold">Explore →</a>
+            </div>
+          </div>
+
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/bhimbedka.jpeg" alt="Bhimbetka" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-slate-400">Day 4</p>
+              <h3 class="font-bold text-lg">Bhimbetka</h3>
+              <p class="text-slate-300 text-sm mt-2">Ancient rock shelters & art panels; quick forest loop trails.</p>
+              <a href="bhimbedka.html" class="inline-block mt-4 text-brand-light font-semibold">Explore →</a>
+            </div>
+          </div>
+
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/pachmarhi.webp" alt="Pachmarhi" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-slate-400">Day 5–6</p>
+              <h3 class="font-bold text-lg">Pachmarhi</h3>
+              <p class="text-slate-300 text-sm mt-2">Bee Falls, Apsara Vihar, Dhoopgarh sunset, Pandava Caves, Jata Shankar.</p>
+              <a href="pachmarhi.html" class="inline-block mt-4 text-brand-light font-semibold">Explore →</a>
+            </div>
+          </div>
+
+          <div class="w-80 glass rounded-2xl overflow-hidden">
+            <img src="images/Bhopal.webp" alt="Return" class="h-40 w-full object-cover">
+            <div class="p-5">
+              <p class="text-xs text-slate-400">Day 7</p>
+              <h3 class="font-bold text-lg">Return to Bhopal</h3>
+              <p class="text-slate-300 text-sm mt-2">Lower Lake boating, last-minute shopping, spare sights.</p>
+              <a href="bhopal.html" class="inline-block mt-4 text-brand-light font-semibold">Explore →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop: Accordion -->
+      <div class="mt-8 hidden md:block">
+        <div class="grid lg:grid-cols-2 gap-6">
+          <!-- Each accordion item -->
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <div class="h-12 w-12 rounded-xl overflow-hidden ring-1 ring-white/10">
+                  <img src="images/Bhopal.webp" alt="" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs text-slate-400">Day 1–2</p>
+                  <h3 class="font-semibold text-lg">Bhopal</h3>
+                </div>
+                <span class="text-slate-400 group-open:rotate-90 transition">›</span>
               </div>
-              
-              <a href="${item.link}" class="inline-block bg-white text-brand-purple font-semibold py-3 px-6 rounded-full mt-8 hover:bg-gray-200 transition-colors duration-300">
-                Explore ${item.title}
-              </a>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-slate-300 text-sm leading-relaxed">
+                Start at Railway Station → Taj-ul-Masajid → Gohar Mahal → Lake View → Van Vihar → Tribal Museum → Birla Mandir → back to Station. Needs ~2 days.
+              </div>
+              <div class="flex items-center md:justify-end">
+                <a href="bhopal.html" class="px-4 py-2 rounded-lg bg-brand text-ink font-semibold">Explore</a>
+              </div>
             </div>
-            
-            <div class="scroll-hint">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+          </details>
+
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <div class="h-12 w-12 rounded-xl overflow-hidden ring-1 ring-white/10">
+                  <img src="images/sanchi.webp" alt="" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs text-slate-400">Day 3</p>
+                  <h3 class="font-semibold text-lg">Sanchi</h3>
+                </div>
+                <span class="text-slate-400 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-slate-300 text-sm leading-relaxed">
+                Half-day at UNESCO stupas & gateways; easy walk from station/bus stop. Return to Bhopal, then continue toward Mandideep/Bhojpur.
+              </div>
+              <div class="flex items-center md:justify-end">
+                <a href="sanchi.html" class="px-4 py-2 rounded-lg bg-brand text-ink font-semibold">Explore</a>
+              </div>
             </div>
-          </section>
-        `;
-      });
-      
-      // Inject the generated HTML into the container
-      container.innerHTML = htmlString;
-      
-      
-      // === 2. SET FOOTER YEAR ===
-      const yearEl = document.getElementById('year');
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
+          </details>
+
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <div class="h-12 w-12 rounded-xl overflow-hidden ring-1 ring-white/10">
+                  <img src="images/bhimbedka.webp" alt="" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs text-slate-400">Day 3</p>
+                  <h3 class="font-semibold text-lg">Bhojpur</h3>
+                </div>
+                <span class="text-slate-400 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-slate-300 text-sm leading-relaxed">
+                Gigantic Shiva Linga at Bhojeshwar; combine via Mandideep by road (≈11–20 km).
+              </div>
+              <div class="flex items-center md:justify-end">
+                <a href="bhopal.html" class="px-4 py-2 rounded-lg bg-brand text-ink font-semibold">Explore</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <div class="h-12 w-12 rounded-xl overflow-hidden ring-1 ring-white/10">
+                  <img src="images/bhimbedka.jpeg" alt="" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs text-slate-400">Day 4</p>
+                  <h3 class="font-semibold text-lg">Bhimbetka</h3>
+                </div>
+                <span class="text-slate-400 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-slate-300 text-sm leading-relaxed">
+                Forest loop with painted shelters; continue to Salkanpur (Vindhyavasini) and overnight at Narmadapuram.
+              </div>
+              <div class="flex items-center md:justify-end">
+                <a href="bhimbedka.html" class="px-4 py-2 rounded-lg bg-brand text-ink font-semibold">Explore</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <div class="h-12 w-12 rounded-xl overflow-hidden ring-1 ring-white/10">
+                  <img src="images/pachmarhi.webp" alt="" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs text-slate-400">Day 5–6</p>
+                  <h3 class="font-semibold text-lg">Pachmarhi</h3>
+                </div>
+                <span class="text-slate-400 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-slate-300 text-sm leading-relaxed">
+                Day 1: Bee Falls → Apsara Vihar → Priyadarshini Point. Day 2: Pandava Caves → Dhoopgarh sunset (+Jata Shankar optional).
+              </div>
+              <div class="flex items-center md:justify-end">
+                <a href="pachmarhi.html" class="px-4 py-2 rounded-lg bg-brand text-ink font-semibold">Explore</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="glass rounded-2xl overflow-hidden group">
+            <summary class="list-none cursor-pointer">
+              <div class="flex items-center gap-4 p-5 hover:bg-white/5">
+                <div class="h-12 w-12 rounded-xl overflow-hidden ring-1 ring-white/10">
+                  <img src="images/Bhopal.webp" alt="" class="h-full w-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs text-slate-400">Day 7</p>
+                  <h3 class="font-semibold text-lg">Return to Bhopal</h3>
+                </div>
+                <span class="text-slate-400 group-open:rotate-90 transition">›</span>
+              </div>
+            </summary>
+            <div class="px-5 pb-5 grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 text-slate-300 text-sm leading-relaxed">
+                Lower Lake boating, markets, remaining sights. Easy buffer day before departure.
+              </div>
+              <div class="flex items-center md:justify-end">
+                <a href="bhopal.html" class="px-4 py-2 rounded-lg bg-brand text-ink font-semibold">Explore</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP STRIP -->
+  <section id="map" class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="glass rounded-3xl p-6 md:p-8">
+        <div class="grid lg:grid-cols-3 gap-6 items-center">
+          <div class="lg:col-span-1">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">Route at a Glance</h2>
+            <p class="text-slate-300 mt-2">Bhopal → Sanchi/Bhojpur → Bhimbetka → Salkanpur/Narmadapuram → Pachmarhi → Bhopal.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>• NH-46 corridor</li>
+              <li>• Rail nodes: BPL/RKMP</li>
+              <li>• Best months: Oct–Mar</li>
+            </ul>
+          </div>
+          <div class="lg:col-span-2 rounded-2xl overflow-hidden ring-1 ring-white/10">
+            <iframe class="w-full h-[320px] md:h-[380px]" loading="lazy" allowfullscreen
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.7314195328693!2d77.41261567502477!3d23.18059581018359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43c5a9400e75%3A0x149cd3a9dc739dde!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1624100000000">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOPING GALLERY -->
+  <section id="gallery" class="py-14">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold">Look & Feel</h2>
+      <p class="text-slate-400 mt-1">Hover to pause · Tap any image to view larger</p>
+
+      <div class="mt-6 relative overflow-hidden rounded-3xl ring-1 ring-white/10">
+        <div class="flex gap-4 w-max loop">
+          <!-- set A -->
+          <img src="images/pachmarhi.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/Bhopal.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/sanchi.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/bhimbedka.jpeg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/bhimbedka.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/pachmarhi.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <!-- set B duplicate -->
+          <img src="images/pachmarhi.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/Bhopal.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/sanchi.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/bhimbedka.jpeg" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/bhimbedka.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+          <img src="images/pachmarhi.webp" class="w-72 h-48 object-cover rounded-xl cursor-pointer" alt="" onclick="showImg(this.src)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-10 pb-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="glass rounded-3xl p-6 md:p-8 grid md:grid-cols-2 gap-6 items-center">
+        <div>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold">Plan with SafarSaarthi</h3>
+          <p class="text-slate-300 mt-2">Your companion for India’s heartland—routes, stays, tickets and tips, in one place.</p>
+        </div>
+        <div class="flex gap-3 md:justify-end">
+          <a href="#itinerary" class="px-4 py-2 rounded-xl bg-brand text-ink font-semibold">Start Itinerary</a>
+          <a href="index.html" class="px-4 py-2 rounded-xl border border-white/15 hover:bg-white/5">Home</a>
+        </div>
+      </div>
+      <p class="text-center text-slate-500 text-xs mt-6">© <span id="year"></span> SafarSaarthi · All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4" onclick="hideImg()">
+    <img id="lightImg" src="" alt="preview" class="max-h-[90vh] max-w-[92vw] rounded-2xl ring-1 ring-white/20 shadow-card" />
+  </div>
+
+  <!-- JS -->
+  <script>
+    // Hamburger
+    const menuBtn = document.getElementById('menuBtn');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', ()=>{
+      const open = !mobileMenu.classList.contains('hidden');
+      if(open){
+        mobileMenu.classList.add('hidden'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
       }
-
     });
-  </script>
 
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const li = document.getElementById('lightImg');
+    window.showImg = (src)=>{ li.src = src; lb.classList.remove('hidden'); lb.classList.add('flex') }
+    window.hideImg = ()=>{ lb.classList.add('hidden'); lb.classList.remove('flex'); li.src='' }
+
+    // Year
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
