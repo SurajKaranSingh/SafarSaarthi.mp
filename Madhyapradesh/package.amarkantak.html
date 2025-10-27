@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafarSaarthi - Amarkantak Heritage Trail</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ================================================
+    CSS Variables: The "Amarkantak" Color Palette
+    ================================================
+    */
+    :root {
+      --font-heading-hero: 'Playfair Display', serif; /* New for hero */
+      --font-heading: 'Merriweather', serif;
+      --font-body: 'Lato', sans-serif;
+      --color-primary: #2C5E1A; /* Deep Forest Green */
+      --color-secondary: #FF9933; /* Saffron/Marigold - more prominent */
+      --color-accent: #4A90E2; /* Serene Blue (Narmada) */
+      --color-text: #333333;
+      --color-bg-light: #F9F7F3; /* Earthy Off-white */
+      --color-white: #FFFFFF;
+      --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-dark: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ================================================
+    Base & Body Styling
+    ================================================
+    */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg-light);
+      color: var(--color-text);
+      line-height: 1.7;
+    }
+
+    /* ================================================
+    Navigation Bar
+    ================================================
+    */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: var(--color-white);
+      box-shadow: var(--shadow-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    nav a {
+      font-family: var(--font-body);
+      text-decoration: none;
+      color: var(--color-accent);
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--color-primary);
+    }
+
+    /* ================================================
+    Hero Header Section (Carousel)
+    ================================================
+    */
+    .hero-carousel {
+        position: relative;
+        height: 60vh;
+        min-height: 400px;
+        overflow: hidden;
+        display: flex; /* For content centering */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--color-white);
+    }
+
+    .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out; /* Smooth fade */
+    }
+
+    .carousel-slide.active {
+        opacity: 1;
+    }
+
+    /* Dark overlay for text readability */
+    .hero-carousel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-carousel h1 {
+      font-family: var(--font-heading-hero); /* New font for hero */
+      font-size: 3.8rem; /* Slightly larger */
+      position: relative;
+      z-index: 2;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+      letter-spacing: 1px;
+    }
+    
+    /* ================================================
+    Timeline Styling (Desktop)
+    ================================================
+    */
+    .timeline-container {
+      position: relative;
+      width: 90%;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 40px 0;
+    }
+
+    /* The central timeline */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: var(--color-primary);
+      opacity: 0.3;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 10px 40px;
+      margin-bottom: 60px; /* More space between items */
+      
+      /* Animation: hidden by default */
+      opacity: 0;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower, smoother */
+    }
+
+    /* Alternating sides */
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      transform: translateX(-150px); /* Start further off-screen */
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      transform: translateX(150px); /* Start further off-screen */
+    }
+
+    /* Animation: slide in when 'show' class is added */
+    .timeline-item.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* The Day markers on the timeline */
+    .timeline-dot {
+      content: '';
+      position: absolute;
+      width: 60px; /* Larger dot */
+      height: 60px; /* Larger dot */
+      border-radius: 50%;
+      background: var(--color-secondary);
+      border: 5px solid var(--color-primary); /* Thicker border */
+      top: 20px;
+      z-index: 10;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 1rem; /* Larger font */
+      box-shadow: var(--shadow-dark); /* Shadow for pop */
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -30px; /* (60px / 2) */
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -30px; /* (60px / 2) */
+    }
+
+    /* The main content card */
+    .timeline-card {
+      position: relative;
+      background: var(--color-white);
+      border-radius: 12px; /* More rounded corners */
+      box-shadow: var(--shadow-dark);
+      overflow: hidden; /* This will be overridden on desktop */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+      z-index: 10; /* Ensure text card is on top */
+    }
+
+    .timeline-card:hover {
+        transform: translateY(-5px); /* Lift effect */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    }
+    
+    /* Arrow pointing to the timeline */
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      top: 28px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-card::before {
+      right: -15px;
+      border-width: 15px 0 15px 15px;
+      border-color: transparent transparent transparent var(--color-white);
+    }
+
+    .timeline-item:nth-child(even) .timeline-card::before {
+      left: -15px;
+      border-width: 15px 15px 15px 0;
+      border-color: transparent var(--color-white) transparent transparent;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 220px; /* Slightly taller images */
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 30px; /* More padding */
+    }
+
+    .card-content h3 {
+      font-family: var(--font-heading);
+      color: var(--color-primary);
+      font-size: 2rem; /* Larger title */
+      margin-bottom: 12px;
+    }
+
+    .card-content .description {
+      font-size: 1.05rem; /* Slightly larger text */
+      font-style: italic;
+      margin-bottom: 25px;
+      color: #555;
+    }
+
+    .card-content .details {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      max-height: 0; /* Hidden by default */
+      overflow: hidden;
+      transition: max-height 0.7s ease-out, opacity 0.7s ease-out; /* Smooth reveal */
+      opacity: 0;
+    }
+    .card-content .details.show {
+      max-height: 500px; /* Arbitrary large value to allow content to show */
+      opacity: 1;
+    }
+
+    .card-content .details p {
+      margin: 8px 0; /* More line spacing */
+    }
+    .card-content .details p:first-child { margin-top: 0; }
+    .card-content .details p:last-child { margin-bottom: 0; }
+
+
+    /* Card Buttons */
+    .card-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px; /* More space between buttons */
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px; /* Larger buttons */
+      border: none;
+      border-radius: 8px; /* More rounded */
+      text-decoration: none;
+      font-weight: 700;
+      font-family: var(--font-body);
+      font-size: 1rem; /* Larger font */
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .btn-primary:hover {
+      background-color: #1e3f11;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+    }
+    .btn-secondary:hover {
+      background-color: #3a7bc8;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* New: For the "Explore in Detail" button, which now toggles content */
+    .btn-toggle-details {
+      background-color: var(--color-secondary); /* Use saffron for this */
+    }
+    .btn-toggle-details:hover {
+      background-color: #e68a00; /* Darker saffron */
+    }
+
+
+    /* ================================================
+    NEW: Desktop Split Timeline Layout
+    ================================================
+    */
+    @media (min-width: 769px) { /* Apply only to screens wider than 768px */
+      
+      .timeline-card {
+        overflow: visible; /* Allow absolute image to show */
+      }
+
+      .card-image {
+        position: absolute;
+        top: 0;
+        z-index: 5; /* Sit behind the dot but in front of bg */
+        width: calc(100% - 80px); /* 100% of parent .timeline-item width, minus 2x 40px padding */
+        border-radius: 12px;
+        box-shadow: var(--shadow-dark);
+        height: auto; /* Let height be automatic based on width */
+      }
+
+      .card-image img {
+        border-radius: 12px; /* Match radius */
+        height: auto; /* Override fixed height */
+      }
+      
+      /* ODD item (card on LEFT): Move image to the RIGHT */
+      .timeline-item:nth-child(odd) .card-image {
+        left: 100%; /* Start at the right edge of .timeline-item */
+        margin-left: 80px; /* Jump the 40px + 40px padding gap */
+      }
+
+      /* EVEN item (card on RIGHT): Move image to the LEFT */
+      .timeline-item:nth-child(even) .card-image {
+        right: 100%; /* Start at the left edge of .timeline-item */
+        margin-right: 80px; /* Jump the 40px + 40px padding gap */
+      }
+    }
+    /* ================================================
+    END of New CSS Block
+    ================================================
+    */
+
+
+    /* ================================================
+    Image Popup Modal
+    ================================================
+    */
+    .image-popup {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      
+      /* For centering the content */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-content {
+      position: relative;
+      background-color: var(--color-white);
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 800px; /* Slightly wider for map/train list */
+      box-shadow: var(--shadow-dark);
+      animation: zoomIn 0.3s ease-out;
+      text-align: center; /* Center the image */
+    }
+    
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #aaa;
+      font-size: 40px; /* Larger close button */
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-popup:hover,
+    .close-popup:focus {
+      color: var(--color-text);
+    }
+
+    #popupImage {
+      width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      object-fit: contain; /* Ensure full image is visible */
+    }
+
+    /* ================================================
+    NEW: Site Footer Styling
+    ================================================
+    */
+    .site-footer {
+      background-color: var(--color-primary);
+      color: var(--color-bg-light);
+      padding: 50px 0 0 0;
+      font-family: var(--font-body);
+      line-height: 1.8;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 40px;
+    }
+
+    .footer-col {
+      width: 100%; /* Default for mobile */
+      margin-bottom: 30px;
+    }
+
+    /* Column widths for desktop */
+    @media (min-width: 768px) {
+      .footer-col {
+        width: 48%; /* Two columns for tablets */
+      }
+    }
+    @media (min-width: 992px) {
+      .footer-col {
+        width: 23%; /* Four columns for desktop */
+      }
+      .footer-col.about {
+        width: 30%; /* Make about column wider */
+      }
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: var(--color-secondary); /* Saffron heading */
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    /* Underline effect for footer headings */
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 50px;
+      height: 3px;
+      background-color: var(--color-accent); /* Blue accent line */
+    }
+
+    .footer-col p {
+      color: #e0e0e0; /* Slightly dimmer white */
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: var(--color-bg-light);
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--color-secondary); /* Saffron on hover */
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--color-white);
+      text-align: center;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--color-secondary); /* Saffron background */
+      color: var(--color-primary); /* Green icon */
+      transform: translateY(-3px);
+    }
+    
+    .footer-col .logo-footer {
+        font-family: var(--font-heading-hero);
+        font-size: 2rem;
+        color: var(--color-white);
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .footer-bottom {
+      background-color: #1a1a1a; /* Darker bottom bar */
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* ================================================
+    Responsive Design (Mobile)
+    ================================================
+    */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.8rem 4%;
+      }
+      nav .logo {
+        font-size: 1.3rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+      }
+
+      .hero-carousel {
+        height: 50vh;
+        min-height: 300px;
+      }
+      .hero-carousel h1 {
+        font-size: 2.8rem;
+      }
+
+      /* Stack the timeline on one side */
+      .timeline-container::before {
+        left: 25px; /* Move line to the left */
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px; /* Make space for dot */
+        padding-right: 15px;
+        margin-bottom: 40px; /* Reduced spacing */
+      }
+
+      /* Reset alternating positions */
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        left: 0;
+        transform: translateX(0); /* Remove desktop animation start */
+      }
+      
+      /* Mobile scroll animation */
+      .timeline-item {
+        transform: translateY(100px);
+      }
+      .timeline-item.show {
+        transform: translateY(0);
+      }
+
+      /* Align all dots to the left line */
+      .timeline-dot {
+        left: 0;
+        width: 50px; /* Smaller dot on mobile */
+        height: 50px; /* Smaller dot on mobile */
+        font-size: 0.85rem;
+      }
+
+      /* Point all arrows to the left */
+      .timeline-card::before {
+        left: -15px;
+        border-width: 15px 15px 15px 0;
+        border-color: transparent var(--color-white) transparent transparent;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-card::before {
+        right: auto; /* Reset odd-child rule */
+      }
+
+      .card-content h3 {
+        font-size: 1.6rem;
+      }
+      .card-content .description {
+        font-size: 0.95rem;
+      }
+      .card-content .details p {
+        font-size: 0.9rem;
+      }
+
+      .card-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+      }
+      .btn {
+        width: 100%; /* Full width buttons */
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Footer */
+    /* Responsive Footer */
+      .footer-container {
+        /* flex-direction: column; */ /* <-- This line is removed to allow wrapping */
+        width: 90%;
+      }
+      .footer-col {
+        width: 100%; /* Stack all columns BY DEFAULT */
+        margin-bottom: 30px;
+      }
+
+      /* NEW RULES for the 2nd and 3rd columns */
+      .footer-col:nth-child(2),
+      .footer-col:nth-child(3) {
+        width: 50%; /* Make these two 50% wide */
+        padding: 0 5px; /* Add a little horizontal spacing */
+      }
+      
+      .footer-col.about {
+        width: 100%; /* Full width (already covered by default, but good to be explicit) */
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-carousel h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><strong>SafarSaarthi</strong></div>
+    <div><a href="index.html">Home</a></div>
+  </nav>
+
+  <header class="hero-carousel" style="background-image: url('images/amarkantak.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <h1>Amarkantak Wildlife & Heritage Tour</h1>
+</header>
+
+  <div class="timeline-container" id="timeline">
+    </div>
+
+  <div id="imagePopup" class="image-popup">
+    <div class="popup-content">
+      <span class="close-popup">&times;</span>
+      <img id="popupImage" src="" alt="Train List / Map">
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <div class="footer-col about">
+        <strong class="logo-footer">SafarSaarthi</strong>
+        <p>Your compass to the heart of Incredible India. We specialize in crafting unforgettable journeys through the rich heritage and wild landscapes of Madhya Pradesh.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">fb</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Twitter">tw</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="packages.html">All Packages</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore MP</h4>
+        <ul>
+          <li><a href="jabalpur.html">Jabalpur</a></li>
+          <li><a href="bandhavgarh.html">Bandhavgarh</a></li>
+          <li><a href="kanha.html">Kanha</a></li>
+          <li><a href="amarkantak.html">Amarkantak</a></li>
+          <li><a href="pachmarhi.html">Pachmarhi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <p>Indore, Madhya Pradesh, India</p>
+        <p><a href="tel:+910000000000" style="color: var(--color-bg-light); text-decoration: none;">+91 000-000-0000</a></p>
+        <p><a href="mailto:info@travelsaarthi.com" style="color: var(--color-bg-light); text-decoration: none;">info@travelsaarthi.com</a></p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 SafarSaarthi. All Rights Reserved.
+    </div>
+  </footer>
+  <script>
+  // Wait for the DOM to be fully loaded before running scripts
+  document.addEventListener("DOMContentLoaded", function() {
+
+  
+    // --- 1. Define Timeline Data ---
+    const timelineData = [
+      {
+        day: "Day 1",
+        title: "Jabalpur",
+        desc: "Start your journey in Jabalpur – the cultural and geographical heart of Madhya Pradesh, known for its unique marble rocks.",
+        details: `Discover Jabalpur's charm:<br>
+          • Marvel at the **Marble Rocks & Dhuandhar Falls** (Bhedaghat), a breathtaking natural spectacle.<br>
+          • Visit the ancient **Chausath Yogini Temple**, offering panoramic views.<br>
+          • Explore the historic **Madan Mahal Fort**.<br>
+          • Enjoy an optional boat ride at **Bargi Dam**.<br>
+          <br>Overnight stay at a comfortable hotel in Jabalpur, preparing for the wildlife adventure ahead.`,
+        img: "bhedaghat-jabalpur.webp",
+        backImg: "jabalpur.train.png",
+        link: "Madhyapradesh/jabalpur.html"
+      },
+      {
+        day: "Day 2",
+        title: "Bandhavgarh National Park",
+        desc: "Experience the thrill of spotting majestic tigers and diverse wildlife in one of India's most famous reserves.",
+        details: `Journey to the heart of the jungle:<br>
+          • Drive to Bandhavgarh (~165 km from Jabalpur), a scenic route through rural landscapes.<br>
+          • Embark on an exhilarating **Jeep Safari** in Tala, Magadhi, or Khitauli Zone, famed for its high tiger density.<br>
+          • If permitted, visit the historic **Bandhavgarh Fort**, perched atop a hill.<br>
+          • Witness the ancient **Shesh Shaiya** (reclining Vishnu statue).<br>
+          <br>Overnight stay in a luxurious jungle lodge or resort, surrounded by nature's sounds.`,
+        img: "Bandhavgarh.webp",
+        backImg: "bandhavgarh.train.png",
+        link: "bandhavgarh.html"
+      },
+      {
+        day: "Day 3",
+        title: "Kanha National Park",
+        desc: "Immerse yourself in the lush Sal forests of Kanha, a pristine wilderness that inspired Rudyard Kipling's 'The Jungle Book'.",
+        details: `Explore the enchanting world of Kanha:<br>
+          • Travel from Bandhavgarh to Kanha (~250 km), a journey offering glimpses of rural Madhya Pradesh.<br>
+          • Enjoy a morning or afternoon **safari** in Kanha, Kisli, or Mukki zones, hoping to spot barasingha, leopards, and more.<br>
+          • Discover the park's history at the **Kanha Museum and Interpretation Centre**.<br>
+          • Experience a refreshing nature walk and engage with a local tribal village for cultural insights.<br>
+          <br>Relax in eco-friendly jungle resorts, designed for comfort and harmony with nature.`,
+        img: "kanha.jpg",
+        backImg: "kanha.train.png",
+        link: "kanha.html"
+      },
+      {
+        day: "Day 4",
+        title: "Amarkantak",
+        desc: "Conclude your journey at the sacred origin of the Narmada River, Amarkantak – a place of divine beauty and tranquility.",
+        details: `Experience the spiritual essence of Amarkantak:<br>
+          • Drive from Kanha to Amarkantak (~200 km), a picturesque route leading to the highlands.<br>
+          • Visit the holy **Narmada Kund**, the source of the Narmada River, and surrounding ancient temples.<br>
+          • Witness the serene **Kapil Dhara and Dudh Dhara Falls**, cascades believed to have spiritual significance.<br>
+          • Explore the unique architecture of **Shri Yantra Mandir**.<br>
+          • Discover the historical **Kalachuri Period Temples**.<br>
+          • Meditate at **Kabir Chabutra** and witness the enchanting **Narmada Aarti** in the evening.<br>
+          <br>Depart from Anuppur or Pendra Road for onward train connections, carrying memories of an unforgettable journey.`,
+        img: "amarkantak.webp",
+        backImg: "amarkantak.train.png",
+        link: "amarkantak.html"
+      }
+    ];
+
+    // Images for the Hero Carousel
+    const heroImages = [
+      'images/amarkantak_narmada_kund.jpg', // Replace with an actual image of Narmada Kund
+      'images/jabalpur_marble_rocks.jpg', // Replace with a striking Jabalpur image
+      'images/bandhavgarh_tiger.jpg',      // Replace with a powerful tiger shot
+      'images/kanha_forest.jpg'            // Replace with a beautiful Kanha forest scene
+    ];
+
+    // --- 2. Get DOM Elements ---
+   const timelineContainer = document.getElementById("timeline");
+    const modal = document.getElementById("imagePopup");
+    const modalImg = document.getElementById("popupImage");
+    const closeModal = document.querySelector(".close-popup");
+    const heroCarousel = document.querySelector(".hero-carousel");
+
+    // Ensure modal is hidden and image cleared on load (prevents any initial popup)
+    if (modal) modal.style.display = "none";
+    if (modalImg) modalImg.src = "";
+
+    // --- 3. Initialize Hero Carousel ---
+    let currentSlide = 0;
+    function createCarouselSlides() {
+      heroCarousel.innerHTML = `<h1>Amarkantak Wildlife & Heritage Tour</h1>`;
+      heroImages.forEach((imgSrc, index) => {
+        const slide = document.createElement('div');
+        slide.classList.add('carousel-slide');
+        slide.style.backgroundImage = `url(${imgSrc})`;
+        if (index === 0) slide.classList.add('active');
+        heroCarousel.appendChild(slide);
+      });
+      const h1Element = heroCarousel.querySelector('h1');
+      if (h1Element) heroCarousel.appendChild(h1Element);
+    }
+
+    function showNextSlide() {
+      const slides = document.querySelectorAll('.carousel-slide');
+      if (!slides.length) return;
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    // Check if there's an inline style on the header. If so, don't run the carousel.
+    if (!heroCarousel.hasAttribute('style')) {
+        createCarouselSlides();
+        setInterval(showNextSlide, 6000);
+    }
+
+
+    // --- 4. Build Timeline HTML ---
+    const timelineHTML = timelineData.map(({ day, title, desc, img, backImg, link, details }, index) => `
+      <div class="timeline-item">
+        <div class="timeline-dot">${day}</div>
+        <div class="timeline-card">
+          <div class="card-image">
+            <img src="images/${img}" alt="${title}">
+          </div>
+          <div class="card-content">
+            <h3>${title}</h3>
+            <p class="description">${desc}</p>
+            <div class="details" id="details-${index}">
+              <p>${details.replace(/<br>/g, '</p><p>')}</p>
+            </div>
+            <div class="card-buttons">
+              <button class="btn btn-toggle-details" data-target="details-${index}">View Details</button>
+              <a href="${link}" class="btn btn-primary">Explore Page</a>
+              <button class="btn btn-secondary show-image-btn" data-img="images/${backImg}">Train List</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join("");
+
+    timelineContainer.innerHTML = timelineHTML;
+
+    // --- 5. Setup Modal & Detail Toggle Event Listeners ---
+    timelineContainer.addEventListener("click", function(e) {
+      const target = e.target;
+
+      // "Train List" button logic - only open when a valid data-img exists
+      const imgButton = target.closest('.show-image-btn');
+      if (imgButton) {
+        const imgSrc = imgButton.getAttribute("data-img");
+        if (imgSrc) {
+          // explicitly set src and show modal
+          modalImg.src = imgSrc;
+          modal.style.display = "flex";
+        }
+        return;
+      }
+
+      // "View Details" button logic (toggle details section)
+      const detailsButton = target.closest('.btn-toggle-details');
+      if (detailsButton) {
+        const targetId = detailsButton.getAttribute("data-target");
+        const detailsSection = document.getElementById(targetId);
+        if (detailsSection) {
+          detailsSection.classList.toggle('show');
+          detailsButton.textContent = detailsSection.classList.contains('show') ? "Hide Details" : "View Details";
+        }
+      }
+    });
+
+    // Close modal: clear src and hide
+    if (closeModal) {
+      closeModal.addEventListener('click', function() {
+        modal.style.display = "none";
+        modalImg.src = "";
+      });
+    }
+
+    // Close when clicking on overlay (only if modal visible)
+    window.addEventListener('click', function(e) {
+      if (modal && modal.style.display !== "none" && e.target === modal) {
+        modal.style.display = "none";
+        modalImg.src = "";
+      }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+      if ((e.key === 'Escape' || e.key === 'Esc') && modal && modal.style.display !== "none") {
+        modal.style.display = "none";
+        modalImg.src = "";
+      }
+    });
+
+    // --- 6. Setup Intersection Observer for Animations ---
+    const items = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    items.forEach(item => observer.observe(item));
+
+    
+
+  });
+</script>
+
+</body>
+</html>

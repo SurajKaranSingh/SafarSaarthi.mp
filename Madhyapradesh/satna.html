@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Bhopal - Tourism Guide</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #206680; /* Slight teal tint from the water */
+
+        }
+        header {
+            background-color: #093245;
+            color: rgb(136, 76, 220);
+            padding: 15px;
+            text-align: center;
+        }
+    
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+       
+       
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+ .container1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.category {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.overlay h2 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.overlay button {
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .category {
+        width: 45%;
+        height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .category {
+        width: 30%;
+        height: 350px;
+    }
+}
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+        }
+        .popup .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .popup .option {
+            width: 150px;
+            text-align: center;
+        }
+        .popup img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .popup a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: blue;
+        }
+        .close-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class=" text-gray-900">
+
+  <!-- Hero Section -->
+ <header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Upper_Lake_Bhopal.jpg');">
+  <div class="absolute top-4 right-4 z-50">
+    <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
+  </div>
+  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
+    <div class="text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Bhopal</h1>
+      <p class="text-lg md:text-2xl">The City of Lakes, Culture, and Charm</p>
+    </div>
+  </div>
+</header>
+
+
+   <!-- Map and Info Section -->
+  <section class="py-12 px-6 bg-white max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-8">Discover Bhopal</h2>
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <div class="w-full md:w-1/2">
+        <iframe class="w-full h-80 rounded-lg shadow-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.7314195328693!2d77.41261567502477!3d23.18059581018359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43c5a9400e75%3A0x149cd3a9dc739dde!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1624100000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="w-full md:w-1/2 text-gray-800">
+        <h3 class="text-2xl font-semibold mb-4">A Glimpse into Bhopal</h3>
+        <p class="mb-4">Bhopal, the capital of Madhya Pradesh, is a city of contrasts. Known as the "City of Lakes" due to its numerous natural and artificial lakes, Bhopal has a fascinating history and rich cultural heritage. It was ruled by powerful women rulers, the Begums of Bhopal, during the 19th and early 20th centuries, who made remarkable contributions to the city's architecture, education, and culture.</p>
+        <p class="mb-4">The city seamlessly blends Islamic architecture with modern urban planning. From the grand Taj-ul-Masajid and ancient Bhimbetka rock shelters to contemporary cultural centers like Bharat Bhavan, Bhopal has something for everyone. It is also a hub for traditional crafts like Zardozi and Bidriware, and its cuisine carries the legacy of Mughlai flavors.</p>
+        <p>Bhopal continues to grow as an educational, administrative, and tourism hub while retaining its old-world charm and natural beauty.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attractions Section -->
+  <section class="py-12 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-8">Top Attractions in Bhopal</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Attraction Card -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Sanchi_Stupa.jpg" alt="Sanchi Stupa" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Sanchi Stupa</h3>
+          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
+          <p class="text-gray-700">A UNESCO World Heritage Site, Sanchi is known for its well-preserved Buddhist stupas, monuments, and intricate carvings.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Van_Vihar_Bhopal.jpg" alt="Van Vihar National Park" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Van Vihar National Park</h3>
+          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: November to February</p>
+          <p class="text-gray-700">A unique park where animals roam in near-natural habitat along the banks of Upper Lake. Ideal for nature and wildlife lovers.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Bharat_Bhavan.jpg" alt="Bharat Bhavan" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Bharat Bhavan</h3>
+          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: Year-round</p>
+          <p class="text-gray-700">A multi-arts complex and museum that showcases the cultural diversity of India through art, music, and drama.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Taj-ul-Masajid_Bhopal.jpg" alt="Taj-ul-Masajid" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Taj-ul-Masajid</h3>
+          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
+          <p class="text-gray-700">One of the largest mosques in India, Taj-ul-Masajid is an architectural marvel with pink façade and white domes.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Upper_Lake_Bhopal_View.jpg" alt="Upper Lake" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold">Upper Lake (Bhojtal)</h3>
+          <p class="text-sm text-gray-600 mb-2">Best Time to Visit: October to March</p>
+          <p class="text-gray-700">The oldest man-made lake in India, perfect for boating, sunset views, and peaceful strolls.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Famous in Bhopal Section -->
+  <section class="bg-white py-12 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-8">Things Bhopal is Famous For</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="text-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bhopali_Gosht_Korma.jpg" alt="Bhopali Cuisine" class="w-full h-48 object-cover rounded-lg mb-2">
+        <h3 class="text-xl font-semibold">Bhopali Cuisine</h3>
+        <p class="text-gray-700">Bhopal is famous for its kebabs, biryani, and Bhopali gosht korma, reflecting its Nawabi legacy.</p>
+      </div>
+
+      <div class="text-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Zardozi_work.jpg" alt="Zardozi Work" class="w-full h-48 object-cover rounded-lg mb-2">
+        <h3 class="text-xl font-semibold">Zardozi Embroidery</h3>
+        <p class="text-gray-700">Exquisite hand embroidery using gold and silver threads, traditionally worn on festive and bridal attire.</p>
+      </div>
+
+      <div class="text-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Bhopal_Bidri_Work.jpg" alt="Bidriware" class="w-full h-48 object-cover rounded-lg mb-2">
+        <h3 class="text-xl font-semibold">Bidriware Handicrafts</h3>
+        <p class="text-gray-700">Bhopal is also known for its fine metal handicrafts inlaid with silver, called Bidriware, a heritage art form.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="section9">
+        <div class="section9">
+            <div class="container1">
+                <div class="category hotels">
+                    <img src="images/hotel.jpg" alt="hotels">
+                    <div class="overlay">
+                    <h2>Hotels Booking</h2>
+                    <button onclick="showPopup('hotelPopup')">Book Now</button></div>
+                </div>
+                <div class="category cabs">
+                    <img src="images/cabs.png" alt="cabs">
+                    <div class="overlay">
+                    <h2>Cabs & Taxi</h2>
+                    <button onclick="showPopup('taxiPopup')">Book Now</button></div>
+                </div>
+                <div class="category food">
+                    <img src="images/food.jpg" alt="food">
+                    <div class="overlay">
+                    <h2>Food Delivery</h2>
+                    <button onclick="showPopup('foodPopup')">Book Now</button></div>
+                </div>
+            </div>
+            
+            <!-- Popups with Imagess -->
+            <div id="hotelPopup" class="popup">
+                <h2>Hotels Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.goibibo.com/hotels/" target="_blank">
+                            <img src="images/goibibo.jpeg" alt="Goibibo">
+                           
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.oyorooms.com/" target="_blank">
+                            <img src="images/oyo.png" alt="OYO">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.makemytrip.com/hotels/hotel-listing/?_uCurrency=INR&checkin=07032025&checkout=07042025&city=CTBHO&country=IN&filterData=HOTEL_PRICE_BUCKET%7C0-1500%2C1500-3000&locusId=CTBHO&locusType=city&regionNearByExp=3&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Bhopal" target="_blank">
+                            <img src="images/makemytrip.webp" alt="MakeMyTrip">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.agoda.com/en-in/" target="_blank">
+                            <img src="images/agoda.png" alt="Agoda">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
+            </div>
+            
+            <div id="taxiPopup" class="popup">
+                <h2>Cabs & Taxi Booking Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://book.olacabs.com/" target="_blank">
+                            <img src="images/ola.png" alt="Ola">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.uber.com/in/en/" target="_blank">
+                            <img src="images/uber.png" alt="Uber">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.rapido.bike/" target="_blank">
+                            <img src="images/Rapido.png" alt="Rapido">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
+            </div>
+            
+            <div id="foodPopup" class="popup">
+                <h2>Food Delivery Platforms</h2>
+                <div class="options">
+                    <div class="option">
+                        <a href="https://www.zomato.com/" target="_blank">
+                            <img src="images/zomato.png" alt="Zomato">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.swiggy.com/" target="_blank">
+                            <img src="images/swiggy.png" alt="Swiggy">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://blinkit.com/" target="_blank">
+                            <img src="images/blinkit.png" alt="Blinkit">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.bigbasket.com/" target="_blank">
+                            <img src="images/bigbasket.png" alt="BigBasket">
+                            
+                        </a>
+                    </div>
+                    <div class="option">
+                        <a href="https://www.zeptonow.com/" target="_blank">
+                            <img src="images/zepto.png" alt="Zepto">
+                            
+                        </a>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
+            </div>
+            </div>
+            
+            
+           
+            
+            
+            <script>
+                function showPopup(id) {
+                    document.getElementById(id).style.display = 'block';
+                }
+                
+                function closePopup(id) {
+                    document.getElementById(id).style.display = 'none';
+                }
+            </script>
+            
+            
+            
+       </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="max-w-6xl mx-auto text-center">
+      <p>&copy; 2025 Explore Bhopal. Designed with love for tourists worldwide.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Indore - Tourism Guide</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-900 pt-20">
+
+<!-- Header -->
+<div class="flex justify-between items-center py-4 px-6 bg-gray-800 text-white fixed top-0 left-0 w-full z-50 shadow">
+  <div class="font-bold text-xl">SafarSaarthi</div>
+  <div class="text-center">
+    <span class="lang-toggle" onclick="setLang('en')">English</span> |
+    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
+  </div>
+  <div>
+    <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/indore.webp');">
+  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
+    <div class="text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Indore</h1>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">इंदौर में आपका स्वागत है</h1>
+      <p class="text-lg md:text-2xl en">The Cleanest City in India with Food, Forts & Festivals</p>
+      <p class="text-lg md:text-2xl hi hidden">भारत का सबसे स्वच्छ शहर - स्वाद, इतिहास और उत्सवों का संगम</p>
+    </div>
+  </div>
+</header>
+
+<!-- About Section -->
+<section class="py-16 px-4 md:px-8 bg-gradient-to-r from-green-50 to-white">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 en">Discover Indore</h2>
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-12 hi hidden">इंदौर को जानिए</h2>
+    <div class="flex flex-col lg:flex-row items-center gap-10">
+      <div class="w-full lg:w-1/2">
+        <iframe class="w-full h-80 border-4 border-green-100 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.203392362576!2d75.85748441541134!3d22.719568485099225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fc4b3db0d1df%3A0x9d1f1bd5760e2e25!2sIndore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1752100000000" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
+        <div class="en">
+          <h3 class="text-2xl font-semibold text-green-700 mb-4">About Indore</h3>
+          <p class="text-gray-700 text-justify text-lg leading-relaxed">
+            Indore, the commercial capital of Madhya Pradesh, is known for its vibrant street food culture, royal architecture, and rapid modernization. It's also home to two premier institutions – IIT and IIM.
+          </p>
+        </div>
+        <div class="hi hidden">
+          <h3 class="text-2xl font-semibold text-green-700 mb-4">इंदौर के बारे में</h3>
+          <p class="text-gray-700 text-justify text-lg leading-relaxed">
+            इंदौर मध्यप्रदेश की आर्थिक राजधानी है, जो अपने स्वादिष्ट स्ट्रीट फूड, ऐतिहासिक धरोहर और आधुनिक विकास के लिए प्रसिद्ध है। यह शहर IIT और IIM जैसे प्रमुख संस्थानों का भी घर है।
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Attractions -->
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Indore</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">इंदौर के प्रमुख आकर्षण</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/rajwada palace.jpg" alt="Rajwada Palace" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Rajwada Palace</h3>
+        <h3 class="text-xl font-semibold hi hidden">राजवाड़ा महल</h3>
+        <p class="text-gray-700 text-justify en">A historical palace at the heart of Indore known for its blend of Mughal and Maratha architecture.</p>
+        <p class="text-gray-700 text-justify hi hidden">इंदौर के केंद्र में स्थित ऐतिहासिक महल जो मुग़ल और मराठा वास्तुकला का अद्भुत संगम है।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/khajarana.jpg" alt="Khajrana Ganesh Temple" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Khajrana Ganesh Temple</h3>
+        <h3 class="text-xl font-semibold hi hidden">खजराना गणेश मंदिर</h3>
+        <p class="text-gray-700 text-justify en">A highly revered temple dedicated to Lord Ganesha, visited by thousands of devotees daily.</p>
+        <p class="text-gray-700 text-justify hi hidden">भगवान गणेश को समर्पित यह मंदिर भक्तों के बीच अत्यंत श्रद्धा का केंद्र है।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/sarafa.webp" alt="Sarafa Bazar" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Sarafa Bazar</h3>
+        <h3 class="text-xl font-semibold hi hidden">सराफा बाजार</h3>
+        <p class="text-gray-700 text-justify en">A famous night food street serving delicious local snacks and sweets.</p>
+        <p class="text-gray-700 text-justify hi hidden">स्वादिष्ट स्थानीय नाश्तों और मिठाइयों के लिए प्रसिद्ध एक मशहूर रात्रि फ़ूड स्ट्रीट।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/lal bagh.jpg" alt="Lal Bagh Palace" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Lal Bagh Palace</h3>
+        <h3 class="text-xl font-semibold hi hidden">लालबाग पैलेस</h3>
+        <p class="text-gray-700 text-justify en">A grand palace reflecting European style architecture and royal Indore heritage.</p>
+        <p class="text-gray-700 text-justify hi hidden">यूरोपीय शैली की वास्तुकला में बना यह महल इंदौर की शाही विरासत को दर्शाता है।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/annapurna.webp" alt="Annapurna Temple" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Annapurna Temple</h3>
+        <h3 class="text-xl font-semibold hi hidden">अन्नपूर्णा मंदिर</h3>
+        <p class="text-gray-700 text-justify en">Beautiful temple dedicated to Goddess Annapurna, known for its architectural beauty and tranquility.</p>
+        <p class="text-gray-700 text-justify hi hidden">माँ अन्नपूर्णा को समर्पित यह मंदिर अपनी सुंदरता और शांति के लिए प्रसिद्ध है।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/zoo.webp" alt="Kamla Nehru Zoo" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Kamla Nehru Zoo</h3>
+        <h3 class="text-xl font-semibold hi hidden">कमला नेहरू प्राणी उद्यान</h3>
+        <p class="text-gray-700 text-justify en">A popular zoo located near the city center housing diverse wildlife species.</p>
+        <p class="text-gray-700 text-justify hi hidden">शहर के केंद्र के पास स्थित यह चिड़ियाघर विभिन्न वन्यजीवों का घर है।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/ralamandal.jpg" alt="Ralamandal Sanctuary" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Ralamandal Sanctuary</h3>
+        <h3 class="text-xl font-semibold hi hidden">रालामंडल वन्यजीव अभयारण्य</h3>
+        <p class="text-gray-700 text-justify en">A serene green haven for nature lovers and trekkers.</p>
+        <p class="text-gray-700 text-justify hi hidden">प्रकृति प्रेमियों और ट्रेकिंग के शौकीनों के लिए एक शांतिपूर्ण स्थान।</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/hrinkargiri.jpg" alt="56 Dukan" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Hrinkargiri Jain Temple</h3>
+        <h3 class="text-xl font-semibold hi hidden">हृंकारगिरी जैन मंदिर</h3>
+        <p class="text-gray-700 text-justify en">Hrinkargiri Jain Temple in Indore is a peaceful hilltop shrine dedicated to Lord Parshwanath, admired for its spiritual ambiance and panoramic city views.</p>
+        <p class="text-gray-700 text-justify hi hidden">इंदौर का हृंकारगिरी जैन मंदिर भगवान पार्श्वनाथ को समर्पित एक शांत पहाड़ी मंदिर है, जो अपनी आध्यात्मिक वातावरण और शहर के मनोरम दृश्यों के लिए प्रसिद्ध है।</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/jam gate.jpg" alt="Jam Gate" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Jam Gate</h3>
+        <h3 class="text-xl font-semibold hi hidden">जाम गेट</h3>
+        <p class="text-gray-700 text-justify en">A scenic gateway offering panoramic views, ideal for sunrise outings.</p>
+        <p class="text-gray-700 text-justify hi hidden">सूर्योदय के समय दर्शनीय दृश्य देने वाला एक सुंदर प्रवेशद्वार।</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/patalpani.webp" alt="Patal Pani" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Patal Pani Waterfall</h3>
+        <h3 class="text-xl font-semibold hi hidden">पातालपानी जलप्रपात</h3>
+        <p class="text-gray-700 text-justify en">A majestic waterfall surrounded by lush greenery, perfect for a day trip.</p>
+        <p class="text-gray-700 text-justify hi hidden">घने हरियाली से घिरा एक भव्य जलप्रपात, एक दिवसीय भ्रमण के लिए उत्तम।</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/56.jpg" alt="56 Dukan" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">56 Dukan</h3>
+        <h3 class="text-xl font-semibold hi hidden">५६ दुकान</h3>
+        <p class="text-gray-700 text-justify en">A famous food street offering a wide range of local and fusion delicacies.</p>
+        <p class="text-gray-700 text-justify hi hidden">स्थानीय और फ्यूजन स्वादों का संगम - इंदौर की प्रसिद्ध फ़ूड स्ट्रीट।</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img src="images/Indore/kanch mandir.jpg" alt="56 Dukan" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold en">Kanch Mandir</h3>
+        <h3 class="text-xl font-semibold hi hidden">कांच मंदिर</h3>
+        <p class="text-gray-700 text-justify en">Kanch Mandir in Indore is a unique Jain temple entirely decorated with colorful glass and mirrors.</p>
+        <p class="text-gray-700 text-justify hi hidden">इंदौर का कांच मंदिर एक अनोखा जैन मंदिर है, जो पूरी तरह रंग-बिरंगे कांच और शीशों से सजाया गया है।</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8 en">Indore Photo Gallery</h2>
+  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">इंदौर फोटो गैलरी</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <img src="images/Indore/Indore city.jpg" alt="Indore city" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Indore/Krishna Pura chattari.jpg" alt="Krishna Pura Chattari" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Indore/Lotus Valley.webp" alt="Lotus Valley" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Indore/metro.jpg" alt="Metro" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Indore/train.jpg" alt="Heritage Train" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+    <img src="images/Indore/white church.jpg" alt="White Church" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
+  </div>
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+  </div>
+</div>
+<script>
+ 
+  function showImage(src) {
+    document.getElementById("popupImage").src = src;
+    document.getElementById("imagePopup").classList.remove("hidden");
+  }
+
+  function hideImage() {
+    document.getElementById("imagePopup").classList.add("hidden");
+    document.getElementById("popupImage").src = "";
+  }
+</script>
+</section>
+
+<!-- Image Modal -->
+
+
+<!-- Travel Options -->
+<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
+  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Indore</h2>
+  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">इंदौर आने-जाने के साधन</h2>
+  <div class="flex flex-col md:flex-row justify-around gap-8">
+    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest railway stations: Indore</li>
+        <li class="hi hidden">नजदीकी रेलवे स्टेशन: इंदौर </li>
+        <li class="en">Connected via local taxis and buses</li>
+        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
+      </ul>
+    </div>
+    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
+      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
+      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
+      <ul class="list-disc list-inside text-gray-700">
+        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
+        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
+        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
+        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+</section>
+
+
+
+<section id="section9">
+  <div class="section9">
+    <div class="container1">
+      <div class="category hotels">
+        <img src="images/hotel.jpg" alt="hotels">
+        <div class="overlay">
+          <h2>Hotels Booking</h2>
+          <button onclick="showPopup('hotelPopup')">Book Now</button>
+        </div>
+      </div>
+      <div class="category cabs">
+        <img src="images/cabs.png" alt="cabs">
+        <div class="overlay">
+          <h2>Cabs & Taxi</h2>
+          <button onclick="showPopup('taxiPopup')">Book Now</button>
+        </div>
+      </div>
+      <div class="category food">
+        <img src="images/food.jpg" alt="food">
+        <div class="overlay">
+          <h2>Food Delivery</h2>
+          <button onclick="showPopup('foodPopup')">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popups -->
+    <div id="hotelPopup" class="popup">
+      <h2>Hotels Booking Platforms</h2>
+      <div class="options">
+        <div class="option"><a href="https://www.oyorooms.com/" target="_blank"><img src="images/oyo.png" alt="OYO"></a></div>
+        <div class="option"><a href="https://www.goibibo.com/" target="_blank"><img src="images/goibibo.jpeg" alt="Goibibo"></a></div>
+        <div class="option"><a href="https://www.makemytrip.com/" target="_blank"><img src="images/makemytrip.webp" alt="MakeMyTrip"></a></div>
+        <div class="option"><a href="https://www.agoda.com/" target="_blank"><img src="images/agoda.png" alt="Agoda"></a></div>
+      </div>
+      <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
+    </div>
+
+    <div id="taxiPopup" class="popup">
+      <h2>Cabs & Taxi Booking Platforms</h2>
+      <div class="options">
+        <div class="option"><a href="https://book.olacabs.com/" target="_blank"><img src="images/ola.png" alt="Ola"></a></div>
+        <div class="option"><a href="https://www.uber.com/in/en/" target="_blank"><img src="images/uber.png" alt="Uber"></a></div>
+        <div class="option"><a href="https://www.rapido.bike/" target="_blank"><img src="images/Rapido.png" alt="Rapido"></a></div>
+      </div>
+      <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
+    </div>
+
+    <div id="foodPopup" class="popup">
+      <h2>Food Delivery Platforms</h2>
+      <div class="options">
+        <div class="option"><a href="https://www.zomato.com/" target="_blank"><img src="images/zomato.png" alt="Zomato"></a></div>
+        <div class="option"><a href="https://www.swiggy.com/" target="_blank"><img src="images/swiggy.png" alt="Swiggy"></a></div>
+        <div class="option"><a href="https://blinkit.com/" target="_blank"><img src="images/blinkit.png" alt="Blinkit"></a></div>
+      </div>
+      <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script>
+  fetch("footer1.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+  function showPopup(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function closePopup(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+  function setLang(lang) {
+    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+  }
+</script>
+</body>
+</html>

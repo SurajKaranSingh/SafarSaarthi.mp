@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Bhopal · City of Lakes</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <script>
+    // Tailwind extended theme
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','sans-serif'], serif: ['Lora','serif'] },
+          colors: {
+            brand: { light:'#dbeafe', DEFAULT:'#3b82f6', dark:'#1d4ed8' }, // lake blues
+            secondary: { light:'#fee2e2', DEFAULT:'#ef4444', dark:'#991b1b' }, // warm accents
+            bglight: '#f8fafc'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body{ background:#f8fafc; }
+    .dark body{ background:#18181b; }
+
+    /* Glass header */
+    .glass-header{ background:rgba(255,255,255,.8); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(226,232,240,.6) }
+    .dark .glass-header{ background:rgba(30,30,30,.8); border-color:rgba(58,58,58,.8) }
+
+    /* Tabs */
+    .tab-btn{ transition:.25s all ease }
+    .tab-btn.active{ background:#3b82f6; color:#fff; box-shadow:0 4px 10px rgba(59,130,246,.3) }
+    .dark .tab-btn.active{ background:#60a5fa }
+    .tab-content{ display:none }
+    .tab-content.active{ display:block }
+  </style>
+</head>
+
+<body class="text-slate-800 dark:text-slate-200 font-sans antialiased">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full glass-header z-50">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#home" class="flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-DEFAULT text-white shadow-lg">
+          <i class="fa-solid fa-compass"></i>
+        </span>
+        <span class="font-serif text-xl font-bold text-brand-dark dark:text-white">SafarSaarthi</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6 font-medium">
+        <a href="#about" class="hover:text-brand-DEFAULT dark:hover:text-brand-light">About</a>
+        <a href="#attractions" class="hover:text-brand-DEFAULT dark:hover:text-brand-light">Attractions</a>
+        <a href="#gallery" class="hover:text-brand-DEFAULT dark:hover:text-brand-light">Gallery</a>
+        <a href="#booking" class="hover:text-brand-DEFAULT dark:hover:text-brand-light">Book</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="text-sm font-medium">
+          <button onclick="setLang('en')" class="lang-toggle en-btn px-2 py-1 rounded-md bg-brand-light text-brand-dark">EN</button>
+          <button onclick="setLang('hi')" class="lang-toggle hi-btn px-2 py-1 rounded-md text-slate-600 dark:text-slate-300">हि</button>
+        </div>
+        <button id="themeBtn" class="h-9 w-9 flex items-center justify-center rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO (video) -->
+  <section id="home" class="relative h-screen flex items-center justify-center text-white">
+    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover z-0">
+      <source src="images/Bhopal/bhopal.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/30 z-10"></div>
+
+    <div class="relative z-20 text-center px-4">
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg en">Explore Bhopal</h1>
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg hi hidden">भोपाल का अन्वेषण करें</h1>
+      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm en">City of Lakes · Culture · Heritage</p>
+      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm hi hidden">झीलों का शहर · संस्कृति · विरासत</p>
+      <a href="#about" class="mt-8 inline-block px-6 py-3 rounded-full bg-brand-DEFAULT text-white font-bold shadow-lg hover:bg-brand-dark transition duration-300 hover:shadow-xl transform hover:-translate-y-0.5">
+        <span class="en">Discover Now</span>
+        <span class="hi hidden">अभी खोजें</span>
+      </a>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+      <div class="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center pt-2 animate-bounce">
+        <div class="w-1 h-2 rounded-full bg-white"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+    <!-- MAIN -->
+    <main class="lg:col-span-2 space-y-16">
+
+      <!-- ABOUT -->
+      <section id="about">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark dark:text-brand-light en">The Soul of Bhopal</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark dark:text-brand-light hi hidden">भोपाल की आत्मा</h2>
+        <div class="mt-6 text-lg space-y-4 text-slate-700 dark:text-slate-300">
+          <p class="en">Bhopal—known as the City of Lakes—balances calm waters with creative energy. Ruled for a century by the visionary Begums, the city preserves grand mosques, lakeside promenades and vibrant arts while embracing a modern, green identity.</p>
+          <p class="hi hidden">भोपाल—जिसे झीलों का शहर कहा जाता है—शांत जल और रचनात्मक ऊर्जा का सुंदर संगम है। दूरदर्शी बेगमों के शासनकाल ने शहर को भव्य मस्जिदें, झील किनारे की सैरगाहें और जीवंत कला दीं, जो आज आधुनिक और हरित पहचान के साथ फली-फूली हैं।</p>
+        </div>
+      </section>
+
+      <!-- ATTRACTIONS -->
+      <section id="attractions">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark dark:text-brand-light en">Key Attractions</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark dark:text-brand-light hi hidden">प्रमुख आकर्षण</h2>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Sanchi -->
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Bhopal/sanchistupa.webp" alt="Sanchi Stupa" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light en">Sanchi Stupa</h3>
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light hi hidden">सांची स्तूप</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">UNESCO site famed for serene stupas and ornate gateways—best Oct–Mar.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">यूनेस्को विश्व धरोहर, शांत स्तूपों और अलंकृत तोरणों के लिए प्रसिद्ध—अक्टूबर–मार्च सर्वश्रेष्ठ।</p>
+            </div>
+          </div>
+          <!-- Van Vihar -->
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Bhopal/vanvihar.jpg" alt="Van Vihar National Park" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light en">Van Vihar National Park</h3>
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light hi hidden">वन विहार राष्ट्रीय उद्यान</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Lakeside habitats and cycling paths—ideal Nov–Feb.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">झील किनारे प्राकृतिक आवास और साइक्लिंग पथ—नवंबर–फ़रवरी श्रेष्ठ।</p>
+            </div>
+          </div>
+          <!-- Bharat Bhavan -->
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Bhopal/bharatbhavan.jpg" alt="Bharat Bhavan" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light en">Bharat Bhavan</h3>
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light hi hidden">भारत भवन</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Avant‑garde arts complex—galleries, theatre and music year‑round.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">आधुनिक बहु‑कला केंद्र—गैलरी, रंगमंच और संगीत—साल भर।</p>
+            </div>
+          </div>
+          <!-- Taj-ul-Masajid -->
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Bhopal/tajulmasajid.webp" alt="Taj-ul-Masajid" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light en">Taj‑ul‑Masajid</h3>
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light hi hidden">ताज‑उल‑मसाजिद</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Among India’s largest mosques—pink façade, marble domes—Oct–Mar.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">भारत की सबसे बड़ी मस्जिदों में से एक—गुलाबी अग्रभाग, संगमरमर गुम्बद—अक्टूबर–मार्च।</p>
+            </div>
+          </div>
+          <!-- Upper Lake -->
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Bhopal/bhojtal.webp" alt="Upper Lake" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light en">Upper Lake (Bhojtal)</h3>
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light hi hidden">ऊपरी झील (भोजताल)</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Sunset boats, breezy promenades—best Oct–Mar.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">सूर्यास्त नौकायन, सैरगाह—अक्टूबर–मार्च उपयुक्त।</p>
+            </div>
+          </div>
+          <!-- Tribal Museum -->
+          <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <img src="images/Bhopal/tribal museum.jpg" alt="Tribal Museum" class="w-full h-56 object-cover">
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light en">Tribal Museum</h3>
+              <h3 class="font-serif text-xl font-bold text-brand-dark dark:text-brand-light hi hidden">जनजातीय संग्रहालय</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 en">Immersive exhibits on living cultures—Oct–Mar.</p>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 hi hidden">जीवत संस्कृति पर डूबाने वाले प्रदर्श—अक्टूबर–मार्च।</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW TO REACH -->
+      <section id="how-to-reach">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark dark:text-brand-light en">How to Reach Bhopal</h2>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark dark:text-brand-light hi hidden">भोपाल कैसे पहुँचें</h2>
+
+        <div class="mt-8">
+          <div class="flex flex-wrap gap-2 md:gap-4">
+            <button class="tab-btn active px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('air')">
+              <i class="fa-solid fa-plane mr-2"></i> <span class="en">By Air</span> <span class="hi hidden">हवाई मार्ग</span>
+            </button>
+            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('train')">
+              <i class="fa-solid fa-train mr-2"></i> <span class="en">By Train</span> <span class="hi hidden">रेल मार्ग</span>
+            </button>
+            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-white dark:bg-slate-800" onclick="showTab('road')">
+              <i class="fa-solid fa-road mr-2"></i> <span class="en">By Road</span> <span class="hi hidden">सड़क मार्ग</span>
+            </button>
+          </div>
+
+          <div class="mt-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6">
+            <!-- AIR -->
+            <div id="content-air" class="tab-content active">
+              <p class="en">Nearest airport: <strong class="text-brand-DEFAULT">Raja Bhoj Airport (BHO)</strong>, ~15 km from city center with taxis and city buses available. Direct flights from Delhi, Mumbai, Hyderabad and more.</p>
+              <p class="hi hidden">निकटतम हवाई अड्डा: <strong class="text-brand-DEFAULT">राजा भोज हवाई अड्डा (BHO)</strong>, शहर केंद्र से लगभग 15 किमी। टैक्सी और सिटी बसें उपलब्ध। दिल्ली, मुंबई, हैदराबाद आदि से सीधी उड़ानें।</p>
+              <button class="en image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Bhopal/FLIGHT.png">Show Air Route Map</button>
+              <button class="hi hidden image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Bhopal/FLIGHT.png">हवाई मार्ग का नक्शा देखें</button>
+            </div>
+            <!-- TRAIN -->
+            <div id="content-train" class="tab-content">
+              <p class="en">Major stations: <strong class="text-brand-DEFAULT">Bhopal Junction (BPL)</strong> and <strong class="text-brand-DEFAULT">Rani Kamlapati (RKMP)</strong>. Excellent connectivity across India; autos/taxis and BRTS link to all parts of the city.</p>
+              <p class="hi hidden">मुख्य स्टेशन: <strong class="text-brand-DEFAULT">भोपाल जंक्शन (BPL)</strong> और <strong class="text-brand-DEFAULT">रानी कमलापति (RKMP)</strong>। भारत भर से उत्कृष्ट कनेक्टिविटी; शहर में ऑटो/टैक्सी व बीआरटीएस उपलब्ध।</p>
+              <button class="en image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Bhopal/TRAIN.png">Show Train Map/List</button>
+              <button class="hi hidden image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Bhopal/TRAIN.png">ट्रेन सूची देखें</button>
+            </div>
+            <!-- ROAD -->
+            <div id="content-road" class="tab-content">
+              <p class="en">Bhopal is well-connected by road via NH 46 & NH 146. Frequent buses from Indore, Jabalpur, Sagar and Nagpur. Scenic drives around Upper & Lower Lake.</p>
+              <p class="hi hidden">भोपाल सड़क मार्ग से (NH 46, NH 146) अच्छी तरह जुड़ा है। इंदौर, जबलपुर, सागर और नागपुर से नियमित बसें। ऊपरी‑निचली झील के आसपास सुंदर ड्राइव।</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shared image popup (route visuals) -->
+        <div id="imageNotificationPopup" class="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-75 p-4" style="display:none;">
+          <div class="relative w-full max-w-lg rounded-xl bg-white dark:bg-slate-800 shadow-xl">
+            <button id="closeImagePopup" class="absolute -top-3 -right-3 z-10 h-8 w-8 rounded-full bg-red-600 text-white flex items-center justify-center text-lg font-bold hover:bg-red-700 active:scale-95">&times;</button>
+            <div class="rounded-xl overflow-hidden">
+              <img id="popupImageSrc" src="" alt="Notification Image" class="w-full h-auto object-contain" style="max-height:80vh;">
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="space-y-10 lg:sticky lg:top-24 lg:h-screen">
+
+      <!-- BOOKING -->
+      <section id="booking" class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-6 border-t-4 border-brand-DEFAULT">
+        <h3 class="font-serif text-2xl font-bold text-brand-dark dark:text-brand-light en">Book Your Trip</h3>
+        <h3 class="font-serif text-2xl font-bold text-brand-dark dark:text-brand-light hi hidden">अपनी यात्रा बुक करें</h3>
+        <div class="mt-5 grid grid-cols-2 gap-3">
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-brand-DEFAULT text-white font-semibold hover:bg-brand-dark transition duration-300 booking-popup-trigger" data-category="hotels" data-popup-title-en="Find Hotels" data-popup-title-hi="होटल खोजें">
+            <i class="fa-solid fa-hotel w-5 text-center"></i>
+            <span class="en">Find Hotels</span>
+            <span class="hi hidden">होटल खोजें</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-brand-DEFAULT text-white font-semibold hover:bg-brand-dark transition duration-300 booking-popup-trigger" data-category="taxis" data-popup-title-en="Book Cabs" data-popup-title-hi="कैब बुक करें">
+            <i class="fa-solid fa-taxi w-5 text-center"></i>
+            <span class="en">Book Cabs</span>
+            <span class="hi hidden">कैब बुक करें</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-brand-DEFAULT text-white font-semibold hover:bg-brand-dark transition duration-300 booking-popup-trigger" data-category="tickets" data-popup-title-en="Book Tickets" data-popup-title-hi="टिकट बुक करें">
+            <i class="fa-solid fa-ticket w-5 text-center"></i>
+            <span class="en">Book Tickets</span>
+            <span class="hi hidden">टिकट बुक करें</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-brand-DEFAULT text-white font-semibold hover:bg-brand-dark transition duration-300 booking-popup-trigger" data-category="food" data-popup-title-en="Order Food" data-popup-title-hi="खाना ऑर्डर करें">
+            <i class="fa-solid fa-utensils w-5 text-center"></i>
+            <span class="en">Order Food</span>
+            <span class="hi hidden">खाना ऑर्डर करें</span>
+          </a>
+        </div>
+
+        <!-- Sub options modal -->
+        <div id="subOptionsPopup" class="fixed inset-0 z-[1001] flex items-center justify-center bg-black bg-opacity-75 p-4" style="display:none;">
+          <div class="relative w-full max-w-md rounded-xl bg-white dark:bg-slate-800 shadow-xl flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b border-slate-200 dark:border-slate-700">
+              <h4 id="subOptionsPopupTitle" class="text-lg font-semibold text-slate-800 dark:text-slate-100">Booking Options</h4>
+              <button id="closeSubOptionsPopup" class="text-slate-500 hover:text-slate-800 dark:hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div id="subOptionsContainer" class="p-6 grid grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS / LOCAL SPECIALTIES -->
+      <section id="products">
+        <h3 class="font-serif text-2xl font-bold text-brand-dark dark:text-brand-light en">Local Specialties</h3>
+        <h3 class="font-serif text-2xl font-bold text-brand-dark dark:text-brand-light hi hidden">स्थानीय विशेषताएँ</h3>
+        <div class="mt-4 flex gap-4 overflow-x-auto pb-4">
+          <div class="flex-shrink-0 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-3 text-center">
+            <img src="images/Bhopal/work.webp" alt="Zardozi" class="w-full h-24 object-cover rounded">
+            <h4 class="mt-2 font-semibold text-sm en">Zardozi Embroidery</h4>
+            <h4 class="mt-2 font-semibold text-sm hi hidden">ज़रदोज़ी कढ़ाई</h4>
+          </div>
+          <div class="flex-shrink-0 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-3 text-center">
+            <img src="images/Bhopal/bidriware.png" alt="Bidriware" class="w-full h-24 object-contain rounded">
+            <h4 class="mt-2 font-semibold text-sm en">Bidriware</h4>
+            <h4 class="mt-2 font-semibold text-sm hi hidden">बिदरी शिल्प</h4>
+          </div>
+          <div class="flex-shrink-0 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-3 text-center">
+            <img src="images/Bhopal/bhopalifood.jpg" alt="Cuisine" class="w-full h-24 object-cover rounded">
+            <h4 class="mt-2 font-semibold text-sm en">Bhopali Cuisine</h4>
+            <h4 class="mt-2 font-semibold text-sm hi hidden">भोपाली व्यंजन</h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAP -->
+      <section id="map">
+        <h3 class="font-serif text-2xl font-bold text-brand-dark dark:text-brand-light en">Location on Map</h3>
+        <h3 class="font-serif text-2xl font-bold text-brand-dark dark:text-brand-light hi hidden">नक्शे पर स्थान</h3>
+        <div class="mt-4 rounded-xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-700">
+          <iframe class="w-full h-72" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.7314195328693!2d77.41261567502477!3d23.18059581018359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43c5a9400e75%3A0x149cd3a9dc739dde!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1624100000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </section>
+
+    </aside>
+
+  </div>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="py-16 bg-white dark:bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-center text-brand-dark dark:text-brand-light en">Moments from Bhopal</h2>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-center text-brand-dark dark:text-brand-light hi hidden">भोपाल के कुछ पल</h2>
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Bhopal/kamlapati fort.jpg" alt="Kamlapati Fort" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Bhopal/manubhan tekri.jpg" alt="Manuabhan Tekri" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Bhopal/moti masjid.jpg" alt="Moti Masjid" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Bhopal/udaygiri.jpg" alt="Udayagiri" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Bhopal/gohar mahal.jpg" alt="Gohar Mahal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+        <div class_alias="group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+          <img src="images/Bhopal/lower lake.jpg" alt="Lower Lake" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onclick="showImage(this.src)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox for gallery and route images -->
+  <div id="imagePopup" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-[100]" onclick="hideImage()">
+    <div class="bg-white p-2 rounded-lg shadow-2xl relative max-w-4xl max-h-[90vh] overflow-auto">
+      <button onclick="hideImage()" class="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-white text-black text-2xl font-bold">&times;</button>
+      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-brand-dark dark:bg-zinc-900 text-brand-light dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <a href="#home" class="font-serif text-2xl font-bold text-white">SafarSaarthi</a>
+      <p class="mt-2 text-sm text-brand-light/80 en">Your guide to the City of Lakes.</p>
+      <p class="mt-2 text-sm text-brand-light/80 hi hidden">झीलों के शहर के लिए आपका मार्गदर्शक।</p>
+      <div class="mt-6 flex justify-center gap-6">
+        <a href="index.html" class="font-semibold text-white hover:text-secondary-DEFAULT en">Home</a>
+        <a href="index.html" class="font-semibold text-white hover:text-secondary-DEFAULT hi hidden">होम</a>
+      </div>
+      <p class="mt-6 text-xs text-brand-light/60">© 2025 SafarSaarthi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme
+      const htmlEl = document.documentElement;
+      const themeBtn = document.getElementById('themeBtn');
+      const themeIcon = document.getElementById('themeIcon');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme');
+      const setDark = ()=>{ htmlEl.classList.add('dark'); themeIcon.classList.replace('fa-sun','fa-moon'); localStorage.setItem('theme','dark'); };
+      const setLight = ()=>{ htmlEl.classList.remove('dark'); themeIcon.classList.replace('fa-moon','fa-sun'); localStorage.setItem('theme','light'); };
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) { setDark(); } else { themeIcon.classList.add('fa-sun'); }
+      themeBtn.addEventListener('click', ()=> htmlEl.classList.contains('dark') ? setLight() : setDark());
+
+      // Language
+      window.setLang = (lang) => {
+        document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+        const enBtn = document.querySelector('.en-btn'); const hiBtn = document.querySelector('.hi-btn');
+        if (lang === 'en'){ enBtn.classList.add('bg-brand-light','text-brand-dark'); enBtn.classList.remove('text-slate-600','dark:text-slate-300'); hiBtn.classList.remove('bg-brand-light','text-brand-dark'); hiBtn.classList.add('text-slate-600','dark:text-slate-300'); }
+        else { hiBtn.classList.add('bg-brand-light','text-brand-dark'); hiBtn.classList.remove('text-slate-600','dark:text-slate-300'); enBtn.classList.remove('bg-brand-light','text-brand-dark'); enBtn.classList.add('text-slate-600','dark:text-slate-300'); }
+        document.documentElement.lang = lang;
+        if (window.updateSubOptionsPopupTitleOnLangChange) { window.updateSubOptionsPopupTitleOnLangChange(); }
+      };
+
+      // Tabs
+      window.showTab = (tabName) => {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('content-' + tabName).classList.add('active');
+        document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
+      };
+
+      // Lightbox for gallery
+      const popup = document.getElementById('imagePopup');
+      const popupImg = document.getElementById('popupImage');
+      window.showImage = (src) => { popupImg.src = src; popup.classList.remove('hidden'); popup.classList.add('flex'); };
+      window.hideImage = () => { popup.classList.add('hidden'); popup.classList.remove('flex'); popupImg.src = ""; };
+
+      // Route image popup logic (shared with buttons)
+      const imagePopup = document.getElementById('imageNotificationPopup');
+      const closeImagePopupBtn = document.getElementById('closeImagePopup');
+      const popupImage = document.getElementById('popupImageSrc');
+      const allImageButtons = document.querySelectorAll('.image-popup-btn');
+      const openPopup = (imgSrc)=>{ if(imgSrc){ popupImage.src = imgSrc; imagePopup.style.display='flex'; } };
+      const closePopup = ()=>{ imagePopup.style.display='none'; popupImage.src=''; };
+      allImageButtons.forEach(btn => btn.addEventListener('click', (e)=>{ const src = e.currentTarget.getAttribute('data-img'); openPopup(src); }));
+      closeImagePopupBtn.addEventListener('click', closePopup);
+      imagePopup.addEventListener('click', (e)=>{ if(e.target === imagePopup) closePopup(); });
+      document.addEventListener('keydown', (e)=>{ if((e.key==='Escape'||e.key==='Esc') && imagePopup.style.display==='flex'){ closePopup(); } });
+
+      // Booking sub-options
+      const subOptionsData = {
+        hotels: [
+          { name:'MakeMyTrip', url:'https://www.makemytrip.com/hotels/' },
+          { name:'Goibibo', url:'https://www.goibibo.com/hotels/' },
+          { name:'OYO', url:'https://www.oyorooms.com/' },
+          { name:'Agoda', url:'https://www.agoda.com/' }
+        ],
+        taxis: [
+          { name:'Ola', url:'https://www.olacabs.com/' },
+          { name:'Uber', url:'https://www.uber.com/in/en/' },
+          { name:'Rapido', url:'https://www.rapido.bike/' }
+        ],
+        tickets: [
+          { name:'IRCTC', url:'https://www.irctc.co.in/' },
+          { name:'Ixigo', url:'https://www.ixigo.com/' },
+          { name:'Redbus', url:'https://www.redbus.in/' }
+        ],
+        food: [
+          { name:'Zomato', url:'https://www.zomato.com/' },
+          { name:'Swiggy', url:'https://www.swiggy.com/' },
+          { name:'Blinkit', url:'https://blinkit.com/' },
+          { name:'Zepto', url:'https://www.zepto.com/' }
+        ]
+      };
+
+      const subOptionsPopup = document.getElementById('subOptionsPopup');
+      const closeSubOptionsPopupBtn = document.getElementById('closeSubOptionsPopup');
+      const subOptionsPopupTitle = document.getElementById('subOptionsPopupTitle');
+      const subOptionsContainer = document.getElementById('subOptionsContainer');
+      const bookingPopupTriggers = document.querySelectorAll('.booking-popup-trigger');
+      let activeCategoryTrigger = null;
+
+      const openSubOptionsPopup = (category, titleEn, titleHi) => {
+        const options = subOptionsData[category]; if(!options) return;
+        activeCategoryTrigger = document.querySelector(`.booking-popup-trigger[data-category="${category}"]`);
+        const currentLang = document.documentElement.lang || 'en';
+        subOptionsPopupTitle.textContent = currentLang === 'hi' ? titleHi : titleEn;
+        subOptionsContainer.innerHTML = '';
+        options.forEach(opt => {
+          const a = document.createElement('a'); a.href = opt.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = opt.name;
+          a.className = 'block text-center rounded-lg bg-slate-100 dark:bg-slate-700/50 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all duration-200 active:scale-95';
+          subOptionsContainer.appendChild(a);
+        });
+        subOptionsPopup.style.display = 'flex';
+      };
+      const closeSubOptionsPopup = ()=>{ subOptionsPopup.style.display='none'; subOptionsContainer.innerHTML=''; subOptionsPopupTitle.textContent=''; activeCategoryTrigger=null; };
+      bookingPopupTriggers.forEach(btn => btn.addEventListener('click', (e)=>{ e.preventDefault(); const cat=e.currentTarget.getAttribute('data-category'); const te=e.currentTarget.getAttribute('data-popup-title-en'); const th=e.currentTarget.getAttribute('data-popup-title-hi'); openSubOptionsPopup(cat, te, th); }));
+      closeSubOptionsPopupBtn.addEventListener('click', closeSubOptionsPopup);
+      subOptionsPopup.addEventListener('click', (e)=>{ if(e.target===subOptionsPopup) closeSubOptionsPopup(); });
+      document.addEventListener('keydown', (e)=>{ if((e.key==='Escape'||e.key==='Esc') && subOptionsPopup.style.display==='flex'){ closeSubOptionsPopup(); } });
+
+      // Update popup title when language switched
+      window.updateSubOptionsPopupTitleOnLangChange = () => {
+        if (subOptionsPopup.style.display === 'flex' && activeCategoryTrigger) {
+          const currentLang = document.documentElement.lang || 'en';
+          const titleEn = activeCategoryTrigger.getAttribute('data-popup-title-en');
+          const titleHi = activeCategoryTrigger.getAttribute('data-popup-title-hi');
+          subOptionsPopupTitle.textContent = currentLang === 'hi' ? titleHi : titleEn;
+        }
+      };
+
+    });
+  </script>
+</body>
+</html>

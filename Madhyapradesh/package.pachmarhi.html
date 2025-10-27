@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full overflow-hidden">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pachmarhi Tour - A Dynamic Journey</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <script>
+    // --- New "Cool" Tailwind Config ---
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            // New "Cooler" fonts
+            'sans': ['Poppins', 'sans-serif'],
+            'serif': ['Playfair Display', 'serif'],
+          },
+          colors: {
+            'brand-purple': '#4f46e5',
+            'brand-pink': '#ec4899',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* --- Core styles for the scroll-snap layout --- */
+    html, body {
+      height: 100%;
+      overflow: hidden; /* Prevent double scrollbars */
+      background-color: #111;
+    }
+    
+    /* The main container IS the viewport */
+    .scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      /* This is the magic: snaps vertically */
+      scroll-snap-type: y mandatory;
+    }
+
+    /* Each section is a snap point */
+    .scroll-panel {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem; /* 40px */
+    }
+
+    /* Full-screen overlay for text contrast */
+    .scroll-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+    }
+
+    /* "Glass" card style */
+    .glass-card {
+      position: relative;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem; /* 24px */
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    
+    /* Custom scrollbar for the card */
+    .glass-card::-webkit-scrollbar { width: 6px; }
+    .glass-card::-webkit-scrollbar-track { background: transparent; }
+    .glass-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
+
+    /* Animated "Scroll Down" hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; /* 40px */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      color: white;
+      text-align: center;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint svg {
+      width: 1.5rem; /* 24px */
+      height: 1.5rem; /* 24px */
+      margin: 0 auto;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -15px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+
+  <main class="scroll-container">
+
+    <section class="scroll-panel" style="background-image: url('images/pachmarhi.webp');">
+      <div class="relative z-10 text-center text-white p-6">
+        <h1 class="font-serif text-5xl md:text-8xl font-bold drop-shadow-lg">
+          Pachmarhi Tour
+        </h1>
+        <p class="font-sans text-xl md:text-3xl mt-4 max-w-2xl drop-shadow-md">
+          A Dynamic 7-Day Journey
+        </p>
+        <a href="index.html" class="inline-block mt-8 px-8 py-3 bg-gradient-to-r from-brand-purple to-brand-pink text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+          Back to Home
+        </a>
+      </div>
+      
+      <div class="scroll-hint">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        <span>Scroll to Begin</span>
+      </div>
+    </section>
+
+    <div id="timeline-container"></div>
+
+    <section class="scroll-panel" style="background-color: #1a1a1a;">
+      <div class="relative z-10 text-center text-white">
+        <h2 class="font-serif text-5xl font-bold">Tour Complete</h2>
+        <p class="text-xl mt-4">Ready to plan your trip?</p>
+        
+        <div class="mt-12">
+          <h3 class="font-serif text-2xl font-semibold">SafarSaarthi</h3>
+          <p class="mt-4 text-gray-300/80 max-w-lg">
+            Your complete guide to exploring the Heart of India. Discover, plan, and book your perfect trip.
+          </p>
+          <p class="mt-8 text-gray-400/60 text-sm">
+            © <span id="year"></span> SafarSaarthi. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  
+  <script>
+    // --- The same timeline data from your file ---
+    const timelineData = [
+      {
+        day: "Day 1-2",
+        title: "Bhopal",
+        desc: "Begin your journey in the City of Lakes.",
+        back: `To Explore Bhopal follow the below route which will help you to explore all places from Railway Station as the starting point:<br><br>
+  1. Taj-ul-Masjid (2.6 km)<br>
+  2. Gohar Mahal (1.2 km from Taj-ul-Masjid)<br>
+  3. Lake View (2.7 km from Gohar Mahal)<br>
+  4. Van Vihar National Park (3.3 km from Lake View)<br>
+  5. Indira Gandhi Manav Sangrahalaya (4.7 km from Van Vihar)<br>
+  6. Tribal Museum (1.6 km from Sangrahalaya)<br>
+  7. Regional Science Center (1.7 km from Tribal Museum)<br>
+  8. Birla Mandir (3.2 km from Science Center)<br>
+  9. Railway Station (4.5 km from Birla Mandir)<br><br>
+  You will require <strong>2 days</strong> to cover all the locations.<br>
+  To know more about these locations, famous food & products, click the <strong>Learn More</strong> button.`,
+        img: "Bhopal.webp",
+        link: "bhopal.html"
+      },
+      {
+        day: "Day 3",
+        title: "Sanchi",
+        desc: "Explore the iconic Buddhist monuments.",
+        back: `IT is the UNESCO World Heritage Site filled with serene stupas and historical insight. For exploring it you can come here by Train or Bus:<br>
+        <strong>Trains</strong><br>
+        1. Bhopal Bina Memu(61631) 7:30 Am<br>
+        2. Bilaspur Express(18235) 10:35 Am<br>
+        there are 3 more train you can check from irctc  but this are the perfect train options.<br>
+        <strong>Bus</strong>: you can get bus any time from ISBT/Nadra bus stand <br>
+        Sachi Stupa  is barely 1-1.5 km from Railway station & Bus stop.It will take  2- 3 hrs maximum so that you can retun back to bhopal  <br>
+        there are 5 trains but for best option i suggest <br> 
+        1. Bhopal Memu (11606) 12:39 Pm <br>
+        whereas you can come back by <strong>bus</strong> as well it will maximum take 1 hour.<br> From Bhopal you can take bus to <strong>Mandideep</strong> for next destination.  `,
+        img: "sanchi.webp",
+        link: "sanchi.html"
+      },
+      {
+        day: "Day 3",
+        title: "Bhojpur",
+        desc: "Visit the grand unfinished Shiva temple.",
+        back:  `Marvel at the gigantic Shiva Linga and learn about its unique architecture.For Exploring it you can come here by <strong>train & bus</strong> both from Bhopal to Mandideep from where you can come through rood its is just 11-20 km (repective to vehicle and road taken) `,
+        img: "bhimbedka.webp",
+        link: "bhopal.html"
+      },
+      {
+        day: "Day 3",
+        title: "Mandideep",
+        desc: "Take a restful overnight halt at Mandideep.",
+        back: "Recharge at this quiet town before heading to the land of ancient cave paintings and rock shelter.",
+        img: "pachmarhi.package/mandideep.jpeg",
+        link: "#"
+      },
+      {
+        day: "Day 4",
+        title: "Bhimbetka",
+        desc: "See ancient cave paintings and rock shelters.",
+        back: "A walk through prehistoric art and culture, surrounded by forest beauty.You can come here by <strong>Rental cars & Bus</strong> it wil take max 2 hours to explore and from there you can move to next destination called <strong> Vindhyavasini Vijayasana Mata Temple </strong> 50 km from bhimbedka via Obaidullaganj  ",
+        img: "bhimbedka.jpeg",
+        link: "bhimbedka.html"
+      },
+      {
+        day: "Day 4",
+        title: "Narmadapuram",
+        desc: "Take a restful overnight halt before the hills.",
+        back: "after cominf from <strong>vindhyavasini temple</strong> in Salkanpur you can move to <Strong>Narmadapuram</strong> located on the banks of the sacred Narmada River. Great evening stroll! and rest before heading toward the <strong>highlands of Satpura</strong> ",
+        img: "pachmarhi.package/narmadapuram.jpg",
+        link: "#"
+      },
+      {
+        day: "Day 5-6",
+        title: "Pachmarhi",
+        desc: "Enjoy waterfalls, caves, and scenic views.",
+        back: `To Explore Pachmarhi follow the below route-
+        <strong> Day 1</strong>:<br>
+  1. <strong>Morning</strong>:
+  Start with Bee Falls, a scenic waterfall known for its refreshing waters and surrounding trails.<br> 
+  2. <strong>Afternoon</strong>:
+  Head to Apsara Vihar, another beautiful waterfall with a calm pool, perfect for a relaxing dip. <br>
+  3. <strong>Evening</strong>:
+  Conclude the day with a visit to Priyadarshini Point, also known as Forsyth Point, offering panoramic views of the hills and valleys. <br>
+  <strong>Day 2:</strong><br>
+  1. <strong>Morning</strong>:
+  Explore the Pandava Caves, a historical site with religious significance, believed to be a refuge of the Pandava brothers. 
+  <br>2. <strong>Afternoon</strong>:
+  Trek to Dhoopgarh, the highest peak in the Satpura range, to witness a breathtaking sunset. 
+  <br> 3. <strong>Optional</strong>:
+  Consider a visit to Jatashankar Temple, a cave temple dedicated to Lord Shiva, known for its unique rock formations and natural springs. !`,
+        img: "pachmarhi.webp",
+        link: "pachmarhi.html"
+      },
+      {
+        day: "Day 7",
+        title: "Return to Bhopal",
+        desc: "Relax and reflect back in Bhopal.",
+        back: "Wrap up your tour with shopping and peaceful boating at Lower Lake or can cover the left over places of Bhopal.",
+        img: "Bhopal.webp",
+        link: "bhopal.html"
+      }
+    ];
+
+    
+    // --- Run scripts after the page loads ---
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // === 1. BUILD THE TIMELINE ===
+      // (Replaces the old document.write and footer fetch)
+      
+      const container = document.getElementById('timeline-container');
+      let htmlString = '';
+      
+      timelineData.forEach(item => {
+        htmlString += `
+          <section class="scroll-panel" style="background-image: url('images/${item.img}');">
+            
+            <div class="glass-card w-full max-w-xl p-8 text-white">
+              
+              <span class="inline-block px-4 py-1 bg-gradient-to-r from-brand-purple to-brand-pink text-white text-sm font-bold rounded-full">
+                ${item.day.replace('<br>', ' ')}
+              </span>
+              
+              <h2 class="font-serif text-4xl md:text-5xl font-bold mt-4">${item.title}</h2>
+              <p class="font-sans text-xl text-white/90 mt-2">${item.desc}</p>
+              
+              <hr class="my-6 border-white/20">
+              
+              <div class="prose prose-lg prose-invert text-white/80 max-w-none font-sans font-light">
+                ${item.back}
+              </div>
+              
+              <a href="${item.link}" class="inline-block bg-white text-brand-purple font-semibold py-3 px-6 rounded-full mt-8 hover:bg-gray-200 transition-colors duration-300">
+                Explore ${item.title}
+              </a>
+            </div>
+            
+            <div class="scroll-hint">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
+          </section>
+        `;
+      });
+      
+      // Inject the generated HTML into the container
+      container.innerHTML = htmlString;
+      
+      
+      // === 2. SET FOOTER YEAR ===
+      const yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+    });
+  </script>
+
+</body>
+</html>
