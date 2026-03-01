@@ -1,767 +1,223 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Bhimbetka · Rock Art Through the Ages</title>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet"/>
-
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-
-  <script>
-    /* Dark palette only */
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter','sans-serif'], serif: ['Lora','serif'] },
-          colors: {
-            cave:  { light:'#fef3f2', DEFAULT:'#fca5a5', dark:'#7f1d1d' },
-            ember: { light:'#fde68a', DEFAULT:'#f59e0b', dark:'#7c2d12' },
-            ash:   { light:'#0b0f14', DEFAULT:'#0b0f14', dark:'#0b0f14' },
-            tealx: { light:'#2dd4bf', DEFAULT:'#14b8a6', dark:'#0f766e' }
-          },
-          boxShadow: { glow: '0 0 0 3px rgba(20,184,166,.15), 0 8px 30px rgba(0,0,0,.35)' }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    /* Dark background only */
-    body{ background:#0b0f14; }
-
-    /* Glass header (dark only) */
-    .glass-header{
-      background:rgba(12,14,17,.72);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(90,90,90,.25)
-    }
-
-    .tab-btn{ transition:.25s }
-    .tab-btn.active{ background:#14b8a6; color:#fff; box-shadow:0 8px 18px rgba(20,184,166,.35) }
-    .tab-content{ display:none }
-    .tab-content.active{ display:block }
-
-    /* Timeline scroller */
-    .timeline-track::-webkit-scrollbar{ height:10px }
-    .timeline-track::-webkit-scrollbar-thumb{ background:#c2410c; border-radius:9999px }
-    .milestone{
-      background:linear-gradient(135deg,#1a1e25 0%,#0f1318 100%);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .milestone:hover{ transform:translateY(-4px); box-shadow:0 10px 26px rgba(0,0,0,.35); }
-    .chip{ backdrop-filter: blur(8px) saturate(1.1); }
-
-    /* Horizontal scroller cosmetics */
-    .hx-scroll { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-    .hx-scroll > * { scroll-snap-align: start; }
-    .hx-mask {
-      mask-image: linear-gradient(to right, transparent 0, black 32px, black calc(100% - 32px), transparent 100%);
-    }
-    .hx-scroll::-webkit-scrollbar { height: 10px; }
-    .hx-scroll::-webkit-scrollbar-thumb { background: #64748b; border-radius: 9999px; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bhimbetka · The Canvas of Time</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
+<body>
 
-<body class="text-slate-200 font-sans antialiased">
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="icon"><i class="fa-solid fa-paintbrush"></i></div>
+    <span>SafarSaarthi</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="#about">The Caves</a></li>
+    <li><a href="#attractions">Paintings</a></li>
+    <li><a href="#reach">Travel</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <div class="lang-btns">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hi')">हि</button>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 w-full glass-header z-50">
-  <nav class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- Brand -->
-    <a href="#home" class="flex items-center gap-2">
-      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-rose-900 text-white shadow">
-        <i class="fa-solid fa-brush"></i>
-      </span>
-      <span class="font-serif text-xl font-bold text-white">SafarSaarthi</span>
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#about" onclick="toggleMenu()"><span class="en">About</span><span class="hi">परिचय</span></a>
+  <a href="#attractions" onclick="toggleMenu()"><span class="en">Paintings</span><span class="hi">शैलचित्र</span></a>
+  <a href="#reach" onclick="toggleMenu()"><span class="en">Travel</span><span class="hi">यात्रा</span></a>
+  <a href="#booking" onclick="toggleMenu()"><span class="en">Book</span><span class="hi">बुक</span></a>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <source src="images/Bhimbetka/bhimbetka.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow en">Raisen, Madhya Pradesh · UNESCO Site</div>
+    <div class="hero-eyebrow hi">रायसेन, मध्यप्रदेश · यूनेस्को साइट</div>
+    <h1 class="en">Trace the<br><em>Beginnings</em></h1>
+    <h1 class="hi serif" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:700;line-height:1.05;color:#fff;margin-bottom:1rem">भीमबेटका<br><em style="color:var(--saffron);font-style:italic">की शैलकला</em></h1>
+    <p class="en">Witness the dawn of human creativity across 750 rock shelters spanning 30,000 years.</p>
+    <p class="hi">30,000 वर्षों में फैले 750 शैलाश्रयों में मानव रचनात्मकता के उदय का प्रमाण देखें।</p>
+    <a href="#about" class="hero-cta">
+      <span class="en">Step Into Prehistory</span>
+      <span class="hi">इतिहास में कदम रखें</span>
+      <i class="fa-solid fa-arrow-down" style="font-size:.75rem"></i>
     </a>
+  </div>
+</section>
 
-    <!-- Desktop links -->
-    <div class="hidden md:flex items-center gap-6 font-medium">
-      <a href="#about" class="hover:text-amber-400">About</a>
-      <a href="#timeline" class="hover:text-amber-400">Timeline</a>
-      <a href="#attractions" class="hover:text-amber-400">Attractions</a>
-      <a href="#map-and-around" class="hover:text-amber-400">In & Around</a>
-      <a href="#gallery" class="hover:text-amber-400">Gallery</a>
-      <a href="#booking" class="hover:text-amber-400">Book</a>
-    </div>
-
-    <!-- Right controls (desktop) -->
-    <div class="hidden md:flex items-center gap-2">
-      <div class="text-sm font-medium">
-        <button onclick="setLang('en')" class="en-btn px-2 py-1 rounded-md bg-teal-300 text-black">EN</button>
-        <button onclick="setLang('hi')" class="hi-btn px-2 py-1 rounded-md text-slate-300">हि</button>
-      </div>
-      <a href="/index.html" class="ml-1 rounded-lg bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-100 shadow hover:bg-slate-700">Back</a>
-    </div>
-
-    <!-- Hamburger (mobile & tablet) -->
-     
-    <button
-      id="hamburgerBtn"
-      class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg text-slate-200 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-400/60"
-      aria-controls="mobileMenu"
-      aria-expanded="false"
-      aria-label="Open menu"
-    >
-      <!-- Icon -->
-      <svg id="hamburgerIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-      <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
-  </nav>
-
-  <!-- Mobile/Tablet slide-down menu -->
-  <div
-    id="mobileMenu"
-    class="md:hidden max-w-7xl mx-auto px-4 pb-4 pt-2 hidden"
-  >
-    <div class="rounded-xl bg-slate-900/90 backdrop-blur p-4 shadow-xl border border-slate-700">
-      <div class="grid gap-3 text-slate-200">
-        <a href="#about" class="px-3 py-2 rounded-lg hover:bg-slate-800">About</a>
-        <a href="#timeline" class="px-3 py-2 rounded-lg hover:bg-slate-800">Timeline</a>
-        <a href="#attractions" class="px-3 py-2 rounded-lg hover:bg-slate-800">Attractions</a>
-        <a href="#map-and-around" class="px-3 py-2 rounded-lg hover:bg-slate-800">In & Around</a>
-        <a href="#gallery" class="px-3 py-2 rounded-lg hover:bg-slate-800">Gallery</a>
-        <a href="#booking" class="px-3 py-2 rounded-lg hover:bg-slate-800">Book</a>
-      </div>
-
-      <hr class="my-4 border-slate-700">
-
-      <div class="flex items-center justify-between">
-        <div class="text-sm font-medium space-x-2">
-          <button onclick="setLang('en')" class="en-btn px-3 py-2 rounded-md bg-teal-300 text-black font-semibold">EN</button>
-          <button onclick="setLang('hi')" class="hi-btn px-3 py-2 rounded-md text-slate-300 hover:bg-slate-800">हि</button>
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label en">The Oldest Gallery</div>
+        <div class="section-label hi">सबसे पुरानी गैलरी</div>
+        <h2 class="section-title en">Whispers of the<br><span>Stone Age</span></h2>
+        <h2 class="section-title hi serif">पाषाण युग<br><span>की गूँज</span></h2>
+        <p class="en" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem">Nestled in the Vindhyan Mountains, Bhimbetka preserves a continuous record of human life from the Upper Paleolithic to the Medieval period. It is where the "Seat of Bhima" meets prehistoric art.</p>
+        <p class="hi" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem">विंध्य पर्वतमाला में स्थित, भीमबेटका पुरापाषाण काल से मध्यकालीन काल तक मानव जीवन का एक अखंड रिकॉर्ड सुरक्षित रखता है।</p>
+        <div class="stats">
+          <div><div class="stat-num">750</div><div class="stat-label en">Rock Shelters</div><div class="stat-label hi">शैलाश्रय</div></div>
+          <div><div class="stat-num">30k</div><div class="stat-label en">Years Old</div><div class="stat-label hi">वर्ष पुराना</div></div>
+          <div><div class="stat-num">UNESCO</div><div class="stat-label en">Heritage Site</div><div class="stat-label hi">विश्व धरोहर</div></div>
         </div>
-        <a href="index.html" class="rounded-lg bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-100 shadow hover:bg-slate-700">Back</a>
+      </div>
+      <div class="about-image">
+        <img src="images/Bhimbetka/rock shelter.webp" alt="Bhimbetka Shelters" onerror="this.style.background='var(--bg3)'">
+        <div class="img-label en">Vindhyan Sandstone</div>
+        <div class="img-label hi">विंध्य बलुआ पत्थर</div>
       </div>
     </div>
   </div>
-  <script>
-  (function () {
-    const btn = document.getElementById('hamburgerBtn');
-    const menu = document.getElementById('mobileMenu');
-    const openIco = document.getElementById('hamburgerIcon');
-    const closeIco = document.getElementById('closeIcon');
+</section>
 
-    if (!btn || !menu) return;
+<section id="attractions">
+  <div class="container">
+    <div class="section-label en">Must See</div>
+    <div class="section-label hi">अवश्य देखें</div>
+    <h2 class="section-title en">Iconic <span>Rock Panels</span></h2>
+    <h2 class="section-title hi serif">प्रमुख <span>शैल चित्र</span></h2>
 
-    const setOpen = (open) => {
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        menu.classList.remove('hidden');
-        openIco.classList.add('hidden');
-        closeIco.classList.remove('hidden');
-        btn.setAttribute('aria-label', 'Close menu');
-      } else {
-        menu.classList.add('hidden');
-        openIco.classList.remove('hidden');
-        closeIco.classList.add('hidden');
-        btn.setAttribute('aria-label', 'Open menu');
-      }
-    };
-
-    btn.addEventListener('click', () => {
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      setOpen(!isOpen);
-    });
-
-    // Close when clicking a link
-    menu.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (a) setOpen(false);
-    });
-
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
-        setOpen(false);
-      }
-    });
-  })();
-</script>
-
-</header>
-
-
-  <!-- HERO -->
-  <section id="home" class="relative h-screen flex items-center justify-center text-white">
-    <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover z-0">
-      <source src="images/Bhimbetka/bhimbetka.mp4" type="video/mp4">
-    </video>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(127,29,29,.55),transparent_40%),radial-gradient(circle_at_70%_80%,rgba(180,83,9,.45),transparent_45%),linear-gradient(to_top,rgba(0,0,0,.6),rgba(0,0,0,.35))] z-10"></div>
-
-    <div class="relative z-20 text-center px-4">
-      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg en">Bhimbetka · Rock Art Through the Ages</h1>
-      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold drop-shadow-lg hi hidden">भीमबेटका · शैल कला की कालयात्रा</h1>
-      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm en">Prehistoric Wonder · UNESCO World Heritage</p>
-      <p class="text-lg md:text-2xl mt-4 font-light drop-shadow-sm hi hidden">प्रागैतिहासिक धरोहर · यूनेस्को विश्व विरासत</p>
-      <a href="#about" class="mt-8 inline-block px-6 py-3 rounded-full bg-emerald-600 text-white font-bold shadow-glow hover:bg-emerald-500 transition duration-300 hover:shadow-xl transform hover:-translate-y-0.5">
-        <span class="en">Discover Now</span><span class="hi hidden">अभी खोजें</span>
-      </a>
-    </div>
-
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-      <div class="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center pt-2 animate-bounce">
-        <div class="w-1 h-2 rounded-full bg-white"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAIN GRID -->
-  <div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
-
-    <!-- MAIN CONTENT -->
-    <main class="lg:col-span-2 space-y-16">
-
-      <!-- ABOUT -->
-      <section id="about">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT en">The Soul of Bhimbetka</h2>
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT hi hidden">भीमबेटका की आत्मा</h2>
-
-        <div class="mt-8 grid gap-8 lg:grid-cols-2">
-          <article class="bg-slate-800 rounded-xl shadow p-6">
-            <div class="space-y-4 text-lg leading-relaxed text-slate-300">
-              <p class="en">Set in Vindhyan sandstone, the Bhimbetka rock shelters preserve one of the world’s longest, continuous records of rock art—from Mesolithic to historic periods.</p>
-              <p class="hi hidden">विंध्य शैलों में स्थित भीमबेटका शैलाश्रय मेसोलिथिक से ऐतिहासिक काल तक की अखंड शैल कला परंपरा को संजोए हैं।</p>
-              <p class="en">Hunting scenes, dancing figures, hand stencils and animal motifs reveal everyday life, ritual and imagination—some over 30,000 years old.</p>
-              <p class="hi hidden">शिकार, नृत्य, हथेली-छाप और पशु रूपांकन—कुछ 30,000 वर्ष पुराने—दैनिक जीवन, अनुष्ठान और कल्पना का चित्रण करते हैं।</p>
-            </div>
-          </article>
-
-          <!-- Quick chips -->
-          <aside class="bg-slate-800 rounded-xl shadow p-6">
-            <div class="flex flex-wrap gap-2">
-              <span class="chip px-3 py-1 rounded-full bg-amber-200/20 text-amber-300 text-sm font-semibold">UNESCO</span>
-              <span class="chip px-3 py-1 rounded-full bg-tealx.light/20 text-tealx.light text-sm font-semibold en">Best time: Oct–Mar</span>
-              <span class="chip px-3 py-1 rounded-full bg-tealx.light/20 text-tealx.light text-sm font-semibold hi hidden">उचित समय: अक्तू–मार्च</span>
-              <span class="chip px-3 py-1 rounded-full bg-rose-200/10 text-rose-300 text-sm font-semibold">Vindhyan Sandstone</span>
-              <span class="chip px-3 py-1 rounded-full bg-slate-700/60 text-slate-200 text-sm">Family-friendly trails</span>
-            </div>
-            <div class="mt-6 text-sm text-slate-400">
-              <p class="en"><i class="fa-solid fa-location-dot mr-2 text-rose-300"></i>~45 km from Bhopal · NH-46 corridor</p>
-              <p class="hi hidden"><i class="fa-solid fa-location-dot mr-2 text-rose-300"></i>भोपाल से ~45 किमी · एनएच-46</p>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <!-- TIMELINE SCROLLER -->
-      <section id="timeline">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT en">Rock Art Timeline</h2>
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT hi hidden">शैल कला कालक्रम</h2>
-
-        <div class="mt-6 overflow-x-auto timeline-track pb-4">
-          <div class="min-w-[720px] flex gap-4">
-            <!-- Mesolithic -->
-            <div class="milestone flex-1 rounded-xl p-5 border border-slate-700">
-              <div class="flex items-center gap-3">
-                <span class="h-10 w-10 rounded-full bg-rose-700 text-white grid place-items-center"><i class="fa-solid fa-person-running"></i></span>
-                <h3 class="font-serif text-xl font-semibold en">Mesolithic (c. 10,000–6,000 BCE)</h3>
-                <h3 class="font-serif text-xl font-semibold hi hidden">मेसोलिथिक (लग. 10,000–6,000 ई.पू.)</h3>
-              </div>
-              <p class="mt-3 text-slate-300 text-sm en">Hunting scenes, stick-like figures, herds; mineral reds & whites.</p>
-              <p class="mt-3 text-slate-300 text-sm hi hidden">शिकार दृश्य, सरल आकृतियाँ, झुंड; खनिज लाल-सफेद रंग।</p>
-            </div>
-
-            <!-- Chalcolithic -->
-            <div class="milestone flex-1 rounded-xl p-5 border border-slate-700">
-              <div class="flex items-center gap-3">
-                <span class="h-10 w-10 rounded-full bg-amber-600 text-white grid place-items-center"><i class="fa-solid fa-horse"></i></span>
-                <h3 class="font-serif text-xl font-semibold en">Chalcolithic (c. 3000–1000 BCE)</h3>
-                <h3 class="font-serif text-xl font-semibold hi hidden">ताम्रपाषाण (लग. 3000–1000 ई.पू.)</h3>
-              </div>
-              <p class="mt-3 text-slate-300 text-sm en">Domestication motifs, more defined bodies, social scenes.</p>
-              <p class="mt-3 text-slate-300 text-sm hi hidden">पालतू पशु, स्पष्ट आकृतियाँ, सामाजिक दृश्य।</p>
-            </div>
-
-            <!-- Historic -->
-            <div class="milestone flex-1 rounded-xl p-5 border border-slate-700">
-              <div class="flex items-center gap-3">
-                <span class="h-10 w-10 rounded-full bg-tealx.DEFAULT text-white grid place-items-center"><i class="fa-solid fa-scroll"></i></span>
-                <h3 class="font-serif text-xl font-semibold en">Historic (1st millennium CE)</h3>
-                <h3 class="font-serif text-xl font-semibold hi hidden">ऐतिहासिक (प्रथम सहस्राब्दी)</h3>
-              </div>
-              <p class="mt-3 text-slate-300 text-sm en">Symbols, scripts, ritual scenes; layered over older art.</p>
-              <p class="mt-3 text-slate-300 text-sm hi hidden">प्रतीक, लिपियाँ, अनुष्ठान—पुरानी कला पर परतें।</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ATTRACTIONS -->
-      <section id="attractions">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT en">Key Attractions</h2>
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT hi hidden">प्रमुख आकर्षण</h2>
-
-        <!-- Mobile scroller / MD+ grid -->
-        <div class="mt-8 flex md:grid md:grid-cols-2 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar" aria-label="Attractions scroller">
-          <!-- Card 1 -->
-          <div class="min-w-[85%] sm:min-w-[70%] md:min-w-0 snap-start">
-            <div class="bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
-              <img src="images/Bhimbetka/rock shelter.webp" alt="Main Rock Shelter" class="w-full h-56 object-cover">
-              <div class="p-5">
-                <h3 class="font-serif text-xl font-bold text-slate-100 en">Main Rock Shelter</h3>
-                <h3 class="font-serif text-xl font-bold text-slate-100 hi hidden">मुख्य शैलाश्रय</h3>
-                <p class="mt-2 text-sm text-slate-400 en">Vivid dancers, animal herds, daily-life panels.</p>
-                <p class="mt-2 text-sm text-slate-400 hi hidden">नर्तक, पशु झुंड व जीवन दृश्य।</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2 (fixed closing tag) -->
-          <div class="min-w-[85%] sm:min-w-[70%] md:min-w-0 snap-start">
-            <div class="bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
-              <img src="images/Bhimbetka/zoo rock.jpg" alt="Zoo Rock" class="w-full h-56 object-cover">
-              <div class="p-5">
-                <h3 class="font-serif text-xl font-bold text-slate-100 en">Zoo Rock</h3>
-                <h3 class="font-serif text-xl font-bold text-slate-100 hi hidden">जू रॉक</h3>
-                <p class="mt-2 text-sm text-slate-400 en">A “zoo” of painted fauna—bison, deer, elephants.</p>
-                <p class="mt-2 text-sm text-slate-400 hi hidden">चित्रित पशु—बाइसन, हिरण, हाथी।</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="min-w-[85%] sm:min-w-[70%] md:min-w-0 snap-start">
-            <div class="bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
-              <img src="images/Bhimbetka/auditorium_cave.jpg" alt="Auditorium Cave" class="w-full h-56 object-cover">
-              <div class="p-5">
-                <h3 class="font-serif text-xl font-bold text-slate-100 en">Auditorium Cave</h3>
-                <h3 class="font-serif text-xl font-bold text-slate-100 hi hidden">ऑडिटोरियम गुफा</h3>
-                <p class="mt-2 text-sm text-slate-400 en">Natural amphitheatre—likely a gathering space.</p>
-                <p class="mt-2 text-sm text-slate-400 hi hidden">प्राकृतिक रंगमंच—संभावित सभा-स्थल।</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="min-w-[85%] sm:min-w-[70%] md:min-w-0 snap-start">
-            <div class="bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
-              <img src="images/Bhimbetka/Boar Rock.jpg" alt="Boar Rock" class="w-full h-56 object-cover">
-              <div class="p-5">
-                <h3 class="font-serif text-xl font-bold text-slate-100 en">Boar Rock</h3>
-                <h3 class="font-serif text-xl font-bold text-slate-100 hi hidden">सूअर चट्टान</h3>
-                <p class="mt-2 text-sm text-slate-400 en">Mythic boar chasing a man—early narrative art.</p>
-                <p class="mt-2 text-sm text-slate-400 hi hidden">पौराणिक दृश्य—कथात्मक शैल कला।</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="min-w-[85%] sm:min-w-[70%] md:min-w-0 snap-start">
-            <div class="bg-slate-800 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1">
-              <img src="images/Bhimbetka/handprint gallery.jpg" alt="HandPrint Gallery" class="w-full h-56 object-cover">
-              <div class="p-5">
-                <h3 class="font-serif text-xl font-bold text-slate-100 en">HandPrint Gallery</h3>
-                <h3 class="font-serif text-xl font-bold text-slate-100 hi hidden">हाथों के निशान</h3>
-                <p class="mt-2 text-sm text-slate-400 en">Red hand stencils—oldest symbolic marks.</p>
-                <p class="mt-2 text-sm text-slate-400 hi hidden">लाल हथेली-छाप—प्राचीन प्रतीक।</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HOW TO REACH -->
-      <section id="how-to-reach">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT en">How to Reach</h2>
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT hi hidden">कैसे पहुँचे</h2>
-
-        <div class="mt-8">
-          <div class="flex flex-wrap gap-2 md:gap-4">
-            <button class="tab-btn active px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-slate-800" onclick="showTab('air')">
-              <i class="fa-solid fa-plane mr-2"></i><span class="en">By Air</span><span class="hi hidden">हवाई मार्ग</span>
-            </button>
-            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-slate-800" onclick="showTab('train')">
-              <i class="fa-solid fa-train mr-2"></i><span class="en">By Train</span><span class="hi hidden">रेल मार्ग</span>
-            </button>
-            <button class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold bg-slate-800" onclick="showTab('road')">
-              <i class="fa-solid fa-road mr-2"></i><span class="en">By Road</span><span class="hi hidden">सड़क मार्ग</span>
-            </button>
-          </div>
-
-          <div class="mt-6 bg-slate-800 rounded-lg shadow-lg p-6">
-            <div id="content-air" class="tab-content active">
-              <p class="en">Nearest airport: <strong class="text-tealx.DEFAULT">Bhopal (BHO)</strong> ~45 km (1–1.5 hr). Jabalpur (JLR) ~250 km.</p>
-              <p class="hi hidden">निकटतम हवाई अड्डा: <strong class="text-tealx.DEFAULT">भोपाल (BHO)</strong> ~45 किमी (1–1.5 घं.). जबलपुर (JLR) ~250 किमी।</p>
-              <button class="image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Bhimbetka/air.png">
-                <span class="en">Show Air Route Map</span><span class="hi hidden">हवाई मार्ग का नक्शा</span>
-              </button>
-            </div>
-
-            <div id="content-train" class="tab-content">
-              <p class="en">Major stations: <strong class="text-tealx.DEFAULT">Bhopal Jn. (BPL)</strong> ~45 km; <strong class="text-tealx.DEFAULT">Hoshangabad (HBD)</strong> ~70 km. Taxis/buses available.</p>
-              <p class="hi hidden">प्रमुख स्टेशन: <strong class="text-tealx.DEFAULT">भोपाल जं. (BPL)</strong> ~45 किमी; <strong class="text-tealx.DEFAULT">होशंगाबाद (HBD)</strong> ~70 किमी। टैक्सी/बसें उपलब्ध।</p>
-              <button class="image-popup-btn mt-4 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 active:scale-95" data-img="images/Bhimbetka/train.png">
-                <span class="en">Show Train Map/List</span><span class="hi hidden">ट्रेन सूची/मानचित्र</span>
-              </button>
-            </div>
-
-            <div id="content-road" class="tab-content">
-              <p class="en">Easy day trip via NH-46 from Bhopal. Private cabs/self-drive recommended; parking at site.</p>
-              <p class="hi hidden">भोपाल से एनएच-46 मार्ग; निजी कैब/सेल्फ-ड्राइव उपयुक्त, स्थल पर पार्किंग।</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Route popup -->
-        <div id="imageNotificationPopup" class="fixed inset-0 z-[1000] hidden items-center justify-center bg-black bg-opacity-75 p-4">
-          <div class="relative w-full max-w-lg rounded-xl bg-slate-900 shadow-xl">
-            <button id="closeImagePopup" class="absolute -top-3 -right-3 z-10 h-8 w-8 rounded-full bg-red-600 text-white flex items-center justify-center text-lg font-bold hover:bg-red-700 active:scale-95">&times;</button>
-            <div class="rounded-xl overflow-hidden">
-              <img id="popupImageSrc" src="" alt="Route Image" class="w-full h-auto object-contain" style="max-height:80vh;">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- MAP + IN & AROUND -->
-      <section id="map-and-around">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-
-          <!-- LEFT: Map -->
+    <div class="cards-layout">
+      <div class="card-featured attr-card">
+        <img src="images/Bhimbetka/zoo rock.jpg" alt="Zoo Rock" class="card-img" onerror="this.style.background='var(--bg)'">
+        <div class="card-body">
           <div>
-            <h3 class="font-serif text-2xl font-bold text-ember-DEFAULT en">Location on Map</h3>
-            <h3 class="font-serif text-2xl font-bold text-ember-DEFAULT hi hidden">नक्शे पर स्थान</h3>
-
-            <div class="mt-4 rounded-xl overflow-hidden shadow-lg border-4 border-slate-800">
-              <iframe class="w-full h-80"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.9650971256517!2d77.60427651495806!3d22.931685685008616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c2b6c1a3f2a27%3A0x97586d90a0a75b3e!2sBhimbetka%20Rock%20Shelters!5e0!3m2!1sen!2sin!4v1700000000000"
-                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            <span class="card-tag tag-nature en">Most Famous · Zoo Rock</span>
+            <span class="card-tag tag-nature hi">सर्वाधिक प्रसिद्ध · जू रॉक</span>
+            <div class="card-title en">The Zoo Rock Shelter</div>
+            <div class="card-title hi serif">जू रॉक शैलाश्रय</div>
+            <p class="card-desc en">A prehistoric "zoo" featuring detailed paintings of <strong style="color:var(--text2);font-weight:600">bison, elephants, tigers, and rhinos</strong>. The layers of paint show how art evolved over thousands of years on a single stone canvas.</p>
+            <p class="card-desc hi">एक प्रागैतिहासिक "चिड़ियाघर" जिसमें बाइसन, हाथी, बाघ और गैंडे के विस्तृत चित्र हैं। एक ही पत्थर पर हजारों वर्षों में विकसित कला की परतें यहाँ दिखाई देती हैं।</p>
           </div>
-
-          <!-- RIGHT: Famous -->
-          <div>
-            <div class="flex items-end justify-between gap-4">
-              <div>
-                <h2 class="font-serif text-2xl md:text-3xl font-bold text-ember-DEFAULT en">Famous In & Around</h2>
-                <h2 class="font-serif text-2xl md:text-3xl font-bold text-ember-DEFAULT hi hidden">प्रसिद्ध वस्तुएँ</h2>
-              </div>
-
-              <!-- Arrow controls -->
-              <div class="flex gap-2">
-                <button id="famousPrev"
-                  class="h-9 w-9 grid place-items-center rounded-lg bg-slate-800 text-slate-200 shadow hover:bg-slate-700 active:scale-95"
-                  aria-label="Scroll left">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button id="famousNext"
-                  class="h-9 w-9 grid place-items-center rounded-lg bg-slate-800 text-slate-200 shadow hover:bg-slate-700 active:scale-95"
-                  aria-label="Scroll right">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-
-            <!-- Horizontal scroller -->
-            <div id="famousStrip"
-                class="mt-4 hx-scroll hx-mask overflow-x-auto whitespace-nowrap rounded-xl bg-slate-900/60 p-4 shadow-inner border border-slate-700">
-              <!-- Card 1 -->
-              <div class="inline-block align-top w-64 mr-4">
-                <div class="rounded-lg shadow bg-slate-900 p-4 text-center h-full">
-                  <img src="images/Bhimbetka/rock art.jpg" alt="Rock Art Replicas"
-                      class="w-full h-40 object-contain rounded mb-3">
-                  <h3 class="text-lg font-semibold en">Rock Art Replicas</h3>
-                  <h3 class="text-lg font-semibold hi hidden">शैल कला प्रतिकृतियाँ</h3>
-                  <p class="text-sm text-slate-400 en">Stone/wood souvenirs <br>with tribal motifs.</p>
-                  <p class="text-sm text-slate-400 hi hidden">पत्थर/लकड़ी के स्मृति-चिह्न,<br> जनजातीय रूपांकन।</p>
-                </div>
-              </div>
-
-              <!-- Card 2 -->
-              <div class="inline-block align-top w-64 mr-4">
-                <div class="rounded-lg shadow bg-slate-900 p-4 text-center h-full">
-                  <img src="images/Bhimbetka/adivasi crafts.webp" alt="Adivasi Crafts"
-                      class="w-full h-40 object-contain rounded mb-3">
-                  <h3 class="text-lg font-semibold en">Adivasi Crafts</h3>
-                  <h3 class="text-lg font-semibold hi hidden">आदिवासी हस्तशिल्प</h3>
-                  <p class="text-sm text-slate-400 en">Bhil & Gond: wall art,<br> pottery, bamboo, beadwork.</p>
-                  <p class="text-sm text-slate-400 hi hidden">भील-गोंड: भित्ति-चित्र,<br> मृदभांड, बांस, मनके।</p>
-                </div>
-              </div>
-
-              <!-- Card 3 -->
-              <div class="inline-block align-top w-64 mr-4">
-                <div class="rounded-lg shadow bg-slate-900 p-4 text-center h-full">
-                  <img src="images/Bhimbetka/herbal.jpg" alt="Herbal & Forest Produce"
-                      class="w-full h-40 object-contain rounded mb-3">
-                  <h3 class="text-lg font-semibold en">Herbal & Forest Produce</h3>
-                  <h3 class="text-lg font-semibold hi hidden">हर्बल व वन उत्पाद</h3>
-                  <p class="text-sm text-slate-400 en">Local herbs, resins, incense,<br> forest honey.</p>
-                  <p class="text-sm text-slate-400 hi hidden">स्थानीय जड़ी-बूटियाँ, रेज़िन, <br>अगरबत्तियाँ, वन मधु।</p>
-                </div>
-              </div>
-            </div>
-
-            <p class="mt-2 text-xs text-slate-500 en">Tip: Scroll right to see more.</p>
-            <p class="mt-2 text-xs text-slate-500 hi hidden">संकेत: अधिक देखने के लिए दाईं ओर स्क्रोल करें।</p>
+          <div class="card-meta">
+            <span><i class="fa-solid fa-palette"></i><span class="en">Natural Pigments</span><span class="hi">प्राकृतिक रंग</span></span>
+            <span><i class="fa-solid fa-clock"></i><span class="en">7 AM – 6 PM</span><span class="hi">7 AM – 6 PM</span></span>
           </div>
         </div>
-      </section>
+      </div>
 
-    </main>
-
-    <!-- SIDEBAR -->
-    <aside class="space-y-10 lg:sticky lg:top-24 lg:h-screen">
-
-      <!-- BOOKING -->
-      <section id="booking" class="bg-slate-800 rounded-xl shadow-2xl p-6 border-t-4 border-rose-800">
-        <h3 class="font-serif text-2xl font-bold text-ember-DEFAULT en">Book Your Trip</h3>
-        <h3 class="font-serif text-2xl font-bold text-ember-DEFAULT hi hidden">अपनी यात्रा बुक करें</h3>
-        <div class="mt-5 grid grid-cols-2 gap-3">
-          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx.DEFAULT text-white font-semibold hover:bg-tealx.dark transition duration-300 booking-popup-trigger" data-category="hotels" data-popup-title-en="Find Hotels" data-popup-title-hi="होटल खोजें">
-            <i class="fa-solid fa-hotel w-5 text-center"></i><span class="en">Find Hotels</span><span class="hi hidden">होटल खोजें</span>
-          </a>
-          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx.DEFAULT text-white font-semibold hover:bg-tealx.dark transition duration-300 booking-popup-trigger" data-category="taxis" data-popup-title-en="Book Cabs" data-popup-title-hi="कैब बुक करें">
-            <i class="fa-solid fa-taxi w-5 text-center"></i><span class="en">Book Cabs</span><span class="hi hidden">कैब बुक करें</span>
-          </a>
-          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx.DEFAULT text-white font-semibold hover:bg-tealx.dark transition duration-300 booking-popup-trigger" data-category="tickets" data-popup-title-en="Book Tickets" data-popup-title-hi="टिकट बुक करें">
-            <i class="fa-solid fa-ticket w-5 text-center"></i><span class="en">Book Tickets</span><span class="hi hidden">टिकट बुक करें</span>
-          </a>
-          <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-tealx.DEFAULT text-white font-semibold hover:bg-tealx.dark transition duration-300 booking-popup-trigger" data-category="food" data-popup-title-en="Order Food" data-popup-title-hi="खाना ऑर्डर करें">
-            <i class="fa-solid fa-utensils w-5 text-center"></i><span class="en">Order Food</span><span class="hi hidden">खाना ऑर्डर करें</span>
-          </a>
-        </div>
-
-        <!-- Sub-options Modal -->
-        <div id="subOptionsPopup" class="fixed inset-0 z-[1001] hidden items-center justify-center bg-black bg-opacity-75 p-4">
-          <div class="relative w-full max-w-md rounded-xl bg-slate-900 shadow-xl flex flex-col">
-            <div class="flex justify-between items-center p-4 border-b border-slate-700">
-              <h4 id="subOptionsPopupTitle" class="text-lg font-semibold text-slate-100">Booking Options</h4>
-              <button id="closeSubOptionsPopup" class="text-slate-300 hover:text-white text-3xl leading-none">&times;</button>
-            </div>
-            <div id="subOptionsContainer" class="p-6 grid grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto"></div>
+      <div class="cards-sub">
+        <div class="card">
+          <img src="images/Bhimbetka/auditorium_cave.jpg" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-heritage en">Oldest Shelter</span>
+            <div class="card-title en">Auditorium Cave</div>
+            <div class="card-title hi serif">ऑडिटोरियम गुफा</div>
+            <p class="card-desc en">A massive natural hall with 'cupules' (small pits) believed to be over 100,000 years old, marking the earliest human presence.</p>
+            <p class="card-desc hi">एक विशाल प्राकृतिक हॉल जिसमें 'कप्यूल्स' (छोटे गड्ढे) हैं, जिन्हें 100,000 साल से अधिक पुराना माना जाता है।</p>
           </div>
         </div>
-      </section>
 
-      <!-- MINI GALLERY -->
-      <section class="bg-slate-800 rounded-xl shadow p-6">
-        <h3 class="font-serif text-2xl font-bold text-ember-DEFAULT en">Photo Highlights</h3>
-        <h3 class="font-serif text-2xl font-bold text-ember-DEFAULT hi hidden">झलकियाँ</h3>
-        <div class="mt-4 grid grid-cols-2 gap-3">
-          <img src="images/Bhimbetka/rock shelter.webp" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
-          <img src="images/Bhimbetka/zoo rock.jpg" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
-          <img src="images/Bhimbetka/auditorium_cave.jpg" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
-          <img src="images/Bhimbetka/Boar Rock.jpg" class="h-28 w-full object-cover rounded cursor-pointer" onclick="showImage(this.src)"/>
-        </div>
-      </section>
-
-    </aside>
-  </div>
-
-  <!-- FULL GALLERY (infinite horizontal loop) -->
-  <section id="gallery" class="py-16 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT text-center en">Bhimbetka Photo Gallery</h2>
-      <h2 class="font-serif text-3xl md:text-4xl font-bold text-ember-DEFAULT text-center hi hidden">भीमबेटका फोटो गैलरी</h2>
-
-      <div class="relative mt-10">
-        <div id="scrollGallery" class="flex gap-4 w-max animate-scroll hover:pause-scroll">
-          <!-- Original Set -->
-          <img src="images/Bhimbetka/rock shelter.webp" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/zoo rock.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/auditorium_cave.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/Boar Rock.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/handprint gallery.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/bhimbetka.jpeg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-
-          <!-- Duplicate Set -->
-          <img src="images/Bhimbetka/rock shelter.webp" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/zoo rock.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/auditorium_cave.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/Boar Rock.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/handprint gallery.jpg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
-          <img src="images/Bhimbetka/bhimbetka.jpeg" class="rounded-xl shadow-lg object-cover w-72 h-48 cursor-pointer" onclick="showImage(this.src)" alt="">
+        <div class="card">
+          <img src="images/Bhimbetka/Boar Rock.jpg" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-nature en">Mythic Art</span>
+            <div class="card-title en">The Boar Rock</div>
+            <div class="card-title hi serif">सूअर चट्टान</div>
+            <p class="card-desc en">Features a giant, mythic boar chasing a tiny human figure—a masterpiece of Mesolithic narrative art.</p>
+            <p class="card-desc hi">एक विशाल सूअर का चित्र जो एक छोटी मानव आकृति का पीछा कर रहा है—मेसोलिथिक कला का एक उत्कृष्ट उदाहरण।</p>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <style>
-      @keyframes scrollX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-      .animate-scroll { animation: scrollX 25s linear infinite; display: flex; }
-      .hover\:pause-scroll:hover { animation-play-state: paused; }
-    </style>
-  </section>
-
-  <!-- Lightbox -->
-  <div id="imagePopup" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-[100] items-center justify-center" onclick="hideImage()">
-    <div class="bg-slate-900 p-2 rounded-lg shadow-2xl relative max-w-4xl max-h-[90vh] overflow-auto">
-      <button onclick="hideImage()" class="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-white text-black text-2xl font-bold">&times;</button>
-      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
+<section style="background:var(--bg);padding:4rem 0">
+  <div class="container">
+    <div id="itinerary-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+      <div>
+        <h3 class="serif" style="font-size:1.8rem;font-weight:600;color:var(--text);margin-bottom:1.2rem">Evolution <span style="color:var(--saffron)">Timeline</span></h3>
+        <div style="display:flex;flex-direction:column;gap:.8rem">
+          <div style="padding:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px">
+            <div class="en"><strong>Upper Paleolithic</strong></div>
+            <div class="en" style="font-size:.75rem;color:var(--muted)">Huge linear figures of animals like bison and tigers in dark red.</div>
+          </div>
+          <div style="padding:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px">
+            <div class="en"><strong>Mesolithic Era</strong></div>
+            <div class="en" style="font-size:.75rem;color:var(--muted)">Smaller, detailed figures showing hunting, dancing, and daily life.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="serif" style="font-size:1.8rem;font-weight:600;color:var(--text);margin-bottom:1.2rem">Travel <span style="color:var(--saffron)">Info</span></h3>
+        <p class="en"><strong>Best Time:</strong> Oct to March (Weather is cool for walking the trails).</p>
+        <p class="en"><strong>Reach:</strong> 45 km from Bhopal Jn Railway Station or Airport. Private taxi is recommended.</p>
+        <p class="hi hidden"><strong>पहुँचें:</strong> भोपाल से 45 किमी दूर। निजी टैक्सी की सिफारिश की जाती है।</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="py-10 bg-black text-amber-200">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <a href="#home" class="font-serif text-2xl font-bold text-white">SafarSaarthi</a>
-      <p class="mt-2 text-sm text-slate-300/80 en">Your guide to India’s Prehistoric Wonder.</p>
-      <p class="mt-2 text-sm text-slate-300/80 hi hidden">भारत के प्रागैतिहासिक चमत्कार का आपका मार्गदर्शक।</p>
-      <div class="mt-6 flex justify-center gap-6">
-        <a href="index.html" class="font-semibold text-white hover:text-amber-200 en">Home</a>
-        <a href="index.html" class="font-semibold text-white hover:text-amber-200 hi hidden">होम</a>
-      </div>
-      <p class="mt-6 text-xs text-slate-400">© 2025 SafarSaarthi. All rights reserved.</p>
+<section id="map">
+  <div class="container">
+    <h2 class="section-title en"><span>Location</span> on Map</h2>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.9650971256517!2d77.60427651495806!3d22.931685685008616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c2b6c1a3f2a27%3A0x97586d90a0a75b3e!2sBhimbetka%20Rock%20Shelters!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen loading="lazy"></iframe>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    /* Language toggle (dark-only site) */
-    window.setLang = (lang) => {
-      document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
-      const enBtn = document.querySelector('.en-btn'); const hiBtn = document.querySelector('.hi-btn');
-      if (lang === 'en'){
-        enBtn.classList.add('bg-tealx-light','text-black');
-        hiBtn.classList.remove('bg-tealx-light','text-black'); hiBtn.classList.add('text-slate-300');
-      } else {
-        hiBtn.classList.add('bg-tealx-light','text-black');
-        enBtn.classList.remove('bg-tealx-light','text-black'); enBtn.classList.add('text-slate-300');
-      }
-      document.documentElement.lang = lang;
-      if (window.updateSubOptionsPopupTitleOnLangChange) window.updateSubOptionsPopupTitleOnLangChange();
-    };
+<section id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div>
+        <h2 class="section-title en">Book <span>& Visit</span></h2>
+        <div class="book-btns" style="margin-top:2rem">
+          <button class="book-btn"><div class="bicon"><i class="fa-solid fa-taxi"></i></div><div><div class="en">Bhopal Cabs</div><div class="hi">कैब बुक करें</div></div></button>
+          <button class="book-btn"><div class="bicon"><i class="fa-solid fa-hotel"></i></div><div><div class="en">Bhopal Hotels</div><div class="hi">होटल</div></div></button>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title" style="font-size:1.8rem" ><span class="en serif">Take Home</span></h2>
+        <div class="specialties" style="margin-top:1.5rem">
+          <div class="specialty-card"><img src="images/Bhimbetka/rock art.jpg"><div><div class="specialty-name en">Rock Art Souvenirs</div></div></div>
+          <div class="specialty-card"><img src="images/Bhimbetka/adivasi crafts.webp"><div><div class="specialty-name en">Tribal Crafts</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    /* Tabs */
-    window.showTab = (tabName) => {
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('content-' + tabName).classList.add('active');
-      document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
-    };
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title en">The <span>Eternal</span> Canvas</h2>
+  </div>
+  <div class="gallery-strip" id="galleryStrip">
+    <img src="images/Bhimbetka/rock shelter.webp" class="gallery-img">
+    <img src="images/Bhimbetka/zoo rock.jpg" class="gallery-img">
+    <img src="images/Bhimbetka/auditorium_cave.jpg" class="gallery-img">
+    <img src="images/Bhimbetka/Boar Rock.jpg" class="gallery-img">
+    <img src="images/Bhimbetka/handprint gallery.jpg" class="gallery-img">
+  </div>
+</section>
 
-    /* Lightbox */
-    const popup = document.getElementById('imagePopup');
-    const popupImg = document.getElementById('popupImage');
-    window.showImage = (src) => { popupImg.src = src; popup.classList.remove('hidden'); popup.classList.add('flex'); };
-    window.hideImage = () => { popup.classList.add('hidden'); popup.classList.remove('flex'); popupImg.src = ""; };
+<footer>
+  <div class="logo serif">SafarSaarthi</div>
+  <div class="tagline en">Exploring the Prehistoric Soul of India</div>
+  <div class="copy">© 2026 SafarSaarthi. All rights reserved.</div>
+</footer>
 
-    /* Route image popup */
-    const routeModal = document.getElementById('imageNotificationPopup');
-    const routeImg = document.getElementById('popupImageSrc');
-    const routeClose = document.getElementById('closeImagePopup');
-    const routeBtns = document.querySelectorAll('.image-popup-btn');
-    const openRoute = (src)=>{ routeImg.src = src; routeModal.classList.remove('hidden'); routeModal.classList.add('flex'); };
-    const closeRoute = ()=>{ routeModal.classList.add('hidden'); routeModal.classList.remove('flex'); routeImg.src=''; };
-    routeBtns.forEach(b => b.addEventListener('click', (e)=>{ e.preventDefault(); openRoute(e.currentTarget.getAttribute('data-img')); }));
-    if (routeClose) routeClose.addEventListener('click', closeRoute);
-    if (routeModal) {
-      routeModal.addEventListener('click', (e)=>{ if(e.target===routeModal) closeRoute(); });
-    }
-    document.addEventListener('keydown', (e)=>{ if((e.key==='Escape'||e.key==='Esc') && routeModal && !routeModal.classList.contains('hidden')) closeRoute(); });
 
-    /* Booking sub-options */
-    const subOptionsData = {
-      hotels: [
-        { name:'MakeMyTrip', url:'https://www.makemytrip.com/hotels/' },
-        { name:'Goibibo', url:'https://www.goibibo.com/hotels/' },
-        { name:'OYO', url:'https://www.oyorooms.com/' },
-        { name:'Agoda', url:'https://www.agoda.com/en-in/' }
-      ],
-      taxis: [
-        { name:'Ola', url:'https://book.olacabs.com/' },
-        { name:'Uber', url:'https://www.uber.com/in/en/' },
-        { name:'Rapido', url:'https://www.rapido.bike/' }
-      ],
-      tickets: [
-        { name:'IRCTC', url:'https://www.irctc.co.in/' },
-        { name:'Ixigo', url:'https://www.ixigo.com/' },
-        { name:'Redbus', url:'https://www.redbus.in/' },
-        { name:'Goibibo', url:'https://www.goibibo.com/' }
-      ],
-      food: [
-        { name:'Zomato', url:'https://www.zomato.com/' },
-        { name:'Swiggy', url:'https://www.swiggy.com/' },
-        { name:'Blinkit', url:'https://blinkit.com/' },
-        { name:'Zepto', url:'https://www.zepto.com/' }
-      ]
-    };
-
-    const subOptionsPopup = document.getElementById('subOptionsPopup');
-    const closeSubOptionsPopupBtn = document.getElementById('closeSubOptionsPopup');
-    const subOptionsPopupTitle = document.getElementById('subOptionsPopupTitle');
-    const subOptionsContainer = document.getElementById('subOptionsContainer');
-    const bookingTriggers = document.querySelectorAll('.booking-popup-trigger');
-    let activeCategoryTrigger = null;
-
-    const openSub = (cat, te, th) => {
-      const opts = subOptionsData[cat]; if(!opts) return;
-      activeCategoryTrigger = document.querySelector(`.booking-popup-trigger[data-category="${cat}"]`);
-      const lang = document.documentElement.lang || 'en';
-      subOptionsPopupTitle.textContent = lang === 'hi' ? th : te;
-      subOptionsContainer.innerHTML = '';
-      opts.forEach(o => {
-        const a = document.createElement('a'); a.href = o.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = o.name;
-        a.className = 'block text-center rounded-lg bg-slate-700/50 px-4 py-3 text-sm font-semibold text-slate-200 hover:bg-slate-600 transition-all duration-200 active:scale-95';
-        subOptionsContainer.appendChild(a);
-      });
-      subOptionsPopup.classList.remove('hidden'); subOptionsPopup.classList.add('flex');
-    };
-
-    const closeSub = ()=>{ subOptionsPopup.classList.add('hidden'); subOptionsPopup.classList.remove('flex'); subOptionsContainer.innerHTML=''; subOptionsPopupTitle.textContent=''; activeCategoryTrigger=null; };
-
-    bookingTriggers.forEach(btn => btn.addEventListener('click', (e)=>{
-      e.preventDefault();
-      openSub(btn.getAttribute('data-category'), btn.getAttribute('data-popup-title-en'), btn.getAttribute('data-popup-title-hi'));
-    }));
-    if (closeSubOptionsPopupBtn) closeSubOptionsPopupBtn.addEventListener('click', closeSub);
-    if (subOptionsPopup) subOptionsPopup.addEventListener('click', (e)=>{ if(e.target===subOptionsPopup) closeSub(); });
-
-    window.updateSubOptionsPopupTitleOnLangChange = () => {
-      if (!subOptionsPopup.classList.contains('hidden') && activeCategoryTrigger) {
-        const lang = document.documentElement.lang || 'en';
-        const te = activeCategoryTrigger.getAttribute('data-popup-title-en');
-        const th = activeCategoryTrigger.getAttribute('data-popup-title-hi');
-        subOptionsPopupTitle.textContent = lang === 'hi' ? th : te;
-      }
-    };
-
-    /* Famous strip arrows + drag */
-    (() => {
-      const strip = document.getElementById('famousStrip');
-      const prev  = document.getElementById('famousPrev');
-      const next  = document.getElementById('famousNext');
-      if (!strip || !prev || !next) return;
-
-      const step = () => {
-        const first = strip.querySelector('div.inline-block');
-        return (first?.clientWidth || 256) + 16; // card width + gap
-        };
-
-      prev.addEventListener('click', () => strip.scrollBy({ left: -step(), behavior: 'smooth' }));
-      next.addEventListener('click', () => strip.scrollBy({ left:  step(), behavior: 'smooth' }));
-
-      // Drag-to-scroll
-      let isDown = false, startX = 0, scrollLeft = 0;
-      strip.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; strip.classList.add('cursor-grabbing'); });
-      strip.addEventListener('mouseleave', () => { isDown = false; strip.classList.remove('cursor-grabbing'); });
-      strip.addEventListener('mouseup', () => { isDown = false; strip.classList.remove('cursor-grabbing'); });
-      strip.addEventListener('mousemove', e => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - strip.offsetLeft;
-        const walk = (x - startX) * 1;
-        strip.scrollLeft = scrollLeft - walk;
-      });
-    })();
-  </script>
 </body>
 </html>
