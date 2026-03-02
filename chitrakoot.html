@@ -1,302 +1,325 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Chitrakoot - Tourism Guide</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
- <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chitrakoot · The Hill of Many Wonders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
-<body class="text-gray-900 pt-20">
+<body>
 
-<!-- Header -->
-<div class="fixed top-0 left-0 w-full bg-gray-800 text-white flex justify-between items-center px-4 py-2 z-50">
-  <div class="text-xl font-bold">SafarSaarthi</div>
-  <div>
-    <span class="lang-toggle" onclick="setLang('en')">English</span> |
-    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="icon"><i class="fa-solid fa-compass"></i></div>
+    <span>SafarSaarthi</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#attractions">Attractions</a></li>
+    <li><a href="#reach">Travel</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <div class="lang-btns">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hi')">हि</button>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
-  <a href="index.html" class="bg-white text-black px-4 py-1 rounded">Back</a>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#about" onclick="toggleMenu()"><span class="en">About</span><span class="hi">परिचय</span></a>
+  <a href="#attractions" onclick="toggleMenu()"><span class="en">Attractions</span><span class="hi">आकर्षण</span></a>
+  <a href="#reach" onclick="toggleMenu()"><span class="en">Travel</span><span class="hi">यात्रा</span></a>
+  <a href="#booking" onclick="toggleMenu()"><span class="en">Book</span><span class="hi">बुक</span></a>
+  <a href="#gallery" onclick="toggleMenu()"><span class="en">Gallery</span><span class="hi">गैलरी</span></a>
 </div>
 
-<!-- Hero -->
-<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/chitrakoot.jpg');">
-  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
-    <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Chitrakoot</h1>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">चित्रकूट में आपका स्वागत है</h1>
-      <p class="text-lg md:text-2xl en">The Land of Lord Rama’s Exile</p>
-      <p class="text-lg md:text-2xl hi hidden">भगवान राम के वनवास की भूमि</p>
-    </div>
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <source src="images/Chitrakoot/chitrakoot_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow en">Madhya Pradesh, India · Spiritual Heart of Bundelkhand</div>
+    <div class="hero-eyebrow hi">मध्यप्रदेश, भारत · बुंदेलखंड का आध्यात्मिक केंद्र</div>
+    <h1 class="en">Explore<br><em>Chitrakoot</em></h1>
+    <h1 class="hi serif" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:700;line-height:1.05;color:#fff;margin-bottom:1rem">चित्रकूट<br><em style="color:var(--saffron);font-style:italic">का अन्वेषण</em></h1>
+    <p class="en">The sacred abode where Lord Rama spent his exile — a landscape of faith, ancient caves, and the holy Mandakini.</p>
+    <p class="hi">वह पावन धाम जहाँ भगवान राम ने वनवास बिताया — आस्था, प्राचीन गुफाओं और पवित्र मंदाकिनी की भूमि।</p>
+    <a href="#about" class="hero-cta">
+      <span class="en">Discover the Abode</span>
+      <span class="hi">धाम को जानें</span>
+      <i class="fa-solid fa-arrow-down" style="font-size:.75rem"></i>
+    </a>
   </div>
-</header>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
 
-<!-- Attractions -->
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Chitrakoot</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">चित्रकूट के प्रमुख आकर्षण</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Chitrakoot/ramghat.jpg" alt="Ramghat" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Ramghat</h3>
-        <h3 class="text-xl font-semibold hi hidden">रामघाट</h3>
-        <p class="text-gray-700 text-justify en">A serene ghat on the Mandakini River known for evening aartis and spiritual charm.</p>
-        <p class="text-gray-700 text-justify hi hidden">मंदाकिनी नदी के किनारे स्थित यह घाट संध्या आरती और धार्मिक वातावरण के लिए प्रसिद्ध है।</p>
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label en">The Hill of Miracles</div>
+        <div class="section-label hi">चमत्कारों की पहाड़ी</div>
+        <h2 class="section-title en">Legacy of<br><span>Chitrakoot</span></h2>
+        <h2 class="section-title hi serif">चित्रकूट<br><span>की विरासत</span></h2>
+        <p class="en" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem">Known as the <strong style="color:var(--text2);font-weight:600">Hill of Many Wonders</strong>, Chitrakoot is the legendary site where Lord Rama, Sita, and Lakshmana resided for over 11 years. It is here that the sacred meeting between Rama and Bharat took place.</p>
+        <p class="hi" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem"><strong style="color:var(--text2);font-weight:600">अनेक आश्चर्यों की पहाड़ी</strong> के रूप में प्रसिद्ध, चित्रकूट वह स्थान है जहाँ भगवान राम, सीता और लक्ष्मण 11 वर्षों तक रहे। यहीं राम और भरत का ऐतिहासिक मिलाप हुआ था।</p>
+        <p class="en" style="margin-top:.8rem;color:var(--muted);line-height:1.85;font-size:.92rem">Nestled in the northern Vindhya range, it offers a serene mix of religious ghats, dense forests, and natural springs that have inspired poets for centuries.</p>
+        <p class="hi" style="margin-top:.8rem;color:var(--muted);line-height:1.85;font-size:.92rem">विंध्य पर्वतमाला में बसा यह क्षेत्र धार्मिक घाटों, घने वनों और प्राकृतिक झरनों का संगम है, जिसने सदियों से कवियों को प्रेरित किया है।</p>
+        <div class="stats">
+          <div><div class="stat-num">11.5</div><div class="stat-label en">Years of Exile</div><div class="stat-label hi">वनवास के वर्ष</div></div>
+          <div><div class="stat-num">5<span style="font-size:1rem">km</span></div><div class="stat-label en">Parikrama</div><div class="stat-label hi">परिक्रमा</div></div>
+          <div><div class="stat-num">∞</div><div class="stat-label en">Vedic Roots</div><div class="stat-label hi">वैदिक जड़ें</div></div>
+        </div>
       </div>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Chitrakoot/kamadgiri.jpg" alt="Kamadgiri" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Kamadgiri</h3>
-        <h3 class="text-xl font-semibold hi hidden">कामदगिरि पर्वत</h3>
-        <p class="text-gray-700 text-justify en">Considered the heart of Chitrakoot, this forested hill is a sacred pilgrimage site.</p>
-        <p class="text-gray-700 text-justify hi hidden">चित्रकूट का हृदय कहे जाने वाला यह पर्वत धार्मिक आस्था का केंद्र है।</p>
-      </div>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Chitrakoot/gupt-godavari.jpg" alt="Gupt Godavari" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Gupt Godavari</h3>
-        <h3 class="text-xl font-semibold hi hidden">गुप्त गोदावरी</h3>
-        <p class="text-gray-700 text-justify en">A pair of sacred caves believed to have been used by Lord Rama and Lakshman.</p>
-        <p class="text-gray-700 text-justify hi hidden">यह दो पवित्र गुफाएँ हैं जहाँ भगवान राम और लक्ष्मण के रहने की मान्यता है।</p>
+      <div class="about-image">
+        <img src="images/chitrakoot.webp" alt="Chitrakoot" onerror="this.style.background='var(--bg3)'">
+        <div class="img-label en">The Holy Mandakini</div>
+        <div class="img-label hi">पावन मंदाकिनी</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Famous For -->
-<section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Things Chitrakoot is Famous For</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">चित्रकूट की प्रसिद्ध चीजें</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="text-center">
-      <img src="images/Chitrakoot/ayurveda.jpg" alt="Ayurveda and Wellness" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Ayurveda and Wellness</h3>
-      <h3 class="text-xl font-semibold hi hidden">आयुर्वेद और स्वास्थ्य</h3>
-      <p class="text-gray-700 text-justify en">Chitrakoot has ancient wellness centers and herbal therapies rooted in Ayurveda.</p>
-      <p class="text-gray-700 text-justify hi hidden">चित्रकूट में प्राचीन आयुर्वेदिक उपचार केंद्र और औषधीय हर्बल थेरेपी प्रसिद्ध हैं।</p>
+<section id="attractions">
+  <div class="container">
+    <div class="section-label en">Must Visit</div>
+    <div class="section-label hi">अवश्य देखें</div>
+    <h2 class="section-title en">Places to <span>Explore</span></h2>
+    <h2 class="section-title hi serif">घूमने के <span>स्थान</span></h2>
+
+    <div class="filter-pills">
+      <button class="pill active" onclick="filterCards('all',this)"><span class="en">All Places</span><span class="hi">सभी</span></button>
+      <button class="pill" onclick="filterCards('spiritual',this)"><i class="fa-solid fa-om" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Spiritual</span><span class="hi">आध्यात्मिक</span></button>
+      <button class="pill" onclick="filterCards('nature',this)"><i class="fa-solid fa-leaf" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Nature</span><span class="hi">प्रकृति</span></button>
+      <button class="pill" onclick="filterCards('heritage',this)"><i class="fa-solid fa-landmark" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Heritage</span><span class="hi">विरासत</span></button>
     </div>
-    <div class="text-center">
-      <img src="images/Chitrakoot/religious-festivals.jpg" alt="Religious Festivities" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Religious Festivals</h3>
-      <h3 class="text-xl font-semibold hi hidden">धार्मिक उत्सव</h3>
-      <p class="text-gray-700 text-justify en">Festivals like Ram Navami and Diwali are celebrated here with deep devotion and vibrant processions.</p>
-      <p class="text-gray-700 text-justify hi hidden">राम नवमी और दीपावली जैसे त्यौहार यहाँ अत्यंत श्रद्धा और भव्यता से मनाए जाते हैं।</p>
+
+    <div class="cards-layout">
+      <div class="card-featured attr-card" data-cat="spiritual">
+        <img src="images/Chitrakoot/ramghat.jpg" alt="Ram Ghat" class="card-img" onerror="this.style.background='var(--bg)'">
+        <div class="card-body">
+          <div>
+            <span class="card-tag tag-spiritual en">Spiritual · #1 Must Visit</span>
+            <span class="card-tag tag-spiritual hi">आध्यात्मिक · सर्वप्रथम</span>
+            <div class="card-title" style="font-size:1.5rem;margin-bottom:.7rem" class="en">Ram Ghat</div>
+            <p class="card-desc en" style="font-size:.85rem">The lifeblood of Chitrakoot — a series of steps on the Mandakini river where <strong style="color:var(--text2);font-weight:600">Sant Tulsidas</strong> met Lord Rama. The evening <em style="color:var(--saffron)">Deep Aaradhana</em> (Aarti) is a mesmerizing spectacle of thousands of lamps reflecting in the dark waters of the river.</p>
+            <div class="card-title hi serif" style="font-size:1.5rem;margin-bottom:.7rem">राम घाट</div>
+            <p class="card-desc hi" style="font-size:.85rem">चित्रकूट की जीवनधारा — मंदाकिनी नदी का वह किनारा जहाँ <strong style="color:var(--text2);font-weight:600">संत तुलसीदास</strong> ने भगवान राम के दर्शन किए थे। शाम की भव्य आरती आत्मा को शांति देने वाली होती है।</p>
+          </div>
+          <div class="card-meta">
+            <span><i class="fa-solid fa-location-dot"></i><span class="en">Town Centre</span><span class="hi">नगर केन्द्र</span></span>
+            <span><i class="fa-solid fa-sun"></i><span class="en">Evening Aarti</span><span class="hi">संध्या आरती</span></span>
+            <span><i class="fa-solid fa-indian-rupee-sign"></i><span class="en">Free Entry</span><span class="hi">नि:शुल्क</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-sub" id="attractionsGrid">
+
+        <div class="card attr-card" data-cat="spiritual nature">
+          <img src="images/Chitrakoot/kamadgiri.jpg" alt="Kamadgiri" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-spiritual en">Spiritual · Pilgrimage</span>
+            <span class="card-tag tag-spiritual hi">आध्यात्मिक · तीर्थ</span>
+            <div class="card-title en">Kamadgiri Mountain</div>
+            <div class="card-title hi serif">कामदगिरि पर्वत</div>
+            <p class="card-desc en">Believed to be the physical form of Rama himself. Devotees perform a <strong style="color:var(--text2);font-weight:600">5 km parikrama</strong> around this holy forested hill to seek fulfillment of their wishes.</p>
+            <p class="card-desc hi">मान्यता है कि यह स्वयं राम का स्वरूप है। भक्त अपनी मनोकामनाओं के लिए इस वनाच्छादित पहाड़ी के चारों ओर <strong style="color:var(--text2);font-weight:600">5 किमी की परिक्रमा</strong> करते हैं।</p>
+            <div class="card-meta">
+              <span><i class="fa-solid fa-person-walking"></i><span class="en">5km Parikrama</span><span class="hi">5 किमी परिक्रमा</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card attr-card" data-cat="nature heritage">
+          <img src="images/Chitrakoot/gupt-godavari.jpg" alt="Gupt Godavari" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-nature en">Nature · Cave</span>
+            <span class="card-tag tag-nature hi">प्रकृति · गुफा</span>
+            <div class="card-title en">Gupt Godavari</div>
+            <div class="card-title hi serif">गुप्त गोदावरी</div>
+            <p class="card-desc en">A geological marvel where Godavari river flows secretly through <strong style="color:var(--text2);font-weight:600">ancient caves</strong>. One must walk through knee-deep water inside the narrow stone passages to reach the shrines at the end.</p>
+            <p class="card-desc hi">एक भौगोलिक चमत्कार जहाँ प्राचीन गुफाओं के भीतर गुप्त गोदावरी की धारा बहती है। संकरी पत्थर की गुफाओं में घुटनों तक पानी में चलकर अंत में दर्शन होते हैं।</p>
+            <div class="card-meta">
+              <span><i class="fa-solid fa-map-pin"></i><span class="en">18 km from town</span><span class="hi">18 किमी दूर</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card attr-card" data-cat="nature spiritual">
+          <img src="images/Chitrakoot/hanuman-dhara.jpg" alt="Hanuman Dhara" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-nature en">Nature · Trek</span>
+            <span class="card-tag tag-nature hi">प्रकृति · ट्रेक</span>
+            <div class="card-title en">Hanuman Dhara</div>
+            <div class="card-title hi serif">हनुमान धारा</div>
+            <p class="card-desc en">A natural spring located high on a cliff that continuously falls upon an idol of Lord Hanuman. It requires a climb of <strong style="color:var(--text2);font-weight:600">360 steps</strong> and offers panoramic valley views.</p>
+            <p class="card-desc hi">पहाड़ी की ऊँचाई पर स्थित एक झरना जो निरंतर हनुमान जी की मूर्ति पर गिरता है। यहाँ तक पहुँचने के लिए <strong style="color:var(--text2);font-weight:600">360 सीढ़ियाँ</strong> चढ़नी पड़ती हैं।</p>
+            <div class="card-meta">
+              <span><i class="fa-solid fa-stairs"></i><span class="en">360 Steps</span><span class="hi">360 सीढ़ियाँ</span></span>
+            </div>
+          </div>
+        </div>
+
+      </div></div><div style="text-align:center;margin-top:2rem" id="showMoreWrap">
+      <button onclick="toggleMoreCards()" id="showMoreBtn" class="img-btn" style="margin:0 auto">
+        <i class="fa-solid fa-chevron-down" id="showMoreIcon"></i>
+        <span class="en" id="showMoreTxtEn">Show More Places</span>
+        <span class="hi" id="showMoreTxtHi">और स्थान देखें</span>
+      </button>
     </div>
-    <div class="text-center">
-      <img src="images/Chitrakoot/river-pooja.jpg" alt="River Aarti" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Mandakini River Aarti</h3>
-      <h3 class="text-xl font-semibold hi hidden">मंदाकिनी नदी की आरती</h3>
-      <p class="text-gray-700 text-justify en">A daily ritual that spiritually binds visitors to the divine energy of the town.</p>
-      <p class="text-gray-700 text-justify hi hidden">यह आरती लोगों को चित्रकूट की आध्यात्मिक ऊर्जा से जोड़ती है।</p>
-    </div>
+
   </div>
 </section>
 
-
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Maheshwar Photo Gallery</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">महेश्वर फोटो गैलरी</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-  </div>
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-  </div>
-</div>
-<script>
- 
-  function showImage(src) {
-    document.getElementById("popupImage").src = src;
-    document.getElementById("imagePopup").classList.remove("hidden");
-  }
-
-  function hideImage() {
-    document.getElementById("imagePopup").classList.add("hidden");
-    document.getElementById("popupImage").src = "";
-  }
-</script>
-</section>
-
-<!-- Image Modal -->
-
-
-<!-- Travel Options -->
-<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
-  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Maheshwar</h2>
-  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">महेश्वर आने-जाने के साधन</h2>
-  <div class="flex flex-col md:flex-row justify-around gap-8">
-    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest railway stations: Barwaha (39 km), Indore (91 km)</li>
-        <li class="hi hidden">नजदीकी रेलवे स्टेशन: बड़वाहा (39 किमी), इंदौर (91 किमी)</li>
-        <li class="en">Connected via local taxis and buses</li>
-        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
-      </ul>
-    </div>
-    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
-        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
-        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
-        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-    </div>
-  </div>
-</section>
-
-<!-- Booking Section -->
-<section id="section9">
-  <div class="container1">
-    <div class="category hotels">
-      <img src="images/hotel.jpg" alt="hotels">
-      <div class="overlay">
-        <h2>Hotels Booking</h2>
-        <button onclick="showPopup('hotelPopup')">Book Now</button>
+<section style="background:var(--bg);padding:4rem 0">
+  <div class="container">
+    <div id="itinerary-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+      <div>
+        <div class="section-label en">Plan Smart</div>
+        <div class="section-label hi">सही समय</div>
+        <h3 class="serif" style="font-size:1.8rem;font-weight:600;color:var(--text);margin-bottom:1.2rem"><span class="en">Best Time to <span style="color:var(--saffron)">Visit</span></span><span class="hi">यात्रा का <span style="color:var(--saffron)">सर्वोत्तम समय</span></span></h3>
+        <div style="display:flex;flex-direction:column;gap:.8rem">
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px">
+            <div style="width:36px;height:36px;background:rgba(74,158,142,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-star" style="color:var(--teal-light);font-size:.85rem"></i></div>
+            <div><div style="font-size:.82rem;font-weight:500;color:var(--text)" class="en">Oct – Mar (Peak)</div><div style="font-size:.82rem;font-weight:500;color:var(--text)" class="hi">अक्टूबर – मार्च (सर्वोत्तम)</div><div style="font-size:.75rem;color:var(--muted)" class="en">Pleasant for long parikramas. Festivals: Deepawali, Ram Navami</div><div style="font-size:.75rem;color:var(--muted)" class="hi">परिक्रमा के लिए सुहावना मौसम। उत्सव: दीपावली, राम नवमी</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px">
+            <div style="width:36px;height:36px;background:rgba(34,197,94,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-cloud-rain" style="color:#4ade80;font-size:.85rem"></i></div>
+            <div><div style="font-size:.82rem;font-weight:500;color:var(--text)" class="en">Jul – Sep (Monsoon)</div><div style="font-size:.82rem;font-weight:500;color:var(--text)" class="hi">जुलाई – सितंबर (मानसून)</div><div style="font-size:.75rem;color:var(--muted)" class="en">Lush green landscapes; Mandakini river flows in full glory</div><div style="font-size:.75rem;color:var(--muted)" class="hi">चारों ओर हरियाली; मंदाकिनी नदी अपने पूरे वैभव में बहती है</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label en">Suggested Plan</div>
+        <div class="section-label hi">सुझावित योजना</div>
+        <h3 class="serif" style="font-size:1.8rem;font-weight:600;color:var(--text);margin-bottom:1.2rem"><span class="en">2-Day <span style="color:var(--saffron)">Itinerary</span></span><span class="hi">2-दिन की <span style="color:var(--saffron)">यात्रा</span></span></h3>
+        <div style="display:flex;flex-direction:column;gap:0;position:relative">
+          <div style="position:absolute;left:17px;top:20px;bottom:20px;width:1px;background:var(--border)"></div>
+          <div style="display:flex;gap:1rem;padding-bottom:1.5rem;position:relative">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--saffron),var(--orange));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1rem;color:#fff;flex-shrink:0;z-index:1">1</div>
+            <div><div style="font-size:.85rem;font-weight:500;color:var(--text);margin-bottom:.4rem"><span class="en">Ghats & Parikrama</span><span class="hi">घाट और परिक्रमा</span></div><div style="font-size:.78rem;color:var(--muted);line-height:1.7"><span class="en">Kamadgiri Parikrama → Bharat Milap Temple → Ram Ghat evening Aarti</span><span class="hi">कामदगिरि परिक्रमा → भरत मिलाप मंदिर → राम घाट संध्या आरती</span></div></div>
+          </div>
+          <div style="display:flex;gap:1rem;position:relative">
+            <div style="width:36px;height:36px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1rem;color:#fff;flex-shrink:0;z-index:1">2</div>
+            <div><div style="font-size:.85rem;font-weight:500;color:var(--text);margin-bottom:.4rem"><span class="en">Caves & Waterfalls</span><span class="hi">गुफाएं और झरने</span></div><div style="font-size:.78rem;color:var(--muted);line-height:1.7"><span class="en">Janaki Kund → Sphatik Shila → Gupt Godavari → Hanuman Dhara climb</span><span class="hi">जानकी कुंड → स्फटिक शिला → गुप्त गोदावरी → हनुमान धारा</span></div></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="category cabs">
-      <img src="images/cabs.png" alt="cabs">
-      <div class="overlay">
-        <h2>Cabs & Taxi</h2>
-        <button onclick="showPopup('taxiPopup')">Book Now</button>
-      </div>
+  </div>
+</section>
+
+<section id="reach">
+  <div class="container">
+    <div class="section-label en">Getting There</div>
+    <div class="section-label hi">कैसे पहुँचें</div>
+    <h2 class="section-title en">How to <span>Reach</span></h2>
+    <h2 class="section-title hi serif">यात्रा <span>मार्ग</span></h2>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab(event,'train')"><i class="fa-solid fa-train"></i><span class="en">By Train</span><span class="hi">रेल</span></button>
+      <button class="tab" onclick="showTab(event,'road')"><i class="fa-solid fa-road"></i><span class="en">By Road</span><span class="hi">सड़क</span></button>
+      <button class="tab" onclick="showTab(event,'air')"><i class="fa-solid fa-plane"></i><span class="en">By Air</span><span class="hi">हवाई</span></button>
     </div>
-    <div class="category food">
-      <img src="images/food.jpg" alt="food">
-      <div class="overlay">
-        <h2>Food Delivery</h2>
-        <button onclick="showPopup('foodPopup')">Book Now</button>
-      </div>
+    <div class="tab-panel active" id="panel-train">
+      <h4 class="en">Nearest Station: Chitrakoot Dham Karwi (CKTD)</h4>
+      <h4 class="hi serif">निकटतम स्टेशन: चित्रकूट धाम कर्वी (CKTD)</h4>
+      <p class="en" style="margin-top:.5rem">Located on the Manikpur-Jhansi line, it is well-connected to Delhi, Mumbai, and Prayagraj. Taxis are available at the station.</p>
+      <p class="hi" style="margin-top:.5rem">मानिकपुर-झांसी लाइन पर स्थित, यह दिल्ली, मुंबई और प्रयागराज से अच्छी तरह जुड़ा है। स्टेशन से टैक्सियाँ उपलब्ध हैं।</p>
+    </div>
+    <div class="tab-panel" id="panel-air">
+      <h4 class="en">Nearest Airport: Prayagraj (IXD)</h4>
+      <h4 class="hi serif">निकटतम हवाई अड्डा: प्रयागराज (IXD)</h4>
+      <p class="en" style="margin-top:.5rem">Prayagraj Airport is <strong>~130 km</strong> away. Varanasi (VNS) is another alternative at <strong>~260 km</strong> distance.</p>
+      <p class="hi" style="margin-top:.5rem">प्रयागराज हवाई अड्डा <strong>~130 किमी</strong> दूर है। वाराणसी (VNS) <strong>~260 किमी</strong> की दूरी पर एक अन्य विकल्प है।</p>
     </div>
   </div>
 </section>
 
-
- 
-<!-- Booking Popups -->
-<div id="hotelPopup" class="popup">
-  <h2>Hotels Booking Platforms</h2>
-  <div class="options">
-    <div class="option">
-      <a href="https://www.goibibo.com/hotels/" target="_blank">
-        <img src="images/goibibo.jpeg" alt="Goibibo">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.oyorooms.com/" target="_blank">
-        <img src="images/oyo.png" alt="OYO">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.makemytrip.com/hotels/" target="_blank">
-        <img src="images/makemytrip.webp" alt="MakeMyTrip">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.agoda.com/" target="_blank">
-        <img src="images/agoda.png" alt="Agoda">
-      </a>
+<section id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div>
+        <div class="section-label en">Plan Your Trip</div>
+        <div class="section-label hi">यात्रा योजना</div>
+        <h2 class="section-title en">Book <span>& Explore</span></h2>
+        <h2 class="section-title hi serif">बुक <span>करें</span></h2>
+        <div class="book-btns" style="margin-top:2rem">
+          <button class="book-btn" onclick="openBookPopup('hotels','Find Hotels','होटल खोजें')"><div class="bicon"><i class="fa-solid fa-hotel"></i></div><div><div style="font-size:.82rem;font-weight:500" class="en">Find Hotels</div><div style="font-size:.82rem;font-weight:500" class="hi">होटल</div><div style="font-size:.72rem;color:var(--muted)" class="en">Best stays</div><div style="font-size:.72rem;color:var(--muted)" class="hi">आवास</div></div></button>
+          <button class="book-btn" onclick="openBookPopup('taxis','Book Taxis','टैक्सी बुक')"><div class="bicon"><i class="fa-solid fa-taxi"></i></div><div><div style="font-size:.82rem;font-weight:500" class="en">Book Taxis</div><div style="font-size:.82rem;font-weight:500" class="hi">टैक्सी</div><div style="font-size:.72rem;color:var(--muted)" class="en">Local rides</div><div style="font-size:.72rem;color:var(--muted)" class="hi">स्थानीय</div></div></button>
+        </div>
+      </div>
+      <div>
+        <div class="section-label en">Local Specialties</div>
+        <div class="section-label hi">स्थानीय विशेषताएँ</div>
+        <h2 class="section-title" style="font-size:1.8rem" ><span class="en serif">Authentic Chitrakoot</span><span class="hi serif">चित्रकूट की सौगात</span></h2>
+        <div class="specialties" style="margin-top:1.5rem">
+          <div class="specialty-card"><img src="images/Chitrakoot/toys.jpg" alt="Toys"><div><div class="specialty-name en">Wooden Toys</div><div class="specialty-name hi">लकड़ी के खिलौने</div></div></div>
+          <div class="specialty-card"><img src="images/Chitrakoot/ayurveda.jpg" alt="Ayurveda"><div><div class="specialty-name en">Ayurvedic Herbs</div><div class="specialty-name hi">आयुर्वेदिक जड़ी-बूटियाँ</div></div></div>
+        </div>
+      </div>
     </div>
   </div>
-  <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
-</div>
-
-<div id="taxiPopup" class="popup">
-  <h2>Cabs & Taxi Booking Platforms</h2>
-  <div class="options">
-    <div class="option">
-      <a href="https://book.olacabs.com/" target="_blank">
-        <img src="images/ola.png" alt="Ola">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.uber.com/in/en/" target="_blank">
-        <img src="images/uber.png" alt="Uber">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.rapido.bike/" target="_blank">
-        <img src="images/Rapido.png" alt="Rapido">
-      </a>
+</section>
+<section id="map">
+  <div class="container">
+    <div class="section-label en">Find Us</div>
+    <div class="section-label hi">स्थान</div>
+    <h2 class="section-title en"><span>Location</span> on Map</h2>
+    <h2 class="section-title hi serif">नक्शे पर <span>स्थान</span></h2>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d57563.8837332716!2d80.84433602167969!3d25.178044700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3984b39b09a7b973%3A0x673459c2b4c52994!2sChitrakoot%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1709400000000!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
-  <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
-</div>
+</section>
 
-<div id="foodPopup" class="popup">
-  <h2>Food Delivery Platforms</h2>
-  <div class="options">
-    <div class="option">
-      <a href="https://www.zomato.com/" target="_blank">
-        <img src="images/zomato.png" alt="Zomato">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.swiggy.com/" target="_blank">
-        <img src="images/swiggy.png" alt="Swiggy">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://blinkit.com/" target="_blank">
-        <img src="images/blinkit.png" alt="Blinkit">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.bigbasket.com/" target="_blank">
-        <img src="images/bigbasket.png" alt="BigBasket">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.zeptonow.com/" target="_blank">
-        <img src="images/zepto.png" alt="Zepto">
-      </a>
-    </div>
+<section id="gallery">
+  <div class="container">
+    <div class="section-label en">Visual Journey</div>
+    <div class="section-label hi">दृश्य यात्रा</div>
+    <h2 class="section-title en">Photo <span>Gallery</span></h2>
+    <h2 class="section-title hi serif">फोटो <span>गैलरी</span></h2>
   </div>
-  <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
+  <div class="gallery-strip" id="galleryStrip" style="padding:0 max(1.5rem,(100vw - 1100px)/2)">
+    <img src="images/Chitrakoot/ramghat_view.webp" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="images/Chitrakoot/kamadgiri_gate.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="images/Chitrakoot/gupt_godavari_cave.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="images/Chitrakoot/hanuman_dhara_top.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="images/Chitrakoot/sphatik_shila.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="images/Chitrakoot/janaki_kund.jpeg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="images/Chitrakoot/sati_anusuya.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+  </div>
+</section>
+<footer>
+  <div class="logo serif">SafarSaarthi</div>
+  <div class="tagline en">Your guide to the Heart of India</div>
+  <div class="tagline hi">भारत के हृदय का आपका मार्गदर्शक</div>
+  <div class="copy">© 2024 SafarSaarthi. All rights reserved.</div>
+</footer>
+
+<div class="popup-overlay" id="imgPopup" onclick="closeImgPopup(event)">
+  <div class="img-popup-box">
+    <button class="img-popup-close" onclick="closeImgPopup(null)">×</button>
+    <img id="imgPopupSrc" src="" alt="">
+  </div>
 </div>
-
-<script>
-  function showPopup(id) {
-    document.getElementById(id).style.display = 'block';
-  }
-  function closePopup(id) {
-    document.getElementById(id).style.display = 'none';
-  }
-  function setLang(lang) {
-    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
-  }
-</script>
-
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer1.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
 
 </body>
 </html>

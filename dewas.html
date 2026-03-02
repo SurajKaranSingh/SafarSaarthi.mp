@@ -1,300 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Dewas - Tourism Guide</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dewas · The Abode of the Goddess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
-<body class="text-gray-900 pt-20">
+<body>
 
-<!-- Header Bar -->
-<div class="fixed top-0 left-0 w-full bg-gray-800 text-white flex justify-between items-center px-4 py-2 z-50">
-  <div class="text-xl font-bold">SafarSaarthi</div>
-  <div>
-    <span class="lang-toggle" onclick="setLang('en')">English</span> |
-    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="icon"><i class="fa-solid fa-compass"></i></div>
+    <span>SafarSaarthi</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#attractions">Attractions</a></li>
+    <li><a href="#reach">Travel</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <div class="lang-btns">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hi')">हि</button>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
-  <a href="index.html" class="bg-white text-black px-4 py-1 rounded">Back</a>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#about" onclick="toggleMenu()"><span class="en">About</span><span class="hi">परिचय</span></a>
+  <a href="#attractions" onclick="toggleMenu()"><span class="en">Attractions</span><span class="hi">आकर्षण</span></a>
+  <a href="#reach" onclick="toggleMenu()"><span class="en">Travel</span><span class="hi">यात्रा</span></a>
+  <a href="#booking" onclick="toggleMenu()"><span class="en">Book</span><span class="hi">बुक</span></a>
+  <a href="#gallery" onclick="toggleMenu()"><span class="en">Gallery</span><span class="hi">गैलरी</span></a>
 </div>
 
-<!-- Hero Section -->
-<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/Dewas/dewasmain.jpg');">
-  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
-    <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Dewas</h1>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">देवास में आपका स्वागत है</h1>
-      <p class="text-lg md:text-2xl en">City of Maa Chamunda and Industries</p>
-      <p class="text-lg md:text-2xl hi hidden">माँ चामुंडा और उद्योगों का शहर</p>
-    </div>
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <source src="images/Dewas/dewas_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow en">Malwa Region, Madhya Pradesh · The City of Two Goddesses</div>
+    <div class="hero-eyebrow hi">मालवा क्षेत्र, मध्यप्रदेश · दो देवियों का शहर</div>
+    <h1 class="en">Explore<br><em>Dewas</em></h1>
+    <h1 class="hi serif" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:700;line-height:1.05;color:#fff;margin-bottom:1rem">देवास<br><em style="color:var(--saffron);font-style:italic">का अन्वेषण</em></h1>
+    <p class="en">Where spirituality meets industry — home to the sacred Tekri hilltop and the heartbeat of Malwa's heritage.</p>
+    <p class="hi">जहाँ आध्यात्मिकता और उद्योग मिलते हैं — पवित्र टेकरी और मालवा की विरासत का संगम।</p>
+    <a href="#about" class="hero-cta">
+      <span class="en">Discover the Divine</span>
+      <span class="hi">दिव्यता खोजें</span>
+      <i class="fa-solid fa-arrow-down" style="font-size:.75rem"></i>
+    </a>
   </div>
-</header>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
 
-<!-- Attractions -->
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Dewas</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">देवास के प्रमुख आकर्षण</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Dewas/tekri.jpg" alt="Tekri Mata Temple" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Tekri Mata Temple</h3>
-        <h3 class="text-xl font-semibold hi hidden">टेकरी माता मंदिर</h3>
-        <p class="text-gray-700 text-justify en">Located on a hilltop, this temple offers a panoramic view and spiritual peace.</p>
-        <p class="text-gray-700 text-justify hi hidden">पहाड़ी पर स्थित यह मंदिर सुंदर दृश्य और आध्यात्मिक शांति प्रदान करता है।</p>
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label en">The Industrial Spirit</div>
+        <div class="section-label hi">औद्योगिक आत्मा</div>
+        <h2 class="section-title en">Legacy of<br><span>Dewas</span></h2>
+        <h2 class="section-title hi serif">देवास<br><span>की विरासत</span></h2>
+        <p class="en" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem">Dewas takes its name from <strong style="color:var(--text2);font-weight:600">Devi-Vashini</strong>, meaning the abode of the Goddess. The city is famous for its hilltop shrines of Maa Chamunda and Maa Tulja Bhavani, offering a panoramic view of the Malwa plateau.</p>
+        <p class="hi" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem">देवास का नाम <strong style="color:var(--text2);font-weight:600">देवी-वासिनी</strong> से पड़ा है, जिसका अर्थ है देवी का निवास। यह शहर माँ चामुंडा और माँ तुलजा भवानी के पहाड़ी मंदिरों के लिए प्रसिद्ध है।</p>
+        <p class="en" style="margin-top:.8rem;color:var(--muted);line-height:1.85;font-size:.92rem">Apart from its spiritual significance, Dewas is a major industrial hub and is home to the Bank Note Press, where the nation's currency is born.</p>
+        <p class="hi" style="margin-top:.8rem;color:var(--muted);line-height:1.85;font-size:.92rem">आध्यात्मिक महत्व के अलावा, देवास एक प्रमुख औद्योगिक केंद्र है और बैंक नोट प्रेस का घर है।</p>
+        <div class="stats">
+          <div><div class="stat-num">300<span style="font-size:1rem">ft</span></div><div class="stat-label en">Tekri Height</div><div class="stat-label hi">टेकरी की ऊँचाई</div></div>
+          <div><div class="stat-num">2</div><div class="stat-label en">Sacred Devis</div><div class="stat-label hi">पवित्र देवियाँ</div></div>
+          <div><div class="stat-num">BNP</div><div class="stat-label en">Note Press</div><div class="stat-label hi">नोट प्रेस</div></div>
+        </div>
       </div>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Dewas/meetha-talab.jpg" alt="Meetha Talab" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Meetha Talab</h3>
-        <h3 class="text-xl font-semibold hi hidden">मीठा तालाब</h3>
-        <p class="text-gray-700 text-justify en">A popular lakefront spot for locals and tourists to relax and enjoy the view.</p>
-        <p class="text-gray-700 text-justify hi hidden">स्थानीय लोगों और पर्यटकों के लिए यह तालाब विश्राम का एक सुंदर स्थान है।</p>
-      </div>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Dewas/choti-mata.jpg" alt="Choti Mata Temple" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Choti Mata Temple</h3>
-        <h3 class="text-xl font-semibold hi hidden">छोटी माता मंदिर</h3>
-        <p class="text-gray-700 text-justify en">An important pilgrimage site with rich religious traditions.</p>
-        <p class="text-gray-700 text-justify hi hidden">एक प्रमुख धार्मिक स्थल जो श्रद्धालुओं के लिए बहुत महत्वपूर्ण है।</p>
+      <div class="about-image">
+        <img src="images/dewas_tekri.webp" alt="Dewas Tekri" onerror="this.style.background='var(--bg3)'">
+        <div class="img-label en">Maa Chamunda Tekri</div>
+        <div class="img-label hi">माँ चामुंडा टेकरी</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Famous For -->
-<section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Things Dewas is Famous For</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">देवास की प्रसिद्ध चीजें</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="text-center">
-      <img src="images/Dewas/industry.jpg" alt="Industrial Hub" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Industrial Hub</h3>
-      <h3 class="text-xl font-semibold hi hidden">औद्योगिक केंद्र</h3>
-      <p class="text-gray-700 text-justify en">Home to several manufacturing plants and industrial units.</p>
-      <p class="text-gray-700 text-justify hi hidden">कई औद्योगिक इकाइयों और निर्माण संयंत्रों का केंद्र।</p>
+<section id="attractions">
+  <div class="container">
+    <div class="section-label en">Must Visit</div>
+    <div class="section-label hi">अवश्य देखें</div>
+    <h2 class="section-title en">Places to <span>Explore</span></h2>
+    <h2 class="section-title hi serif">घूमने के <span>स्थान</span></h2>
+
+    <div class="filter-pills">
+      <button class="pill active" onclick="filterCards('all',this)"><span class="en">All Places</span><span class="hi">सभी</span></button>
+      <button class="pill" onclick="filterCards('spiritual',this)"><i class="fa-solid fa-om" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Spiritual</span><span class="hi">आध्यात्मिक</span></button>
+      <button class="pill" onclick="filterCards('nature',this)"><i class="fa-solid fa-leaf" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Nature</span><span class="hi">प्रकृति</span></button>
+      <button class="pill" onclick="filterCards('heritage',this)"><i class="fa-solid fa-landmark" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Heritage</span><span class="hi">विरासत</span></button>
     </div>
-    <div class="text-center">
-      <img src="images/Dewas/sweets.jpg" alt="Local Sweets" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Local Sweets</h3>
-      <h3 class="text-xl font-semibold hi hidden">स्थानीय मिठाइयाँ</h3>
-      <p class="text-gray-700 text-justify en">Famous for its peda, khopra pak, and other traditional sweets.</p>
-      <p class="text-gray-700 text-justify hi hidden">यहाँ के पेड़ा, खोप्रा पाक और पारंपरिक मिठाइयाँ प्रसिद्ध हैं।</p>
-    </div>
-    <div class="text-center">
-      <img src="images/Dewas/devotional.webp" alt="Religious Harmony" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Religious Harmony</h3>
-      <h3 class="text-xl font-semibold hi hidden">धार्मिक सौहार्द</h3>
-      <p class="text-gray-700 text-justify en">Known for unity in festivals and spiritual coexistence.</p>
-      <p class="text-gray-700 text-justify hi hidden">यह शहर विभिन्न धर्मों के त्योहारों में एकता और सौहार्द के लिए जाना जाता है।</p>
-    </div>
-  </div>
-</section>
 
-
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Dewas Photo Gallery</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">देवास फोटो गैलरी</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="images/Dewas/gidiya koh.jpg" alt="Gidiya Koh" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Dewas/kheoni wildlife.jpg" alt="Kheoni Wildlide Sanctuary" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Dewas/pawar chattris.avif" alt="Pawar Chattris" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Dewas/kavadia hills.webp" alt="Kavadia Hills" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Dewas/dewasmain.jpg" alt="Dewas City" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/Dewas/tulja mata.jpg" alt="Tulja Mata" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-  </div>
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-  </div>
-</div>
-<script>
- 
-  function showImage(src) {
-    document.getElementById("popupImage").src = src;
-    document.getElementById("imagePopup").classList.remove("hidden");
-  }
-
-  function hideImage() {
-    document.getElementById("imagePopup").classList.add("hidden");
-    document.getElementById("popupImage").src = "";
-  }
-</script>
-</section>
-
-<!-- Image Modal -->
-
-
-<!-- Travel Options -->
-<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
-  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Dewas</h2>
-  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">देवास आने-जाने के साधन</h2>
-  <div class="flex flex-col md:flex-row justify-around gap-8">
-    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest railway stations: Dewas, Indore (40.9 km)</li>
-        <li class="hi hidden">नजदीकी रेलवे स्टेशन: देवास, इंदौर (40.9 किमी)</li>
-        <li class="en">Connected via local taxis and buses</li>
-        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
-      </ul>
-    </div>
-    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
-        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
-        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
-        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-    </div>
-  </div>
-</section>
-
-<!-- Booking Section -->
-<section id="section9">
-  <div class="container1">
-    <div class="category hotels">
-      <img src="images/hotel.jpg" alt="hotels">
-      <div class="overlay">
-        <h2>Hotels Booking</h2>
-        <button onclick="showPopup('hotelPopup')">Book Now</button>
+    <div class="cards-layout">
+      <div class="card-featured attr-card" data-cat="spiritual nature">
+        <img src="images/Dewas/tekri_temple.jpg" alt="Maa Chamunda Temple" class="card-img" onerror="this.style.background='var(--bg)'">
+        <div class="card-body">
+          <div>
+            <span class="card-tag tag-spiritual en">Spiritual · #1 Must Visit</span>
+            <span class="card-tag tag-spiritual hi">आध्यात्मिक · सर्वप्रथम</span>
+            <div class="card-title" style="font-size:1.5rem;margin-bottom:.7rem" class="en">Maa Chamunda & Tulja Bhavani Temple</div>
+            <p class="card-desc en" style="font-size:.85rem">Perched on a conical hill known as the <strong style="color:var(--text2);font-weight:600">Tekri</strong>, these temples are a major pilgrimage site. Devotees can reach the top via a ropeway or a winding stone path. The hill houses two shrines: the elder Maa Tulja Bhavani and the younger Maa Chamunda.</p>
+            <div class="card-title hi serif" style="font-size:1.5rem;margin-bottom:.7rem">माँ चामुंडा और तुलजा भवानी मंदिर</div>
+            <p class="card-desc hi" style="font-size:.85rem">टेकरी नामक पहाड़ी पर स्थित ये मंदिर प्रमुख तीर्थ स्थल हैं। भक्त रोपवे या सीढ़ियों के माध्यम से ऊपर पहुँच सकते हैं। यहाँ दो स्वरूप विराजमान हैं: बड़ी माँ तुलजा भवानी और छोटी माँ चामुंडा।</p>
+          </div>
+          <div class="card-meta">
+            <span><i class="fa-solid fa-location-dot"></i><span class="en">City Center</span><span class="hi">शहर केंद्र</span></span>
+            <span><i class="fa-solid fa-cable-car"></i><span class="en">Ropeway Available</span><span class="hi">रोपवे सुविधा</span></span>
+          </div>
+        </div>
       </div>
+
+      <div class="cards-sub" id="attractionsGrid">
+
+        <div class="card attr-card" data-cat="nature">
+          <img src="images/Dewas/kavadia_hills.jpg" alt="Kavadia Hills" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-nature en">Nature · Geological</span>
+            <span class="card-tag tag-nature hi">प्रकृति · भूवैज्ञानिक</span>
+            <div class="card-title en">Kavadia Hills</div>
+            <div class="card-title hi serif">कावड़िया पहाड़ियाँ</div>
+            <p class="card-desc en">Famous for unique <strong style="color:var(--text2);font-weight:600">volcanic rock formations</strong> that resemble man-made stone pillars. It's a hidden geological gem located about 30km from Dewas.</p>
+            <p class="card-desc hi">ज्वालामुखी चट्टानों के अनूठे संरचनाओं के लिए प्रसिद्ध जो मानव निर्मित खंभों जैसी दिखती हैं। देवास से 30 किमी दूर एक अद्भुत स्थल।</p>
+          </div>
+        </div>
+
+        <div class="card attr-card" data-cat="heritage">
+          <img src="images/Dewas/bnp.jpg" alt="Bank Note Press" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-heritage en">Heritage · Industrial</span>
+            <span class="card-tag tag-heritage hi">विरासत · औद्योगिक</span>
+            <div class="card-title en">Bank Note Press (BNP)</div>
+            <div class="card-title hi serif">बैंक नोट प्रेस</div>
+            <p class="card-desc en">One of India's four currency printing presses. While entry is restricted, the <strong style="color:var(--text2);font-weight:600">Currency Museum</strong> nearby provides insights into the history of Indian money.</p>
+            <p class="card-desc hi">भारत के चार मुद्रा मुद्रण प्रेसों में से एक। पास का मुद्रा संग्रहालय भारतीय मुद्रा के इतिहास की जानकारी देता है।</p>
+          </div>
+        </div>
+
+        <div class="card attr-card" data-cat="nature">
+          <img src="images/Dewas/meetha_talab.jpg" alt="Meetha Talab" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-nature en">Nature · Recreation</span>
+            <span class="card-tag tag-nature hi">प्रकृति · मनोरंजन</span>
+            <div class="card-title en">Meetha Talab</div>
+            <div class="card-title hi serif">मीठा तालाब</div>
+            <p class="card-desc en">A beautiful lake at the foot of the Tekri hill. Recently developed with a fountain, lighting, and a garden, it is the favorite evening spot for locals.</p>
+            <p class="card-desc hi">टेकरी की तलहटी में स्थित एक सुंदर झील। फव्वारों और प्रकाश व्यवस्था के साथ यह शाम के समय घूमने के लिए बेहतरीन स्थान है।</p>
+          </div>
+        </div>
+
+      </div></div><div style="text-align:center;margin-top:2rem" id="showMoreWrap">
+      <button onclick="toggleMoreCards()" id="showMoreBtn" class="img-btn" style="margin:0 auto">
+        <i class="fa-solid fa-chevron-down" id="showMoreIcon"></i>
+        <span class="en" id="showMoreTxtEn">Show More Places</span>
+        <span class="hi" id="showMoreTxtHi">और स्थान देखें</span>
+      </button>
     </div>
-    <div class="category cabs">
-      <img src="images/cabs.png" alt="cabs">
-      <div class="overlay">
-        <h2>Cabs & Taxi</h2>
-        <button onclick="showPopup('taxiPopup')">Book Now</button>
-      </div>
+
+  </div>
+</section>
+
+<section id="reach">
+  <div class="container">
+    <div class="section-label en">Getting There</div>
+    <div class="section-label hi">कैसे पहुँचें</div>
+    <h2 class="section-title en">How to <span>Reach</span></h2>
+    <h2 class="section-title hi serif">यात्रा <span>मार्ग</span></h2>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab(event,'road')"><i class="fa-solid fa-road"></i><span class="en">By Road</span><span class="hi">सड़क</span></button>
+      <button class="tab" onclick="showTab(event,'train')"><i class="fa-solid fa-train"></i><span class="en">By Train</span><span class="hi">रेल</span></button>
+      <button class="tab" onclick="showTab(event,'air')"><i class="fa-solid fa-plane"></i><span class="en">By Air</span><span class="hi">हवाई</span></button>
     </div>
-    <div class="category food">
-      <img src="images/food.jpg" alt="food">
-      <div class="overlay">
-        <h2>Food Delivery</h2>
-        <button onclick="showPopup('foodPopup')">Book Now</button>
-      </div>
+    <div class="tab-panel active" id="panel-road">
+      <h4 class="en">NH-52 Connectivity</h4>
+      <p class="en">Dewas is highly accessible by road. It is just **35 km** from Indore and **150 km** from Bhopal via the super-expressway.</p>
+      <h4 class="hi serif">NH-52 कनेक्टिविटी</h4>
+      <p class="hi">देवास सड़क मार्ग से बहुत अच्छी तरह जुड़ा है। यह इंदौर से मात्र **35 किमी** और भोपाल से **150 किमी** दूर है।</p>
+    </div>
+    <div class="tab-panel" id="panel-train">
+      <h4 class="en">Dewas Junction (DWX)</h4>
+      <p class="en">The Dewas Railway Station is a major junction on the Indore–Ujjain and Indore–Bhopal lines.</p>
+      <h4 class="hi serif">देवास जंक्शन (DWX)</h4>
+      <p class="hi">देवास रेलवे स्टेशन इंदौर-उज्जैन और इंदौर-भोपाल लाइनों पर एक प्रमुख जंक्शन है।</p>
     </div>
   </div>
 </section>
 
-<!-- Booking Popups -->
-<div id="hotelPopup" class="popup">
-  <h2>Hotels Booking Platforms</h2>
-  <div class="options">
-    <div class="option">
-      <a href="https://www.goibibo.com/hotels/" target="_blank">
-        <img src="images/goibibo.jpeg" alt="Goibibo">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.oyorooms.com/" target="_blank">
-        <img src="images/oyo.png" alt="OYO">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.makemytrip.com/hotels/" target="_blank">
-        <img src="images/makemytrip.webp" alt="MakeMyTrip">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.agoda.com/" target="_blank">
-        <img src="images/agoda.png" alt="Agoda">
-      </a>
+<section id="map">
+  <div class="container">
+    <div class="section-label en">Find Us</div>
+    <div class="section-label hi">स्थान</div>
+    <h2 class="section-title en"><span>Location</span> on Map</h2>
+    <h2 class="section-title hi serif">नक्शे पर <span>स्थान</span></h2>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58807.12644265415!2d76.023259!3d22.962071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962e24d2715025d%3A0xc3910c598075308!2sDewas%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
-  <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
-</div>
+</section>
 
-<div id="taxiPopup" class="popup">
-  <h2>Cabs & Taxi Booking Platforms</h2>
-  <div class="options">
-    <div class="option">
-      <a href="https://book.olacabs.com/" target="_blank">
-        <img src="images/ola.png" alt="Ola">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.uber.com/in/en/" target="_blank">
-        <img src="images/uber.png" alt="Uber">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.rapido.bike/" target="_blank">
-        <img src="images/Rapido.png" alt="Rapido">
-      </a>
-    </div>
+<section id="gallery">
+  <div class="container">
+    <div class="section-label en">Visual Journey</div>
+    <div class="section-label hi">दृश्य यात्रा</div>
+    <h2 class="section-title en">Photo <span>Gallery</span></h2>
+    <h2 class="section-title hi serif">फोटो <span>गैलरी</span></h2>
   </div>
-  <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
-</div>
-
-<div id="foodPopup" class="popup">
-  <h2>Food Delivery Platforms</h2>
-  <div class="options">
-    <div class="option">
-      <a href="https://www.zomato.com/" target="_blank">
-        <img src="images/zomato.png" alt="Zomato">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.swiggy.com/" target="_blank">
-        <img src="images/swiggy.png" alt="Swiggy">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://blinkit.com/" target="_blank">
-        <img src="images/blinkit.png" alt="Blinkit">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.bigbasket.com/" target="_blank">
-        <img src="images/bigbasket.png" alt="BigBasket">
-      </a>
-    </div>
-    <div class="option">
-      <a href="https://www.zeptonow.com/" target="_blank">
-        <img src="images/zepto.png" alt="Zepto">
-      </a>
-    </div>
+  <div class="gallery-strip" id="galleryStrip">
+    <img src="images/Dewas/gallery1.webp" class="gallery-img" onclick="openImgPopup(this.src)">
+    <img src="images/Dewas/gallery2.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
+    <img src="images/Dewas/gallery3.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
+    <img src="images/Dewas/gallery4.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
   </div>
-  <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
-</div>
-<script>
-  function showPopup(id) {
-    document.getElementById(id).style.display = 'block';
-  }
-  function closePopup(id) {
-    document.getElementById(id).style.display = 'none';
-  }
-  function setLang(lang) {
-    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
-  }
-</script>
+</section>
 
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer1.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
+<footer>
+  <div class="logo serif">SafarSaarthi</div>
+  <div class="tagline en">Your guide to the Heart of India</div>
+  <div class="tagline hi">भारत के हृदय का आपका मार्गदर्शक</div>
+  <div class="copy">© 2026 SafarSaarthi. All rights reserved.</div>
+</footer>
+
+<div class="popup-overlay" id="imgPopup" onclick="closeImgPopup(event)">
+  <div class="img-popup-box">
+    <button class="img-popup-close" onclick="closeImgPopup(null)">×</button>
+    <img id="imgPopupSrc" src="" alt="">
+  </div>
+</div>
 
 </body>
 </html>

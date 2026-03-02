@@ -229,3 +229,30 @@ html[lang="hi"] em.hi,
 html[lang="hi"] strong.hi {
     display: inline !important;
 }
+/* Initial state for hidden cards */
+.hidden-card {
+  display: none !important;
+}
+
+/* State when "Show More" is clicked */
+.show-now {
+  display: block !important;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Icon rotation transition */
+#showMoreIcon {
+  transition: transform 0.3s ease;
+}

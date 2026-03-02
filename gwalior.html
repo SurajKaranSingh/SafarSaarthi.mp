@@ -1,288 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Gwalior - Tourism Guide</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gwalior · The Gibraltar of India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
-<body class="text-gray-900 pt-20">
+<body>
 
-<!-- Header -->
-<div class="flex justify-between items-center py-4 px-6 bg-gray-700 text-white fixed top-0 left-0 w-full z-50 shadow">
-  <div class="font-bold text-xl">SafarSaarthi</div>
-  <div class="text-center">
-    <span class="lang-toggle" onclick="setLang('en')">English</span> |
-    <span class="lang-toggle" onclick="setLang('hi')">हिंदी</span>
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="icon"><i class="fa-solid fa-compass"></i></div>
+    <span>SafarSaarthi</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#attractions">Attractions</a></li>
+    <li><a href="#reach">Travel</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <div class="lang-btns">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hi')">हि</button>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
-  <div>
-    <a href="index.html" class="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition">Back</a>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#about" onclick="toggleMenu()"><span class="en">About</span><span class="hi">परिचय</span></a>
+  <a href="#attractions" onclick="toggleMenu()"><span class="en">Attractions</span><span class="hi">आकर्षण</span></a>
+  <a href="#reach" onclick="toggleMenu()"><span class="en">Travel</span><span class="hi">यात्रा</span></a>
+  <a href="#booking" onclick="toggleMenu()"><span class="en">Book</span><span class="hi">बुक</span></a>
+  <a href="#gallery" onclick="toggleMenu()"><span class="en">Gallery</span><span class="hi">गैलरी</span></a>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <source src="images/Gwalior/gwalior_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow en">Northern Madhya Pradesh, India · UNESCO City of Music</div>
+    <div class="hero-eyebrow hi">उत्तरी मध्यप्रदेश, भारत · यूनेस्को संगीत शहर</div>
+    <h1 class="en">Explore<br><em>Gwalior</em></h1>
+    <h1 class="hi serif" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:700;line-height:1.05;color:#fff;margin-bottom:1rem">ग्वालियर<br><em style="color:var(--saffron);font-style:italic">का अन्वेषण</em></h1>
+    <p class="en">A majestic tapestry of royal palaces, impregnable forts, and the timeless melodies of Tansen.</p>
+    <p class="hi">शाही महलों, अजेय किलों और तानसेन की कालातीत धुनों का एक राजसी संगम।</p>
+    <a href="#about" class="hero-cta">
+      <span class="en">Discover the Royalty</span>
+      <span class="hi">राजसी वैभव जानें</span>
+      <i class="fa-solid fa-arrow-down" style="font-size:.75rem"></i>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label en">The Fortress of History</div>
+        <div class="section-label hi">इतिहास का किला</div>
+        <h2 class="section-title en">Soul of<br><span>Gwalior</span></h2>
+        <h2 class="section-title hi serif">ग्वालियर<br><span>की आत्मा</span></h2>
+        <p class="en" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem">Described as the <strong style="color:var(--text2);font-weight:600">Gibraltar of India</strong>, Gwalior is dominated by its hill-top fort. For centuries, it has been the seat of powerful dynasties including the Tomars, Mughals, and Scindias.</p>
+        <p class="hi" style="margin-top:1.5rem;color:var(--muted);line-height:1.85;font-size:.92rem"><strong style="color:var(--text2);font-weight:600">भारत का जिब्राल्टर</strong> कहे जाने वाला ग्वालियर अपने पहाड़ी किले के लिए विख्यात है। सदियों से यह तोमर, मुगल और सिंधिया राजवंशों की सत्ता का केंद्र रहा है।</p>
+        <p class="en" style="margin-top:.8rem;color:var(--muted);line-height:1.85;font-size:.92rem">Beyond its stone walls, it is the birthplace of Hindustani Classical music legend Tansen, earning it a prestigious spot in the UNESCO Creative Cities Network.</p>
+        <p class="hi" style="margin-top:.8rem;color:var(--muted);line-height:1.85;font-size:.92rem">पत्थर की दीवारों के परे, यह हिंदुस्तानी शास्त्रीय संगीत के दिग्गज तानसेन की जन्मस्थली है, जिसने इसे यूनेस्को की सूची में स्थान दिलाया है।</p>
+        <div class="stats">
+          <div><div class="stat-num">8<span style="font-size:1rem">th</span></div><div class="stat-label en">Century Origins</div><div class="stat-label hi">शताब्दी का उद्गम</div></div>
+          <div><div class="stat-num">350</div><div class="stat-label en">Palace Rooms</div><div class="stat-label hi">महल के कमरे</div></div>
+          <div><div class="stat-num">UNESCO</div><div class="stat-label en">City of Music</div><div class="stat-label hi">संगीत शहर</div></div>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="images/gwalior_fort.webp" alt="Gwalior Fort" onerror="this.style.background='var(--bg3)'">
+        <div class="img-label en">Man Singh Palace</div>
+        <div class="img-label hi">मान सिंह पैलेस</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="attractions">
+  <div class="container">
+    <div class="section-label en">Must Visit</div>
+    <div class="section-label hi">अवश्य देखें</div>
+    <h2 class="section-title en">Places to <span>Explore</span></h2>
+    <h2 class="section-title hi serif">घूमने के <span>स्थान</span></h2>
+
+    <div class="filter-pills">
+      <button class="pill active" onclick="filterCards('all',this)"><span class="en">All Places</span><span class="hi">सभी</span></button>
+      <button class="pill" onclick="filterCards('heritage',this)"><i class="fa-solid fa-fort-awesome" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Heritage</span><span class="hi">विरासत</span></button>
+      <button class="pill" onclick="filterCards('culture',this)"><i class="fa-solid fa-music" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Culture</span><span class="hi">संस्कृति</span></button>
+      <button class="pill" onclick="filterCards('spiritual',this)"><i class="fa-solid fa-om" style="margin-right:.4rem;font-size:.7rem"></i><span class="en">Spiritual</span><span class="hi">आध्यात्मिक</span></button>
+    </div>
+
+    <div class="cards-layout">
+      <div class="card-featured attr-card" data-cat="heritage">
+        <img src="images/Gwalior/man_mandir.jpg" alt="Gwalior Fort" class="card-img" onerror="this.style.background='var(--bg)'">
+        <div class="card-body">
+          <div>
+            <span class="card-tag tag-heritage en">Heritage · #1 Must Visit</span>
+            <span class="card-tag tag-heritage hi">विरासत · सर्वप्रथम</span>
+            <div class="card-title" style="font-size:1.5rem;margin-bottom:.7rem" class="en">Gwalior Fort & Man Mandir Palace</div>
+            <p class="card-desc en" style="font-size:.85rem">Standing atop a sandstone hill, this fort is one of the most invincible in India. Its highlights include the <strong style="color:var(--text2);font-weight:600">Man Mandir Palace</strong> with its turquoise blue tiles and the <em style="color:var(--saffron)">Saas-Bahu</em> temples. The light and sound show here brings 1,000 years of history to life.</p>
+            <div class="card-title hi serif" style="font-size:1.5rem;margin-bottom:.7rem">ग्वालियर किला एवं मान मंदिर पैलेस</div>
+            <p class="card-desc hi" style="font-size:.85rem">बलुआ पत्थर की पहाड़ी पर स्थित यह किला भारत के सबसे अजेय किलों में से एक है। इसकी नीली टाइलों वाली वास्तुकला और सास-बहू मंदिर मुख्य आकर्षण हैं। यहाँ का लाइट एंड साउंड शो इतिहास को जीवंत कर देता है।</p>
+          </div>
+          <div class="card-meta">
+            <span><i class="fa-solid fa-location-dot"></i><span class="en">Gopachal Hill</span><span class="hi">गोपाचल पहाड़ी</span></span>
+            <span><i class="fa-solid fa-clock"></i><span class="en">9 AM – 5 PM</span><span class="hi">9 AM – 5 PM</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-sub" id="attractionsGrid">
+
+        <div class="card attr-card" data-cat="heritage culture">
+          <img src="images/Gwalior/jai_vilas.jpg" alt="Jai Vilas Palace" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-heritage en">Heritage · Luxury</span>
+            <span class="card-tag tag-heritage hi">विरासत · विलासिता</span>
+            <div class="card-title en">Jai Vilas Palace & Museum</div>
+            <div class="card-title hi serif">जय विलास महल</div>
+            <p class="card-desc en">A 19th-century palace blending Italian and Tuscan styles. Famous for the <strong style="color:var(--text2);font-weight:600">Silver Train</strong> on the dining table and two of the world’s largest chandeliers.</p>
+            <p class="card-desc hi">19वीं सदी का महल जो इतालवी शैली में बना है। डाइनिंग टेबल पर चलने वाली <strong style="color:var(--text2);font-weight:600">चांदी की ट्रेन</strong> और दुनिया के सबसे बड़े झूमरों के लिए प्रसिद्ध।</p>
+          </div>
+        </div>
+
+        <div class="card attr-card" data-cat="culture heritage">
+          <img src="images/Gwalior/tansen_tomb.jpg" alt="Tansen Tomb" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-culture en">Culture · Music</span>
+            <span class="card-tag tag-culture hi">संस्कृति · संगीत</span>
+            <div class="card-title en">Tomb of Tansen & Ghaus Mohammed</div>
+            <div class="card-title hi serif">तानसेन का मकबरा</div>
+            <p class="card-desc en">A place of pilgrimage for music lovers. It is the site of the annual <strong style="color:var(--text2);font-weight:600">Tansen Music Festival</strong>. Chewing the leaves of the tamarind tree here is said to sweeten one's voice.</p>
+            <p class="card-desc hi">संगीत प्रेमियों के लिए एक तीर्थ स्थल। यहाँ वार्षिक <strong style="color:var(--text2);font-weight:600">तानसेन समारोह</strong> आयोजित होता है। मान्यता है कि यहाँ की इमली खाने से गला मधुर होता है।</p>
+          </div>
+        </div>
+
+        <div class="card attr-card" data-cat="spiritual heritage">
+          <img src="images/Gwalior/sun_temple.jpg" alt="Sun Temple" class="card-img" onerror="this.style.background='var(--bg)'">
+          <div class="card-body">
+            <span class="card-tag tag-spiritual en">Spiritual · Modern</span>
+            <span class="card-tag tag-spiritual hi">आध्यात्मिक · आधुनिक</span>
+            <div class="card-title en">Sun Temple (Surya Mandir)</div>
+            <div class="card-title hi serif">सूर्य मंदिर</div>
+            <p class="card-desc en">Inspired by the Konark Sun Temple, this red sandstone and white marble temple is a masterpiece of <strong style="color:var(--text2);font-weight:600">modern temple architecture</strong> built by the Birla family.</p>
+            <p class="card-desc hi">कोणार्क के सूर्य मंदिर से प्रेरित, लाल बलुआ पत्थर और सफेद संगमरमर से बना यह मंदिर <strong style="color:var(--text2);font-weight:600">आधुनिक वास्तुकला</strong> का उत्कृष्ट नमूना है।</p>
+          </div>
+        </div>
+
+      </div></div><div style="text-align:center;margin-top:2rem" id="showMoreWrap">
+      <button onclick="toggleMoreCards()" id="showMoreBtn" class="img-btn" style="margin:0 auto">
+        <i class="fa-solid fa-chevron-down" id="showMoreIcon"></i>
+        <span class="en" id="showMoreTxtEn">Show More Places</span>
+        <span class="hi" id="showMoreTxtHi">और स्थान देखें</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<section id="reach">
+  <div class="container">
+    <div class="section-label en">Getting There</div>
+    <div class="section-label hi">कैसे पहुँचें</div>
+    <h2 class="section-title en">How to <span>Reach</span></h2>
+    <h2 class="section-title hi serif">यात्रा <span>मार्ग</span></h2>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab(event,'train')"><i class="fa-solid fa-train"></i><span class="en">By Train</span><span class="hi">रेल</span></button>
+      <button class="tab" onclick="showTab(event,'road')"><i class="fa-solid fa-road"></i><span class="en">By Road</span><span class="hi">सड़क</span></button>
+      <button class="tab" onclick="showTab(event,'air')"><i class="fa-solid fa-plane"></i><span class="en">By Air</span><span class="hi">हवाई</span></button>
+    </div>
+    <div class="tab-panel active" id="panel-train">
+      <h4 class="en">Gwalior Junction (GWL)</h4>
+      <p class="en">A major stop on the Delhi-Mumbai line. Fast trains like **Gatimaan Express** reach from Delhi in under 4 hours.</p>
+      <h4 class="hi serif">ग्वालियर जंक्शन (GWL)</h4>
+      <p class="hi">दिल्ली-मुंबई लाइन पर एक प्रमुख स्टॉप। **गतिमान एक्सप्रेस** जैसी ट्रेनें दिल्ली से 4 घंटे से कम समय में यहाँ पहुँचती हैं।</p>
+    </div>
+    <div class="tab-panel" id="panel-air">
+      <h4 class="en">Rajmata Vijaya Raje Scindia Airport (GWL)</h4>
+      <p class="en">Connected to major cities like Delhi, Mumbai, and Bangalore. Flights are regular and the airport is ~10km from the city.</p>
+      <h4 class="hi serif">राजमाता विजयाराजे सिंधिया हवाई अड्डा (GWL)</h4>
+      <p class="hi">दिल्ली, मुंबई और बैंगलोर जैसे प्रमुख शहरों से जुड़ा है। हवाई अड्डा शहर से ~10 किमी दूर है।</p>
+    </div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="container">
+    <div class="section-label en">Find Us</div>
+    <div class="section-label hi">स्थान</div>
+    <h2 class="section-title en"><span>Location</span> on Map</h2>
+    <h2 class="section-title hi serif">नक्शे पर <span>स्थान</span></h2>
+    <div class="map-wrap">
+      <iframe src="http://googleusercontent.com/maps.google.com/3" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-label en">Visual Journey</div>
+    <div class="section-label hi">दृश्य यात्रा</div>
+    <h2 class="section-title en">Photo <span>Gallery</span></h2>
+    <h2 class="section-title hi serif">फोटो <span>गैलरी</span></h2>
+  </div>
+  <div class="gallery-strip" id="galleryStrip">
+    <img src="images/Gwalior/gallery1.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
+    <img src="images/Gwalior/gallery2.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
+    <img src="images/Gwalior/gallery3.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
+    <img src="images/Gwalior/gallery4.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
+    <img src="images/Gwalior/gallery5.jpg" class="gallery-img" onclick="openImgPopup(this.src)">
+  </div>
+</section>
+
+<footer>
+  <div class="logo serif">SafarSaarthi</div>
+  <div class="tagline en">Your guide to the Heart of India</div>
+  <div class="tagline hi">भारत के हृदय का आपका मार्गदर्शक</div>
+  <div class="copy">© 2026 SafarSaarthi. All rights reserved.</div>
+</footer>
+
+<div class="popup-overlay" id="imgPopup" onclick="closeImgPopup(event)">
+  <div class="img-popup-box">
+    <button class="img-popup-close" onclick="closeImgPopup(null)">×</button>
+    <img id="imgPopupSrc" src="" alt="">
   </div>
 </div>
 
-<!-- Hero Section -->
-<header class="bg-cover bg-center h-screen text-white relative" style="background-image: url('images/gwalior.webp');">
-  <div class="bg-black bg-opacity-60 h-full flex items-center justify-center">
-    <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 en">Welcome to Gwalior</h1>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 hi hidden">ग्वालियर में आपका स्वागत है</h1>
-      <p class="text-lg md:text-2xl en">A Royal City Steeped in Music and Forts</p>
-      <p class="text-lg md:text-2xl hi hidden">संगीत और किलों से सजी एक शाही नगरी</p>
-    </div>
-  </div>
-</header>
-
-<!-- About Section -->
-<section class="py-16 px-4 md:px-8 bg-gradient-to-r from-purple-50 to-white">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-purple-800 mb-12 en">Discover Gwalior</h2>
-    <h2 class="text-4xl font-bold text-center text-purple-800 mb-12 hi hidden">ग्वालियर को जानिए</h2>
-    <div class="flex flex-col lg:flex-row items-center gap-10">
-      <div class="w-full lg:w-1/2">
-        <iframe class="w-full h-80 border-4 border-purple-100 rounded-lg"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.514539497956!2d78.15660791487014!3d26.218287983419926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976c6b604ec5757%3A0xc8f2ae1db25590b6!2sGwalior%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1752000000000" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-      <div class="w-full lg:w-1/2 bg-white rounded-lg p-6 shadow-md">
-        <div class="en">
-          <h3 class="text-2xl font-semibold text-purple-700 mb-4">About Gwalior</h3>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed">
-            Gwalior is a historic city in Madhya Pradesh, famed for its majestic hilltop fort, classical music heritage, and royal legacy. It is home to ancient palaces, museums, and educational institutions.
-          </p>
-        </div>
-        <div class="hi hidden">
-          <h3 class="text-2xl font-semibold text-purple-700 mb-4">ग्वालियर के बारे में</h3>
-          <p class="text-gray-700 text-justify text-lg leading-relaxed">
-            ग्वालियर मध्यप्रदेश का एक ऐतिहासिक शहर है, जो अपने दुर्ग, शास्त्रीय संगीत परंपरा और राजशाही इतिहास के लिए प्रसिद्ध है। यहाँ प्राचीन महल, संग्रहालय और प्रतिष्ठित शिक्षण संस्थान स्थित हैं।
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Attractions -->
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Top Attractions in Gwalior</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">ग्वालियर के प्रमुख आकर्षण</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Gwalior Fort -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Gwalior/fort.jpg" alt="Gwalior Fort" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Gwalior Fort</h3>
-        <h3 class="text-xl font-semibold hi hidden">ग्वालियर किला</h3>
-        <p class="text-gray-700 text-justify en">A massive hilltop fort known for its breathtaking architecture and panoramic city views.</p>
-        <p class="text-gray-700 text-justify hi hidden">एक विशाल पहाड़ी पर बना किला जो अपनी अद्भुत वास्तुकला और शानदार दृश्य के लिए प्रसिद्ध है।</p>
-      </div>
-    </div>
-    <!-- Jai Vilas Palace -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Gwalior/jai-vilas.jpg" alt="Jai Vilas Palace" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Jai Vilas Palace</h3>
-        <h3 class="text-xl font-semibold hi hidden">जय विलास पैलेस</h3>
-        <p class="text-gray-700 text-justify en">This European-style royal residence showcases opulence, antiques, and the world’s largest chandelier.</p>
-        <p class="text-gray-700 text-justify hi hidden">यह यूरोपीय शैली का राजमहल भव्यता, प्राचीन वस्तुएँ और दुनिया का सबसे बड़ा झूमर प्रदर्शित करता है।</p>
-      </div>
-    </div>
-    <!-- Tansen Tomb -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/Gwalior/tansen.jpg" alt="Tansen Tomb" class="w-full h-64 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold en">Tansen Tomb</h3>
-        <h3 class="text-xl font-semibold hi hidden">तानसेन की समाधि</h3>
-        <p class="text-gray-700 text-justify en">A peaceful site honoring the legendary musician Tansen, one of Akbar’s Navratnas.</p>
-        <p class="text-gray-700 text-justify hi hidden">महान संगीतकार तानसेन की याद में बना यह स्थल शांति और श्रद्धा का प्रतीक है।</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Famous For -->
-<section class="bg-white py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-black text-center mb-8 en">Things Gwalior is Famous For</h2>
-  <h2 class="text-3xl font-bold text-black text-center mb-8 hi hidden">ग्वालियर की प्रसिद्ध चीजें</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="text-center">
-      <img src="images/Gwalior/music.jpg" alt="Classical Music" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Classical Music Legacy</h3>
-      <h3 class="text-xl font-semibold hi hidden">शास्त्रीय संगीत परंपरा</h3>
-      <p class="text-gray-700 text-justify en">Home of the Gwalior Gharana, one of the oldest schools of Hindustani classical music.</p>
-      <p class="text-gray-700 text-justify hi hidden">ग्वालियर घराना हिंदुस्तानी शास्त्रीय संगीत की सबसे पुरानी परंपराओं में से एक है।</p>
-    </div>
-    <div class="text-center">
-      <img src="images/Gwalior/samosa.jpg" alt="Gwalior Samosa" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Gwalior Samosa</h3>
-      <h3 class="text-xl font-semibold hi hidden">ग्वालियर समोसा</h3>
-      <p class="text-gray-700 text-justify en">Spicy and crisp, Gwalior’s famous samosas are a beloved street snack.</p>
-      <p class="text-gray-700 text-justify hi hidden">तेज मसालेदार और कुरकुरा – ग्वालियर का समोसा एक लोकप्रिय स्ट्रीट फूड है।</p>
-    </div>
-    <div class="text-center">
-      <img src="images/Gwalior/chanderi.jpg" alt="Chanderi Fabric" class="w-full h-48 object-contain rounded-lg mb-2">
-      <h3 class="text-xl font-semibold en">Chanderi Sarees</h3>
-      <h3 class="text-xl font-semibold hi hidden">चंदेरी साड़ियाँ</h3>
-      <p class="text-gray-700 text-justify en">Elegant handwoven sarees that combine silk and cotton with intricate patterns.</p>
-      <p class="text-gray-700 text-justify hi hidden">रेशम और सूती धागों से बनीं, ये साड़ियाँ अपनी महीन कढ़ाई के लिए प्रसिद्ध हैं।</p>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<section class="py-12 px-4 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-8 en">Maheshwar Photo Gallery</h2>
-  <h2 class="text-3xl font-bold text-center mb-8 hi hidden">महेश्वर फोटो गैलरी</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 1" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 2" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 3" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 4" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 5" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-    <img src="images/maheshwar.jpg" alt="Gallery Image 6" class="rounded-lg shadow-md object-cover w-full h-64 cursor-pointer" onclick="showImage(this.src)">
-  </div>
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-  <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-    <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-    <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-  </div>
-</div>
-<script>
- 
-  function showImage(src) {
-    document.getElementById("popupImage").src = src;
-    document.getElementById("imagePopup").classList.remove("hidden");
-  }
-
-  function hideImage() {
-    document.getElementById("imagePopup").classList.add("hidden");
-    document.getElementById("popupImage").src = "";
-  }
-</script>
-</section>
-
-<!-- Image Modal -->
-
-
-<!-- Travel Options -->
-<section class="bg-indigo-50 py-12 px-4 max-w-6xl mx-auto rounded-lg mt-8">
-  <h2 class="text-3xl font-bold text-center text-black mb-6 en">Getting To and From Maheshwar</h2>
-  <h2 class="text-3xl font-bold text-center text-black mb-6 hi hidden">महेश्वर आने-जाने के साधन</h2>
-  <div class="flex flex-col md:flex-row justify-around gap-8">
-    <div onclick="showImage('images/maheshwar-train.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Train Routes</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">ट्रेन मार्ग</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest railway stations: Barwaha (39 km), Indore (91 km)</li>
-        <li class="hi hidden">नजदीकी रेलवे स्टेशन: बड़वाहा (39 किमी), इंदौर (91 किमी)</li>
-        <li class="en">Connected via local taxis and buses</li>
-        <li class="hi hidden">स्थानिक टैक्सी और बस सुविधा उपलब्ध</li>
-      </ul>
-    </div>
-    <div onclick="showImage('images/maheshwar-air.png')" class="cursor-pointer w-full md:w-1/2 bg-white p-6 rounded shadow hover:shadow-lg transition block">
-      <h3 class="text-xl font-semibold text-center mb-2 en">Flight Options</h3>
-      <h3 class="text-xl font-semibold text-center mb-2 hi hidden">फ्लाइट विकल्प</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li class="en">Nearest Airport: Devi Ahilya Airport, Indore</li>
-        <li class="hi hidden">निकटतम हवाई अड्डा: देवी अहिल्या एयरपोर्ट, इंदौर</li>
-        <li class="en">Direct flights from Delhi, Mumbai, Hyderabad</li>
-        <li class="hi hidden">दिल्ली, मुंबई, हैदराबाद से सीधी उड़ानें</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-4 rounded shadow-lg relative max-w-4xl max-h-[90vh] overflow-auto">
-      <button onclick="hideImage()" class="absolute top-2 right-3 text-xl font-bold">&times;</button>
-      <img id="popupImage" src="" alt="Popup" class="w-full h-auto rounded">
-    </div>
-  </div>
-</section>
-
-<!-- Booking + Popup Section -->
-<section id="section9">
-  <div class="section9">
-    <div class="container1">
-      <div class="category hotels">
-        <img src="images/hotel.jpg" alt="hotels">
-        <div class="overlay">
-          <h2>Hotels Booking</h2>
-          <button onclick="showPopup('hotelPopup')">Book Now</button>
-        </div>
-      </div>
-      <div class="category cabs">
-        <img src="images/cabs.png" alt="cabs">
-        <div class="overlay">
-          <h2>Cabs & Taxi</h2>
-          <button onclick="showPopup('taxiPopup')">Book Now</button>
-        </div>
-      </div>
-      <div class="category food">
-        <img src="images/food.jpg" alt="food">
-        <div class="overlay">
-          <h2>Food Delivery</h2>
-          <button onclick="showPopup('foodPopup')">Book Now</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Popups -->
-    <div id="hotelPopup" class="popup">
-      <h2>Hotels Booking Platforms</h2>
-      <div class="options">
-        <div class="option"><a href="https://www.oyorooms.com/" target="_blank"><img src="images/oyo.png" alt="OYO"></a></div>
-        <div class="option"><a href="https://www.goibibo.com/" target="_blank"><img src="images/goibibo.jpeg" alt="Goibibo"></a></div>
-        <div class="option"><a href="https://www.makemytrip.com/" target="_blank"><img src="images/makemytrip.webp" alt="MakeMyTrip"></a></div>
-        <div class="option"><a href="https://www.agoda.com/" target="_blank"><img src="images/agoda.png" alt="Agoda"></a></div>
-      </div>
-      <button class="close-btn" onclick="closePopup('hotelPopup')">Close</button>
-    </div>
-
-    <div id="taxiPopup" class="popup">
-      <h2>Cabs & Taxi Booking Platforms</h2>
-      <div class="options">
-        <div class="option"><a href="https://book.olacabs.com/" target="_blank"><img src="images/ola.png" alt="Ola"></a></div>
-        <div class="option"><a href="https://www.uber.com/in/en/" target="_blank"><img src="images/uber.png" alt="Uber"></a></div>
-        <div class="option"><a href="https://www.rapido.bike/" target="_blank"><img src="images/Rapido.png" alt="Rapido"></a></div>
-      </div>
-      <button class="close-btn" onclick="closePopup('taxiPopup')">Close</button>
-    </div>
-
-    <div id="foodPopup" class="popup">
-      <h2>Food Delivery Platforms</h2>
-      <div class="options">
-        <div class="option"><a href="https://www.zomato.com/" target="_blank"><img src="images/zomato.png" alt="Zomato"></a></div>
-        <div class="option"><a href="https://www.swiggy.com/" target="_blank"><img src="images/swiggy.png" alt="Swiggy"></a></div>
-        <div class="option"><a href="https://blinkit.com/" target="_blank"><img src="images/blinkit.png" alt="Blinkit"></a></div>
-      </div>
-      <button class="close-btn" onclick="closePopup('foodPopup')">Close</button>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer1.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-
-  function showPopup(id) {
-    document.getElementById(id).style.display = 'block';
-  }
-
-  function closePopup(id) {
-    document.getElementById(id).style.display = 'none';
-  }
-
-  function setLang(lang) {
-    document.querySelectorAll('.en, .hi').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
-  }
-</script>
 </body>
 </html>

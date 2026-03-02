@@ -193,3 +193,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang') || 'en';
     setLang(savedLang);
 });
+
+function toggleMoreCards() {
+  const hiddenCards = document.querySelectorAll('.hidden-card');
+  const btn = document.getElementById('showMoreBtn');
+  const icon = document.getElementById('showMoreIcon');
+  const txtEn = btn.querySelector('.en');
+  const txtHi = btn.querySelector('.hi');
+
+  // Check if we are currently showing or hiding
+  const isExpanding = txtEn.innerText === "Show More Places" || txtEn.innerText === "Show More";
+
+  hiddenCards.forEach(card => {
+    if (isExpanding) {
+      card.classList.remove('hidden-card');
+      card.classList.add('show-now');
+    } else {
+      card.classList.add('hidden-card');
+      card.classList.remove('show-now');
+    }
+  });
+
+  // Update Button Text and Icon
+  if (isExpanding) {
+    txtEn.innerText = "Show Less";
+    txtHi.innerText = "कम दिखाएं";
+    icon.style.transform = "rotate(180deg)";
+  } else {
+    txtEn.innerText = "Show More Places";
+    txtHi.innerText = "और स्थान देखें";
+    icon.style.transform = "rotate(0deg)";
+    // Scroll back to attractions top when closing
+    document.getElementById('attractions').scrollIntoView({ behavior: 'smooth' });
+  }
+}
