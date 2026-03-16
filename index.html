@@ -1123,14 +1123,46 @@
 
       <!-- Video side -->
       <div class="reveal reveal-delay-2">
-        <div class="video-frame-outer" id="showcaseVideoWrap">
-          <video id="showcaseVideo" src="Madhyapradesh/videos/mptourism2.mp4" muted loop playsinline preload="metadata"></video>
-          <div class="video-play-overlay" id="videoOverlay" onclick="toggleShowcaseVideo()">
-            <div class="play-btn" id="playBtn">
-              <i class="fa-solid fa-play" id="playIcon" style="margin-left:3px;"></i>
-            </div>
-          </div>
-        </div>
+        <div class="video-frame-outer" id="showcaseVideoWrap" style="position:relative;">
+  
+  <video 
+    id="showcaseVideo" 
+    src="Madhyapradesh/videos/mptourism2.mp4" 
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    preload="metadata"
+    style="width:100%; height:auto; display:block;">
+  </video>
+
+  <!-- Mute / Unmute Button -->
+  <button onclick="toggleMute()" 
+          style="position:absolute; bottom:15px; right:15px; 
+                 background:rgba(0,0,0,0.6); color:#fff; 
+                 border:none; padding:10px 14px; 
+                 border-radius:50%; cursor:pointer;">
+    <i class="fa-solid fa-volume-xmark" id="muteIcon"></i>
+  </button>
+
+</div>
+
+<script>
+  function toggleMute() {
+    const video = document.getElementById("showcaseVideo");
+    const icon = document.getElementById("muteIcon");
+
+    video.muted = !video.muted;
+
+    if (video.muted) {
+      icon.classList.remove("fa-volume-high");
+      icon.classList.add("fa-volume-xmark");
+    } else {
+      icon.classList.remove("fa-volume-xmark");
+      icon.classList.add("fa-volume-high");
+    }
+  }
+</script>
         <!-- Decorative accent -->
         <div style="display:flex; justify-content:flex-end; margin-top:16px; gap:8px; align-items:center;">
           <div style="width:6px;height:6px;border-radius:50%;background:var(--terracotta);opacity:.6;"></div>

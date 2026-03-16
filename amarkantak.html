@@ -93,12 +93,76 @@
         </div>
       </div>
       <div class="about-image">
-        <img src="images/amarkantak.webp" alt="Amarkantak" onerror="this.style.background='var(--bg3)'">
+        <img src="Madhyapradesh/images/amarkantak.webp" alt="Amarkantak" onerror="this.style.background='var(--bg3)'">
         <div class="img-label en">Amarkantak Highlands</div>
         <div class="img-label hi">अमरकंटक पठार</div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- Video Showcase -->
+<section id="video-showcase" style="background:var(--bg);padding:5rem 0">
+  <div class="container">
+    <div class="section-label en">Cinematic View</div>
+    <div class="section-label hi">चलचित्र दृश्य</div>
+
+    <h2 class="section-title en">Amarkantak <span>in Motion</span></h2>
+    <h2 class="section-title hi serif">अमरकंटक <span>चलचित्र में</span></h2>
+
+    <p class="en" style="max-width:700px;margin:1rem auto 2rem;text-align:center;color:var(--muted);line-height:1.8">
+      A short visual glimpse of Amarkantak’s sacred landscapes, waterfalls, forests, and temple atmosphere.
+    </p>
+    <p class="hi" style="max-width:700px;margin:1rem auto 2rem;text-align:center;color:var(--muted);line-height:1.8">
+      अमरकंटक के पवित्र परिदृश्य, झरनों, वनों और मंदिरों के वातावरण की एक सुंदर झलक।
+    </p>
+
+    <div class="video-frame-outer" id="showcaseVideoWrap" style="position:relative;max-width:1000px;margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.18);background:#000">
+      
+      <video 
+        id="showcaseVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        style="width:100%;height:auto;display:block">
+        <source src="Madhyapradesh/images/Amarkantak/amarkantak_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Mute / Unmute -->
+      <button 
+        onclick="toggleShowcaseMute()"
+        aria-label="Toggle video sound"
+        style="position:absolute;bottom:18px;right:18px;width:48px;height:48px;border:none;border-radius:50%;background:rgba(0,0,0,.58);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px);box-shadow:0 6px 20px rgba(0,0,0,.25)">
+        <i class="fa-solid fa-volume-xmark" id="showcaseMuteIcon"></i>
+      </button>
+
+      <!-- Small label -->
+      <div style="position:absolute;left:18px;bottom:18px;background:rgba(0,0,0,.48);color:#fff;padding:.55rem .9rem;border-radius:999px;font-size:.8rem;backdrop-filter:blur(6px)">
+        <span class="en"><i class="fa-solid fa-play" style="margin-right:.45rem"></i>Visual Experience</span>
+        <span class="hi"><i class="fa-solid fa-play" style="margin-right:.45rem"></i>दृश्य अनुभव</span>
+      </div>
+    </div>
+  </div>
+  <script>
+  function toggleShowcaseMute() {
+  const video = document.getElementById("showcaseVideo");
+  const icon = document.getElementById("showcaseMuteIcon");
+
+  if (!video || !icon) return;
+
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    icon.classList.remove("fa-volume-high");
+    icon.classList.add("fa-volume-xmark");
+  } else {
+    icon.classList.remove("fa-volume-xmark");
+    icon.classList.add("fa-volume-high");
+  }
+}</script>
 </section>
 
 <!-- Attractions -->
@@ -121,7 +185,7 @@
     <!-- Featured: Narmada Udgam -->
     <div class="cards-layout">
       <div class="card-featured attr-card" data-cat="spiritual">
-        <img src="images/Amarkantak/narmada-udgam.jpg" alt="Narmada Udgam" class="card-img" onerror="this.style.background='var(--bg)'">
+        <img src="Madhyapradesh/images/Amarkantak/narmada-udgam.jpg" alt="Narmada Udgam" class="card-img" onerror="this.style.background='var(--bg)'">
         <div class="card-body">
           <div>
             <span class="card-tag tag-spiritual en">Spiritual · #1 Must Visit</span>
@@ -144,7 +208,7 @@
 
         <!-- Kapildhara -->
         <div class="card attr-card" data-cat="nature">
-          <img src="images/Amarkantak/kapil.dhara.jpg" alt="Kapildhara" class="card-img" onerror="this.style.background='var(--bg)'">
+          <img src="Madhyapradesh/images/Amarkantak/kapil.dhara.jpg" alt="Kapildhara" class="card-img" onerror="this.style.background='var(--bg)'">
           <div class="card-body">
             <span class="card-tag tag-nature en">Nature · Waterfall</span>
             <span class="card-tag tag-nature hi">प्रकृति · झरना</span>
@@ -161,7 +225,7 @@
 
         <!-- Dugdh Dhara -->
         <div class="card attr-card" data-cat="nature trek">
-          <img src="images/Amarkantak/dugdh dhara.jpg" alt="Dugdh Dhara" class="card-img" onerror="this.style.background='var(--bg)'">
+          <img src="Madhyapradesh/images/Amarkantak/dugdh dhara.jpg" alt="Dugdh Dhara" class="card-img" onerror="this.style.background='var(--bg)'">
           <div class="card-body">
             <span class="card-tag tag-trek en">Trek · Waterfall</span>
             <span class="card-tag tag-trek hi">ट्रेक · झरना</span>
@@ -177,7 +241,7 @@
 
         <!-- Sonemuda -->
         <div class="card attr-card" data-cat="nature">
-          <img src="images/Amarkantak/sonemuda.jpg" alt="Sonemuda" class="card-img" onerror="this.style.background='var(--bg)'">
+          <img src="Madhyapradesh/images/Amarkantak/sonemuda.jpg" alt="Sonemuda" class="card-img" onerror="this.style.background='var(--bg)'">
           <div class="card-body">
             <span class="card-tag tag-nature en">Nature · Viewpoint</span>
             <span class="card-tag tag-nature hi">प्रकृति · दृश्य</span>
@@ -193,7 +257,7 @@
 
         <!-- Yantra Mandir -->
         <div class="card attr-card" data-cat="spiritual heritage">
-          <img src="images/Amarkantak/yantra-mandir.jpeg" alt="Yantra Mandir" class="card-img" onerror="this.style.background='var(--bg)'">
+          <img src="Madhyapradesh/images/Amarkantak/yantra-mandir.jpeg" alt="Yantra Mandir" class="card-img" onerror="this.style.background='var(--bg)'">
           <div class="card-body">
             <span class="card-tag tag-heritage en">Heritage · Spiritual</span>
             <span class="card-tag tag-heritage hi">विरासत · आध्यात्मिक</span>
@@ -210,7 +274,7 @@
 
         <!-- Kalachuri Temples -->
         <div class="card attr-card" data-cat="heritage">
-          <img src="images/Amarkantak/narmada-udgam.jpg" alt="Kalachuri Temples" class="card-img" style="filter:sepia(.3)" onerror="this.style.background='var(--bg)'">
+          <img src="Madhyapradesh/images/Amarkantak/kalachuri-temples.jpg" alt="Kalachuri Temples" class="card-img" style="filter:sepia(.3)" onerror="this.style.background='var(--bg)'">
           <div class="card-body">
             <span class="card-tag tag-heritage en">Heritage · 11th Century</span>
             <span class="card-tag tag-heritage hi">विरासत · 11वीं सदी</span>
@@ -227,9 +291,8 @@
 
         <!-- Kabir Chabutra -->
         <div class="card attr-card" data-cat="spiritual heritage">
-          <div style="width:100%;height:160px;background:linear-gradient(135deg,#fff3e0,#ffecd2);display:flex;align-items:center;justify-content:center">
-            <i class="fa-solid fa-khanda" style="font-size:3rem;color:var(--gold);opacity:.4"></i>
-          </div>
+          <img src="Madhyapradesh/images/Amarkantak/kabir-chabutra.jpg" alt="Kabir Chabutra" class="card-img" style="filter:sepia(.3)" onerror="this.style.background='var(--bg)'">
+         
           <div class="card-body">
             <span class="card-tag tag-spiritual en">Spiritual · Sufi</span>
             <span class="card-tag tag-spiritual hi">आध्यात्मिक · सूफी</span>
@@ -245,9 +308,9 @@
 
         <!-- Jwaleshwar Mahadev -->
         <div class="card attr-card hidden-card" data-cat="spiritual">
-          <div style="width:100%;height:160px;background:linear-gradient(135deg,#f5f3ff,#ede9fe);display:flex;align-items:center;justify-content:center">
-            <i class="fa-solid fa-fire-flame-curved" style="font-size:3rem;color:#a78bfa;opacity:.5"></i>
-          </div>
+          
+        <img src="Madhyapradesh/images/Amarkantak/jwaleshwar-mahadev.jpg" alt="Jwaleshwar Mahadev" class="card-img" onerror="this.style.background='var(--bg)'">
+        
           <div class="card-body">
             <span class="card-tag tag-spiritual en">Spiritual · Shiva</span>
             <span class="card-tag tag-spiritual hi">आध्यात्मिक · शिव</span>
@@ -399,16 +462,16 @@
       <h4 class="hi serif">निकटतम हवाई अड्डा: जबलपुर (JLR)</h4>
       <p class="en" style="margin-top:.5rem">Jabalpur Airport is <strong>~240 km</strong> away (4–5 hrs by taxi). Raipur Airport (RPR) is an alternative at <strong>~245 km</strong>.</p>
       <p class="hi" style="margin-top:.5rem">जबलपुर हवाई अड्डा <strong>~240 किमी</strong> दूर है (टैक्सी से 4–5 घंटे)। रायपुर हवाई अड्डा भी <strong>~245 किमी</strong> पर एक विकल्प है।</p>
-      <button class="img-btn en" onclick="openImgPopup('images/Amarkantak/FLIGHT.png')"><i class="fa-solid fa-map"></i> View Air Route Map</button>
-      <button class="img-btn hi" onclick="openImgPopup('images/Amarkantak/FLIGHT.png')"><i class="fa-solid fa-map"></i> नक्शा देखें</button>
+      <button class="img-btn en" onclick="openImgPopup('Madhyapradesh/images/Amarkantak/FLIGHT.png')"><i class="fa-solid fa-map"></i> View Air Route Map</button>
+      <button class="img-btn hi" onclick="openImgPopup('Madhyapradesh/images/Amarkantak/FLIGHT.png')"><i class="fa-solid fa-map"></i> नक्शा देखें</button>
     </div>
     <div class="tab-panel" id="panel-train">
       <h4 class="en">Nearest Station: Pendra Road (PEN)</h4>
       <h4 class="hi serif">निकटतम स्टेशन: पेंड्रा रोड (PEN)</h4>
       <p class="en" style="margin-top:.5rem">Pendra Road is only <strong>29 km</strong> away in Chhattisgarh, well-connected to major cities. Taxis and buses available.</p>
       <p class="hi" style="margin-top:.5rem">पेंड्रा रोड केवल <strong>29 किमी</strong> दूर है। यहाँ से टैक्सी और बसें उपलब्ध हैं।</p>
-      <button class="img-btn en" onclick="openImgPopup('images/Amarkantak/pendra road.png')"><i class="fa-solid fa-train"></i> View Train List</button>
-      <button class="img-btn hi" onclick="openImgPopup('images/Amarkantak/pendra road.png')"><i class="fa-solid fa-train"></i> ट्रेन सूची देखें</button>
+      <button class="img-btn en" onclick="openImgPopup('Madhyapradesh/images/Amarkantak/pendra road.png')"><i class="fa-solid fa-train"></i> View Train List</button>
+      <button class="img-btn hi" onclick="openImgPopup('Madhyapradesh/images/Amarkantak/pendra road.png')"><i class="fa-solid fa-train"></i> ट्रेन सूची देखें</button>
     </div>
     <div class="tab-panel" id="panel-road">
       <h4 class="en">By State Highways</h4>
@@ -440,10 +503,10 @@
         <div class="section-label hi">स्थानीय विशेषताएँ</div>
         <h2 class="section-title" style="font-size:1.8rem" ><span class="en serif" style="font-family:'Cormorant Garamond',serif">Things to Take Home</span><span class="hi serif" style="font-family:'Cormorant Garamond',serif">घर ले जाएं</span></h2>
         <div class="specialties" style="margin-top:1.5rem">
-          <div class="specialty-card"><img src="images/Amarkantak/amla.jpeg" alt="Amla" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Amla Products</div><div class="specialty-name hi">आंवला उत्पाद</div></div></div>
-          <div class="specialty-card"><img src="images/Amarkantak/kodo.jpeg" alt="Kodo" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Kodo-Kutki Grains</div><div class="specialty-name hi">कोदो-कुटकी</div></div></div>
-          <div class="specialty-card"><img src="images/Amarkantak/herbs.jpeg" alt="Herbs" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Forest Herbs</div><div class="specialty-name hi">वन जड़ी-बूटी</div></div></div>
-          <div class="specialty-card"><img src="images/Amarkantak/BAIGA THALI 1.jpeg" alt="Tribal" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Tribal Cuisine</div><div class="specialty-name hi">आदिवासी व्यंजन</div></div></div>
+          <div class="specialty-card"><img src="Madhyapradesh/images/Amarkantak/amla.jpeg" alt="Amla" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Amla Products</div><div class="specialty-name hi">आंवला उत्पाद</div></div></div>
+          <div class="specialty-card"><img src="Madhyapradesh/images/Amarkantak/kodo.jpeg" alt="Kodo" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Kodo-Kutki Grains</div><div class="specialty-name hi">कोदो-कुटकी</div></div></div>
+          <div class="specialty-card"><img src="Madhyapradesh/images/Amarkantak/herbs.jpeg" alt="Herbs" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Forest Herbs</div><div class="specialty-name hi">वन जड़ी-बूटी</div></div></div>
+          <div class="specialty-card"><img src="Madhyapradesh/images/Amarkantak/BAIGA THALI 1.jpeg" alt="Tribal" onerror="this.style.background='var(--bg)'"><div><div class="specialty-name en">Tribal Cuisine</div><div class="specialty-name hi">आदिवासी व्यंजन</div></div></div>
         </div>
       </div>
     </div>
@@ -458,7 +521,7 @@
     <h2 class="section-title en"><span>Location</span> on Map</h2>
     <h2 class="section-title hi serif">नक्शे पर <span>स्थान</span></h2>
     <div class="map-wrap">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30005.86908127387!2d81.73335588661678!3d22.6734199147551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a286006b9b32e1d%3A0x6c61f22c159a16f6!2sAmarkantak%2C%20Madhya%20Pradesh%20484886!5e0!3m2!1sen!2sin!4v1671234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d22411.098963221782!2d81.7429696049282!3d22.67802022522496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1splaces%20to%20vidsit%20in%20amarkantak!5e1!3m2!1sen!2sin!4v1772975397912!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"> 
     </div>
   </div>
 </section>
@@ -472,13 +535,13 @@
     <h2 class="section-title hi serif">फोटो <span>गैलरी</span></h2>
   </div>
   <div class="gallery-strip" id="galleryStrip" style="padding:0 max(1.5rem,(100vw - 1100px)/2)">
-    <img src="images/amarkantak.webp" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
-    <img src="images/Amarkantak/kapil.dhara.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
-    <img src="images/Amarkantak/dugdh dhara.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
-    <img src="images/Amarkantak/gallery.webp" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
-    <img src="images/Amarkantak/narmada-udgam.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
-    <img src="images/Amarkantak/yantra-mandir.jpeg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
-    <img src="images/Amarkantak/sonemuda.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="Madhyapradesh/images/amarkantak.webp" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="Madhyapradesh/images/Amarkantak/kapil.dhara.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="Madhyapradesh/images/Amarkantak/dugdh dhara.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="Madhyapradesh/images/Amarkantak/gallery.webp" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="Madhyapradesh/images/Amarkantak/narmada-udgam.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="Madhyapradesh/images/Amarkantak/yantra-mandir.jpeg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
+    <img src="Madhyapradesh/images/Amarkantak/sonemuda.jpg" class="gallery-img" onclick="openImgPopup(this.src)" onerror="this.style.display='none'">
   </div>
 </section>
 
